@@ -1,0 +1,7 @@
+{
+    "trip": {
+        "startDate": "Fecha inicio",
+        "endDate": "Fecha fin",
+        "requeriments": "Requisitos"
+    }
+}
