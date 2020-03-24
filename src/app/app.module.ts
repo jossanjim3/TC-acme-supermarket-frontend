@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HeaderComponent } from './components/master/header/header.component';
+import { TranslatableComponent } from './components/shared/translatable/translatable.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -16,10 +17,12 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     TripDisplayComponent,
-    HeaderComponent
+    HeaderComponent,
+    TranslatableComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

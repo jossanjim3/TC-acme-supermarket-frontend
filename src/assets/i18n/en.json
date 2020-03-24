@@ -1,0 +1,7 @@
+{
+    "trip": {
+        "startDate": "Start Date",
+        "endDate": "End Date",
+        "requeriments": "Requeriments"
+    }
+}

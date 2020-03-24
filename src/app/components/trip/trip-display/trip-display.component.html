@@ -8,20 +8,20 @@
     <div class="col-md-6">
       <p class="The-explorer-3-hex mx-4 card">
         <span class="card-body">
-          <i class="fa fa-calendar mr-2"></i>Start Date:&nbsp;{{trip.startDate | date}}
+          <i class="fa fa-calendar mr-2"></i>{{'trip.startDate' | translate}}:&nbsp;{{trip.startDate | date}}
         </span>
       </p>
     </div>
     <div class="col-md-6">
       <p class="The-explorer-3-hex mx-4 card">
         <span class="card-body">
-          <i class="fa fa-calendar mr-2"></i>End Date:&nbsp;{{trip.endDate | date}}
+          <i class="fa fa-calendar mr-2"></i>{{'trip.endDate' | translate}}:&nbsp;{{trip.endDate | date}}
         </span>
       </p>
     </div>
   </div>
   
-  <h4 class="The-explorer-4-hex">Requeriments</h4>
+  <h4 class="The-explorer-4-hex">{{'trip.requeriments' | translate}}</h4>
   <ul class="list-group list-group-flash">
     <li class="list-group-item" *ngFor="let requeriment of getRequeriments(); let i = index">
       <p>{{requeriment}}</p>
