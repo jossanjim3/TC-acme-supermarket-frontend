@@ -22,7 +22,6 @@ export class TripDisplayComponent implements OnInit {
 
   getRequeriments() {
     return this.trip.requirements;
-    this.trip.startDate.toLocaleDateString()
   }
 
   getImageSrc(imageBase64) {
