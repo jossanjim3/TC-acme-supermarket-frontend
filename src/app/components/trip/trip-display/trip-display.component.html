@@ -1,0 +1,11 @@
+<h1>{{trip.title}}</h1>
+<h3>{{trip.ticker}}</h3>
+<p>{{trip.description}}</p>
+<ul class="list-group list-group-flash">
+  <li class="list-group-item" *ngFor="let requeriment of trip.requeriments; let i = index">
+    <p>{{requeriment}}</p>
+  </li>
+</ul>
+<p>{{trip.startDate}}</p>
+<p>{{trip.endDate}}</p>
+<img [src]="getImageSrc(trip.pictures[0])" />
