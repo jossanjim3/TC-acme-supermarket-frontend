@@ -13,7 +13,7 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 })
 export class TripDisplayComponent extends TranslatableComponent implements OnInit {
 
-  private trip: Trip;
+  trip: Trip;
   private pictures: SafeResourceUrl[];
 
   constructor(private _sanitizer: DomSanitizer, private tripService: TripService, private translateService: TranslateService) {
