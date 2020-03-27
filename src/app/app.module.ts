@@ -45,6 +45,7 @@ export const firebaseConfig = {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
