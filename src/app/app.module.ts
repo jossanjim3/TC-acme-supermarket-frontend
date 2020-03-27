@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { RegisterComponent } from './components/security/register/register.component';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { LoginComponent } from './components/security/login/login.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -36,7 +37,8 @@ export const firebaseConfig = {
     TripDisplayComponent,
     HeaderComponent,
     TranslatableComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

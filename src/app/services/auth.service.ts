@@ -18,24 +18,25 @@ export class AuthService implements OnInit {
 
   private currentActor: Actor;
 
-  constructor(private fireAuth: AngularFireAuth,
-    private http: HttpClient) { }
+  constructor(private fireAuth: AngularFireAuth, private http: HttpClient) {
 
-    ngOnInit() {
-      //  console.log('Invoking ngOnInit (authService)');
-        this.fireAuth.auth.onAuthStateChanged(user => {
-            if (user) {
-                console.log('-----ACTOR DE FIREBASE----: ', user);
-                // this.currentActor = user;
-                // this.setCurrentActor(this.currentActor);
+  }
 
-                const token = this.fireAuth.auth.currentUser.getIdToken();
-                localStorage.setItem('currentActor.token', JSON.stringify(token));
-            } else {
-                localStorage.removeItem('currentActor');
-            }
-        });
-    }
+  ngOnInit() {
+    //  console.log('Invoking ngOnInit (authService)');
+      this.fireAuth.auth.onAuthStateChanged(user => {
+          if (user) {
+              console.log('-----ACTOR DE FIREBASE----: ', user);
+              // this.currentActor = user;
+              // this.setCurrentActor(this.currentActor);
+
+              const token = this.fireAuth.auth.currentUser.getIdToken();
+              localStorage.setItem('currentActor.token', JSON.stringify(token));
+          } else {
+              localStorage.removeItem('currentActor');
+          }
+      });
+  }
 
   logout() {
     return new Promise<any>((resolve, reject) => {
@@ -50,7 +51,7 @@ export class AuthService implements OnInit {
     });
   }
 
-   login(email: string, password: string) {
+  login(email: string, password: string) {
     const url = `${environment.backendApiBaseURL}` + `/v1/login?email=${email}&password=${password}`;
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
