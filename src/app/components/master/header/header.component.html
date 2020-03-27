@@ -1,30 +1,31 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-The-explorer-1-hex">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand" href="#"><img src="../../../assets/acme-logo.png" alt="logo" width="60" height="35" class="d-inline-block align-top"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">
-      <img src="../../../assets/acme-logo.png" alt="logo" width="60" height="35" class="d-inline-block align-top">
-    </a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+  <div class="collapse navbar-collapse" id="navbarColor03">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Trips
+          Trip
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">My Trips</a>
+          <a class="dropdown-item" href="#">Trip List</a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">New Trip</a>
         </div>
       </li>
     </ul>
-    <form class="form-inline mx-auto">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
-    <ul class="navbar-nav">
+    <ul class="navbar-nav my-2 ml-2">
       <li class="nav-item active">
-        <button (click)="changeLanguage('en')" class="btn-sm btn-primary mr-1">EN</button>
-        <button (click)="changeLanguage('es')" class="btn-sm btn-primary mr-1">SP</button>
+        <button (click)="changeLanguage('en')" class="btn btn-primary mr-1">EN</button>
+        <button (click)="changeLanguage('es')" class="btn btn-primary mr-1">SP</button>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Login</a>
@@ -35,3 +36,4 @@
     </ul>
   </div>
 </nav>
+
