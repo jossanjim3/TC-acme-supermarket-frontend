@@ -61,9 +61,9 @@ export class AuthService implements OnInit {
         .then(res => {
           if (res) {
             this.currentActor = res;
-            console.log('actor: '+res);
-            console.log('actor.name: '+res.name);
-            console.log('customToken: '+res.customToken);
+            console.log('actor: ' + res);
+            console.log('actor.name: ' + res.name);
+            // console.log('customToken: '+res.customToken);
             this.fireAuth.auth.signInWithCustomToken(res.customToken)
               .then(customToken => {
                 this.fireAuth.auth.currentUser.getIdToken()
