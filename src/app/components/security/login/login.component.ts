@@ -35,14 +35,14 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password).then(data => {
       form.reset();
       this.email = email;
-      this.errorMessage = data;
+      // this.errorMessage = data;
     }).catch((error) => {
       console.log(error);
-      this.errorMessage = error;
+      this.errorMessage = 'Error Login: ' + error;
     });
   }
 
-  onclick() {
+  onclickEditProfile() {
     this.router.navigate(['/profile/edit']);
   }
 }
