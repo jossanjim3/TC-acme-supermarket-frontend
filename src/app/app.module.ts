@@ -18,6 +18,7 @@ import { LoginComponent } from './components/security/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EditProfileComponent } from './components/actor/displayProfile/editProfile.component';
 import { ActorService } from './services/actor.service';
+import { FooterComponent } from './components/master/footer/footer.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -42,7 +43,8 @@ export const firebaseConfig = {
     TranslatableComponent,
     RegisterComponent,
     LoginComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

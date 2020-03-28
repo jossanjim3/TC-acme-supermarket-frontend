@@ -1,50 +1,168 @@
-<legend>Edit Profile</legend>
+
+
 
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   <div class="form-group has-danger" >
-    <!-- Id is needed to update the profile-->
-    <input class="form-control" formControlName="id" type="hidden">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h2>{{'actor.edit.title' | translate}}</h2>
+            <hr>
+        </div>
+    </div>
+
+    <!-- email -->
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="email">{{'actor.email' | translate}}</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                    <input type="text" name="email" class="form-control" id="email" formControlName="email"
+                          placeholder="you@example.com" required autofocus>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        <!-- Put e-mail validation error messages here -->
+                    </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- password -->
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="password">{{'actor.password' | translate}}</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group has-danger">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                    <input type="password" name="password" class="form-control" id="password" formControlName="password"
+                          placeholder="{{'actor.password' | translate}}" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        <!-- <i class="fa fa-close"> Example Error Message</i> -->
+                    </span>
+            </div>
+        </div>
+    </div>
     
-    <label class="center-block">Name:
-      <input class="form-control" formControlName="name">
-    </label>
-    <br/>
-    
-    <label class="center-block">Surname:
-      <input class="form-control" formControlName="surname">
-    </label>
-    <br/>
-
-    <label class="center-block">Email:
-      <input class="form-control" formControlName="email">
-    </label>
-    <br/>
-
-    <label class="center-block">Password:
-      <input class="form-control" type="password" formControlName="password">
-    </label>
-    <br/>
-
-    <label class="center-block">Address:
-      <input class="form-control" formControlName="address">
-    </label>
-    <br/>
-
-    <label class="center-block">Language:
-      <input class="form-control" formControlName="language">
-    </label>
-    <br/>
-
-    <label class="center-block">Phone:
-      <input class="form-control" formControlName="phone">
-    </label>
-    <br/>
-
-
-
-    <!--form buttons-->
-    <button type="submit" class="btn btn-success">Save</button>
+    <!-- name -->
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="name">{{'actor.name' | translate}}</label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                  <input type="text" name="name" class="form-control" id="name" formControlName="name"
+                        placeholder="{{'actor.namePh' | translate}}" required autofocus>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-control-feedback">
+                  <span class="text-danger align-middle">
+                      <!-- Put e-mail validation error messages here -->
+                  </span>
+          </div>
+      </div>
   </div>
+
+  <!-- surname -->
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+        <label for="surname">{{'actor.surname' | translate}}</label>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                <input type="text" name="surname" class="form-control" id="surname" formControlName="surname"
+                      placeholder="{{'actor.surnamePh' | translate}}" required autofocus>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-control-feedback">
+                <span class="text-danger align-middle">
+                    <!-- Put e-mail validation error messages here -->
+                </span>
+        </div>
+    </div>
+  </div>
+
+  <!-- address -->
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+        <label for="address">{{'actor.address' | translate}}</label>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-address-book-o"></i></div>
+                <input type="text" name="address" class="form-control" id="address" formControlName="address"
+                      placeholder="{{'actor.addressPh' | translate}}" required autofocus>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-control-feedback">
+                <span class="text-danger align-middle">
+                    <!-- Put e-mail validation error messages here -->
+                </span>
+        </div>
+    </div>
+  </div>
+
+  <!-- phone -->
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+        <label for="phone">{{'actor.phone' | translate}}</label>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-phone"></i></div>
+                <input type="text" name="phone" class="form-control" id="phone" formControlName="phone"
+                      placeholder="{{'actor.phonePh' | translate}}" autofocus>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-control-feedback">
+                <span class="text-danger align-middle">
+                    <!-- Put e-mail validation error messages here -->
+                </span>
+        </div>
+    </div>
+  </div>
+
+
+    <!-- button register -->
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> {{'actor.save' | translate}}</button>
+        </div>
+    </div>
+
+    
+
+
+
+    </div>
 </form>
 
 <div class="text-danger">{{errorMessage}}</div>

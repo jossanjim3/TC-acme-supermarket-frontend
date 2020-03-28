@@ -15,7 +15,9 @@
         "role": "Role",
         "register": "Register",
         "update": "Update",
-        "register.title": "Register new actor"
+        "register.title": "Register new actor",
+        "edit.title": "Edit Profile",
+        "save": "Save"
     },
     "security": {
         "login": "Login",
@@ -25,6 +27,11 @@
     },
     "header": {
         "search": "Search"
+    },
+    "footer": {
+        "terms": "Terms and conditions",
+        "visitors": "Visitor num.",
+        "about": "About the company"
     },
     "trip": {
         "trip": "Trip",
