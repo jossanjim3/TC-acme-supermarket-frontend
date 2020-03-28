@@ -1,5 +1,33 @@
 {
+    "actor": {
+        "email": "Email",
+        "emailPh": "Enter email",
+        "password": "Password",
+        "passwordPh": "Enter password",
+        "name": "Name",
+        "namePh": "Enter your name",
+        "surname": "Surname",
+        "surnamePh": "Enter your surname",
+        "phone": "Phone",
+        "phonePh": "Enter your phone",
+        "address": "Address",
+        "addressPh": "Enter your Address",
+        "role": "Role",
+        "register": "Register",
+        "update": "Update",
+        "register.title": "Register new actor"
+    },
+    "security": {
+        "login": "Login",
+        "logout": "Logout",
+        "forgotPwd": "Forget Password?",
+        "alreadyRegistered": "Already registered?"
+    },
+    "header": {
+        "search": "Search"
+    },
     "trip": {
+        "trip": "Trip",
         "startDate": "Start Date",
         "endDate": "End Date",
         "requeriments": "Requeriments"

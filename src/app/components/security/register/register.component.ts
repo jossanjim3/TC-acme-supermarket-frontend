@@ -2,18 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-import { AuthService } from '../../../services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslatableComponent } from '../../shared/translatable/translatable.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent extends TranslatableComponent implements OnInit {
   registrationForm: FormGroup;
   roleList: string[];
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {
+  constructor(private translateService: TranslateService, private authService: AuthService, private fb: FormBuilder) {
+    super(translateService);
     this.roleList = this.authService.getRoles();
     this.createForm();
    }

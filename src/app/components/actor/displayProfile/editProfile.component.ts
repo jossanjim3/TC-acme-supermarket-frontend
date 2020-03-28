@@ -47,7 +47,7 @@ export class EditProfileComponent implements OnInit {
           this.profileForm.controls['name'].setValue(this.actor.name);
           this.profileForm.controls['surname'].setValue(this.actor.surname);
           this.profileForm.controls['email'].setValue(this.actor.email);
-          //this.profileForm.controls['password'].setValue(this.actor.password);
+          // this.profileForm.controls['password'].setValue(this.actor.password);
           this.profileForm.controls['address'].setValue(this.actor.address);
           this.profileForm.controls['language'].setValue(this.actor.language);
           this.profileForm.controls['phone'].setValue(this.actor.phone);

@@ -3,13 +3,13 @@
       <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-6">
-              <h2>Register New User</h2>
+              <h2>{{'actor.register.title' | translate}}</h2>
               <hr>
           </div>
       </div>
       <div class="row">
           <div class="col-md-3 field-label-responsive">
-              <label for="role">Role</label>
+              <label for="role">{{'actor.role' | translate}}</label>
           </div>
 
           <div class="col-md-6">
@@ -37,7 +37,7 @@
       <!-- email -->
       <div class="row">
           <div class="col-md-3 field-label-responsive">
-              <label for="email">E-Mail</label>
+              <label for="email">{{'actor.email' | translate}}</label>
           </div>
           <div class="col-md-6">
               <div class="form-group">
@@ -60,14 +60,14 @@
       <!-- password -->
       <div class="row">
           <div class="col-md-3 field-label-responsive">
-              <label for="password">Password</label>
+              <label for="password">{{'actor.password' | translate}}</label>
           </div>
           <div class="col-md-6">
               <div class="form-group has-danger">
                   <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                       <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
                       <input type="password" name="password" class="form-control" id="password" formControlName="password"
-                             placeholder="Password" required>
+                             placeholder="{{'actor.password' | translate}}" required>
                   </div>
               </div>
           </div>
@@ -83,14 +83,14 @@
       <!-- name -->
       <div class="row">
         <div class="col-md-3 field-label-responsive">
-            <label for="name">Name</label>
+            <label for="name">{{'actor.name' | translate}}</label>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
                     <input type="text" name="name" class="form-control" id="name" formControlName="name"
-                           placeholder="Enter your name" required autofocus>
+                           placeholder="{{'actor.namePh' | translate}}" required autofocus>
                 </div>
             </div>
         </div>
@@ -106,14 +106,14 @@
     <!-- surname -->
     <div class="row">
       <div class="col-md-3 field-label-responsive">
-          <label for="surname">Surname</label>
+          <label for="surname">{{'actor.surname' | translate}}</label>
       </div>
       <div class="col-md-6">
           <div class="form-group">
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
                   <input type="text" name="surname" class="form-control" id="surname" formControlName="surname"
-                         placeholder="Enter your surname" required autofocus>
+                         placeholder="{{'actor.surnamePh' | translate}}" required autofocus>
               </div>
           </div>
       </div>
@@ -129,14 +129,14 @@
     <!-- address -->
     <div class="row">
       <div class="col-md-3 field-label-responsive">
-          <label for="address">Address</label>
+          <label for="address">{{'actor.address' | translate}}</label>
       </div>
       <div class="col-md-6">
           <div class="form-group">
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-address-book-o"></i></div>
                   <input type="text" name="address" class="form-control" id="address" formControlName="address"
-                         placeholder="Enter your address" required autofocus>
+                         placeholder="{{'actor.addressPh' | translate}}" required autofocus>
               </div>
           </div>
       </div>
@@ -152,14 +152,14 @@
     <!-- phone -->
     <div class="row">
       <div class="col-md-3 field-label-responsive">
-          <label for="phone">Phone</label>
+          <label for="phone">{{'actor.phone' | translate}}</label>
       </div>
       <div class="col-md-6">
           <div class="form-group">
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-phone"></i></div>
                   <input type="text" name="phone" class="form-control" id="phone" formControlName="phone"
-                         placeholder="Enter your phone" autofocus>
+                         placeholder="{{'actor.phonePh' | translate}}" autofocus>
               </div>
           </div>
       </div>
@@ -177,7 +177,7 @@
       <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-6">
-              <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Register</button>
+              <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> {{'actor.register' | translate}}</button>
           </div>
       </div>
 
@@ -185,8 +185,8 @@
       <div class="row" style="margin-top: 0.5em;">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-          <p>Already registered?
-            <a href="/login">Login</a>
+          <p>{{'security.alreadyRegistered' | translate}}
+            <a href="/login">{{'security.login' | translate}}</a>
           </p>
         </div>        
       </div>

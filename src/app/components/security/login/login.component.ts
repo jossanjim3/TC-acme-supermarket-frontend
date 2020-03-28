@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 
 @Component({
   selector: 'app-login',
@@ -9,12 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent extends TranslatableComponent implements OnInit {
   email: string;
   errorMessage: string;
 
-  constructor(private authService: AuthService, private router: Router) {
-    }
+  constructor(private translateService: TranslateService, private authService: AuthService, private router: Router) {
+    super(translateService);
+  }
 
   ngOnInit(): void {
   }

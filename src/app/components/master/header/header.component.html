@@ -9,7 +9,7 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Trip
+          {{'trip.trip' | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Trip List</a>
@@ -19,22 +19,22 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="text" placeholder="{{'header.search' | translate}}">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">{{'header.search' | translate}}</button>
     </form>
     <ul class="navbar-nav my-2 ml-2">
       <li class="nav-item active">
         <button (click)="changeLanguage('en')" class="btn btn-primary mr-1">EN</button>
         <button (click)="changeLanguage('es')" class="btn btn-primary mr-1">SP</button>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register">Register</a>
+      <li class="nav-item" *ngIf="this.authService.getCurrentActor()">
+        <a class="nav-link" routerLink="/register">{{'actor.register' | translate}}</a>
+      </li>
+      <li class="nav-item" *ngIf="this.authService.getCurrentActor()">
+        <a class="nav-link" routerLink="/login">{{'security.login' | translate}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
+        <a class="nav-link" href="/logout">{{'security.logout' | translate}}</a>
       </li>
     </ul>
   </div>

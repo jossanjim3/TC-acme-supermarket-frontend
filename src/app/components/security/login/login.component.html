@@ -11,19 +11,19 @@
 <div class="container login-container">
   <div class="row">
       <div class="col-md-6 login-form-1">
-          <h3>Login</h3>
+          <h3>{{'security.login' | translate}}</h3>
           <form  *ngIf="!email" class="form-horizontal" (ngSubmit)="onLogin(f)" #f="ngForm">
               <div class="form-group">
-                <input class="form-control" type="email" id="email" name="email" placeholder="Enter email" ngModel>
+                <input class="form-control" type="email" id="email" name="email" placeholder="{{'actor.emailPh' | translate}}" ngModel>
               </div>
               <div class="form-group">
-                <input class="form-control" type="password" id="pwd" name="password" placeholder="Enter password" ngModel>
+                <input class="form-control" type="password" id="pwd" name="password" placeholder="{{'actor.passwordPh' | translate}}" ngModel>
               </div>
               <div class="form-group">
-                  <input type="submit" class="btnSubmit" value="Login" />
+                  <input type="submit" class="btnSubmit" value="{{'security.login' | translate}}" />
               </div>
               <div class="form-group">
-                  <a href="#" class="ForgetPwd">Forget Password?</a>
+                  <a href="#" class="ForgetPwd">{{'security.forgetPwd' | translate}}</a>
               </div>
             </form>
         </div>

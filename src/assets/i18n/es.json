@@ -1,5 +1,33 @@
 {
+    "actor": {
+        "email": "Correo electronico",
+        "emailPh": "Introduce correo electronico",
+        "password": "Contraseña",
+        "passwordPh": "Introduce contraseña",
+        "name": "Nombre",
+        "namePh": "Introduce tu nombre",
+        "surname": "Apellido",
+        "surnamePh": "Introduce tu apellido",
+        "phone": "Telefono",
+        "phonePh": "Introduce tu telefono",
+        "address": "Dirección",
+        "addressPh": "Introduce tu dirección",
+        "role": "Rol",
+        "register": "Registrar",
+        "update": "Actualizar",
+        "register.title": "Registro de actor"
+    },
+    "security": {
+        "login": "Entrar",
+        "logout": "Salir",
+        "forgetPwd": "¿Olvidaste la contraseña?",
+        "alreadyRegistered": "¿Ya estas registrado?"
+    },
+    "header": {
+        "search": "Buscar"
+    },
     "trip": {
+        "trip": "Viaje",
         "startDate": "Fecha inicio",
         "endDate": "Fecha fin",
         "requeriments": "Requisitos"
