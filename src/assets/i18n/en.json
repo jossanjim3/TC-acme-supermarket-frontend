@@ -22,8 +22,10 @@
     "security": {
         "login": "Login",
         "logout": "Logout",
-        "forgotPwd": "Forget Password?",
-        "alreadyRegistered": "Already registered?"
+        "forgetPwd": "Forget Password?",
+        "alreadyRegistered": "Already registered?",
+        "welldone": "Well done!",
+        "registerSuccess": "You have been registered successfully!! You can now access to the Acme-Explorer web."
     },
     "header": {
         "search": "Search"
@@ -32,6 +34,10 @@
         "terms": "Terms and conditions",
         "visitors": "Visitor num.",
         "about": "About the company"
+    },
+    "index": {
+        "welcome": "Welcome",
+        "acme": "to Acme Explorer!!"
     },
     "trip": {
         "trip": "Trip",

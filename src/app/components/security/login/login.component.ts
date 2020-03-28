@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
+import { Actor } from 'src/app/models/actor.model';
 
 @Component({
   selector: 'app-login',
@@ -12,20 +13,35 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 })
 
 export class LoginComponent extends TranslatableComponent implements OnInit {
+  actor: Actor;
   email: string;
   errorMessage: string;
+  registerSuccess: string;
 
-  constructor(private translateService: TranslateService, private authService: AuthService, private router: Router) {
+  constructor(private translateService: TranslateService, private authService: AuthService,
+    private router: Router, private route: ActivatedRoute) {
     super(translateService);
+    this.registerSuccess = 'false';
   }
 
   ngOnInit(): void {
+    this.registerSuccess = this.route.snapshot.paramMap.get('registerSuccess');
+
+    this.authService.getCurrentActor().then((actor) => {
+      this.actor = actor;
+      if (actor !== null) {
+        this.router.navigate(['/index', {name: actor.name}]);
+      }
+      // console.log(this.actor);
+    });
+
   }
 
   onLogout() {
     this.authService.logout()
       .then(_ => {
         this.email = null;
+        this.router.navigate(['/login']);
       }).catch(error => {
         console.log(error);
         this.errorMessage = error;
@@ -39,6 +55,7 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
       form.reset();
       this.email = email;
       // this.errorMessage = data;
+      // this.router.navigate(['/index', {name: this.email}]);
     }).catch((error) => {
       console.log(error);
       this.errorMessage = 'Error Login: ' + error;
