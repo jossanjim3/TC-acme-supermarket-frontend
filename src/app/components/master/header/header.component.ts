@@ -12,6 +12,7 @@ import { Actor } from 'src/app/models/actor.model';
 })
 export class HeaderComponent extends TranslatableComponent implements OnInit {
   actor: Actor;
+  name: String;
   constructor(private translateService: TranslateService, private authService: AuthService) {
     super(translateService);
 
@@ -31,6 +32,9 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
   getActorLoggued() {
     this.authService.getCurrentActor().then((actor) => {
       this.actor = actor;
+      if (actor !== null) {
+        this.name = actor.name;
+      }
       console.log(this.actor);
     });
   }

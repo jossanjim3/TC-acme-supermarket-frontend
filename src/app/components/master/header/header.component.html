@@ -34,6 +34,9 @@
         <a class="nav-link" routerLink="/login">{{'security.login' | translate}}</a>
       </li>
       <li class="nav-item" *ngIf="this.actor !== null">
+        <a class="nav-link" routerLink="/profile/edit">{{this.name}}</a>
+      </li>
+      <li class="nav-item" *ngIf="this.actor !== null">
         <a class="nav-link" (click)="onLogout()" href="/logout">{{'security.logout' | translate}}</a>
       </li>
     </ul>
