@@ -1,0 +1,52 @@
+<legend>Edit Profile</legend>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div class="form-group has-danger" >
+    <!-- Id is needed to update the profile-->
+    <input class="form-control" formControlName="id" type="hidden">
+    
+    <label class="center-block">Name:
+      <input class="form-control" formControlName="name">
+    </label>
+    <br/>
+    
+    <label class="center-block">Surname:
+      <input class="form-control" formControlName="surname">
+    </label>
+    <br/>
+
+    <label class="center-block">Email:
+      <input class="form-control" formControlName="email">
+    </label>
+    <br/>
+
+    <label class="center-block">Password:
+      <input class="form-control" type="password" formControlName="password">
+    </label>
+    <br/>
+
+    <label class="center-block">Address:
+      <input class="form-control" formControlName="address">
+    </label>
+    <br/>
+
+    <label class="center-block">Language:
+      <input class="form-control" formControlName="language">
+    </label>
+    <br/>
+
+    <label class="center-block">Phone:
+      <input class="form-control" formControlName="phone">
+    </label>
+    <br/>
+
+
+
+    <!--form buttons-->
+    <button type="submit" class="btn btn-success">Save</button>
+  </div>
+</form>
+
+<div class="text-danger">{{errorMessage}}</div>
+
+<!--p>Form status: {{ profileForm.status | json }}</p-->
