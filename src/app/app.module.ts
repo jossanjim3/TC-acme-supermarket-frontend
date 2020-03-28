@@ -16,6 +16,8 @@ import { RegisterComponent } from './components/security/register/register.compo
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginComponent } from './components/security/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
+import { EditProfileComponent } from './components/actor/displayProfile/editProfile.component';
+import { ActorService } from './services/actor.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -39,7 +41,8 @@ export const firebaseConfig = {
     HeaderComponent,
     TranslatableComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ export const firebaseConfig = {
     }),
     AppRoutingModule
   ],
-  providers: [AngularFireAuth],
+  providers: [AngularFireAuth, ActorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
