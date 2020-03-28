@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, EventEmitter, Output } from '@angular/core';
 import { Actor } from '../models/actor.model';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -22,6 +22,8 @@ export class AuthService implements OnInit {
 
   }
 
+  @Output() change: EventEmitter<boolean> = new EventEmitter();
+
   ngOnInit() {
     //  console.log('Invoking ngOnInit (authService)');
       this.fireAuth.auth.onAuthStateChanged(user => {
@@ -43,7 +45,7 @@ export class AuthService implements OnInit {
       this.fireAuth.auth.signOut()
         .then(_ => {
           this.currentActor = null;
-          localStorage.clear();
+          localStorage.removeItem('currentActor');
           resolve();
         }).catch(error => {
           reject(error);
@@ -71,6 +73,7 @@ export class AuthService implements OnInit {
                     (token: string) => {
                       res.idToken = token;
                       this.setCurrentActor(res);
+                      this.change.emit();
                       resolve(token);
                     }
                   );
