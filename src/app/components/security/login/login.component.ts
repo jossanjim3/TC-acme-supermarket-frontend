@@ -55,7 +55,7 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
       form.reset();
       this.email = email;
       // this.errorMessage = data;
-      // this.router.navigate(['/index', {name: this.email}]);
+      this.router.navigate(['/index', {name: this.email}]);
     }).catch((error) => {
       console.log(error);
       this.errorMessage = 'Error Login: ' + error;
