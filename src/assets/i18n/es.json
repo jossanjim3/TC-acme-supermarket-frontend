@@ -23,7 +23,9 @@
         "login": "Entrar",
         "logout": "Salir",
         "forgetPwd": "¿Olvidaste la contraseña?",
-        "alreadyRegistered": "¿Ya estas registrado?"
+        "alreadyRegistered": "¿Ya estas registrado?",
+        "welldone": "Genial!",
+        "registerSuccess": "Se ha registrado correctamente!! Ahora puede acceder a la web de Acme-Explorer."
     },
     "header": {
         "search": "Buscar"
@@ -32,6 +34,10 @@
         "terms": "Terminos y condiciones",
         "visitors": "Num. Visitantes",
         "about": "Sobre la empresa"
+    },
+    "index": {
+        "welcome": "Bienvenido",
+        "acme": "a Acme Explorer!!"
     },
     "trip": {
         "trip": "Viaje",

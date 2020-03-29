@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { EditProfileComponent } from './components/actor/displayProfile/editProfile.component';
 import { ActorService } from './services/actor.service';
 import { FooterComponent } from './components/master/footer/footer.component';
+import { IndexComponent } from './components/index/index.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -44,7 +45,8 @@ export const firebaseConfig = {
     RegisterComponent,
     LoginComponent,
     EditProfileComponent,
-    FooterComponent
+    FooterComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
