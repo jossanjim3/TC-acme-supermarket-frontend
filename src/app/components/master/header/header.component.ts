@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,7 +13,8 @@ import { Actor } from 'src/app/models/actor.model';
 export class HeaderComponent extends TranslatableComponent implements OnInit {
   actor: Actor;
   name: String;
-  constructor(private translateService: TranslateService, private authService: AuthService) {
+  constructor(private translateService: TranslateService, private authService: AuthService,
+    private router: Router, private route: ActivatedRoute) {
     super(translateService);
 
   }
@@ -43,6 +44,7 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
     this.authService.logout()
       .then(_ => {
         this.actor = null;
+        this.router.navigate(['/login']);
       }).catch(error => {
         console.log(error);
       });
