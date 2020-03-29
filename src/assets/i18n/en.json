@@ -1,5 +1,46 @@
 {
+    "actor": {
+        "email": "Email",
+        "emailPh": "Enter email",
+        "password": "Password",
+        "passwordPh": "Enter password",
+        "name": "Name",
+        "namePh": "Enter your name",
+        "surname": "Surname",
+        "surnamePh": "Enter your surname",
+        "phone": "Phone",
+        "phonePh": "Enter your phone",
+        "address": "Address",
+        "addressPh": "Enter your Address",
+        "role": "Role",
+        "register": "Register",
+        "update": "Update",
+        "register.title": "Register new actor",
+        "edit.title": "Edit Profile",
+        "save": "Save"
+    },
+    "security": {
+        "login": "Login",
+        "logout": "Logout",
+        "forgetPwd": "Forget Password?",
+        "alreadyRegistered": "Already registered?",
+        "welldone": "Well done!",
+        "registerSuccess": "You have been registered successfully!! You can now access to the Acme-Explorer web."
+    },
+    "header": {
+        "search": "Search"
+    },
+    "footer": {
+        "terms": "Terms and conditions",
+        "visitors": "Visitor num.",
+        "about": "About the company"
+    },
+    "index": {
+        "welcome": "Welcome",
+        "acme": "to Acme Explorer!!"
+    },
     "trip": {
+        "trip": "Trip",
         "startDate": "Start Date",
         "endDate": "End Date",
         "requeriments": "Requeriments"
