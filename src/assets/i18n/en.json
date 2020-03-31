@@ -35,6 +35,11 @@
         "visitors": "Visitor num.",
         "about": "About the company"
     },
+    "errorFound": {
+        "sorry": "Sorry, an error has occured, Requested page not found!",
+        "home": "Take Me Home",
+        "contact": "Contact Support"
+    },
     "index": {
         "welcome": "Welcome",
         "acme": "to Acme Explorer!!"

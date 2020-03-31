@@ -20,6 +20,10 @@ import { EditProfileComponent } from './components/actor/displayProfile/editProf
 import { ActorService } from './services/actor.service';
 import { FooterComponent } from './components/master/footer/footer.component';
 import { IndexComponent } from './components/index/index.component';
+import { ApplicationDisplayComponent } from './components/application/application-display/application-display.component';
+import { NotFoundPageComponent } from './components/shared/not-found-page/not-found-page.component';
+import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
+import { HttpModule } from '@angular/http';
 import { MessageComponent } from './components/master/message/message.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -48,6 +52,9 @@ export const firebaseConfig = {
     EditProfileComponent,
     FooterComponent,
     IndexComponent,
+    ApplicationDisplayComponent,
+    NotFoundPageComponent,
+    TermsAndConditionsComponent,
     MessageComponent
   ],
   imports: [
@@ -63,8 +70,11 @@ export const firebaseConfig = {
         deps: [HttpClient]
       }
     }),
-    AppRoutingModule
+    AppRoutingModule,
+    // tslint:disable-next-line: deprecation
+    HttpModule
   ],
+  exports: [AppRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AngularFireAuth, ActorService],
   bootstrap: [AppComponent]
