@@ -3,7 +3,7 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { MessageService } from 'src/app/services/message.service';
-import { InfoMenssage } from 'dist/ACME-Explorer/models/info-menssage.model';
+import { InfoMessage } from '../../../models/info-message.model';
 
 @Component({
   selector: 'app-message',
@@ -22,7 +22,7 @@ export class MessageComponent extends TranslatableComponent implements OnInit, O
 
   ngOnInit() {
     this.subcription = this.messageService.message.subscribe(
-      (data: InfoMenssage) => {
+      (data: InfoMessage) => {
         if (data) {
           this.infoMessage = data.infoMessage;
           this.cssClass = data.cssClass;
