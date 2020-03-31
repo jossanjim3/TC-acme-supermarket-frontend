@@ -46,8 +46,42 @@
     },
     "trip": {
         "trip": "Trip",
+        "trips.list": "Trips List",
+        "trips.list.applies": "Trips applies list",
+        "trips.list.created": "Trips created list",
+        "create.title": "Create an trip",
         "startDate": "Start Date",
         "endDate": "End Date",
         "requeriments": "Requeriments"
+    },
+    "admin": {
+        "admin": "Administrator",
+        "datawarehouse": "Datawarehouse",
+        "olapcube": "OLAP Cube",
+        "register.manager": "Register an manager"
+    },
+    "messages": {
+        "auth.registration.correct": "The user {{username}} has been correctly registered",
+        "auth.logout": "The user has logged out from the app",
+        "auth.login.correct": "The user hasbeen correctly logged in",
+        "already.registered": "Already registered?",
+        "trip.deleted": "Trip successfully deleted",
+        "back": "Back",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "placeHolder": "Enter"
+    },
+    "errorMessages": {
+        "auth.user.not.found": "There is no user record corresponding to this identifier. The user may have been deleted.",
+        "auth.wrong.password": "The password is invalid or the user does no have a password.",
+        "auth.argument.error": "signInWithEmailAndPassword failed: First argument 'email' must be a valid string.",
+        "auth.invalid.email": "The email address is badly formatted.",
+        "auth.weak.password": "Password should be at least 6 characters long",
+        "auth.registration.failed": "Registration failed",
+        "auth.logout.failed": "Logout failed",
+        "denied.access.title": "Denied access",
+        "denied.access.message": "You don't have permission to access {{resource}} on this server",
+        "no.trips.found": "No trips found" 
     }
 }

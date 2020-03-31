@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -24,6 +24,7 @@ import { ApplicationDisplayComponent } from './components/application/applicatio
 import { NotFoundPageComponent } from './components/shared/not-found-page/not-found-page.component';
 import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
 import { HttpModule } from '@angular/http';
+import { MessageComponent } from './components/master/message/message.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -53,7 +54,8 @@ export const firebaseConfig = {
     IndexComponent,
     ApplicationDisplayComponent,
     NotFoundPageComponent,
-    TermsAndConditionsComponent
+    TermsAndConditionsComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +75,7 @@ export const firebaseConfig = {
     HttpModule
   ],
   exports: [AppRoutingModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AngularFireAuth, ActorService],
   bootstrap: [AppComponent]
 })

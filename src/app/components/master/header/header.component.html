@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-The-explorer-1-hex">
+<nav class="navbar py-1 navbar-expand-lg navbar-light bg-The-explorer-1-hex">
   <a class="navbar-brand" href="#"><img src="../../../assets/acme-logo.png" alt="logo" width="60" height="35" class="d-inline-block align-top"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,14 +7,29 @@
 
   <div class="collapse navbar-collapse" id="navbarColor03">
     <ul class="navbar-nav mr-auto">
+      <!-- Trips Dropdown -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{'trip.trip' | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Trip List</a>
+          <a class="dropdown-item" href="#">{{'trip.trips.list' | translate}}</a>
+          <a class="dropdown-item" href="#">{{'trip.trips.list.applies' | translate}}</a>
+          <a class="dropdown-item" href="#">{{'trip.trips.list.created' | translate}}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">New Trip</a>
+          <a class="dropdown-item" href="#">{{'trip.create.title' | translate}}</a>
+        </div>
+      </li>
+      <!-- Administrator Dropdown-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{'admin.admin' | translate}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">{{'admin.datawarehouse' | translate}}</a>
+          <a class="dropdown-item" href="#">{{'admin.olapcube' | translate}}</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">{{'admin.register.manager' | translate}}</a>
         </div>
       </li>
     </ul>
@@ -33,8 +48,13 @@
       <li class="nav-item" *ngIf="this.actor === null">
         <a class="nav-link" routerLink="/login">{{'security.login' | translate}}</a>
       </li>
-      <li class="nav-item" *ngIf="this.actor !== null">
-        <a class="nav-link" routerLink="/profile/edit">{{this.name}}</a>
+      <li class="nav-item dropdown"  *ngIf="this.actor !== null">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{this.name}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/profile/edit">{{'actor.edit.title' | translate}}</a>
+        </div>
       </li>
       <li class="nav-item" *ngIf="this.actor !== null">
         <a class="nav-link" (click)="onLogout()" routerLink="/login">{{'security.logout' | translate}}</a>
