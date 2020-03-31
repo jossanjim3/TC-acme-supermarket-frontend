@@ -41,8 +41,18 @@
     },
     "trip": {
         "trip": "Viaje",
+        "trips.list": "Listado viajes",
+        "trips.list.applies": "Lista de viajes aplicados",
+        "trips.list.created": "Lista de viajes creados",
+        "create.title": "Crear un viaje",
         "startDate": "Fecha inicio",
         "endDate": "Fecha fin",
         "requeriments": "Requisitos"
+    },
+    "admin": {
+        "admin": "Administrador",
+        "datawarehouse": "Datawarehouse",
+        "olapcube": "OLAP Cube",
+        "register.manager": "Registrar un manager"
     }
 }
