@@ -22,6 +22,8 @@ import { FooterComponent } from './components/master/footer/footer.component';
 import { IndexComponent } from './components/index/index.component';
 import { ApplicationDisplayComponent } from './components/application/application-display/application-display.component';
 import { NotFoundPageComponent } from './components/shared/not-found-page/not-found-page.component';
+import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
+import { HttpModule } from '@angular/http';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -50,7 +52,8 @@ export const firebaseConfig = {
     FooterComponent,
     IndexComponent,
     ApplicationDisplayComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    TermsAndConditionsComponent
   ],
   imports: [
     BrowserModule,
@@ -65,8 +68,11 @@ export const firebaseConfig = {
         deps: [HttpClient]
       }
     }),
-    AppRoutingModule
+    AppRoutingModule,
+    // tslint:disable-next-line: deprecation
+    HttpModule
   ],
+  exports: [AppRoutingModule],
   providers: [AngularFireAuth, ActorService],
   bootstrap: [AppComponent]
 })
