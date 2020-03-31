@@ -5,6 +5,7 @@ import { LoginComponent} from './components/security/login/login.component';
 import { RegisterComponent} from './components/security/register/register.component';
 import { EditProfileComponent } from './components/actor/displayProfile/editProfile.component';
 import { IndexComponent} from './components/index/index.component';
+import { NotFoundPageComponent } from './components/shared/not-found-page/not-found-page.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent },
@@ -13,6 +14,8 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'profile/edit', component: EditProfileComponent},
   {path: 'index', component: IndexComponent},
+  {path: 'not-found', component: NotFoundPageComponent},
+  {path: '**', redirectTo: '/not-found'}
 ];
 
 @NgModule({

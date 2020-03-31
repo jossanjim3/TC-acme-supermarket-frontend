@@ -35,6 +35,11 @@
         "visitors": "Num. Visitantes",
         "about": "Sobre la empresa"
     },
+    "errorFound": {
+        "sorry": "Lo sentimos, ha ocurrido un error inesperado, la página solicitada no existe!",
+        "home": "Ir a Inicio",
+        "contact": "Contacto"
+    },
     "index": {
         "welcome": "Bienvenido",
         "acme": "a Acme Explorer!!"
