@@ -5,7 +5,7 @@ export class Trip extends Entity {
     title: string;
     description: string;
     price: Number;
-    requirements: string[];
+    requeriments: string[];
     startDate: Date;
     endDate: Date;
     pictures: string[];

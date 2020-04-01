@@ -50,6 +50,10 @@
         "trips.list.applies": "Lista de viajes aplicados",
         "trips.list.created": "Lista de viajes creados",
         "create.title": "Crear un viaje",
+        "details": "Detalles del viaje",
+        "ticker": "Identificador",
+        "title": "Titulo",
+        "description": "Descripción",
         "startDate": "Fecha inicio",
         "endDate": "Fecha fin",
         "requeriments": "Requisitos"

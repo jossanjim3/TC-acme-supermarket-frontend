@@ -50,6 +50,10 @@
         "trips.list.applies": "Trips applies list",
         "trips.list.created": "Trips created list",
         "create.title": "Create an trip",
+        "details": "Trip details",
+        "ticker": "Ticker",
+        "title": "Title",
+        "description": "Description",
         "startDate": "Start Date",
         "endDate": "End Date",
         "requeriments": "Requeriments"

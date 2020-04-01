@@ -5,6 +5,7 @@ import { TripService } from 'src/app/services/trip.service';
 
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-trip-display',
@@ -13,22 +14,32 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 })
 export class TripDisplayComponent extends TranslatableComponent implements OnInit {
 
-  trip: Trip;
-  private pictures: SafeResourceUrl[];
+  trip = new Trip();
+  id: string;
 
-  constructor(private _sanitizer: DomSanitizer, private tripService: TripService, private translateService: TranslateService) {
+  constructor(private _sanitizer: DomSanitizer, private tripService: TripService,
+    private translateService: TranslateService, private router: Router,
+    private route: ActivatedRoute) {
     super(translateService);
-    this.trip = tripService.createTrip();
   }
 
   ngOnInit() {
+    // Recover id param
+    this.id = this.route.snapshot.params['id'];
+    // recover item
+    this.tripService.getTrip(this.id)
+      .then((trip) => {
+        this.trip = trip;
+        console.log('trip detail: ' + this.trip.ticker);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
-  getRequeriments() {
-    return this.trip.requirements;
+  goBack(): void {
+    this.router.navigate(['/']);
   }
 
-  getImageSrc(imageBase64) {
-    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + imageBase64);
-  }
+
 }

@@ -25,6 +25,11 @@ import { NotFoundPageComponent } from './components/shared/not-found-page/not-fo
 import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
 import { HttpModule } from '@angular/http';
 import { MessageComponent } from './components/master/message/message.component';
+import { LocalizedDataPipe } from './components/shared/localized-data.pipe';
+import { registerLocaleData } from '@angular/common';
+import locales from '@angular/common/locales/es';
+
+registerLocaleData(locales, 'es');
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,7 +60,8 @@ export const firebaseConfig = {
     ApplicationDisplayComponent,
     NotFoundPageComponent,
     TermsAndConditionsComponent,
-    MessageComponent
+    MessageComponent,
+    LocalizedDataPipe
   ],
   imports: [
     BrowserModule,
