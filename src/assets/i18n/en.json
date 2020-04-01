@@ -40,6 +40,10 @@
         "home": "Take Me Home",
         "contact": "Contact Support"
     },
+    "deniedAccess": {
+        "title": "Access Denied",
+        "text": "You do not have permission to access the document or program that you requested."
+    },
     "index": {
         "welcome": "Welcome",
         "acme": "to Acme Explorer!!"

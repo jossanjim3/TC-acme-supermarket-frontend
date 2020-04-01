@@ -7,6 +7,7 @@ import { EditProfileComponent } from './components/actor/displayProfile/editProf
 import { IndexComponent} from './components/index/index.component';
 import { NotFoundPageComponent } from './components/shared/not-found-page/not-found-page.component';
 import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
+import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent },
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   {path: 'index', component: IndexComponent},
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'not-found', component: NotFoundPageComponent},
+  {path: 'denied-access', component: DeniedAccessPageComponent},
   {path: '**', redirectTo: '/not-found'}
 ];
 

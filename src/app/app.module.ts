@@ -25,6 +25,7 @@ import { NotFoundPageComponent } from './components/shared/not-found-page/not-fo
 import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
 import { HttpModule } from '@angular/http';
 import { MessageComponent } from './components/master/message/message.component';
+import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,7 +56,8 @@ export const firebaseConfig = {
     ApplicationDisplayComponent,
     NotFoundPageComponent,
     TermsAndConditionsComponent,
-    MessageComponent
+    MessageComponent,
+    DeniedAccessPageComponent
   ],
   imports: [
     BrowserModule,

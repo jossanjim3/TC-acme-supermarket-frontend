@@ -40,6 +40,10 @@
         "home": "Ir a Inicio",
         "contact": "Contacto"
     },
+    "deniedAccess": {
+        "title": "Acceso Denegado",
+        "text": "No tienes permisos para acceder al documento o a la página solicitada."
+    },
     "index": {
         "welcome": "Bienvenido",
         "acme": "a Acme Explorer!!"
