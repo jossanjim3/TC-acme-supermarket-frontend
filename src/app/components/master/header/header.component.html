@@ -7,58 +7,79 @@
 
   <div class="collapse navbar-collapse" id="navbarColor03">
     <ul class="navbar-nav mr-auto">
+
       <!-- Trips Dropdown -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{'trip.trip' | translate}}
+          <i class="fa fa-plane"></i> {{'trip.trip' | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">{{'trip.trips.list' | translate}}</a>
-          <a class="dropdown-item" href="#">{{'trip.trips.list.applies' | translate}}</a>
-          <a class="dropdown-item" href="#">{{'trip.trips.list.created' | translate}}</a>
+          <a class="dropdown-item" href="#"><i class="fa fa-list"></i> {{'trip.trips.list' | translate}}</a>
+          <a class="dropdown-item" href="#"><i class="fa fa-indent"></i> {{'trip.trips.list.applies' | translate}}</a>
+          <a class="dropdown-item" href="#"><i class="fa fa-list-alt"></i> {{'trip.trips.list.created' | translate}}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">{{'trip.create.title' | translate}}</a>
+          <a class="dropdown-item" href="#"> <i class="fa fa-plus-square"></i> {{'trip.create.title' | translate}}</a>
         </div>
       </li>
+
       <!-- Administrator Dropdown-->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{'admin.admin' | translate}}
+          <i class="fa fa-wrench"></i> {{'admin.admin' | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">{{'admin.datawarehouse' | translate}}</a>
-          <a class="dropdown-item" href="#">{{'admin.olapcube' | translate}}</a>
+          <a class="dropdown-item" href="#"><i class="fa fa-database"></i> {{'admin.datawarehouse' | translate}}</a>
+          <a class="dropdown-item" href="#"><i class="fa fa-cube"></i> {{'admin.olapcube' | translate}}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">{{'admin.register.manager' | translate}}</a>
+          <a class="dropdown-item" href="#"><i class="fa fa-user-plus"></i> {{'admin.register.manager' | translate}}</a>
         </div>
       </li>
     </ul>
+
+    <!-- Search -->
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="{{'header.search' | translate}}">
+      <input class="form-control mr-sm-2" type="text" placeholder="{{ 'header.search' | translate}}">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">{{'header.search' | translate}}</button>
     </form>
+
+
     <ul class="navbar-nav my-2 ml-2">
+
+      <!-- internalizacion -->
       <li class="nav-item active">
         <button (click)="changeLanguage('en')" class="btn btn-primary mr-1">EN</button>
         <button (click)="changeLanguage('es')" class="btn btn-primary mr-1">SP</button>
       </li>
+
+      <!-- registro -->
       <li class="nav-item" *ngIf="this.actor === null">
-        <a class="nav-link" routerLink="/register">{{'actor.register' | translate}}</a>
+        <a class="nav-link" routerLink="/register"><i class="fa fa-user-plus"></i> {{'actor.register' | translate}}</a>
       </li>
+
+      <!-- login -->
       <li class="nav-item" *ngIf="this.actor === null">
-        <a class="nav-link" routerLink="/login">{{'security.login' | translate}}</a>
+        <a class="nav-link" routerLink="/login"><i class="fa fa-sign-in"></i> {{'security.login' | translate}}</a>
       </li>
+
+      <!-- ajustes -->
       <li class="nav-item dropdown"  *ngIf="this.actor !== null">
+        
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{this.name}}
+          <i class="fa fa-cog"></i> 
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/profile/edit">{{'actor.edit.title' | translate}}</a>
-        </div>
+
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <!-- Edit profile -->
+          <a class="nav-link" routerLink="/profile/edit"><i class="fa fa-edit"></i> {{'actor.edit.title' | translate}}</a>
+          
+          <div class="dropdown-divider"></div>
+
+          <!-- logout -->
+          <a class="nav-link" (click)="onLogout()" routerLink="/login"><i class="fa fa-sign-out"></i> {{'security.logout' | translate}}</a>
+        </ul>
+
       </li>
-      <li class="nav-item" *ngIf="this.actor !== null">
-        <a class="nav-link" (click)="onLogout()" routerLink="/login">{{'security.logout' | translate}}</a>
-      </li>
+      
     </ul>
   </div>
 </nav>

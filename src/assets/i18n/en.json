@@ -49,11 +49,11 @@
         "acme": "to Acme Explorer!!"
     },
     "trip": {
-        "trip": "Trip",
-        "trips.list": "Trips List",
-        "trips.list.applies": "Trips applies list",
-        "trips.list.created": "Trips created list",
-        "create.title": "Create an trip",
+        "trip": "Trips",
+        "trips.list": "All Trips",
+        "trips.list.applies": "Trips applied",
+        "trips.list.created": "Trips created",
+        "create.title": "New trip",
         "startDate": "Start Date",
         "endDate": "End Date",
         "requeriments": "Requeriments"
@@ -62,7 +62,7 @@
         "admin": "Administrator",
         "datawarehouse": "Datawarehouse",
         "olapcube": "OLAP Cube",
-        "register.manager": "Register an manager"
+        "register.manager": "New manager"
     },
     "messages": {
         "auth.registration.correct": "The user {{username}} has been correctly registered",
