@@ -67,7 +67,8 @@
     "messages": {
         "auth.registration.correct": "El usuario {{username}} ha sido registrado correctamente",
         "auth.logout": "El usuario se ha desconectado correctamente",
-        "auth.login.correct": "El usuario ha entrado correctamente",
+        "auth.login.correct": "El usuario ha entrado correctamente en la aplicación.",
+        "auth.login.failed": "El usuario no ha podido entrar en la aplicacioó.n",
         "already.registered": "¿Ya está registrado?",
         "trip.deleted": "Viaje eliminado correctamente",
         "back": "Atrás",

@@ -5,6 +5,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { environment } from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { MessageService } from './message.service';
 
 // import { from } from 'rxjs';
 
@@ -18,9 +20,10 @@ const httpOptions = {
 export class AuthService implements OnInit {
 
   private currentActor: Actor;
+  userLoggedIn = new Subject();
 
   constructor(private fireAuth: AngularFireAuth, private http: HttpClient,
-    private router: Router, private route: ActivatedRoute) {
+    private router: Router, private route: ActivatedRoute, private messageService: MessageService) {
 
   }
 
@@ -70,6 +73,8 @@ export class AuthService implements OnInit {
             // console.log('actor: ' + res);
             // console.log('actor.name: ' + res.name);
             // console.log('customToken: '+res.customToken);
+            this.userLoggedIn.next(true);
+            this.messageService.notifyMessage('messages.auth.login.correct', 'alert alert-success');
             this.fireAuth.auth.signInWithCustomToken(res.customToken)
               .then(customToken => {
                 this.fireAuth.auth.currentUser.getIdToken()
@@ -84,6 +89,7 @@ export class AuthService implements OnInit {
               })
               .catch(error => {
                 console.log(error);
+                this.messageService.notifyMessage('messages.auth.login.failed', 'alert alert-danger');
                 reject(error);
               });
           } else {

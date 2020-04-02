@@ -67,7 +67,8 @@
     "messages": {
         "auth.registration.correct": "The user {{username}} has been correctly registered",
         "auth.logout": "The user has logged out from the app",
-        "auth.login.correct": "The user hasbeen correctly logged in",
+        "auth.login.correct": "The user has been correctly logged in",
+        "auth.login.failed": "The user has not been correctly logged in",
         "already.registered": "Already registered?",
         "trip.deleted": "Trip successfully deleted",
         "back": "Back",
