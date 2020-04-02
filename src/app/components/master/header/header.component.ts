@@ -36,7 +36,7 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
       if (actor !== null) {
         this.name = actor.name;
       }
-      console.log(this.actor);
+      // console.log(this.actor);
     });
   }
 
@@ -44,7 +44,7 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
     this.authService.logout()
       .then(_ => {
         this.actor = null;
-        this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);
       }).catch(error => {
         console.log(error);
       });

@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { environment } from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 // import { from } from 'rxjs';
 
@@ -18,7 +19,8 @@ export class AuthService implements OnInit {
 
   private currentActor: Actor;
 
-  constructor(private fireAuth: AngularFireAuth, private http: HttpClient) {
+  constructor(private fireAuth: AngularFireAuth, private http: HttpClient,
+    private router: Router, private route: ActivatedRoute) {
 
   }
 
@@ -46,6 +48,8 @@ export class AuthService implements OnInit {
         .then(_ => {
           this.currentActor = null;
           localStorage.removeItem('currentActor');
+          // console.log('logout auth service');
+          this.router.navigate(['/index', {name: 'LOGOUT'}]);
           resolve();
         }).catch(error => {
           reject(error);
@@ -63,8 +67,8 @@ export class AuthService implements OnInit {
         .then(res => {
           if (res) {
             this.currentActor = res;
-            console.log('actor: ' + res);
-            console.log('actor.name: ' + res.name);
+            // console.log('actor: ' + res);
+            // console.log('actor.name: ' + res.name);
             // console.log('customToken: '+res.customToken);
             this.fireAuth.auth.signInWithCustomToken(res.customToken)
               .then(customToken => {

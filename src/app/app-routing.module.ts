@@ -10,9 +10,9 @@ import { TermsAndConditionsComponent } from './components/master/terms-and-condi
 import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
 
 const appRoutes: Routes = [
-  {path: '', component: LoginComponent },
+  {path: '', redirectTo: '/index', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'logout', component: LoginComponent},
+  // {path: 'logout', redirectTo: '/index'},
   {path: 'register', component: RegisterComponent},
   {path: 'profile/edit', component: EditProfileComponent},
   {path: 'index', component: IndexComponent},

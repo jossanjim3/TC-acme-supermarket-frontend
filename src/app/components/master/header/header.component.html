@@ -59,6 +59,7 @@
       <!-- login -->
       <li class="nav-item" *ngIf="this.actor === null">
         <a class="nav-link" routerLink="/login"><i class="fa fa-sign-in"></i> {{'security.login' | translate}}</a>
+        <!-- <a class="nav-link" [routerLink]="['/login', {fromLogin: 'true'}]"><i class="fa fa-sign-in"></i> {{'security.login' | translate}}</a>         -->
       </li>
 
       <!-- ajustes -->
@@ -75,7 +76,7 @@
           <div class="dropdown-divider"></div>
 
           <!-- logout -->
-          <a class="nav-link" (click)="onLogout()" routerLink="/login"><i class="fa fa-sign-out"></i> {{'security.logout' | translate}}</a>
+          <a class="nav-link" style="cursor: pointer;" (click)="onLogout()"><i class="fa fa-sign-out"></i> {{'security.logout' | translate}}</a>
         </ul>
 
       </li>

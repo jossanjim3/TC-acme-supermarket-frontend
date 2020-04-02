@@ -29,10 +29,10 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
 
     this.authService.getCurrentActor().then((actor) => {
       this.actor = actor;
+      // console.log('ngOnInit actor: ' + actor);
       if (actor !== null) {
         this.router.navigate(['/index', {name: actor.name}]);
       }
-      // console.log(this.actor);
     });
 
   }
@@ -41,7 +41,7 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
     this.authService.logout()
       .then(_ => {
         this.email = null;
-        this.router.navigate(['/login']);
+        console.log('logout');
       }).catch(error => {
         console.log(error);
         this.errorMessage = error;
@@ -54,8 +54,8 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
     this.authService.login(email, password).then(data => {
       form.reset();
       this.email = email;
-      // this.errorMessage = data;
       this.router.navigate(['/index', {name: this.email}]);
+      // console.log('data: ' + data); // devuelve el token
     }).catch((error) => {
       console.log(error);
       this.errorMessage = 'Error Login: ' + error;
