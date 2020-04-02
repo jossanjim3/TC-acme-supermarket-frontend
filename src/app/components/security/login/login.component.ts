@@ -25,16 +25,8 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // esto es para que aparezca un mensaje cuando se ha registrado correctamente el usuario
     this.registerSuccess = this.route.snapshot.paramMap.get('registerSuccess');
-
-    this.authService.getCurrentActor().then((actor) => {
-      this.actor = actor;
-      // console.log('ngOnInit actor: ' + actor);
-      if (actor !== null) {
-        this.router.navigate(['/index', {name: actor.name}]);
-      }
-    });
-
   }
 
   onLogout() {
