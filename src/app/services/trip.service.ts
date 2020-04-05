@@ -18,4 +18,10 @@ export class TripService {
     return this.http.get<Trip>(url).toPromise();
   }
 
+  searchService(keyword: string, minPrice: string, maxPrice: string, minDate: string, maxDate: string) {
+    const url = `${environment.backendApiBaseURL}/v1/trips/search?keyword=${keyword}&minPrice=${minPrice}&maxPrice=${maxPrice}
+    &minDate=${minDate}&maxDate=${maxDate}`;
+    return this.http.get<Trip[]>(url).toPromise();
+  }
+
 }

@@ -16,6 +16,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
   trip = new Trip();
   id: string;
+  pictures: string[] = [];
 
   constructor(private _sanitizer: DomSanitizer, private tripService: TripService,
     private translateService: TranslateService, private router: Router,
@@ -30,6 +31,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     this.tripService.getTrip(this.id)
       .then((trip) => {
         this.trip = trip;
+        this.pictures = trip.pictures;
         console.log('trip detail: ' + this.trip.ticker);
       })
       .catch((err) => {

@@ -39,7 +39,7 @@
   </div>
 
   <div class="card-body">
-    <div id="carouselExampleControls" *ngIf="trip.pictures.length > 0" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleControls" *ngIf="pictures.length > 0" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="d-block w-100" src="..." alt="First slide">
@@ -60,7 +60,7 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-    <img *ngIf="trip.pictures.length === 0"
+    <img *ngIf="pictures.length === 0"
     class="card-img-top img-fluid" style="width: 200px; display: block;"
     src="https://i.ya-webdesign.com/images/image-not-available-png-3.png" alt="{{trip.title}}">
   </div>
