@@ -14,11 +14,11 @@
           <i class="fa fa-plane"></i> {{'trip.trip' | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"><i class="fa fa-list"></i> {{'trip.trips.list' | translate}}</a>
-          <a class="dropdown-item" href="#"><i class="fa fa-indent"></i> {{'trip.trips.list.applies' | translate}}</a>
-          <a class="dropdown-item" href="#"><i class="fa fa-list-alt"></i> {{'trip.trips.list.created' | translate}}</a>
+          <a class="dropdown-item" routerLink="/trips"><i class="fa fa-list"></i> {{'trip.trips.list' | translate}}</a>
+          <a class="dropdown-item" routerLink="/trips-applies"><i class="fa fa-indent"></i> {{'trip.trips.list.applies' | translate}}</a>
+          <a class="dropdown-item" routerLink="/trips-created"><i class="fa fa-list-alt"></i> {{'trip.trips.list.created' | translate}}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#"> <i class="fa fa-plus-square"></i> {{'trip.create.title' | translate}}</a>
+          <a class="dropdown-item" routerLink="/trips-new"> <i class="fa fa-plus-square"></i> {{'trip.create.title' | translate}}</a>
         </div>
       </li>
 
@@ -28,10 +28,10 @@
           <i class="fa fa-wrench"></i> {{'admin.admin' | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"><i class="fa fa-database"></i> {{'admin.datawarehouse' | translate}}</a>
-          <a class="dropdown-item" href="#"><i class="fa fa-cube"></i> {{'admin.olapcube' | translate}}</a>
+          <a class="dropdown-item" routerLink="/datawarehouse"><i class="fa fa-database"></i> {{'admin.datawarehouse' | translate}}</a>
+          <a class="dropdown-item" routerLink="/olap-cube"><i class="fa fa-cube"></i> {{'admin.olapcube' | translate}}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#"><i class="fa fa-user-plus"></i> {{'admin.register.manager' | translate}}</a>
+          <a class="dropdown-item" routerLink="/new-manager"><i class="fa fa-user-plus"></i> {{'admin.register.manager' | translate}}</a>
         </div>
       </li>
     </ul>

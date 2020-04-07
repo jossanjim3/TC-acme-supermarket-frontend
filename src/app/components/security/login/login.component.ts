@@ -17,6 +17,7 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   email: string;
   errorMessage: string;
   registerSuccess: string;
+  returnUrl: string;
 
   constructor(private translateService: TranslateService, private authService: AuthService,
     private router: Router, private route: ActivatedRoute) {
@@ -27,6 +28,7 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   ngOnInit(): void {
     // esto es para que aparezca un mensaje cuando se ha registrado correctamente el usuario
     this.registerSuccess = this.route.snapshot.paramMap.get('registerSuccess');
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   onLogout() {
@@ -43,10 +45,11 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   onLogin(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.login(email, password).then(data => {
+    this.authService.login(email, password).then(_ => {
       form.reset();
       this.email = email;
-      this.router.navigate(['/index', {name: this.email}]);
+      // this.router.navigate(['/index', {name: this.email}]);
+      this.router.navigateByUrl(this.returnUrl);
       // console.log('data: ' + data); // devuelve el token
     }).catch((error) => {
       console.log(error);

@@ -17,6 +17,7 @@ export class DeniedAccessPageComponent extends TranslatableComponent implements 
   }
 
   ngOnInit() {
+    this.url = location.origin + this.route.snapshot.queryParams['previousURL'];
   }
 
 }
