@@ -11,8 +11,12 @@ import { Actor } from 'src/app/models/actor.model';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent extends TranslatableComponent implements OnInit {
-  actor: Actor;
+  private currentActor: Actor;
+  private userLoggedIn: boolean;
+  private activeRole = 'anonymous';
+
   name: String;
+
   constructor(private translateService: TranslateService, private authService: AuthService,
     private router: Router, private route: ActivatedRoute) {
     super(translateService);
@@ -24,26 +28,30 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getActorLoggued();
-    this.authService.change.subscribe(() => {
-      this.getActorLoggued();
-    });
-  }
-
-  getActorLoggued() {
-    this.authService.getCurrentActor().then((actor) => {
-      this.actor = actor;
-      if (actor !== null) {
-        this.name = actor.name;
+    this.authService.userLoggedIn.subscribe((loggedIn: boolean) => {
+      if (loggedIn) {
+        this.authService.getCurrentActor().then( currActor => {
+          if (currActor !== null) {
+            this.currentActor = currActor;
+            this.activeRole = currActor.role.toString();
+          } else {
+            this.activeRole = 'anonymous';
+            this.currentActor = null;
+          }
+        });
+      } else {
+        this.activeRole = 'anonymous';
+        this.currentActor = null;
       }
-      // console.log(this.actor);
+      // console.log('activeRole: ' + this.activeRole);
     });
   }
 
   onLogout() {
     this.authService.logout()
       .then(_ => {
-        this.actor = null;
+        this.currentActor = null;
+        this.activeRole = 'anonymous';
         // this.router.navigate(['/login']);
       }).catch(error => {
         console.log(error);

@@ -13,13 +13,13 @@ import { TripDisplayComponent } from './components/trip/trip-display/trip-displa
 
 const appRoutes: Routes = [
 
-  {path: 'login', component: LoginComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'anonymous'}},
-  {path: 'register', component: RegisterComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'anonymous'}},
+  // {path: 'login', component: LoginComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'anonymous'}},
+  {path: 'login', component: LoginComponent},
+
+  // {path: 'register', component: RegisterComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'anonymous'}},
+  {path: 'register', component: RegisterComponent},
 
   {path: 'profile/edit', component: EditProfileComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
-  {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
-  {path: 'not-found', component: NotFoundPageComponent},
-  {path: 'denied-access', component: DeniedAccessPageComponent},
 
   {path: 'index', component: IndexComponent},
 
@@ -33,6 +33,10 @@ const appRoutes: Routes = [
     {path: 'trips-new', component: TripDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
     {path: '', component: TripDisplayComponent},
   ]},
+
+  {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
+  {path: 'not-found', component: NotFoundPageComponent},
+  {path: 'denied-access', component: DeniedAccessPageComponent},
 
   {path: '', redirectTo: '/index', pathMatch: 'full'},
   {path: '**', redirectTo: '/not-found'}

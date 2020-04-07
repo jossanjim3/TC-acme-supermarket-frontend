@@ -48,8 +48,8 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
     this.authService.login(email, password).then(_ => {
       form.reset();
       this.email = email;
-      // this.router.navigate(['/index', {name: this.email}]);
-      this.router.navigateByUrl(this.returnUrl);
+       this.router.navigate(['/index', {name: this.email}]);
+      // this.router.navigateByUrl(this.returnUrl);
       // console.log('data: ' + data); // devuelve el token
     }).catch((error) => {
       console.log(error);
