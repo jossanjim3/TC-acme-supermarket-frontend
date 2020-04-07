@@ -103,7 +103,7 @@ export class AuthService implements OnInit {
     });
   }
 
-  registerUser(actor: Actor) {
+  /* registerUser(actor: Actor) {
     return new Promise<any>((resolve, reject) => {
       this.fireAuth.auth.createUserWithEmailAndPassword(actor.email, actor.password)
         .then(_ => {
@@ -118,9 +118,32 @@ export class AuthService implements OnInit {
             }, err => {
               reject(err);
             });
-          resolve();
+          // resolve();
         }).catch(error => {
           reject(error);
+        });
+    });
+  } */
+
+  registerUser(actor: Actor) {
+    return new Promise<any>((resolve, reject) => {
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
+      const url = `${environment.backendApiBaseURL + '/v1/actors'}`;
+      const body = JSON.stringify(actor);
+      this.http.post(url, body, httpOptions).toPromise()
+        .then(res => {
+          this.fireAuth.auth.createUserWithEmailAndPassword(actor.email, actor.password)
+            .then(_ => {
+              // Firebase registration was correct
+              resolve(res);
+            }).catch(error => {
+              reject(error);
+            });
+          // resolve(res);
+        }, err => {
+          this.messageService.notifyMessage('messages.auth.login.failed', 'alert alert-danger');
+          reject(err);
         });
     });
   }
@@ -144,4 +167,3 @@ export class AuthService implements OnInit {
     return ['EXPLORER', 'MANAGER', 'ADMINISTRATOR', 'SPONSOR'];
   }
 }
-

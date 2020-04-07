@@ -1,6 +1,6 @@
 
 <nav class="navbar py-1 navbar-expand-lg navbar-light bg-The-explorer-1-hex">
-  <a class="navbar-brand" href="#"><img src="../../../assets/acme-logo.png" alt="logo" width="60" height="35" class="d-inline-block align-top"></a>
+  <a class="navbar-brand" routerLink="/index"><img src="../../../assets/acme-logo.png" alt="logo" width="60" height="35" class="d-inline-block align-top"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,7 +73,7 @@
           <!-- Edit profile -->
           <a class="nav-link" routerLink="/profile/edit"  *ngIf="activeRole === 'EXPLORER'"><i class="fa fa-edit"></i> {{'actor.edit.title' | translate}}</a>
           
-          <div class="dropdown-divider"></div>
+          <div class="dropdown-divider" *ngIf="activeRole === 'EXPLORER'"></div>
 
           <!-- logout -->
           <a class="nav-link" style="cursor: pointer;" (click)="onLogout()"><i class="fa fa-sign-out"></i> {{'security.logout' | translate}}</a>
