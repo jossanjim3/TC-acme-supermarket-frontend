@@ -8,6 +8,7 @@ import { IndexComponent} from './components/index/index.component';
 import { NotFoundPageComponent } from './components/shared/not-found-page/not-found-page.component';
 import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
 import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
+import { TripListComponent } from './components/trip/trip-list/trip-list.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent },
@@ -16,7 +17,8 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'profile/edit', component: EditProfileComponent},
   {path: 'trips', children: [
-    {path: ':id', component: TripDisplayComponent},
+    {path: 'search', component: TripListComponent},
+    {path: 'display/:id', component: TripDisplayComponent},
   ]},
   {path: 'index', component: IndexComponent},
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},

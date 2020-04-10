@@ -133,5 +133,18 @@ export class AuthService implements OnInit {
   getRoles(): string[] {
     return ['EXPLORER', 'MANAGER', 'ADMINISTRATOR', 'SPONSOR'];
   }
+
+  checkRole(role: string) {
+    if ( this.currentActor !== undefined && this.currentActor != null) {
+      if (this.currentActor.role.includes(role)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+
+  }
 }
 

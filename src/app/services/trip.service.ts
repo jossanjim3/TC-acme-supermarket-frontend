@@ -18,10 +18,43 @@ export class TripService {
     return this.http.get<Trip>(url).toPromise();
   }
 
-  searchService(keyword: string, minPrice: string, maxPrice: string, minDate: string, maxDate: string) {
-    const url = `${environment.backendApiBaseURL}/v1/trips/search?keyword=${keyword}&minPrice=${minPrice}&maxPrice=${maxPrice}
-    &minDate=${minDate}&maxDate=${maxDate}`;
-    return this.http.get<Trip[]>(url).toPromise();
+  searchTrips(start: number, psize: number, keyword: string, minPrice: string, maxPrice: string, minDate: string, maxDate: string) {
+    const url = `${environment.backendApiBaseURL}/v1/trips/search`;
+    // const url = `${environment.backendApiBaseURL}/v1/trips/search?keyword=${keyword}&minPrice=${minPrice}&maxPrice=${maxPrice}
+    // &minDate=${minDate}&maxDate=${maxDate}`;
+    const parameters = {
+      startFrom: '' + start,
+      pageSize: '' + psize,
+      keyword: keyword == null ? '' : keyword,
+      minPrice: minPrice == null ? '' : minPrice,
+      maxPrice: maxPrice == null ? '' : maxPrice,
+      minDate: minDate == null ? '' : minDate,
+      maxDate: maxDate == null ? '' : maxDate
+    };
+
+    if (maxDate == null) {
+      delete parameters.maxDate;
+    }
+
+    if (minDate == null) {
+      delete parameters.minDate;
+    }
+
+    if (maxPrice == null) {
+      delete parameters.maxPrice;
+    }
+
+    if (minPrice == null) {
+      delete parameters.minPrice;
+    }
+
+    if (keyword == null) {
+      delete parameters.keyword;
+    }
+
+    return this.http.get<Trip[]>(url, {
+      params: parameters, observe: 'body',
+    }).toPromise();
   }
 
 }

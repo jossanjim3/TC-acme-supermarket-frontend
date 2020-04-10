@@ -28,6 +28,8 @@ import { MessageComponent } from './components/master/message/message.component'
 import { LocalizedDataPipe } from './components/shared/localized-data.pipe';
 import { registerLocaleData } from '@angular/common';
 import locales from '@angular/common/locales/es';
+import { TripListComponent } from './components/trip/trip-list/trip-list.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 registerLocaleData(locales, 'es');
 
@@ -61,13 +63,15 @@ export const firebaseConfig = {
     NotFoundPageComponent,
     TermsAndConditionsComponent,
     MessageComponent,
-    LocalizedDataPipe
+    LocalizedDataPipe,
+    TripListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    InfiniteScrollModule,
     AngularFireModule.initializeApp(firebaseConfig),
     TranslateModule.forRoot({
       loader: {

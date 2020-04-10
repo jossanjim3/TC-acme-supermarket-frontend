@@ -33,7 +33,7 @@ describe('TermsAndConditionsComponent', () => {
       return new TranslateHttpLoader(http);
     }
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         AppComponent,
         TripDisplayComponent,
         HeaderComponent,
@@ -51,6 +51,7 @@ describe('TermsAndConditionsComponent', () => {
       ],
       imports: [
         BrowserModule,
+        // tslint:disable-next-line: deprecation
         HttpModule,
         FormsModule,
         ReactiveFormsModule,
