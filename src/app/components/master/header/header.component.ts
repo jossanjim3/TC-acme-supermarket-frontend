@@ -13,6 +13,7 @@ import { Actor } from 'src/app/models/actor.model';
 export class HeaderComponent extends TranslatableComponent implements OnInit {
   actor: Actor;
   name: String;
+  search: string;
   constructor(private translateService: TranslateService, private authService: AuthService,
     private router: Router, private route: ActivatedRoute) {
     super(translateService);
@@ -30,13 +31,17 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
     });
   }
 
+  searchKeyword(search: string) {
+    console.log(search);
+    this.router.navigate(['/trips/search'], { 'queryParams': { 'keyword': search }});
+  }
+
   getActorLoggued() {
     this.authService.getCurrentActor().then((actor) => {
       this.actor = actor;
       if (actor !== null) {
         this.name = actor.name;
       }
-      console.log(this.actor);
     });
   }
 

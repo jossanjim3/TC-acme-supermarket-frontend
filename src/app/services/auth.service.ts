@@ -123,6 +123,7 @@ export class AuthService implements OnInit {
     return new Promise<any>((resolve, reject) => {
       const currentActor = localStorage.getItem('currentActor');
       if (currentActor) {
+        this.currentActor = JSON.parse(currentActor).actor;
         resolve(JSON.parse(currentActor).actor);
       } else {
         resolve(null);

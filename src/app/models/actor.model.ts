@@ -10,7 +10,7 @@ export class Actor extends Entity {
     phone: string;
     language: 'es';
     validated: boolean;
-    role: string;
+    role: string[];
     customToken: string;
     idToken: string;
 }

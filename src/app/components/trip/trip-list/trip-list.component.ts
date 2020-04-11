@@ -34,6 +34,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     private translateService: TranslateService, private router: Router,
     private route: ActivatedRoute) {
       super(translateService);
+      route.queryParams.subscribe(val => this.ngOnInit());
   }
 
   ngOnInit() {

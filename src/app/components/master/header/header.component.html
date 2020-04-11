@@ -34,8 +34,8 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="{{'header.search' | translate}}">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">{{'header.search' | translate}}</button>
+      <input class="form-control mr-sm-2" type="text" placeholder="{{'header.search' | translate}}" #search>
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="searchKeyword(search.value)">{{'header.search' | translate}}</button>
     </form>
     <ul class="navbar-nav my-2 ml-2">
       <li class="nav-item active">

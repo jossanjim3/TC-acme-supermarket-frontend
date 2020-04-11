@@ -30,13 +30,22 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     // recover item
     this.tripService.getTrip(this.id)
       .then((trip) => {
+        console.log(trip);
         this.trip = trip;
-        this.pictures = trip.pictures;
+        this.pictures = this.trip.pictures;
         console.log('trip detail: ' + this.trip.ticker);
       })
       .catch((err) => {
         console.error(err);
       });
+  }
+
+  getPicture(id: number) {
+    if ( this.trip.pictures.length > 0) {
+      return this.trip.pictures[id];
+    } else {
+      return 'https://i.ya-webdesign.com/images/image-not-available-png-3.png';
+    }
   }
 
   goBack(): void {

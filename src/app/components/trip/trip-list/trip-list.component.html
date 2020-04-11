@@ -4,13 +4,13 @@
   </div>
 </div>
 
-<div *ngIf="data != undefined && data.length > 0" class="card-deck">
-  <div *ngFor="let trip of data" class="card mb-3 mx-auto"
+<div *ngIf="data != undefined && data.length > 0" class="card-deck pl-2">
+  <div *ngFor="let trip of data" class="card mb-3 ml-4 "
     infiniteScroll [infiniteScrollDistance]="2"
     [infiniteScrollThrottle]="50"
     (scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()">
     <img
-    class="card-img-top mx-auto" style="height: 13rem; display: block;"
+    class="card-img-top" style="display: block;"
     src="{{getFirstPicture(trip)}}" alt="{{trip.title}}">
     <div class="card-header">
       <h4 class="card-title">{{trip.title}}</h4>
@@ -26,13 +26,13 @@
     </div>
 
     <div class="card-footer">
-      <a *ngIf="this.authService.checkRole('admin')"
+      <a *ngIf="this.authService.checkRole('ADMINISTRATOR')"
         routerLink="/trips/{{trip.ticker}}"
         class="btn btn-primary pull-left">
         <span class="fa fa-pencil" aria-hidden="true"></span>
         {{'trip.edit' | translate}}
       </a>
-      <a *ngIf="!this.authService.checkRole('admin')"
+      <a *ngIf="!this.authService.checkRole('ADMINISTRATOR')"
         routerLink="/trips/display/{{trip.ticker}}"
         class="btn btn-primary pull-left">
         <span class="fa fa-search-plus" aria-hidden="true"></span>
@@ -41,3 +41,7 @@
     </div>
   </div>
 </div>
+
+<button *ngIf="!this.authService.checkRole('ADMINISTRATOR')" type="button" class="btn btn-primary mt-4 ml-4" (click)="newTrip();"> 
+  {{'trip.new' | translate}}
+</button>
