@@ -43,9 +43,8 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
         this.activeRole = 'anonymous';
         this.currentActor = null;
       }
-      console.log(this.actor);
+      console.log(this.currentActor);
     });
-    
   }
 
    searchKeyword(search: string) {

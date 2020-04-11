@@ -10,7 +10,6 @@ import { TermsAndConditionsComponent } from './components/master/terms-and-condi
 import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
 import { ActorRoleGuard } from './guards/actor-role.guard';
 import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
-import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
 import { TripListComponent } from './components/trip/trip-list/trip-list.component';
 
 const appRoutes: Routes = [
