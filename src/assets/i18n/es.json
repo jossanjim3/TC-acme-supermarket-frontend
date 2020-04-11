@@ -40,16 +40,20 @@
         "home": "Ir a Inicio",
         "contact": "Contacto"
     },
+    "deniedAccess": {
+        "title": "Acceso Denegado",
+        "text": "No tienes permisos para acceder al documento o a la página solicitada."
+    },
     "index": {
         "welcome": "Bienvenido",
         "acme": "a Acme Explorer!!"
     },
     "trip": {
-        "trip": "Viaje",
-        "trips.list": "Listado viajes",
-        "trips.list.applies": "Lista de viajes aplicados",
-        "trips.list.created": "Lista de viajes creados",
-        "create.title": "Crear un viaje",
+        "trip": "Viajes",
+        "trips.list": "Todos los viajes",
+        "trips.list.applies": "Viajes solicitados",
+        "trips.list.created": "Viajes creados",
+        "create.title": "Nuevo viaje",
         "details": "Detalles del viaje",
         "edit": "Editar viaje",
         "new": "Nuevo viaje",
@@ -64,12 +68,13 @@
         "admin": "Administrador",
         "datawarehouse": "Datawarehouse",
         "olapcube": "OLAP Cube",
-        "register.manager": "Registrar un manager"
+        "register.manager": "Nuevo manager"
     },
     "messages": {
         "auth.registration.correct": "El usuario {{username}} ha sido registrado correctamente",
         "auth.logout": "El usuario se ha desconectado correctamente",
-        "auth.login.correct": "El usuario ha entrado correctamente",
+        "auth.login.correct": "El usuario ha entrado correctamente en la aplicación.",
+        "auth.login.failed": "El usuario no ha podido entrar en la aplicacioó.n",
         "already.registered": "¿Ya está registrado?",
         "trip.deleted": "Viaje eliminado correctamente",
         "back": "Atrás",

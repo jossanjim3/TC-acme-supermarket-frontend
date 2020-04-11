@@ -40,16 +40,20 @@
         "home": "Take Me Home",
         "contact": "Contact Support"
     },
+    "deniedAccess": {
+        "title": "Access Denied",
+        "text": "You do not have permission to access the document or program that you requested."
+    },
     "index": {
         "welcome": "Welcome",
         "acme": "to Acme Explorer!!"
     },
     "trip": {
-        "trip": "Trip",
-        "trips.list": "Trips List",
-        "trips.list.applies": "Trips applies list",
-        "trips.list.created": "Trips created list",
-        "create.title": "Create an trip",
+        "trip": "Trips",
+        "trips.list": "All Trips",
+        "trips.list.applies": "Trips applied",
+        "trips.list.created": "Trips created",
+        "create.title": "New trip",
         "details": "Trip details",
         "edit": "Edit trip",
         "new": "New trip",
@@ -64,12 +68,13 @@
         "admin": "Administrator",
         "datawarehouse": "Datawarehouse",
         "olapcube": "OLAP Cube",
-        "register.manager": "Register an manager"
+        "register.manager": "New manager"
     },
     "messages": {
         "auth.registration.correct": "The user {{username}} has been correctly registered",
         "auth.logout": "The user has logged out from the app",
-        "auth.login.correct": "The user hasbeen correctly logged in",
+        "auth.login.correct": "The user has been correctly logged in",
+        "auth.login.failed": "The user has not been correctly logged in",
         "already.registered": "Already registered?",
         "trip.deleted": "Trip successfully deleted",
         "back": "Back",
