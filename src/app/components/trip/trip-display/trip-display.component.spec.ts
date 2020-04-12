@@ -108,7 +108,7 @@ describe('TripDisplayComponent', () => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
     fixture = TestBed.createComponent(TripDisplayComponent);
     component = fixture.componentInstance;
-    mockActivatedRoute.testParams = { id: '200401-MEMX' };
+    mockActivatedRoute.testParams = { id: '200409-LEEM' };
     tripService = TestBed.get(TripService);
     fixture.detectChanges();
   });
@@ -122,17 +122,30 @@ describe('TripDisplayComponent', () => {
     done();
   });
 
-  /*
-  it('should create', async (done) => {
+  it('should defined trip not null', async (done) => {
     component.ngOnInit();
     fixture.detectChanges();
     spyOn(tripService, 'getTrip').and.returnValue(Promise.resolve(true));
 
     fixture.whenStable().then(() => {
       fixture.detectChanges();
-      expect(component.trip).toBeTruthy();
+      expect(component.trip).not.toBeNull();
       done();
     });
   });
-  */
+
+  it('should have same trip attributes', async (done) => {
+    component.ngOnInit();
+    fixture.detectChanges();
+    spyOn(tripService, 'getTrip').and.returnValue(Promise.resolve(true));
+
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      expect(component.trip.ticker).toEqual('200409-LEEM');
+      expect(component.trip.title).toEqual('Trip1');
+      expect(component.trip._id).toEqual('5e8ef80ab5741600198f760c');
+      expect(component.trip.price).toEqual(537);
+      done();
+    });
+  });
 });

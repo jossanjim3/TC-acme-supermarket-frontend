@@ -123,7 +123,7 @@ describe('TripListComponent', () => {
     component.ngOnInit();
     fixture.detectChanges();
     spyOn(tripService, 'searchTrips').and.returnValue(Promise.resolve(true));
-    fixture.whenStable().then(()=>{
+    fixture.whenStable().then(() => {
       fixture.detectChanges();
       expect(component.data.length).toBeGreaterThan(1);
       done();
@@ -141,7 +141,7 @@ describe('TripListComponent', () => {
       trip.title = 'Lore Ipsum';
       trip.description = 'Deserunt ea id reprehenderit labore elit amet minim esse culpa laboris nisi cupidatat laborum ipsum.';
       trip.price = 1423.50;
-      trip.req = [
+      trip.requeriments = [
         'Irure reprehenderit est proident labore.',
         'Mollit consequat cillum veniam ea minim quis proident deserunt excepteur consectetur do dolor cupidatat.',
         'Cillum tempor duis sunt occaecat aliqua culpa.'
