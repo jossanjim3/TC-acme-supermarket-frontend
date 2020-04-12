@@ -26,6 +26,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TripService } from 'src/app/services/trip.service';
+import { TripListComponent } from '../trip-list/trip-list.component';
+import { DeniedAccessPageComponent } from '../../shared/denied-access-page/denied-access-page.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 registerLocaleData(locales, 'es');
 
@@ -72,12 +75,15 @@ describe('TripDisplayComponent', () => {
         ApplicationDisplayComponent,
         NotFoundPageComponent,
         TermsAndConditionsComponent,
+        TripListComponent,
+        DeniedAccessPageComponent,
         MessageComponent,
         LocalizedDataPipe
       ],
       imports: [
         BrowserModule,
         FormsModule,
+        InfiniteScrollModule,
         ReactiveFormsModule,
         HttpClientModule,
         TranslateModule.forRoot({

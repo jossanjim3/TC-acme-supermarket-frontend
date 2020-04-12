@@ -23,6 +23,7 @@ const appRoutes: Routes = [
   {path: 'trips', children: [
     {path: 'search', component: TripListComponent},
     {path: 'display/:id', component: TripDisplayComponent},
+    {path: '', component: TripListComponent},
   ]},
   {path: 'index', component: IndexComponent},
 

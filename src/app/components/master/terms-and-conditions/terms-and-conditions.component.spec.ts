@@ -23,6 +23,9 @@ import { LocalizedDataPipe } from '../../shared/localized-data.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { TripListComponent } from '../../trip/trip-list/trip-list.component';
+import { DeniedAccessPageComponent } from '../../shared/denied-access-page/denied-access-page.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 describe('TermsAndConditionsComponent', () => {
   let component: TermsAndConditionsComponent;
@@ -46,6 +49,8 @@ describe('TermsAndConditionsComponent', () => {
         ApplicationDisplayComponent,
         NotFoundPageComponent,
         TermsAndConditionsComponent,
+        TripListComponent,
+        DeniedAccessPageComponent,
         MessageComponent,
         LocalizedDataPipe,
       ],
@@ -54,6 +59,7 @@ describe('TermsAndConditionsComponent', () => {
         // tslint:disable-next-line: deprecation
         HttpModule,
         FormsModule,
+        InfiniteScrollModule,
         ReactiveFormsModule,
         HttpClientModule,
         TranslateModule.forRoot({
