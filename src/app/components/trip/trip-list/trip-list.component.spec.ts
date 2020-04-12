@@ -31,6 +31,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { ActorService } from 'src/app/services/actor.service';
 import { TripService } from 'src/app/services/trip.service';
 import { from } from 'rxjs';
+import { Trip } from 'src/app/models/trip.model';
 
 describe('TripListComponent', () => {
   let component: TripListComponent;
@@ -93,7 +94,7 @@ describe('TripListComponent', () => {
         ActorService,
         {provide: APP_BASE_HREF, useValue: '/'},
         {provide: ActivatedRoute, useValue: {
-          queryParams: from([{keyword: 'trip'}]),
+          queryParams: from([{keyword: ''}]),
         }},
       ],
     })
@@ -116,5 +117,41 @@ describe('TripListComponent', () => {
   it('should defined', async (done) => {
     expect(component).toBeTruthy();
     done();
+  });
+
+  it('should have more than 1 trip', async (done) => {
+    component.ngOnInit();
+    fixture.detectChanges();
+    spyOn(tripService, 'searchTrips').and.returnValue(Promise.resolve(true));
+    fixture.whenStable().then(()=>{
+      fixture.detectChanges();
+      expect(component.data.length).toBeGreaterThan(1);
+      done();
+    });
+  });
+
+  it('should get no first picture of a trip', async (done) => {
+    component.ngOnInit();
+    fixture.detectChanges();
+    spyOn(tripService, 'searchTrips').and.returnValue(Promise.resolve(true));
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      const trip =  new Trip();
+      trip.ticker = '200610-ASCD';
+      trip.title = 'Lore Ipsum';
+      trip.description = 'Deserunt ea id reprehenderit labore elit amet minim esse culpa laboris nisi cupidatat laborum ipsum.';
+      trip.price = 1423.50;
+      trip.req = [
+        'Irure reprehenderit est proident labore.',
+        'Mollit consequat cillum veniam ea minim quis proident deserunt excepteur consectetur do dolor cupidatat.',
+        'Cillum tempor duis sunt occaecat aliqua culpa.'
+      ];
+      trip.startDate = new Date();
+      trip.endDate = new Date();
+      trip.pictures = [];
+      trip.manager = '214125215125dawd21';
+      expect(component.getFirstPicture(trip)).toEqual('https://i.ya-webdesign.com/images/image-not-available-png-3.png');
+      done();
+    });
   });
 });
