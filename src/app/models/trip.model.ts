@@ -1,6 +1,7 @@
 import { Entity } from './entity.model';
 
 export class Trip extends Entity {
+    _id: string;
     ticker: string;
     title: string;
     description: string;
