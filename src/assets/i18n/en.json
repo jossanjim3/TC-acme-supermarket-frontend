@@ -96,6 +96,8 @@
         "no.trips.found": "No trips found" 
     },
     "application": {
-        "appli.apply": "Apply"
+        "appli.apply": "Apply",
+        "appli.success" : "Application trip successfully!",
+        "appli.fail" : "Trip cannot be applied!"
     }
 }
