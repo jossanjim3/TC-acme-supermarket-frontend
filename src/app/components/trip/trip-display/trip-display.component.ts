@@ -6,6 +6,7 @@ import { TripService } from 'src/app/services/trip.service';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-trip-display',
@@ -20,7 +21,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
   constructor(private _sanitizer: DomSanitizer, private tripService: TripService,
     private translateService: TranslateService, private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute, private authService: AuthService) {
     super(translateService);
   }
 
@@ -56,7 +57,24 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   onApply(idTrip: string) {
 
     console.log('idTrip: ' + idTrip);
-    // TODO recover the id explorer logged
+
+    this.authService.getCurrentActor().then( currActor => {
+      if (currActor !== null) {
+        console.log('currActor: ' + currActor._id);
+
+        // creamos la application
+        this.tripService.applyTrip(idTrip, currActor._id)
+          .then((appli) => {
+            console.log('appli detail: ' + appli);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+
+      } else {
+        console.log('Error recuperar actor logado!');
+      }
+    });
     return true;
   }
 
