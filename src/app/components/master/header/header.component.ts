@@ -35,11 +35,11 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
 
     // esto solo se activa cuando se hace login correctamente tanto en mongo como en firebase
     this.authService.userLoggedIn.subscribe((loggedIn: boolean) => {
-      console.log('log in subsccribe: ' + loggedIn);
+      // console.log('log in subsccribe: ' + loggedIn);
       if (loggedIn) {
         this.authService.getCurrentActor()
           .then( (actorData: Actor) => {
-            console.log('actorData subscribe ngOnInit: ' + actorData);
+            // console.log('actorData subscribe ngOnInit: ' + actorData);
 
             if (actorData !== null) {
               // console.log('actorData ngOnInit: ' + actorData);
