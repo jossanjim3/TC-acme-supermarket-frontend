@@ -31,6 +31,7 @@ import { registerLocaleData } from '@angular/common';
 import locales from '@angular/common/locales/es';
 import { TripListComponent } from './components/trip/trip-list/trip-list.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ApplicationListComponent } from './components/application/application-list/application-list.component';
 
 registerLocaleData(locales, 'es');
 
@@ -67,7 +68,8 @@ export const firebaseConfig = {
     DeniedAccessPageComponent,
     MessageComponent,
     LocalizedDataPipe,
-    TripListComponent
+    TripListComponent,
+    ApplicationListComponent
   ],
   imports: [
     BrowserModule,
