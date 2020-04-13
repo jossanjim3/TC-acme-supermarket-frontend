@@ -13,6 +13,8 @@ import { Application } from 'src/app/models/application.model';
 })
 export class ApplicationListComponent extends TranslatableComponent implements OnInit {
 
+  data: Application[];
+
   constructor(private applicatioService: ApplicationsService, private translateService: TranslateService, private authService: AuthService,
     private router: Router, private route: ActivatedRoute) {
     super(translateService);
@@ -26,6 +28,7 @@ export class ApplicationListComponent extends TranslatableComponent implements O
     this.applicatioService.getApplications()
     .then((applis) => {
       console.log(applis);
+      this.data = applis;
     })
     .catch((err) => {
       console.error(err.message);

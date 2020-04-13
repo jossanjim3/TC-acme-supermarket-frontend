@@ -15,7 +15,7 @@ export class ApplicationsService {
   getApplications() {
     // const url = `${environment.backendApiBaseURL}/v1/applications/users/${userId}`;
     const url = `${environment.backendApiBaseURL}/v1/applications`;
-    return this.http.get<Application>(url).toPromise();
+    return this.http.get<Application[]>(url).toPromise();
   }
 
 }
