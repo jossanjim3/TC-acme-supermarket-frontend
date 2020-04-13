@@ -6,6 +6,8 @@ import { TripService } from 'src/app/services/trip.service';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-trip-display',
@@ -20,7 +22,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
   constructor(private _sanitizer: DomSanitizer, private tripService: TripService,
     private translateService: TranslateService, private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute, private authService: AuthService, private messageService: MessageService) {
     super(translateService);
   }
 
@@ -49,7 +51,37 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   }
 
   goBack(): void {
-    this.router.navigate(['/']);
+    // this.router.navigate(['/']);
+    window.history.back();
+  }
+
+  onApply(idTrip: string) {
+
+    console.log('idTrip: ' + idTrip);
+
+    this.authService.getCurrentActor().then( currActor => {
+      if (currActor !== null) {
+        console.log('currActor: ' + currActor._id);
+
+        // creamos la application
+        this.tripService.applyTrip(idTrip, currActor._id)
+          .then((appli) => {
+            console.log('appli detail: ' + appli);
+            this.messageService.notifyMessage('application.appli.success', 'alert alert-success');
+          })
+          .catch((err) => {
+            console.error(err);
+            console.error(err.status + ' - ' + err.error);
+            const mes = err.status + ' - ' + err.error;
+            // this.messageService.notifyMessage('application.appli.fail', 'alert alert-danger');
+            this.messageService.notifyMessage(mes, 'alert alert-danger');
+          });
+
+      } else {
+        console.log('Error recuperar actor logado!');
+      }
+    });
+    return true;
   }
 
 

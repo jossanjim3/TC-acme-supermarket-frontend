@@ -73,8 +73,8 @@ export class AuthService implements OnInit {
             // console.log('actor: ' + res);
             // console.log('actor.name: ' + res.name);
             // console.log('customToken: '+res.customToken);
-            this.userLoggedIn.next(true);
-            this.messageService.notifyMessage('messages.auth.login.correct', 'alert alert-success');
+            // this.userLoggedIn.next(true);
+            // this.messageService.notifyMessage('messages.auth.login.correct', 'alert alert-success');
             this.fireAuth.auth.signInWithCustomToken(res.customToken)
               .then(customToken => {
                 this.fireAuth.auth.currentUser.getIdToken()
@@ -83,6 +83,8 @@ export class AuthService implements OnInit {
                       res.idToken = token;
                       this.setCurrentActor(res);
                       this.change.emit();
+                      this.userLoggedIn.next(true);
+                      this.messageService.notifyMessage('messages.auth.login.correct', 'alert alert-success');
                       resolve(token);
                     }
                   );
