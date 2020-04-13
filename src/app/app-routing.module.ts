@@ -23,6 +23,9 @@ const appRoutes: Routes = [
   {path: 'trips', children: [
     {path: 'search', component: TripListComponent},
     {path: 'display/:id', component: TripDisplayComponent},
+    {path: 'trips-applies', component: TripListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
+    {path: 'trips-created', component: TripListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
+    {path: 'trips-new', component: TripListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
     {path: '', component: TripListComponent},
   ]},
   {path: 'index', component: IndexComponent},
@@ -30,13 +33,6 @@ const appRoutes: Routes = [
   {path: 'datawarehouse', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'olap-cube', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'new-manager', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
-
-  {path: 'trips', children: [
-    {path: 'trips-applies', component: TripDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
-    {path: 'trips-created', component: TripDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
-    {path: 'trips-new', component: TripDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
-    {path: '', component: TripDisplayComponent},
-  ]},
 
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'not-found', component: NotFoundPageComponent},
