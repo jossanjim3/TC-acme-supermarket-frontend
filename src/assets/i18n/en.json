@@ -94,5 +94,8 @@
         "denied.access.title": "Denied access",
         "denied.access.message": "You don't have permission to access {{resource}} on this server",
         "no.trips.found": "No trips found" 
+    },
+    "application": {
+        "appli.apply": "Apply"
     }
 }

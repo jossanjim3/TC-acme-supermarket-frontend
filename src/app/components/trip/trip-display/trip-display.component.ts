@@ -49,7 +49,15 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   }
 
   goBack(): void {
-    this.router.navigate(['/']);
+    // this.router.navigate(['/']);
+    window.history.back();
+  }
+
+  onApply(idTrip: string) {
+
+    console.log('idTrip: ' + idTrip);
+    // TODO recover the id explorer logged
+    return true;
   }
 
 

@@ -2,7 +2,14 @@
 <br/>
 
 <div class="card mb-3">
-  <h3 class="card-header The-explorer-2-hex">{{'trip.details' | translate}}</h3>
+  
+  <div>
+    <h3 class="card-header The-explorer-2-hex">{{'trip.details' | translate}}</h3>
+    <button (click)="goBack()" class="btn btn-primary" style="float: right; margin-right: 1em; margin-top: -48px;">
+      {{'messages.back' | translate}}
+    </button>
+  </div>
+  
 
   <div class="card-body">
     <h5 class="card-title The-explorer-4-hex">{{'trip.ticker' | translate}}</h5>
@@ -84,9 +91,14 @@
   </div>
 </div>
 <br/>
-<button (click)="goBack()" class="btn btn-primary">
-  {{'messages.back' | translate}}
-</button>
+
+<div class="btn-apply">
+  <button (click)="onApply(trip._id)" class="btn btn-primary">
+    {{'application.appli.apply' | translate}}
+  </button>
+</div>
+
+
 <br/>
 
 

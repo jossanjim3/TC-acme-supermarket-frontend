@@ -94,5 +94,8 @@
         "denied.access.title": "Acceso denegado",
         "denied.access.message": "No tiene permiso para acceder a {{resource}} en este servidor",
         "no.trips.found": "No se encontraron viajes" 
+    },
+    "application": {
+        "appli.apply": "Solicitar"
     }
 }
