@@ -28,10 +28,46 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
   }
 
   ngOnInit() {
+
     // console.log('ngonit');
     // console.log('loggedIn: ' + this.userLoggedIn);
+    // console.log('currentActor: ' + this.currentActor);
+
+    // esto solo se activa cuando se hace login correctamente tanto en mongo como en firebase
+    this.authService.userLoggedIn.subscribe((loggedIn: boolean) => {
+      console.log('log in subsccribe: ' + loggedIn);
+      if (loggedIn) {
+        this.authService.getCurrentActor()
+          .then( (actorData: Actor) => {
+            console.log('actorData subscribe ngOnInit: ' + actorData);
+
+            if (actorData !== null) {
+              // console.log('actorData ngOnInit: ' + actorData);
+              this.currentActor = actorData;
+              this.activeRole = actorData.role.toString();
+            } else {
+              this.activeRole = 'anonymous';
+              this.currentActor = null;
+            }
+
+          })
+        .catch( (err) => {
+          console.log(err);
+          this.activeRole = 'anonymous';
+          this.currentActor = null;
+        });
+      } else {
+        this.activeRole = 'anonymous';
+        this.currentActor = null;
+      }
+      // console.log('eoooo: ' + this.currentActor);
+    });
+
+    // esto se activa cuando se hace refresh F5 de la pantalla
     this.authService.getCurrentActor()
-    .then( (actorData: Actor) => {
+      .then( (actorData: Actor) => {
+        // console.log('actorData ngOnInit: ' + actorData);
+
         if (actorData !== null) {
           // console.log('actorData ngOnInit: ' + actorData);
           this.currentActor = actorData;
@@ -40,6 +76,7 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
           this.activeRole = 'anonymous';
           this.currentActor = null;
         }
+
       })
     .catch( (err) => {
       console.log(err);
@@ -47,24 +84,6 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
       this.currentActor = null;
     });
 
-    /* this.authService.userLoggedIn.subscribe((loggedIn: boolean) => {
-      if (loggedIn) {
-        this.authService.getCurrentActor()
-          .then( currActor => {
-            if (currActor !== null) {
-              this.currentActor = currActor;
-              this.activeRole = currActor.role.toString();
-            } else {
-              this.activeRole = 'anonymous';
-              this.currentActor = null;
-            }
-        });
-      } else {
-        this.activeRole = 'anonymous';
-        this.currentActor = null;
-      }
-      console.log(this.currentActor);
-    }); */
   }
 
    searchKeyword(search: string) {
