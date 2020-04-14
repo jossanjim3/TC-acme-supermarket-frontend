@@ -42,6 +42,6 @@
   </div>
 </div>
 
-<button *ngIf="!this.authService.checkRole('ADMINISTRATOR')" type="button" class="btn btn-primary mt-4 ml-4" (click)="newTrip();"> 
+<button *ngIf="this.authService.checkRole('ADMINISTRATOR')" type="button" class="btn btn-primary mt-4 ml-4" (click)="newTrip();"> 
   {{'trip.new' | translate}}
 </button>

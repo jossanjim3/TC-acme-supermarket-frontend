@@ -48,6 +48,17 @@
         "welcome": "Bienvenido",
         "acme": "a Acme Explorer!!"
     },
+    "sponsor": {
+        "sponsor": "Patrocinador",
+        "list": "Lista de patrocinios",
+        "display": "Muestra de patrocinio",
+        "details": "Detalles del patrocinio",
+        "new": "Nuevo patrocinio",
+        "update": "Actualizar patrocinio",
+        "delete": "Borrar patrocinio",
+        "paid": "Pagado",
+        "link": "Enlace"
+    },
     "trip": {
         "trip": "Viajes",
         "trips.list": "Todos los viajes",

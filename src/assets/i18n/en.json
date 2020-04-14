@@ -48,6 +48,17 @@
         "welcome": "Welcome",
         "acme": "to Acme Explorer!!"
     },
+    "sponsor": {
+        "sponsor": "Sponsor",
+        "list": "Sponsorships list",
+        "display": "Sponsorship display",
+        "details": "Sponsorship details",
+        "new": "New sponsorship",
+        "update": "Update sponsorship",
+        "delete": "Delete sponsorship",
+        "paid": "Paid",
+        "link": "Link"
+    },
     "trip": {
         "trip": "Trips",
         "trips.list": "All Trips",
