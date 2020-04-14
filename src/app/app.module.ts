@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/master/header/header.component';
 import { TranslatableComponent } from './components/shared/translatable/translatable.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AngularFireModule } from 'angularfire2';
 import { RegisterComponent } from './components/security/register/register.component';
@@ -32,6 +33,8 @@ import locales from '@angular/common/locales/es';
 import { TripListComponent } from './components/trip/trip-list/trip-list.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ApplicationListComponent } from './components/application/application-list/application-list.component';
+import { SponsorListComponent } from './components/sponsor/sponsor-list/sponsor-list.component';
+import { SponsorDisplayComponent } from './components/sponsor/sponsor-display/sponsor-display.component';
 
 registerLocaleData(locales, 'es');
 
@@ -69,12 +72,15 @@ export const firebaseConfig = {
     MessageComponent,
     LocalizedDataPipe,
     TripListComponent,
-    ApplicationListComponent
+    ApplicationListComponent,
+    SponsorListComponent,
+    SponsorDisplayComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    DataTablesModule,
     HttpClientModule,
     InfiniteScrollModule,
     AngularFireModule.initializeApp(firebaseConfig),

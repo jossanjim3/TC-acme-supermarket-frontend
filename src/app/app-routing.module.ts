@@ -13,6 +13,8 @@ import { TripDisplayComponent } from './components/trip/trip-display/trip-displa
 import { TripListComponent } from './components/trip/trip-list/trip-list.component';
 import { ApplicationDisplayComponent } from './components/application/application-display/application-display.component';
 import { ApplicationListComponent } from './components/application/application-list/application-list.component';
+import { SponsorListComponent } from './components/sponsor/sponsor-list/sponsor-list.component';
+import { SponsorDisplayComponent } from './components/sponsor/sponsor-display/sponsor-display.component';
 
 const appRoutes: Routes = [
 
@@ -42,6 +44,11 @@ const appRoutes: Routes = [
   {path: 'datawarehouse', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'olap-cube', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'new-manager', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
+
+  {path: 'sponsor', children: [
+    {path: 'list', component: SponsorListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'sponsor'}},
+    {path: 'display/:id', component: SponsorDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'sponsor'}}
+  ]},
 
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'not-found', component: NotFoundPageComponent},

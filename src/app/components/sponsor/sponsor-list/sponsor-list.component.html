@@ -1,0 +1,36 @@
+<table datatable [dtOptions]="dtOptions" class="table row-border table-hover mt-2" dt-columns="dtColumns" width="100%">
+  <thead>
+    <tr>
+      <th>Banner</th>
+      <th>{{'sponsor.link' | translate}}</th>
+      <th>{{'sponsor.paid' | translate}}</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td>{{row.banner}}</td>
+      <td>{{row.link}}</td>
+      <td><span [innerHTML]="isFullPaid(row)"></span></td>
+      <td>
+        <a routerLink="/sponsor/display/{{row._id}}" class="btn btn-primary btn-lg"
+          title="{{'details' | translate}}">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+        </a>
+      </td>
+      <td>
+        <a routerLink="/sponsor/{{row._id}}" class="btn btn-primary btn-lg"
+          title="{{'edit' | translate}}">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button *ngIf="this.authService.checkRole('SPONSOR')" type="button" class="btn btn-primary mt-4" (click)="newSponsor();"> 
+  {{'sponsor.new' | translate}}
+</button>
