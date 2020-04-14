@@ -31,6 +31,6 @@
   </tbody>
 </table>
 
-<button *ngIf="this.authService.checkRole('SPONSOR')" type="button" class="btn btn-primary mt-4" (click)="newSponsor();"> 
+<button *ngIf="this.authService.checkRole('SPONSOR')" type="button" class="btn btn-primary mt-4 mb-3" (click)="newSponsor();"> 
   {{'sponsor.new' | translate}}
 </button>

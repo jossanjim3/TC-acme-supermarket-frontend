@@ -38,11 +38,15 @@
     <tbody>
       <tr *ngFor="let row of tripSponsorship">
         <td>{{row.trip}}</td>
-        <td><span [innerHTML]="isPaid(row)"></span></td>
+        <td><span [innerHTML]="isPaid(row.paid)"></span></td>
       </tr>
     </tbody>
   </table>
 </div>
 <br/>
 
+<a routerLink="/sponsor/{{this.id}}" class="btn btn-primary btn-lg mt-2 mb-4"
+          title="{{'edit' | translate}}">
+          <i class="fa fa-pencil" aria-hidden="true"></i> {{'sponsor.update' | translate}}
+</a>
 <br/>
