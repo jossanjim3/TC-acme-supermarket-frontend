@@ -109,6 +109,7 @@
         "no.trips.found": "No se encontraron viajes" 
     },
     "application": {
+        "appli.applis": "Solicitudes",
         "appli.apply": "Solicitar",
         "appli.success" : "Viaje solicitado correctamente!",
         "appli.fail" : "No se ha podido solicitar el viaje!"
