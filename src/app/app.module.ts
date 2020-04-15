@@ -93,7 +93,8 @@ export const firebaseConfig = {
     }),
     AppRoutingModule,
     // tslint:disable-next-line: deprecation
-    HttpModule
+    HttpModule,
+    DataTableModule
   ],
   exports: [AppRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
