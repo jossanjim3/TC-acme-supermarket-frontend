@@ -112,6 +112,10 @@
         "appli.applis": "Solicitudes",
         "appli.apply": "Solicitar",
         "appli.success" : "Viaje solicitado correctamente!",
-        "appli.fail" : "No se ha podido solicitar el viaje!"
+        "appli.fail" : "No se ha podido solicitar el viaje!",
+        "dt.status" : "Estado",
+        "dt.comment" : "Comentarios",
+        "dt.reasonCancel" : "Motivo Cancelación",
+        "dt.trip" : "Viajes"
     }
 }

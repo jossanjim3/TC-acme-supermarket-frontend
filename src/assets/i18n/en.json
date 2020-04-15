@@ -112,6 +112,10 @@
         "appli.applis": "Applications",
         "appli.apply": "Apply",
         "appli.success" : "Application trip successfully!",
-        "appli.fail" : "Trip cannot be applied!"
+        "appli.fail" : "Trip cannot be applied!",
+        "dt.status" : "Status",
+        "dt.comment" : "Comments",
+        "dt.reasonCancel" : "Reason Cancel",
+        "dt.trip" : "Trips"
     }
 }
