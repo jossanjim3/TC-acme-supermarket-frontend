@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { SponsorshipService } from 'src/app/services/sponsorship.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Sponsorship } from 'src/app/models/sponsorship.model';
-import { TripService } from 'src/app/services/trip.service';
 
 @Component({
   selector: 'app-sponsor-display',
@@ -14,9 +13,11 @@ import { TripService } from 'src/app/services/trip.service';
 })
 export class SponsorDisplayComponent extends TranslatableComponent implements OnInit {
   id: string;
-  sponsorship: Sponsorship;
+  sponsorship = new Sponsorship();
   tripSponsorship: [{trip: string, paid: boolean}];
-  constructor(private tripService: TripService, private sponsorShipService: SponsorshipService, private authService: AuthService,
+
+  constructor(private sponsorShipService: SponsorshipService,
+    private authService: AuthService,
     private translateService: TranslateService, private router: Router,
     private route: ActivatedRoute) {
       super(translateService);
@@ -39,13 +40,6 @@ export class SponsorDisplayComponent extends TranslatableComponent implements On
     window.history.back();
   }
 
-  getTripTicker(id: string) {
-    this.tripService.getTripById(id)
-      .then((val) => {
-        console.log(val.ticker);
-        return val.ticker;
-      });
-  }
 
   isPaid(paid: boolean) {
     if (paid) {
