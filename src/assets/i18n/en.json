@@ -123,6 +123,7 @@
         "dt.start_date" : "Start Trip",
         "dt.end_date" : "End Trip",
         "dt.price" : "Price",
-        "dt.title" : "Destiny"
+        "dt.title" : "Destiny",
+        "dt.edit" : "edit"
     }
 }

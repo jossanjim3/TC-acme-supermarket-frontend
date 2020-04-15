@@ -123,6 +123,7 @@
         "dt.start_date" : "Inicio Viaje",
         "dt.end_date" : "Fin Viaje",
         "dt.price" : "Precio",
-        "dt.title" : "Destino"
+        "dt.title" : "Destino",
+        "dt.edit" : "editar"
     }
 }

@@ -63,7 +63,16 @@
       <td *ngIf="item.tripObj !== undefined" class="completo" >{{item.tripObj.startDate | date:'dd/MM/yyyy h:mm a' }}</td>  
       <td *ngIf="item.tripObj !== undefined" class="completo">{{item.tripObj.endDate | date:'dd/MM/yyyy h:mm a' }}</td>  
       <td *ngIf="item.tripObj !== undefined" >{{item.tripObj.price}}</td>
-      <td>{{item.status}}</td>
+
+      <td class="completo">{{item.status}}
+        <a *ngIf="!this.authService.checkRole('ADMINISTRATOR')"            
+            [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
+            class="btn btn-primary btn-application">
+            <span class="fa fa-edit" aria-hidden="true"></span>
+            <!-- {{'application.dt.edit' | translate}} -->
+        </a>
+      </td>
+
       <td>{{item.comment}}</td>
       <td>{{item.reasonCancel}}</td>
       
