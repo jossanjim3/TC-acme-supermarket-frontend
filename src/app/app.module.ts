@@ -10,7 +10,7 @@ import { HeaderComponent } from './components/master/header/header.component';
 import { TranslatableComponent } from './components/shared/translatable/translatable.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DataTablesModule } from 'angular-datatables';
+import { DataTableModule } from 'angular-6-datatable';
 
 import { AngularFireModule } from 'angularfire2';
 import { RegisterComponent } from './components/security/register/register.component';
@@ -80,7 +80,7 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    DataTablesModule,
+    DataTableModule,
     HttpClientModule,
     InfiniteScrollModule,
     AngularFireModule.initializeApp(firebaseConfig),

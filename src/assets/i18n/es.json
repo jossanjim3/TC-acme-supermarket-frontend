@@ -69,10 +69,12 @@
         "edit": "Editar viaje",
         "new": "Nuevo viaje",
         "ticker": "Identificador",
+        "stages": "Etapas",
         "title": "Titulo",
         "description": "Descripción",
         "startDate": "Fecha inicio",
         "endDate": "Fecha fin",
+        "price": "Precio",
         "requeriments": "Requisitos"
     },
     "admin": {

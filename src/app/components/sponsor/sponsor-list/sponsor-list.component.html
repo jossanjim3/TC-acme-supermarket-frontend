@@ -1,17 +1,20 @@
-<table datatable [dtOptions]="dtOptions" class="table row-border table-hover mt-2" dt-columns="dtColumns" width="100%">
+<table  class="table row-border table-hover mt-2" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="10" width="100%">
   <thead>
     <tr>
       <th>Banner</th>
-      <th>{{'sponsor.link' | translate}}</th>
-      <th>{{'sponsor.paid' | translate}}</th>
-      <th></th>
+      <th>
+        <mfDefaultSorter by="link">{{'sponsor.link' | translate}}</mfDefaultSorter>
+      </th>
+      <th>
+        <mfDefaultSorter by="paid">{{'sponsor.paid' | translate}}</mfDefaultSorter>
+      </th>
       <th></th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
-    <tr *ngFor="let row of data">
+    <tr *ngFor="let row of mf.data">
       <td>{{row.banner}}</td>
       <td>{{row.link}}</td>
       <td><span [innerHTML]="isFullPaid(row)"></span></td>
@@ -29,8 +32,16 @@
       </td>
     </tr>
   </tbody>
+
+  <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
 </table>
 
-<button *ngIf="this.authService.checkRole('SPONSOR')" type="button" class="btn btn-primary mt-4" (click)="newSponsor();"> 
+<button *ngIf="this.authService.checkRole('SPONSOR')" type="button" class="btn btn-primary mt-4 mb-3" (click)="newSponsor();"> 
   {{'sponsor.new' | translate}}
 </button>
