@@ -69,10 +69,12 @@
         "edit": "Edit trip",
         "new": "New trip",
         "ticker": "Ticker",
+        "stages": "Stages",
         "title": "Title",
         "description": "Description",
         "startDate": "Start Date",
         "endDate": "End Date",
+        "price": "Price",
         "requeriments": "Requeriments"
     },
     "admin": {

@@ -22,9 +22,15 @@
   </div>
 
   <div class="card-body">
+    <h5 class="card-title The-explorer-4-hex">{{'trip.price' | translate}}</h5>
+    <h6 class="card-subtitle text-muted">{{trip.price}}&euro;</h6>
+  </div>
+
+  <div class="card-body">
     <h5 class="card-title The-explorer-4-hex">{{'trip.description' | translate}}</h5>
     <h6 class="card-subtitle text-muted">{{trip.description}}</h6>
   </div>
+  
 
   <div class="card-body">
     <div class="row text-center">
@@ -71,13 +77,56 @@
       <div class="card">
         <div class="card-header" id="headingOne">
           <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-              {{'trip.requeriments' | translate}}
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              {{'trip.stages' | translate}}
             </button>
           </h5>
         </div>
     
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            <ul class="list-group list-group-flash">
+              <li class="list-group-item" *ngFor="let stage of this.trip.stages; let i = index">
+                
+                <div id="accordionTwo">
+                  <div class="">
+                    <div class="" id="headingTwo">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                          {{stage.title}}
+                        </button>
+                      </h5>
+                    </div>
+                
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionTwo">
+                      <div class="card-body">       
+                            <p class="text-muted">{{stage.description}}</p>
+                            <h6 class="The-explorer-2-hex">{{'trip.price' | translate}}: <span class="ml-1">{{stage.price}}&euro;</span></h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div id="accordionThree">
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              {{'trip.requeriments' | translate}}
+            </button>
+          </h5>
+        </div>
+    
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionThree">
           <div class="card-body">
             <ul class="list-group list-group-flash">
               <li class="list-group-item" *ngFor="let requeriment of this.trip.requeriments; let i = index">

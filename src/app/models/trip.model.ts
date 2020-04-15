@@ -12,6 +12,12 @@ export class Trip extends Entity {
     pictures: string[];
     manager: string;
     // TODO: add Stages schema
+    stages: [{
+        _id: string,
+        title: string,
+        description: string,
+        price: number,
+    }];
     isPublished: Boolean;
     reasonCancel: string;
 
