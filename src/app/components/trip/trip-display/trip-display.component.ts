@@ -29,8 +29,25 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   ngOnInit() {
     // Recover id param
     this.id = this.route.snapshot.params['id'];
-    // recover item
-    this.tripService.getTrip(this.id)
+    // console.log('id trip: ' + this.id);
+    const param = this.route.snapshot.params['paramKey'];
+    // console.log('param: ' + param);
+
+    if (param === 'application') {
+      // recover item from _id
+      this.tripService.getTripById(this.id)
+      .then((trip) => {
+        // console.log(trip);
+        this.trip = trip;
+        this.pictures = this.trip.pictures;
+        // console.log('trip detail: ' + this.trip.ticker);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    } else {
+      // recover item from SKU
+      this.tripService.getTrip(this.id)
       .then((trip) => {
         console.log(trip);
         this.trip = trip;
@@ -40,6 +57,8 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
       .catch((err) => {
         console.error(err);
       });
+    }
+    
   }
 
   getPicture(id: number) {

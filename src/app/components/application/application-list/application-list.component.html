@@ -19,12 +19,15 @@
       <th>
           <mfDefaultSorter by="reasonCancel">Reason Cancel</mfDefaultSorter>
       </th>
-      <th>
-          <mfDefaultSorter by="explorer">Explorer</mfDefaultSorter>
-      </th>
+      
       <th>
           <mfDefaultSorter by="trip">Trip</mfDefaultSorter>
       </th>
+
+      <!-- <th>
+        <mfDefaultSorter by="explorer">Explorer</mfDefaultSorter>
+      </th>
+ -->
   </tr>
   </thead>
   <tbody>
@@ -33,8 +36,18 @@
       <td>{{item.status}}</td>
       <td>{{item.comment}}</td>
       <td>{{item.reasonCancel}}</td>
-      <td>{{item.explorer}}</td>
-      <td>{{item.trip}}</td>
+      
+      <td><!-- {{item.trip}} -->
+        <a *ngIf="!this.authService.checkRole('ADMINISTRATOR')"            
+            [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
+            class="btn btn-primary pull-left">
+            <span class="fa fa-search-plus" aria-hidden="true"></span>
+            {{'trip.details' | translate}}
+        </a>
+      </td>
+
+      <!-- <td>{{item.explorer}}</td> -->
+
   </tr>
   </tbody>
   <tfoot>
