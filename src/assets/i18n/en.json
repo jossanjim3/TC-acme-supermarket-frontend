@@ -117,6 +117,12 @@
         "dt.comment" : "Comments",
         "dt.reasonCancel" : "Reason Cancel",
         "dt.trip" : "Trips",
-        "dt.createdAt" : "Created At"
+        "dt.createdAt" : "Created At",
+        "dt.details" : "DETAILS",
+        "dt.ticker" : "Ticker",
+        "dt.start_date" : "Start Trip",
+        "dt.end_date" : "End Trip",
+        "dt.price" : "Price",
+        "dt.title" : "Destiny"
     }
 }

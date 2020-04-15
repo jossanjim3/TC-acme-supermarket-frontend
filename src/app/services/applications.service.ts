@@ -24,9 +24,9 @@ export class ApplicationsService {
     if (actorData !== null) {
       // console.log('actorData ngOnInit: ' + actorData);
       const userId = actorData._id;
-      console.log('userId: ' + userId);
+      // console.log('userId: ' + userId);
       url = `${environment.backendApiBaseURL}/v1/applications/users/${userId}`;
-      console.log('url: ' + url);
+      // console.log('url: ' + url);
 
     } else {
       this.messageService.notifyMessage('errorrrrrrrrr pacoooooo', 'alert alert-success');

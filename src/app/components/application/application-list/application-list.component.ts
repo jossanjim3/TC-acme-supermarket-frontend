@@ -5,6 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ApplicationsService } from 'src/app/services/applications.service';
 import { Application } from 'src/app/models/application.model';
+import { forEach } from '@angular/router/src/utils/collection';
+import { TripService } from 'src/app/services/trip.service';
+import { Trip } from 'src/app/models/trip.model';
 
 @Component({
   selector: 'app-application-list',
@@ -13,10 +16,11 @@ import { Application } from 'src/app/models/application.model';
 })
 export class ApplicationListComponent extends TranslatableComponent implements OnInit {
 
-  data: Application[];
+  data: any[] = [];
+  tripAux: Trip = null;
 
   constructor(private applicatioService: ApplicationsService, private translateService: TranslateService, private authService: AuthService,
-    private router: Router, private route: ActivatedRoute) {
+    private router: Router, private route: ActivatedRoute, private tripService: TripService) {
     super(translateService);
 
   }
@@ -27,6 +31,15 @@ export class ApplicationListComponent extends TranslatableComponent implements O
 
     // get all my applications
     this.data = await this.applicatioService.getApplications();
+    // console.log('data:' + this.data);
+    for (const d of this.data ) {
+      // console.log('d: ' + d._id);
+      // console.log('d trip: ' + d.trip);
+      this.tripAux = await this.tripService.getTripById(d.trip);
+      d.tripObj = this.tripAux;
+      // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+
+    }
 
     /* this.applicatioService.getApplications()
     .then((applis) => {

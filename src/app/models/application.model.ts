@@ -20,6 +20,11 @@ export class Application extends Entity {
         type: String,
     };
 
+    // solo usado en el cliente
+    tripObj: {
+        type: Trip,
+    }
+
     constructor() {
         super();
     }

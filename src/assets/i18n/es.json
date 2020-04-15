@@ -117,6 +117,12 @@
         "dt.comment" : "Comentarios",
         "dt.reasonCancel" : "Motivo Cancelación",
         "dt.trip" : "Viajes",
-        "dt.createdAt" : "Fecha Creación"
+        "dt.createdAt" : "Fecha Creación",
+        "dt.details" : "DETALLES",
+        "dt.ticker" : "Ticker",
+        "dt.start_date" : "Inicio Viaje",
+        "dt.end_date" : "Fin Viaje",
+        "dt.price" : "Precio",
+        "dt.title" : "Destino"
     }
 }

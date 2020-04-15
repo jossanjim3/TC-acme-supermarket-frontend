@@ -21,7 +21,7 @@ export class TripService {
     return this.http.get<Trip>(url).toPromise();
   }
 
-  getTripById(id: string) {
+  async getTripById(id: string) {
     const url = `${environment.backendApiBaseURL}/v1/trips/id/${id}`;
     return this.http.get<Trip>(url).toPromise();
   }
