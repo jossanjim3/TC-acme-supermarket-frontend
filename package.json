@@ -23,6 +23,7 @@
     "@angular/router": "^6.1.0",
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
+    "angular-6-datatable": "^0.8.0",
     "angular-datatables": "^9.0.1",
     "angularfire2": "^5.0.2",
     "bootstrap": "^4.1.3",
