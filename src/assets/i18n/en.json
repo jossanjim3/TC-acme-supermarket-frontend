@@ -116,6 +116,7 @@
         "dt.status" : "Status",
         "dt.comment" : "Comments",
         "dt.reasonCancel" : "Reason Cancel",
-        "dt.trip" : "Trips"
+        "dt.trip" : "Trips",
+        "dt.createdAt" : "Created At"
     }
 }

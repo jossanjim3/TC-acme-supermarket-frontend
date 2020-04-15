@@ -116,6 +116,7 @@
         "dt.status" : "Estado",
         "dt.comment" : "Comentarios",
         "dt.reasonCancel" : "Motivo Cancelación",
-        "dt.trip" : "Viajes"
+        "dt.trip" : "Viajes",
+        "dt.createdAt" : "Fecha Creación"
     }
 }

@@ -11,6 +11,9 @@
           <mfDefaultSorter by="_id">ID</mfDefaultSorter>
       </th>
       <th>
+        <mfDefaultSorter by="createdAt">{{'application.dt.createdAt' | translate}}</mfDefaultSorter>
+      </th>
+      <th>
           <mfDefaultSorter by="status">{{'application.dt.status' | translate}}</mfDefaultSorter>
       </th>
       <th>
@@ -33,6 +36,7 @@
   <tbody>
   <tr *ngFor="let item of mf.data">
       <td>{{item._id}}</td>
+      <td>{{item.createdAt | date:'mm/dd/yyyy h:mm a' }}</td>
       <td>{{item.status}}</td>
       <td>{{item.comment}}</td>
       <td>{{item.reasonCancel}}</td>
