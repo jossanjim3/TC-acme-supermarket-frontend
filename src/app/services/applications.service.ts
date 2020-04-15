@@ -15,11 +15,32 @@ export class ApplicationsService {
     private http: HttpClient, private authService: AuthService, private messageService: MessageService) {
   }
 
-  getApplications() {
+  // usamos funciones async porque se llaman unas a las otras y asi no da error
+  async getApplications() {
     let url = '';
-     url = `${environment.backendApiBaseURL}/v1/applications`;
+    // url = `${environment.backendApiBaseURL}/v1/applications`;
 
-    /* this.authService.getCurrentActor()
+    const actorData = await this.authService.getCurrentActor();
+    if (actorData !== null) {
+      // console.log('actorData ngOnInit: ' + actorData);
+      const userId = actorData._id;
+      console.log('userId: ' + userId);
+      url = `${environment.backendApiBaseURL}/v1/applications/users/${userId}`;
+      console.log('url: ' + url);
+
+    } else {
+      this.messageService.notifyMessage('errorrrrrrrrr pacoooooo', 'alert alert-success');
+
+    }
+
+    return this.http.get<Application[]>(url).toPromise();
+  }
+
+  /* getApplications() {
+    let url = '';
+    // url = `${environment.backendApiBaseURL}/v1/applications`;
+
+    this.authService.getCurrentActor()
       .then( (actorData: Actor) => {
         // console.log('actorData subscribe ngOnInit: ' + actorData);
 
@@ -29,15 +50,15 @@ export class ApplicationsService {
           console.log('userId: ' + userId);
           url = `${environment.backendApiBaseURL}/v1/applications/users/${userId}`;
           console.log('url: ' + url);
+          return this.http.get<Application[]>(url).toPromise();
         }
 
       })
     .catch( (err) => {
       console.log(err);
       this.messageService.notifyMessage(err, 'alert alert-success');
-    }); */
-
+    });
     return this.http.get<Application[]>(url).toPromise();
-  }
+  } */
 
 }

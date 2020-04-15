@@ -21,18 +21,21 @@ export class ApplicationListComponent extends TranslatableComponent implements O
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    // usamos funciones async porque se llaman unas a otras y asi funciona
 
     // get all my applications
-    // TODO ahora mismo el servicio trae todas las applications para que haya mas datos
-    this.applicatioService.getApplications()
+    this.data = await this.applicatioService.getApplications();
+
+    /* this.applicatioService.getApplications()
     .then((applis) => {
-      console.log(applis);
+      console.log('applis: ' + applis);
       this.data = applis;
     })
     .catch((err) => {
       console.error(err.message);
-    });
+    }); */
 
   }
 
