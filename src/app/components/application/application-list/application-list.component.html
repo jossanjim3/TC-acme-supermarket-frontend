@@ -65,7 +65,8 @@
       <td *ngIf="item.tripObj !== undefined" >{{item.tripObj.price}}</td>
 
       <td class="completo">{{item.status}}
-        <a *ngIf="!this.authService.checkRole('ADMINISTRATOR')"            
+          <!-- boton editar -->
+        <a *ngIf="this.authService.checkRole('MANAGER')"            
             [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
             class="btn btn-primary btn-application">
             <span class="fa fa-edit" aria-hidden="true"></span>
@@ -79,6 +80,7 @@
       <!-- <td>{{item.tripObj.ticker}}</td> -->
       
       <td>
+          <!-- boton detalle de viaje -->
         <a *ngIf="!this.authService.checkRole('ADMINISTRATOR')"            
             [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
             class="btn btn-primary btn-application">
