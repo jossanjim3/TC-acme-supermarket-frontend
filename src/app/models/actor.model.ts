@@ -13,4 +13,8 @@ export class Actor extends Entity {
     role: string[];
     customToken: string;
     idToken: string;
+
+    constructor() {
+        super();
+    }
 }

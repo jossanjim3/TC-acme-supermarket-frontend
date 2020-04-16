@@ -32,6 +32,7 @@ import { registerLocaleData } from '@angular/common';
 import locales from '@angular/common/locales/es';
 import { TripListComponent } from './components/trip/trip-list/trip-list.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ApplicationListComponent } from './components/application/application-list/application-list.component';
 import { SponsorListComponent } from './components/sponsor/sponsor-list/sponsor-list.component';
 import { SponsorDisplayComponent } from './components/sponsor/sponsor-display/sponsor-display.component';
 
@@ -71,6 +72,7 @@ export const firebaseConfig = {
     MessageComponent,
     LocalizedDataPipe,
     TripListComponent,
+    ApplicationListComponent,
     SponsorListComponent,
     SponsorDisplayComponent
   ],
@@ -91,7 +93,8 @@ export const firebaseConfig = {
     }),
     AppRoutingModule,
     // tslint:disable-next-line: deprecation
-    HttpModule
+    HttpModule,
+    DataTableModule
   ],
   exports: [AppRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

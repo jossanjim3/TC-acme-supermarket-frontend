@@ -11,6 +11,8 @@ import { DeniedAccessPageComponent } from './components/shared/denied-access-pag
 import { ActorRoleGuard } from './guards/actor-role.guard';
 import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
 import { TripListComponent } from './components/trip/trip-list/trip-list.component';
+import { ApplicationDisplayComponent } from './components/application/application-display/application-display.component';
+import { ApplicationListComponent } from './components/application/application-list/application-list.component';
 import { SponsorListComponent } from './components/sponsor/sponsor-list/sponsor-list.component';
 import { SponsorDisplayComponent } from './components/sponsor/sponsor-display/sponsor-display.component';
 
@@ -22,14 +24,21 @@ const appRoutes: Routes = [
   // {path: 'register', component: RegisterComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'anonymous'}},
   {path: 'register', component: RegisterComponent},
   {path: 'profile/edit', component: EditProfileComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
+
   {path: 'trips', children: [
     {path: 'search', component: TripListComponent},
     {path: 'display/:id', component: TripDisplayComponent},
-    {path: 'trips-applies', component: TripListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
-    {path: 'trips-created', component: TripListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
-    {path: 'trips-new', component: TripListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
     {path: '', component: TripListComponent},
   ]},
+
+  {path: 'trips-applies', children: [
+    {path: 'display/:id', component: ApplicationDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
+    {path: '', component: ApplicationListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
+  ]},
+
+  {path: 'trips-created', component: TripListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
+  {path: 'trips-new', component: TripListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
+
   {path: 'index', component: IndexComponent},
 
   {path: 'datawarehouse', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},

@@ -1,0 +1,105 @@
+<div class="card my-4">
+  <div class="card-header">
+    <h3 class="card-title">{{'application.appli.applis' | translate}}</h3>
+  </div>
+</div>
+
+<table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+  <thead>
+  <tr>
+    <th>
+        <mfDefaultSorter by="_id">ID</mfDefaultSorter>
+    </th>
+
+    <th>
+        <mfDefaultSorter by="_id">{{'application.dt.title' | translate}}</mfDefaultSorter>
+    </th>
+
+    <th>
+        <mfDefaultSorter by="_id">{{'application.dt.ticker' | translate}}</mfDefaultSorter>
+    </th>
+
+    <th>
+        <mfDefaultSorter by="_id">{{'application.dt.start_date' | translate}}</mfDefaultSorter>
+    </th>
+
+    <th>
+        <mfDefaultSorter by="_id">{{'application.dt.end_date' | translate}}</mfDefaultSorter>
+    </th>
+
+    <th>
+        <mfDefaultSorter by="_id">{{'application.dt.price' | translate}}</mfDefaultSorter>
+    </th>
+    
+    <th>
+        <mfDefaultSorter by="status">{{'application.dt.status' | translate}}</mfDefaultSorter>
+    </th>
+    <th>
+        <mfDefaultSorter by="comment">{{'application.dt.comment' | translate}}</mfDefaultSorter>
+    </th>
+    <th>
+        <mfDefaultSorter by="reasonCancel">{{'application.dt.reasonCancel' | translate}}</mfDefaultSorter>
+    </th>
+    
+    <th>
+        <mfDefaultSorter by="trip">{{'application.dt.trip' | translate}}</mfDefaultSorter>
+    </th>
+
+    <th>
+    <mfDefaultSorter by="createdAt">{{'application.dt.createdAt' | translate}}</mfDefaultSorter>
+    </th>
+
+    <!-- <th>
+    <mfDefaultSorter by="explorer">Explorer</mfDefaultSorter>
+    </th>
+ -->
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of mf.data">
+      <td title="{{item._id}}">{{ item._id  | slice:-5 }} </td>    
+      <td *ngIf="item.tripObj !== undefined" class="completo" >{{item.tripObj.title}}</td> 
+      <td *ngIf="item.tripObj !== undefined" class="completo" >{{item.tripObj.ticker}}</td>  
+      <td *ngIf="item.tripObj !== undefined" class="completo" >{{item.tripObj.startDate | date:'dd/MM/yyyy h:mm a' }}</td>  
+      <td *ngIf="item.tripObj !== undefined" class="completo">{{item.tripObj.endDate | date:'dd/MM/yyyy h:mm a' }}</td>  
+      <td *ngIf="item.tripObj !== undefined" >{{item.tripObj.price}}</td>
+
+      <td class="completo">{{item.status}}
+          <!-- boton editar -->
+        <a *ngIf="this.authService.checkRole('MANAGER')"            
+            [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
+            class="btn btn-primary btn-application">
+            <span class="fa fa-edit" aria-hidden="true"></span>
+            <!-- {{'application.dt.edit' | translate}} -->
+        </a>
+      </td>
+
+      <td>{{item.comment}}</td>
+      <td>{{item.reasonCancel}}</td>
+      
+      <!-- <td>{{item.tripObj.ticker}}</td> -->
+      
+      <td>
+          <!-- boton detalle de viaje -->
+        <a *ngIf="!this.authService.checkRole('ADMINISTRATOR')"            
+            [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
+            class="btn btn-primary btn-application">
+            <span class="fa fa-search-plus" aria-hidden="true"></span> <br>
+            {{'application.dt.details' | translate}}
+        </a>
+      </td>
+
+      <td class="completo">{{item.createdAt | date:'dd/MM/yyyy h:mm a' }}</td>
+
+      <!-- <td>{{item.explorer}}</td> -->
+
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+      <td colspan="4">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+      </td>
+  </tr>
+  </tfoot>
+</table>
