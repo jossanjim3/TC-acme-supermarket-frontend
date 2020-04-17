@@ -35,6 +35,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ApplicationListComponent } from './components/application/application-list/application-list.component';
 import { SponsorListComponent } from './components/sponsor/sponsor-list/sponsor-list.component';
 import { SponsorDisplayComponent } from './components/sponsor/sponsor-display/sponsor-display.component';
+import { NewAuditComponent } from './components/audit/new-audit/new-audit.component';
+import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 
 registerLocaleData(locales, 'es');
 
@@ -74,7 +76,9 @@ export const firebaseConfig = {
     TripListComponent,
     ApplicationListComponent,
     SponsorListComponent,
-    SponsorDisplayComponent
+    SponsorDisplayComponent,
+    NewAuditComponent,
+    DisplayAuditComponent
   ],
   imports: [
     BrowserModule,
