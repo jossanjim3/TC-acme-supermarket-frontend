@@ -134,6 +134,7 @@
         "audit.createdAt": "Fecha Creación",
         "audit.new": "Crear",
         "audit.mylist": "Mis Auditorías",
-        "audit.details": "Viaje Detalles"
+        "audit.details": "Viaje Detalles",
+        "audit.edit": "Editar"
     }
 }

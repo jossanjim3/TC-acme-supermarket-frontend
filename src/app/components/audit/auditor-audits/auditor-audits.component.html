@@ -28,7 +28,11 @@
     </th>
 
     <th>
-      <mfDefaultSorter by="_id"></mfDefaultSorter>
+      <mfDefaultSorter by="_id">{{'audits.audit.details' | translate}}</mfDefaultSorter>
+    </th>
+
+    <th>
+      <mfDefaultSorter by="_id">{{'audits.audit.edit' | translate}}</mfDefaultSorter>
     </th>
 
   </tr>
@@ -50,6 +54,16 @@
             {{'audits.audit.details' | translate}}
         </a>
       </td>
+
+      <td>
+        <!-- boton editar audit -->
+      <a *ngIf="this.authService.checkRole('AUDITOR')"            
+          [routerLink]="['/audit/display/' + item._id]"
+          class="btn btn-primary btn-application completo">
+          <span class="fa fa-edit" aria-hidden="true"></span>
+          
+      </a>
+    </td>
 
   </tr>
   </tbody>

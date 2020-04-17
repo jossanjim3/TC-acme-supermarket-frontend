@@ -134,6 +134,7 @@
         "audit.createdAt": "Created At",
         "audit.new": "Create",
         "audit.mylist": "My Audits",
-        "audit.details": "Trip Details"
+        "audit.details": "Trip Details",
+        "audit.edit": "Edit"
     }
 }
