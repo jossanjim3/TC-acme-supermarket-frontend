@@ -17,6 +17,7 @@ import { SponsorListComponent } from './components/sponsor/sponsor-list/sponsor-
 import { SponsorDisplayComponent } from './components/sponsor/sponsor-display/sponsor-display.component';
 import { NewAuditComponent } from './components/audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
+import { AuditorAuditsComponent } from './components/audit/auditor-audits/auditor-audits.component';
 
 const appRoutes: Routes = [
 
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
   {path: 'audit', children: [
     {path: 'new', component: NewAuditComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'auditor'}},
     {path: 'display/:id', component: DisplayAuditComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'auditor'}},
+    {path: '', component: AuditorAuditsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'auditor'}},
   ]},
 
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},

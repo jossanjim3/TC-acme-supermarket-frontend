@@ -132,6 +132,8 @@
         "audit.title": "Title",
         "audit.atachment": "Atachment",
         "audit.createdAt": "Created At",
-        "audit.new": "Create"
+        "audit.new": "Create",
+        "audit.mylist": "My Audits",
+        "audit.details": "Trip Details"
     }
 }

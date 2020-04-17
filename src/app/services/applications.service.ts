@@ -29,7 +29,7 @@ export class ApplicationsService {
       // console.log('url: ' + url);
 
     } else {
-      this.messageService.notifyMessage('errorrrrrrrrr pacoooooo', 'alert alert-success');
+      this.messageService.notifyMessage('User null', 'alert alert-success');
 
     }
 

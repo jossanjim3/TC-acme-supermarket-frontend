@@ -132,6 +132,8 @@
         "audit.title": "Título",
         "audit.atachment": "Otros",
         "audit.createdAt": "Fecha Creación",
-        "audit.new": "Crear"
+        "audit.new": "Crear",
+        "audit.mylist": "Mis Auditorías",
+        "audit.details": "Viaje Detalles"
     }
 }
