@@ -1,4 +1,5 @@
 import { Entity } from './entity.model';
+import { Audit } from './audit.model';
 
 export class Trip extends Entity {
     _id: string;
@@ -20,6 +21,8 @@ export class Trip extends Entity {
     }];
     isPublished: Boolean;
     reasonCancel: string;
+
+    auditObj: Audit;
 
     constructor() {
         super();

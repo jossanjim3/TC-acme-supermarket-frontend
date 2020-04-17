@@ -16,7 +16,7 @@ export class TripService {
     private http: HttpClient) {
   }
 
-  getTrip(id: string) {
+  async getTrip(id: string) {
     const url = `${environment.backendApiBaseURL}/v1/trips/${id}`;
     return this.http.get<Trip>(url).toPromise();
   }

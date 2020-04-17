@@ -162,26 +162,26 @@
                 <tbody>
                   <tr>
                     <td class="first-column-audit">{{'audits.audit.title' | translate}}</td>
-                    <td>Doe</td>
+                    <td *ngIf="trip.auditObj !== undefined">{{trip.auditObj.title}}</td>
                   </tr>
                   <tr>
                     <td class="first-column-audit">{{'audits.audit.description' | translate}}</td>
-                    <td>Moe</td>
+                    <td *ngIf="trip.auditObj !== undefined">{{trip.auditObj.description}}</td>
                   </tr>
                   <tr>
                     <td class="first-column-audit">{{'audits.audit.atachment' | translate}}</td>
-                    <td>Dooley</td>
+                    <td *ngIf="trip.auditObj !== undefined">{{trip.auditObj.atachment}}</td>
                   </tr>
                   <tr>
                     <td class="first-column-audit">{{'audits.audit.createdAt' | translate}}</td>
-                    <td>Dooley</td>
+                    <td *ngIf="trip.auditObj !== undefined">{{trip.auditObj.createdAt | date:'dd/MM/yyyy h:mm a' }}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
             <!-- boton nuevo audit -->
-            <a *ngIf="this.authService.checkRole('AUDITOR')"            
+            <a *ngIf="this.authService.checkRole('AUDITOR') && trip.auditObj === undefined"           
               [routerLink]="['/trips/display/' + trip._id, {'paramKey': 'application'}]"
               class="btn btn-primary btn-application">
               <span class="fa fa-plus-square-o" aria-hidden="true"></span>

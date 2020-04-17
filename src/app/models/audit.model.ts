@@ -1,6 +1,6 @@
 import { Entity } from './entity.model';
 
-export class Application extends Entity {
+export class Audit extends Entity {
     _id: string;
     title:  {
         type: String,
