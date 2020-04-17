@@ -125,5 +125,9 @@
         "dt.price" : "Price",
         "dt.title" : "Destiny",
         "dt.edit" : "edit"
+    },
+    "audits": {        
+        "audit.title": "Audits",
+        "audit.description": "Description"
     }
 }

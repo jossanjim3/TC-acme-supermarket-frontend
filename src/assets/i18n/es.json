@@ -125,5 +125,9 @@
         "dt.price" : "Precio",
         "dt.title" : "Destino",
         "dt.edit" : "editar"
+    },
+    "audits": {        
+        "audit.title": "Auditorías",
+        "audit.description": "Descrripcion"
     }
 }
