@@ -127,7 +127,11 @@
         "dt.edit" : "edit"
     },
     "audits": {        
-        "audit.title": "Audits",
-        "audit.description": "Description"
+        "audit.audits": "Audits",
+        "audit.description": "Description",
+        "audit.title": "Title",
+        "audit.atachment": "Atachment",
+        "audit.createdAt": "Created At",
+        "audit.new": "Create"
     }
 }

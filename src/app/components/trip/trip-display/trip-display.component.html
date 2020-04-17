@@ -148,18 +148,46 @@
         <div class="card-header" id="headingAudit">
           <h5 class="mb-0">
             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseAudit" aria-expanded="false" aria-controls="collapseAudit">
-              {{'audits.audit.title' | translate}}
+              {{'audits.audit.audits' | translate}}
             </button>
           </h5>
         </div>
     
         <div id="collapseAudit" class="collapse" aria-labelledby="headingAudit" data-parent="#accordionAudit">
           <div class="card-body">
-            <ul class="list-group list-group-flash">
-              <li class="list-group-item" *ngFor="let requeriment of this.trip.requeriments; let i = index">
-                <p>{{requeriment}}</p>
-              </li>
-            </ul>
+            
+            <div *ngIf="trip.auditObj !== undefined">
+              <!-- table audits -->
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <td class="first-column-audit">{{'audits.audit.title' | translate}}</td>
+                    <td>Doe</td>
+                  </tr>
+                  <tr>
+                    <td class="first-column-audit">{{'audits.audit.description' | translate}}</td>
+                    <td>Moe</td>
+                  </tr>
+                  <tr>
+                    <td class="first-column-audit">{{'audits.audit.atachment' | translate}}</td>
+                    <td>Dooley</td>
+                  </tr>
+                  <tr>
+                    <td class="first-column-audit">{{'audits.audit.createdAt' | translate}}</td>
+                    <td>Dooley</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- boton nuevo audit -->
+            <a *ngIf="this.authService.checkRole('AUDITOR')"            
+              [routerLink]="['/trips/display/' + trip._id, {'paramKey': 'application'}]"
+              class="btn btn-primary btn-application">
+              <span class="fa fa-plus-square-o" aria-hidden="true"></span>
+              {{'audits.audit.new' | translate}}
+            </a>
+            
           </div>
         </div>
       </div>
