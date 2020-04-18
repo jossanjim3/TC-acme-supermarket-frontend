@@ -37,6 +37,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { from } from 'rxjs';
 import { AuditorAuditsComponent } from '../auditor-audits/auditor-audits.component';
+import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
 
 describe('AuditorAuditsComponent', () => {
   let component: NewAuditComponent;
@@ -64,6 +65,7 @@ describe('AuditorAuditsComponent', () => {
         TripDisplayComponent,
         SponsorListComponent,
         SponsorDisplayComponent,
+        DashboardComponent,
         NewAuditComponent,
         AuditorAuditsComponent,
         DisplayAuditComponent

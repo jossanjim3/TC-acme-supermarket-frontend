@@ -38,6 +38,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { DataTableModule } from 'angular-6-datatable';
 import { ActivatedRoute } from '@angular/router';
 import { from } from 'rxjs';
+import { DashboardComponent } from '../components/admin/dashboard/dashboard.component';
 
 describe('ActorRoleGuard', () => {
   beforeEach(() => {
@@ -64,6 +65,7 @@ describe('ActorRoleGuard', () => {
         TripListComponent,
         TripDisplayComponent,
         SponsorListComponent,
+        DashboardComponent,
         SponsorDisplayComponent,
         NewAuditComponent,
         AuditorAuditsComponent,

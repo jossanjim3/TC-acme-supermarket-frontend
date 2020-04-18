@@ -32,6 +32,14 @@ import { ActorService } from 'src/app/services/actor.service';
 import { TripService } from 'src/app/services/trip.service';
 import { from } from 'rxjs';
 import { Trip } from 'src/app/models/trip.model';
+import { ApplicationListComponent } from '../../application/application-list/application-list.component';
+import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
+import { SponsorListComponent } from '../../sponsor/sponsor-list/sponsor-list.component';
+import { SponsorDisplayComponent } from '../../sponsor/sponsor-display/sponsor-display.component';
+import { NewAuditComponent } from '../../audit/new-audit/new-audit.component';
+import { DisplayAuditComponent } from '../../audit/display-audit/display-audit.component';
+import { AuditorAuditsComponent } from '../../audit/auditor-audits/auditor-audits.component';
+import { DataTableModule } from 'angular-6-datatable';
 
 describe('TripListComponent', () => {
   let component: TripListComponent;
@@ -60,6 +68,13 @@ describe('TripListComponent', () => {
         NotFoundPageComponent,
         TermsAndConditionsComponent,
         TripListComponent,
+        ApplicationListComponent,
+        DashboardComponent,
+        SponsorListComponent,
+        SponsorDisplayComponent,
+        NewAuditComponent,
+        DisplayAuditComponent,
+        AuditorAuditsComponent,
         DeniedAccessPageComponent,
         MessageComponent,
         LocalizedDataPipe
@@ -70,6 +85,7 @@ describe('TripListComponent', () => {
         InfiniteScrollModule,
         ReactiveFormsModule,
         HttpClientModule,
+        DataTableModule,
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,

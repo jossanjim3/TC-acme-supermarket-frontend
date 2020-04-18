@@ -29,6 +29,17 @@ import { TripService } from 'src/app/services/trip.service';
 import { TripListComponent } from '../trip-list/trip-list.component';
 import { DeniedAccessPageComponent } from '../../shared/denied-access-page/denied-access-page.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ApplicationListComponent } from '../../application/application-list/application-list.component';
+import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
+import { SponsorListComponent } from '../../sponsor/sponsor-list/sponsor-list.component';
+import { SponsorDisplayComponent } from '../../sponsor/sponsor-display/sponsor-display.component';
+import { NewAuditComponent } from '../../audit/new-audit/new-audit.component';
+import { DisplayAuditComponent } from '../../audit/display-audit/display-audit.component';
+import { AuditorAuditsComponent } from '../../audit/auditor-audits/auditor-audits.component';
+import { DataTableModule } from 'angular-6-datatable';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { ActorService } from 'src/app/services/actor.service';
 
 registerLocaleData(locales, 'es');
 
@@ -77,6 +88,13 @@ describe('TripDisplayComponent', () => {
         TermsAndConditionsComponent,
         TripListComponent,
         DeniedAccessPageComponent,
+        ApplicationListComponent,
+        DashboardComponent,
+        SponsorListComponent,
+        SponsorDisplayComponent,
+        NewAuditComponent,
+        DisplayAuditComponent,
+        AuditorAuditsComponent,
         MessageComponent,
         LocalizedDataPipe
       ],
@@ -86,6 +104,17 @@ describe('TripDisplayComponent', () => {
         InfiniteScrollModule,
         ReactiveFormsModule,
         HttpClientModule,
+        DataTableModule,
+        AngularFireModule.initializeApp({
+          apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+          authDomain: 'acme-viaje-el-corte-andaluh.firebaseapp.com',
+          databaseURL: 'https://acme-viaje-el-corte-andaluh.firebaseio.com',
+          projectId: 'acme-viaje-el-corte-andaluh',
+          storageBucket: 'acme-viaje-el-corte-andaluh.appspot.com',
+          messagingSenderId: '785752393006',
+          appId: '1:785752393006:web:b3ba408388312107d6e6bf',
+          measurementId: 'G-ZKX46KJLB8'
+        }),
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
@@ -98,6 +127,7 @@ describe('TripDisplayComponent', () => {
       providers: [
         {provide: APP_BASE_HREF, useValue: '/'},
         {provide: ActivatedRoute, useValue: mockActivatedRoute},
+        AngularFireAuth, ActorService,
       ],
     })
     .compileComponents();

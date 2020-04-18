@@ -40,6 +40,7 @@ import { SponsorListComponent } from '../../sponsor/sponsor-list/sponsor-list.co
 import { SponsorDisplayComponent } from '../../sponsor/sponsor-display/sponsor-display.component';
 import { NewAuditComponent } from '../../audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from '../../audit/display-audit/display-audit.component';
+import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
 
 describe('ApplicationListComponent', () => {
   let component: ApplicationListComponent;
@@ -74,6 +75,7 @@ describe('ApplicationListComponent', () => {
         TripDisplayComponent,
         SponsorListComponent,
         SponsorDisplayComponent,
+        DashboardComponent,
         NewAuditComponent,
         AuditorAuditsComponent,
         DisplayAuditComponent
