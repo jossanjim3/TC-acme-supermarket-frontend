@@ -1,0 +1,137 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <h4 class=""><span>{{'dashboard.dashboard' | translate}}</span> - Datawarehouse</h4>
+  </div>
+</div>
+
+<div class="card-deck mb-3">
+  <!-- Trips managed per manager -->
+  <div class="card mx-auto mt-4">
+    <div class="card-header">
+      <h5>{{'dashboard.tripspermanager' | translate}}</h5>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flash">
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.average' | translate}}</span>: <span *ngIf="this.tripsPerManager != null">{{this.tripsPerManager.average}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.minimum' | translate}}</span>: <span *ngIf="this.tripsPerManager != null">{{this.tripsPerManager.min}}</span>  </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.maximum' | translate}}</span>: <span *ngIf="this.tripsPerManager != null">{{this.tripsPerManager.max}}</span>  </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.stdev' | translate}}</span>: <span *ngIf="this.tripsPerManager != null">{{this.tripsPerManager.stdev}}</span>  </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Applications per trip -->
+  <div class="card mx-auto mt-4">
+    <div class="card-header">
+      <h5>{{'dashboard.applicationspertrip' | translate}}</h5>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flash">
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.average' | translate}}</span>: <span *ngIf="this.applicationsPerTrip != null">{{this.applicationsPerTrip.average}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.minimum' | translate}}</span>: <span *ngIf="this.applicationsPerTrip != null">{{this.applicationsPerTrip.min}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.maximum' | translate}}</span>: <span *ngIf="this.applicationsPerTrip != null">{{this.applicationsPerTrip.max}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name"> {{'dashboard.stdev' | translate}}</span>: <span *ngIf="this.applicationsPerTrip != null">{{this.applicationsPerTrip.stdev}}</span></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Price of Trips -->
+
+  <div class="card mx-auto mt-4">
+    <div class="card-header">
+      <h5>{{'dashboard.priceoftrips' | translate}}</h5>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flash">
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.average' | translate}}</span>: <span *ngIf="this.priceOfTrip != null">{{this.priceOfTrip.average}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.minimum' | translate}}</span>: <span *ngIf="this.priceOfTrip != null">{{this.priceOfTrip.min}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.maximum' | translate}}</span>: <span *ngIf="this.priceOfTrip != null">{{this.priceOfTrip.max}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.stdev' | translate}}</span>: <span *ngIf="this.priceOfTrip != null">{{this.priceOfTrip.stdev}}</span></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Ratio Aplications-->
+  <div class="card mx-auto mt-4">
+    <div class="card-header">
+      <h5>{{'dashboard.ratioapplications' | translate}}</h5>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flash">
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.ratioapplications.total' | translate}}</span>: <span *ngIf="this.ratioApplications != null">{{this.ratioApplications.total}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.ratioapplications.ratio.pending' | translate}}</span>: <span *ngIf="this.ratioApplications != null">{{this.ratioApplications.ratioApplicationsPending}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.ratioapplications.ratio.rejected' | translate}}</span>: <span *ngIf="this.ratioApplications != null">{{this.ratioApplications.ratioApplicationsRejected}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.ratioapplications.ratio.due' | translate}}</span>: <span *ngIf="this.ratioApplications != null">{{this.ratioApplications.ratioApplicationsDue}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.ratioapplications.ratio.accepted' | translate}}</span>: <span *ngIf="this.ratioApplications != null">{{this.ratioApplications.ratioApplicationsAccepted}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.ratioapplications.ratio.cancelled' | translate}}</span>: <span *ngIf="this.ratioApplications != null">{{this.ratioApplications.ratioApplicationsCancelled}}</span> </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Average Price Range -->
+  <div class="card mx-auto mt-4">
+    <div class="card-header">
+      <h5>{{'dashboard.pricerangeexplorers' | translate}}</h5>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flash">
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.maxprice' | translate}}</span>: <span *ngIf="this.averagePriceRangeExplorers != null">{{this.averagePriceRangeExplorers.avgMaxPrice}}</span> </p>
+        </li>
+        <li class="list-group-item">
+          <p><span class="title-name">{{'dashboard.minprice' | translate}}</span>: <span *ngIf="this.averagePriceRangeExplorers != null">{{this.averagePriceRangeExplorers.avgMinPrice}}</span></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Top 10 Keyword -->
+  <div class="card mx-auto mt-4">
+    <div class="card-header">
+      <h5>{{'dashboard.top10keywords' | translate}}</h5>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flash">
+        <li class="list-group-item" *ngFor="let e of datawarehouse.Top10keywords">
+          <p><span class="title-name">{{e.keyword}}</span>: {{e.count}} </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

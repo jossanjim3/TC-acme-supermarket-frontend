@@ -58,7 +58,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
         console.error(err);
       });
     }
-    
+
   }
 
   getPicture(id: number) {

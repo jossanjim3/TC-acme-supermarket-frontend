@@ -125,5 +125,26 @@
         "dt.price" : "Price",
         "dt.title" : "Destiny",
         "dt.edit" : "edit"
+    },
+    "dashboard": {
+        "dashboard": "Dashboard",
+        "tripspermanager": "Trips managed per Manager",
+        "applicationspertrip": "Applications per trip",
+        "priceoftrips": "Price of trips",
+        "ratioapplications": "Ratio Applications",
+        "pricerangeexplorers": "Price Range Explorers",
+        "top10keywords": "Top 10 Keywords",
+        "average":  "Average",
+        "minimum": "Minimum",
+        "maximum": "Maximum",
+        "stdev": "Standar Deviation",
+        "minprice": "Minimum Price",
+        "maxprice": "Maximum Price",
+        "ratioapplications.total": "Total",
+        "ratioapplications.ratio.pending": "Ratio Pending",
+        "ratioapplications.ratio.rejected": "Ratio Rejected",
+        "ratioapplications.ratio.due": "Ratio Due",
+        "ratioapplications.ratio.accepted": "Ratio Accepted",
+        "ratioapplications.ratio.cancelled": "Ratio Cancelled"
     }
 }

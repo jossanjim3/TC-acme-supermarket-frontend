@@ -125,5 +125,26 @@
         "dt.price" : "Precio",
         "dt.title" : "Destino",
         "dt.edit" : "editar"
+    },
+    "dashboard": {
+        "dashboard": "Cuadro de mando",
+        "tripspermanager": "Viajes por Manager",
+        "applicationspertrip": "Aplicaciones por viajes",
+        "priceoftrips": "Precio de viajes",
+        "ratioapplications": "Ratio de aplicaciones",
+        "pricerangeexplorers": "Rango de precio Explorers",
+        "top10keywords": "Top 10 palabras clave",
+        "average":  "Media",
+        "minimum": "Mínimo",
+        "maximum": "Máximo",
+        "stdev": "Desviación estandar",
+        "minprice": "Precio minimo",
+        "maxprice": "Precio maximo",
+        "ratioapplications.total": "Total",
+        "ratioapplications.ratio.pending": "Ratio Pendiente",
+        "ratioapplications.ratio.rejected": "Ratio Rechazada",
+        "ratioapplications.ratio.due": "Ratio sin cobrar",
+        "ratioapplications.ratio.accepted": "Ratio Aceptadas",
+        "ratioapplications.ratio.cancelled": "Ratio Canceladas"
     }
 }

@@ -15,6 +15,7 @@ import { ApplicationDisplayComponent } from './components/application/applicatio
 import { ApplicationListComponent } from './components/application/application-list/application-list.component';
 import { SponsorListComponent } from './components/sponsor/sponsor-list/sponsor-list.component';
 import { SponsorDisplayComponent } from './components/sponsor/sponsor-display/sponsor-display.component';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
 
@@ -41,9 +42,9 @@ const appRoutes: Routes = [
 
   {path: 'index', component: IndexComponent},
 
-  {path: 'datawarehouse', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
+  {path: 'datawarehouse', component: DashboardComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'olap-cube', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
-  {path: 'new-manager', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
+  {path: 'new-manager', component: RegisterComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
 
   {path: 'sponsor', children: [
     {path: 'list', component: SponsorListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'sponsor'}},
