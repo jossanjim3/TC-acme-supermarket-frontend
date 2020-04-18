@@ -28,6 +28,16 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { AppRoutingModule } from '../app-routing.module';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { APP_BASE_HREF } from '@angular/common';
+import { ApplicationListComponent } from '../components/application/application-list/application-list.component';
+import { SponsorListComponent } from '../components/sponsor/sponsor-list/sponsor-list.component';
+import { SponsorDisplayComponent } from '../components/sponsor/sponsor-display/sponsor-display.component';
+import { NewAuditComponent } from '../components/audit/new-audit/new-audit.component';
+import { AuditorAuditsComponent } from '../components/audit/auditor-audits/auditor-audits.component';
+import { DisplayAuditComponent } from '../components/audit/display-audit/display-audit.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { DataTableModule } from 'angular-6-datatable';
+import { ActivatedRoute } from '@angular/router';
+import { from } from 'rxjs';
 
 describe('ActorRoleGuard', () => {
   beforeEach(() => {
@@ -37,7 +47,7 @@ describe('ActorRoleGuard', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        TripDisplayComponent,
+        ApplicationListComponent,
         HeaderComponent,
         TranslatableComponent,
         RegisterComponent,
@@ -48,10 +58,16 @@ describe('ActorRoleGuard', () => {
         ApplicationDisplayComponent,
         NotFoundPageComponent,
         TermsAndConditionsComponent,
-        TripListComponent,
         DeniedAccessPageComponent,
         MessageComponent,
-        LocalizedDataPipe
+        LocalizedDataPipe,
+        TripListComponent,
+        TripDisplayComponent,
+        SponsorListComponent,
+        SponsorDisplayComponent,
+        NewAuditComponent,
+        AuditorAuditsComponent,
+        DisplayAuditComponent
       ],
       imports: [
         BrowserModule,
@@ -59,6 +75,8 @@ describe('ActorRoleGuard', () => {
         InfiniteScrollModule,
         ReactiveFormsModule,
         HttpClientModule,
+        RouterTestingModule,
+        DataTableModule,
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
@@ -79,10 +97,12 @@ describe('ActorRoleGuard', () => {
         AppRoutingModule,
       ],
       providers: [
-        ActorRoleGuard,
         AngularFireAuth,
         ActorService,
-        {provide: APP_BASE_HREF, useValue: '/'}
+        {provide: APP_BASE_HREF, useValue: '/'},
+        {provide: ActivatedRoute, useValue: {
+          queryParams: from([{keyword: ''}]),
+        }},
       ]
     });
   });

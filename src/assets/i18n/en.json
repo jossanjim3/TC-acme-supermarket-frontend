@@ -126,6 +126,17 @@
         "dt.title" : "Destiny",
         "dt.edit" : "edit"
     },
+    "audits": {        
+        "audit.audits": "Audits",
+        "audit.description": "Description",
+        "audit.title": "Title",
+        "audit.atachment": "Atachment",
+        "audit.createdAt": "Created At",
+        "audit.new": "Create",
+        "audit.mylist": "My Audits",
+        "audit.details": "Trip Details",
+        "audit.edit": "Edit"
+    },
     "dashboard": {
         "dashboard": "Dashboard",
         "tripspermanager": "Trips managed per Manager",

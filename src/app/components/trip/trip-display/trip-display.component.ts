@@ -8,6 +8,8 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { MessageService } from 'src/app/services/message.service';
+import { AuditService } from 'src/app/services/audit.service';
+import { Audit } from 'src/app/models/audit.model';
 
 @Component({
   selector: 'app-trip-display',
@@ -19,23 +21,40 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   trip = new Trip();
   id: string;
   pictures: string[] = [];
+  auditAux: Audit[] = [];
 
-  constructor(private _sanitizer: DomSanitizer, private tripService: TripService,
+  constructor(private _sanitizer: DomSanitizer, private tripService: TripService, private auditService: AuditService,
     private translateService: TranslateService, private router: Router,
     private route: ActivatedRoute, private authService: AuthService, private messageService: MessageService) {
     super(translateService);
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     // Recover id param
     this.id = this.route.snapshot.params['id'];
     // console.log('id trip: ' + this.id);
     const param = this.route.snapshot.params['paramKey'];
     // console.log('param: ' + param);
 
+    // si viene del boton ver trip del datatable de applications
     if (param === 'application') {
       // recover item from _id
-      this.tripService.getTripById(this.id)
+      // console.log('this.id: ' + this.id);
+      // get all my applications
+      this.trip = await this.tripService.getTripById(this.id);
+      // console.log('trip:' + this.trip);
+
+      if (this.trip !== undefined && this.trip !== null) {
+        this.auditAux = await this.auditService.getTripAudits(this.id);
+
+        if (this.auditAux.length > 0) {
+          this.trip.auditObj = this.auditAux[0];
+          // console.log('this.trip.auditObj._id: ' + this.trip.auditObj._id);
+        }
+      }
+
+
+      /* this.tripService.getTripById(this.id)
       .then((trip) => {
         // console.log(trip);
         this.trip = trip;
@@ -44,10 +63,27 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
       })
       .catch((err) => {
         console.error(err);
-      });
+      }); */
+
+
     } else {
       // recover item from SKU
-      this.tripService.getTrip(this.id)
+
+      // console.log('this.id: ' + this.id);
+      // get all my applications
+      this.trip = await this.tripService.getTrip(this.id);
+      // console.log('trip:' + this.trip._id);
+
+      if (this.trip !== undefined && this.trip !== null) {
+        this.auditAux = await this.auditService.getTripAudits(this.trip._id);
+
+        if (this.auditAux.length > 0) {
+          this.trip.auditObj = this.auditAux[0];
+          // console.log('this.trip.auditObj._id: ' + this.trip.auditObj._id);
+        }
+      }
+
+      /* this.tripService.getTrip(this.id)
       .then((trip) => {
         console.log(trip);
         this.trip = trip;
@@ -56,7 +92,8 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
       })
       .catch((err) => {
         console.error(err);
-      });
+      }); */
+
     }
 
   }

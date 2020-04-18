@@ -126,6 +126,17 @@
         "dt.title" : "Destino",
         "dt.edit" : "editar"
     },
+    "audits": {        
+        "audit.audits": "Auditorías",
+        "audit.description": "Descripción",
+        "audit.title": "Título",
+        "audit.atachment": "Otros",
+        "audit.createdAt": "Fecha Creación",
+        "audit.new": "Crear",
+        "audit.mylist": "Mis Auditorías",
+        "audit.details": "Viaje Detalles",
+        "audit.edit": "Editar"
+    },
     "dashboard": {
         "dashboard": "Cuadro de mando",
         "tripspermanager": "Viajes por Manager",
