@@ -78,6 +78,12 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     }});
   }
 
+  displayTrip(trip: Trip) {
+    const a = new Date();
+    const startDate = new Date(trip.startDate);
+    return trip.isPublished && (startDate.getTime() >  a.getTime());
+  }
+
   // Functions to infinite scroll
 
   onScrollDown (ev) {

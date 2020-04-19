@@ -156,6 +156,12 @@
         <div id="collapseAudit" class="collapse" aria-labelledby="headingAudit" data-parent="#accordionAudit">
           <div class="card-body">
             
+            <!-- si no hay audit muestrmensaje -->
+            <div *ngIf="trip.auditObj === undefined">
+                <p>{{'audits.audit.no.audits' | translate}}</p>
+            </div>
+
+            <!-- si hay audit muestra tabla con 2 columnas -->
             <div *ngIf="trip.auditObj !== undefined">
               <!-- table audits -->
               <table class="table table-striped">
