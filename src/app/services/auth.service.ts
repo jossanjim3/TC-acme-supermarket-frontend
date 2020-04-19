@@ -4,6 +4,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { environment } from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { MessageService } from './message.service';
 
 // import { from } from 'rxjs';
 
@@ -17,8 +20,10 @@ const httpOptions = {
 export class AuthService implements OnInit {
 
   private currentActor: Actor;
+  userLoggedIn = new Subject();
 
-  constructor(private fireAuth: AngularFireAuth, private http: HttpClient) {
+  constructor(private fireAuth: AngularFireAuth, private http: HttpClient,
+    private router: Router, private route: ActivatedRoute, private messageService: MessageService) {
 
   }
 
@@ -46,6 +51,8 @@ export class AuthService implements OnInit {
         .then(_ => {
           this.currentActor = null;
           localStorage.removeItem('currentActor');
+          // console.log('logout auth service');
+          this.router.navigate(['/index', {name: 'LOGOUT'}]);
           resolve();
         }).catch(error => {
           reject(error);
@@ -63,9 +70,11 @@ export class AuthService implements OnInit {
         .then(res => {
           if (res) {
             this.currentActor = res;
-            console.log('actor: ' + res);
-            console.log('actor.name: ' + res.name);
+            // console.log('actor: ' + res);
+            // console.log('actor.name: ' + res.name);
             // console.log('customToken: '+res.customToken);
+            // this.userLoggedIn.next(true);
+            // this.messageService.notifyMessage('messages.auth.login.correct', 'alert alert-success');
             this.fireAuth.auth.signInWithCustomToken(res.customToken)
               .then(customToken => {
                 this.fireAuth.auth.currentUser.getIdToken()
@@ -74,12 +83,15 @@ export class AuthService implements OnInit {
                       res.idToken = token;
                       this.setCurrentActor(res);
                       this.change.emit();
+                      this.userLoggedIn.next(true);
+                      this.messageService.notifyMessage('messages.auth.login.correct', 'alert alert-success');
                       resolve(token);
                     }
                   );
               })
               .catch(error => {
                 console.log(error);
+                this.messageService.notifyMessage('messages.auth.login.failed', 'alert alert-danger');
                 reject(error);
               });
           } else {
@@ -93,7 +105,7 @@ export class AuthService implements OnInit {
     });
   }
 
-  registerUser(actor: Actor) {
+  /* registerUser(actor: Actor) {
     return new Promise<any>((resolve, reject) => {
       this.fireAuth.auth.createUserWithEmailAndPassword(actor.email, actor.password)
         .then(_ => {
@@ -108,9 +120,32 @@ export class AuthService implements OnInit {
             }, err => {
               reject(err);
             });
-          resolve();
+          // resolve();
         }).catch(error => {
           reject(error);
+        });
+    });
+  } */
+
+  registerUser(actor: Actor) {
+    return new Promise<any>((resolve, reject) => {
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
+      const url = `${environment.backendApiBaseURL + '/v1/actors'}`;
+      const body = JSON.stringify(actor);
+      this.http.post(url, body, httpOptions).toPromise()
+        .then(res => {
+          this.fireAuth.auth.createUserWithEmailAndPassword(actor.email, actor.password)
+            .then(_ => {
+              // Firebase registration was correct
+              resolve(res);
+            }).catch(error => {
+              reject(error);
+            });
+          // resolve(res);
+        }, err => {
+          this.messageService.notifyMessage('messages.auth.login.failed', 'alert alert-danger');
+          reject(err);
         });
     });
   }
@@ -123,6 +158,7 @@ export class AuthService implements OnInit {
     return new Promise<any>((resolve, reject) => {
       const currentActor = localStorage.getItem('currentActor');
       if (currentActor) {
+        this.currentActor = JSON.parse(currentActor).actor;
         resolve(JSON.parse(currentActor).actor);
       } else {
         resolve(null);
@@ -133,5 +169,17 @@ export class AuthService implements OnInit {
   getRoles(): string[] {
     return ['EXPLORER', 'MANAGER', 'ADMINISTRATOR', 'SPONSOR'];
   }
-}
 
+  checkRole(role: string) {
+    if ( this.currentActor !== undefined && this.currentActor != null) {
+      if (this.currentActor.role.includes(role)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+
+  }
+}

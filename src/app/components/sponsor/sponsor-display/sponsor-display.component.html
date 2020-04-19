@@ -1,0 +1,52 @@
+
+<br/>
+<br/>
+
+<div class="card mb-3">
+  
+  <div>
+    <h3 class="card-header The-explorer-2-hex">{{'sponsor.details' | translate}}</h3>
+    <button (click)="goBack()" class="btn btn-primary" style="float: right; margin-right: 1em; margin-top: -48px;">
+      {{'messages.back' | translate}}
+    </button>
+  </div>
+  
+  <div class="card-body">
+    
+    <img
+    class="card-img-top img-fluid mx-auto" style="width: 200px; display: block;"
+    src="https://i.ya-webdesign.com/images/image-not-available-png-3.png" alt="">
+    <!--
+    <img *ngIf="sponsorship.banner === undefined || sponsorship.banner == null || sponsorship.banner == ''"
+    class="card-img-top img-fluid mx-auto" style="width: 200px; display: block;"
+    src="https://i.ya-webdesign.com/images/image-not-available-png-3.png" alt="">
+    -->
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title The-explorer-4-hex">{{'sponsor.link' | translate}} </h5>
+    <h6 class="card-subtitle text-muted">{{this.sponsorship.link}}</h6>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{{'trip.trip' | translate}}</th>
+        <th>{{'sponsor.paid' | translate}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of tripSponsorship">
+        <td>{{row.trip}}</td>
+        <td><span [innerHTML]="isPaid(row.paid)"></span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br/>
+
+<a routerLink="/sponsor/{{this.id}}" class="btn btn-primary btn-lg mt-2 mb-4"
+          title="{{'edit' | translate}}">
+          <i class="fa fa-pencil" aria-hidden="true"></i> {{'sponsor.update' | translate}}
+</a>
+<br/>

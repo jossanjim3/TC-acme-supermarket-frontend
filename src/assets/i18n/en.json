@@ -35,14 +35,128 @@
         "visitors": "Visitor num.",
         "about": "About the company"
     },
+    "errorFound": {
+        "sorry": "Sorry, an error has occured, Requested page not found!",
+        "home": "Take Me Home",
+        "contact": "Contact Support"
+    },
+    "deniedAccess": {
+        "title": "Access Denied",
+        "text": "You do not have permission to access the document or program that you requested."
+    },
     "index": {
         "welcome": "Welcome",
         "acme": "to Acme Explorer!!"
     },
+    "sponsor": {
+        "sponsor": "Sponsor",
+        "list": "Sponsorships list",
+        "display": "Sponsorship display",
+        "details": "Sponsorship details",
+        "new": "New sponsorship",
+        "update": "Update sponsorship",
+        "delete": "Delete sponsorship",
+        "paid": "Paid",
+        "link": "Link"
+    },
     "trip": {
-        "trip": "Trip",
+        "trip": "Trips",
+        "trips.list": "All Trips",
+        "trips.list.applies": "Trips applied",
+        "trips.list.created": "Trips created",
+        "create.title": "New trip",
+        "details": "Trip details",
+        "edit": "Edit trip",
+        "new": "New trip",
+        "ticker": "Ticker",
+        "stages": "Stages",
+        "title": "Title",
+        "description": "Description",
         "startDate": "Start Date",
         "endDate": "End Date",
+        "filter": "Filter",
+        "price": "Price",
         "requeriments": "Requeriments"
+    },
+    "admin": {
+        "admin": "Administrator",
+        "datawarehouse": "Datawarehouse",
+        "olapcube": "OLAP Cube",
+        "register.manager": "New manager"
+    },
+    "messages": {
+        "auth.registration.correct": "The user {{username}} has been correctly registered",
+        "auth.logout": "The user has logged out from the app",
+        "auth.login.correct": "The user has been correctly logged in",
+        "auth.login.failed": "The user has not been correctly logged in",
+        "already.registered": "Already registered?",
+        "trip.deleted": "Trip successfully deleted",
+        "back": "Back",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "placeHolder": "Enter"
+    },
+    "errorMessages": {
+        "auth.user.not.found": "There is no user record corresponding to this identifier. The user may have been deleted.",
+        "auth.wrong.password": "The password is invalid or the user does no have a password.",
+        "auth.argument.error": "signInWithEmailAndPassword failed: First argument 'email' must be a valid string.",
+        "auth.invalid.email": "The email address is badly formatted.",
+        "auth.weak.password": "Password should be at least 6 characters long",
+        "auth.registration.failed": "Registration failed",
+        "auth.logout.failed": "Logout failed",
+        "denied.access.title": "Denied access",
+        "denied.access.message": "You don't have permission to access {{resource}} on this server",
+        "no.trips.found": "No trips found" 
+    },
+    "application": {
+        "appli.applis": "Applications",
+        "appli.apply": "Apply",
+        "appli.success" : "Application trip successfully!",
+        "appli.fail" : "Trip cannot be applied!",
+        "dt.status" : "Status",
+        "dt.comment" : "Comments",
+        "dt.reasonCancel" : "Reason Cancel",
+        "dt.trip" : "Trips",
+        "dt.createdAt" : "Created At",
+        "dt.details" : "DETAILS",
+        "dt.ticker" : "Ticker",
+        "dt.start_date" : "Start Trip",
+        "dt.end_date" : "End Trip",
+        "dt.price" : "Price",
+        "dt.title" : "Destiny",
+        "dt.edit" : "edit"
+    },
+    "audits": {        
+        "audit.audits": "Audits",
+        "audit.description": "Description",
+        "audit.title": "Title",
+        "audit.atachment": "Atachment",
+        "audit.createdAt": "Created At",
+        "audit.new": "Create",
+        "audit.mylist": "My Audits",
+        "audit.details": "Trip Details",
+        "audit.edit": "Edit"
+    },
+    "dashboard": {
+        "dashboard": "Dashboard",
+        "tripspermanager": "Trips managed per Manager",
+        "applicationspertrip": "Applications per trip",
+        "priceoftrips": "Price of trips",
+        "ratioapplications": "Ratio Applications",
+        "pricerangeexplorers": "Price Range Explorers",
+        "top10keywords": "Top 10 Keywords",
+        "average":  "Average",
+        "minimum": "Minimum",
+        "maximum": "Maximum",
+        "stdev": "Standar Deviation",
+        "minprice": "Minimum Price",
+        "maxprice": "Maximum Price",
+        "ratioapplications.total": "Total",
+        "ratioapplications.ratio.pending": "Ratio Pending",
+        "ratioapplications.ratio.rejected": "Ratio Rejected",
+        "ratioapplications.ratio.due": "Ratio Due",
+        "ratioapplications.ratio.accepted": "Ratio Accepted",
+        "ratioapplications.ratio.cancelled": "Ratio Cancelled"
     }
 }

@@ -35,14 +35,128 @@
         "visitors": "Num. Visitantes",
         "about": "Sobre la empresa"
     },
+    "errorFound": {
+        "sorry": "Lo sentimos, ha ocurrido un error inesperado, la página solicitada no existe!",
+        "home": "Ir a Inicio",
+        "contact": "Contacto"
+    },
+    "deniedAccess": {
+        "title": "Acceso Denegado",
+        "text": "No tienes permisos para acceder al documento o a la página solicitada."
+    },
     "index": {
         "welcome": "Bienvenido",
         "acme": "a Acme Explorer!!"
     },
+    "sponsor": {
+        "sponsor": "Patrocinador",
+        "list": "Lista de patrocinios",
+        "display": "Muestra de patrocinio",
+        "details": "Detalles del patrocinio",
+        "new": "Nuevo patrocinio",
+        "update": "Actualizar patrocinio",
+        "delete": "Borrar patrocinio",
+        "paid": "Pagado",
+        "link": "Enlace"
+    },
     "trip": {
-        "trip": "Viaje",
+        "trip": "Viajes",
+        "trips.list": "Todos los viajes",
+        "trips.list.applies": "Viajes solicitados",
+        "trips.list.created": "Viajes creados",
+        "create.title": "Nuevo viaje",
+        "details": "Detalles del viaje",
+        "edit": "Editar viaje",
+        "new": "Nuevo viaje",
+        "ticker": "Identificador",
+        "stages": "Etapas",
+        "title": "Titulo",
+        "description": "Descripción",
         "startDate": "Fecha inicio",
         "endDate": "Fecha fin",
+        "filter": "Filtro",
+        "price": "Precio",
         "requeriments": "Requisitos"
+    },
+    "admin": {
+        "admin": "Administrador",
+        "datawarehouse": "Datawarehouse",
+        "olapcube": "OLAP Cube",
+        "register.manager": "Nuevo manager"
+    },
+    "messages": {
+        "auth.registration.correct": "El usuario {{username}} ha sido registrado correctamente",
+        "auth.logout": "El usuario se ha desconectado correctamente",
+        "auth.login.correct": "El usuario ha entrado correctamente en la aplicación.",
+        "auth.login.failed": "El usuario no ha podido entrar en la aplicacioó.n",
+        "already.registered": "¿Ya está registrado?",
+        "trip.deleted": "Viaje eliminado correctamente",
+        "back": "Atrás",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "delete": "Eliminar",
+        "placeHolder": "Entrar"
+    },
+    "errorMessages": {
+        "auth.user.not.found": "No existe un registro asociado a estos datos. El usuario puede haber sido borrado.",
+        "auth.wrong.password": "La contraseña es inválida o el usuario no tiene contraseña.",
+        "auth.argument.error": "Fallo en el login: El campo 'Correo electrónico' debe ser una cadena válida.",
+        "auth.invalid.email": "La dirección de correo no tiene un formato correcto.",
+        "auth.weak.password": "La contraseña deberia de tener al menos 6 caracteres",
+        "auth.registration.failed": "Fallo en el registro",
+        "auth.logout.failed": "Fallo en la desconexión",
+        "denied.access.title": "Acceso denegado",
+        "denied.access.message": "No tiene permiso para acceder a {{resource}} en este servidor",
+        "no.trips.found": "No se encontraron viajes" 
+    },
+    "application": {
+        "appli.applis": "Solicitudes",
+        "appli.apply": "Solicitar",
+        "appli.success" : "Viaje solicitado correctamente!",
+        "appli.fail" : "No se ha podido solicitar el viaje!",
+        "dt.status" : "Estado",
+        "dt.comment" : "Comentarios",
+        "dt.reasonCancel" : "Motivo Cancelación",
+        "dt.trip" : "Viajes",
+        "dt.createdAt" : "Fecha Creación",
+        "dt.details" : "DETALLES",
+        "dt.ticker" : "Ticker",
+        "dt.start_date" : "Inicio Viaje",
+        "dt.end_date" : "Fin Viaje",
+        "dt.price" : "Precio",
+        "dt.title" : "Destino",
+        "dt.edit" : "editar"
+    },
+    "audits": {        
+        "audit.audits": "Auditorías",
+        "audit.description": "Descripción",
+        "audit.title": "Título",
+        "audit.atachment": "Otros",
+        "audit.createdAt": "Fecha Creación",
+        "audit.new": "Crear",
+        "audit.mylist": "Mis Auditorías",
+        "audit.details": "Viaje Detalles",
+        "audit.edit": "Editar"
+    },
+    "dashboard": {
+        "dashboard": "Cuadro de mando",
+        "tripspermanager": "Viajes por Manager",
+        "applicationspertrip": "Aplicaciones por viajes",
+        "priceoftrips": "Precio de viajes",
+        "ratioapplications": "Ratio de aplicaciones",
+        "pricerangeexplorers": "Rango de precio Explorers",
+        "top10keywords": "Top 10 palabras clave",
+        "average":  "Media",
+        "minimum": "Mínimo",
+        "maximum": "Máximo",
+        "stdev": "Desviación estandar",
+        "minprice": "Precio minimo",
+        "maxprice": "Precio maximo",
+        "ratioapplications.total": "Total",
+        "ratioapplications.ratio.pending": "Ratio Pendiente",
+        "ratioapplications.ratio.rejected": "Ratio Rechazada",
+        "ratioapplications.ratio.due": "Ratio sin cobrar",
+        "ratioapplications.ratio.accepted": "Ratio Aceptadas",
+        "ratioapplications.ratio.cancelled": "Ratio Canceladas"
     }
 }

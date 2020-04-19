@@ -1,0 +1,94 @@
+<div class="card my-2">
+  <div class="card-header">
+    <h3 class="card-title">{{'trip.trips.list' | translate}}</h3>
+  </div>
+</div>
+
+<div class="card-body mr-2">
+  <div id="accordionAudit">
+    <div class="card">
+      <div class="card-header" id="headingAudit">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseAudit" aria-expanded="false" aria-controls="collapseAudit">
+            {{'trip.filter' | translate}}
+          </button>
+        </h5>
+      </div>
+  
+      <div id="collapseAudit" class="collapse" aria-labelledby="headingAudit" data-parent="#accordionAudit">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <span class="">Rango de precios</span>
+            </div>
+            <div class="col-md-6">
+              <input type="number" class="form-control" id="minPrice" placeholder="minPrice" [(ngModel)]="minPrice">
+            </div>
+            <div class="col-md-6">
+              <input type="number" class="form-control" id="maxPrice" placeholder="maxPrice" [(ngModel)]="maxPrice">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <span class="">Rango de Fechas</span>
+            </div>
+            <div class="col-md-6">
+              <input type="date" class="form-control" id="minDate" placeholder="minDate" [(ngModel)]="minDate">
+            </div>
+            <div class="col-md-6">
+              <input type="date" class="form-control" id="maxDate" placeholder="maxDate" [(ngModel)]="maxDate">
+            </div>
+          </div>
+
+          <button class="btn btn-primary mt-4 mb-2" type="submit" (click)="searchFilter()">{{'trip.filter' | translate}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="data != undefined && data.length > 0" class="card-deck pl-2">
+  <div *ngFor="let trip of data" class="{{(this.authService.checkRole('ADMINISTRATOR') || trip.isPublished)? 'tam' : ''}}">
+    <div *ngIf="this.authService.checkRole('ADMINISTRATOR') || trip.isPublished" class="card mb-3 ml-4 "
+      infiniteScroll [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()">
+      <img
+      class="card-img-top" style="display: block;"
+      src="{{getFirstPicture(trip)}}" alt="{{trip.title}}">
+      <div class="card-header">
+        <h4 class="card-title">{{trip.title}}</h4>
+      </div>
+      <div class="card-body description">
+        <details>
+          <summary ng-hide="advstatus">
+            {{trip.description | slice:0:50}}
+            <span class="badge badge-light" ng-click="advstatus=true">(...)</span>
+          </summary>
+          <p class="card-text text-muted">{{trip.description}}</p>
+        </details>
+      </div>
+
+      <div class="card-footer">
+        <a *ngIf="this.authService.checkRole('ADMINISTRATOR')"
+          routerLink="/trips/{{trip.ticker}}"
+          class="btn btn-primary pull-left">
+          <span class="fa fa-pencil" aria-hidden="true"></span>
+          {{'trip.edit' | translate}}
+        </a>
+        <a *ngIf="!this.authService.checkRole('ADMINISTRATOR')"
+          routerLink="/trips/display/{{trip.ticker}}"
+          class="btn btn-primary pull-left">
+          <span class="fa fa-search-plus" aria-hidden="true"></span>
+          {{'trip.details' | translate}}
+        </a>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<button *ngIf="this.authService.checkRole('ADMINISTRATOR')" type="button" class="btn btn-primary mt-4 ml-4" (click)="newTrip();"> 
+  {{'trip.new' | translate}}
+</button>

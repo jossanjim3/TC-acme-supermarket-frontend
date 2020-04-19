@@ -1,7 +1,7 @@
 import { Entity } from './entity.model';
 
 export class Actor extends Entity {
-
+    _id: string;
     name: string;
     surname: string;
     email: string;
@@ -10,7 +10,11 @@ export class Actor extends Entity {
     phone: string;
     language: 'es';
     validated: boolean;
-    role: string;
+    role: string[];
     customToken: string;
     idToken: string;
+
+    constructor() {
+        super();
+    }
 }

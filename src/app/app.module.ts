@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/master/header/header.component';
 import { TranslatableComponent } from './components/shared/translatable/translatable.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTableModule } from 'angular-6-datatable';
 
 import { AngularFireModule } from 'angularfire2';
 import { RegisterComponent } from './components/security/register/register.component';
@@ -20,6 +21,26 @@ import { EditProfileComponent } from './components/actor/displayProfile/editProf
 import { ActorService } from './services/actor.service';
 import { FooterComponent } from './components/master/footer/footer.component';
 import { IndexComponent } from './components/index/index.component';
+import { ApplicationDisplayComponent } from './components/application/application-display/application-display.component';
+import { NotFoundPageComponent } from './components/shared/not-found-page/not-found-page.component';
+import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
+import { HttpModule } from '@angular/http';
+import { MessageComponent } from './components/master/message/message.component';
+import { DeniedAccessPageComponent } from './components/shared/denied-access-page/denied-access-page.component';
+import { LocalizedDataPipe } from './components/shared/localized-data.pipe';
+import { registerLocaleData } from '@angular/common';
+import locales from '@angular/common/locales/es';
+import { TripListComponent } from './components/trip/trip-list/trip-list.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ApplicationListComponent } from './components/application/application-list/application-list.component';
+import { SponsorListComponent } from './components/sponsor/sponsor-list/sponsor-list.component';
+import { SponsorDisplayComponent } from './components/sponsor/sponsor-display/sponsor-display.component';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { NewAuditComponent } from './components/audit/new-audit/new-audit.component';
+import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
+import { AuditorAuditsComponent } from './components/audit/auditor-audits/auditor-audits.component';
+
+registerLocaleData(locales, 'es');
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -46,13 +67,30 @@ export const firebaseConfig = {
     LoginComponent,
     EditProfileComponent,
     FooterComponent,
-    IndexComponent
+    IndexComponent,
+    ApplicationDisplayComponent,
+    NotFoundPageComponent,
+    TermsAndConditionsComponent,
+    MessageComponent,
+    DeniedAccessPageComponent,
+    MessageComponent,
+    LocalizedDataPipe,
+    TripListComponent,
+    ApplicationListComponent,
+    SponsorListComponent,
+    SponsorDisplayComponent,
+    NewAuditComponent,
+    DisplayAuditComponent,
+    AuditorAuditsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    DataTableModule,
     HttpClientModule,
+    InfiniteScrollModule,
     AngularFireModule.initializeApp(firebaseConfig),
     TranslateModule.forRoot({
       loader: {
@@ -61,8 +99,13 @@ export const firebaseConfig = {
         deps: [HttpClient]
       }
     }),
-    AppRoutingModule
+    AppRoutingModule,
+    // tslint:disable-next-line: deprecation
+    HttpModule,
+    DataTableModule
   ],
+  exports: [AppRoutingModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AngularFireAuth, ActorService],
   bootstrap: [AppComponent]
 })
