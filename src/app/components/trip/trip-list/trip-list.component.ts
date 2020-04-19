@@ -67,6 +67,17 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     }
   }
 
+  searchFilter() {
+    console.log(this.minPrice);
+    this.router.navigate(['/trips/search'], { 'queryParams': {
+      'keyword': this.keyword,
+      'minPrice': this.minPrice,
+      'maxPrice': this.maxPrice,
+      'minDate': this.minDate,
+      'maxDate': this.maxDate
+    }});
+  }
+
   // Functions to infinite scroll
 
   onScrollDown (ev) {

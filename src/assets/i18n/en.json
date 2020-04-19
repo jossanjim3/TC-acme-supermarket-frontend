@@ -74,6 +74,7 @@
         "description": "Description",
         "startDate": "Start Date",
         "endDate": "End Date",
+        "filter": "Filter",
         "price": "Price",
         "requeriments": "Requeriments"
     },

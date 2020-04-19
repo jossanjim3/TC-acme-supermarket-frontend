@@ -74,6 +74,7 @@
         "description": "Descripción",
         "startDate": "Fecha inicio",
         "endDate": "Fecha fin",
+        "filter": "Filtro",
         "price": "Precio",
         "requeriments": "Requisitos"
     },
