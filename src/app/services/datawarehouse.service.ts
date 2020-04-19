@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Datawarehouse } from '../models/datawarehouse.model';
 
 
 const httpOptions = {
@@ -17,6 +16,6 @@ export class DatawarehouseService {
 
   getDataWareHouseLatest() {
     const url = `${environment.backendApiBaseURL}/v1/datawarehouse/latest`;
-    return this.http.get<Datawarehouse>(url).toPromise();
+    return this.http.get(url).toPromise();
   }
 }

@@ -4,7 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DatawarehouseService } from 'src/app/services/datawarehouse.service';
-import { Datawarehouse } from 'src/app/models/datawarehouse.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,8 +11,6 @@ import { Datawarehouse } from 'src/app/models/datawarehouse.model';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent extends TranslatableComponent implements OnInit {
-
-  datawarehouse = new Datawarehouse();
 
   tripsPerManager: {
     _id: string;
@@ -53,6 +50,11 @@ export class DashboardComponent extends TranslatableComponent implements OnInit 
       avgMaxPrice: number;
   };
 
+  Top10keywords: [{
+    keyword: string,
+    count: number,
+  }];
+
 
 
 
@@ -65,12 +67,12 @@ export class DashboardComponent extends TranslatableComponent implements OnInit 
   ngOnInit() {
     this.datawarehouseService.getDataWareHouseLatest()
       .then((val) => {
-        this.datawarehouse = val['0'];
         this.tripsPerManager = val['0'].TripsPerManager['0'];
         this.applicationsPerTrip = val['0'].ApplicationsPerTrip['0'];
         this.priceOfTrip = this.getPriceTripsAVG(val['0'].PriceTrip);
         this.ratioApplications = val['0'].ratioApplications['0'];
         this.averagePriceRangeExplorers = val['0'].averagePriceRangeExplorers['0'];
+        this.Top10keywords = val['0'].Top10keywords;
       });
   }
 
