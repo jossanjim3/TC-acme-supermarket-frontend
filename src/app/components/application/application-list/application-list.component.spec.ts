@@ -41,6 +41,7 @@ import { SponsorDisplayComponent } from '../../sponsor/sponsor-display/sponsor-d
 import { NewAuditComponent } from '../../audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from '../../audit/display-audit/display-audit.component';
 import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
+import { Actor } from 'src/app/models/actor.model';
 
 describe('ApplicationListComponent', () => {
   let component: ApplicationListComponent;
@@ -48,6 +49,7 @@ describe('ApplicationListComponent', () => {
   let mockActivatedRoute;
   let applicationService: ApplicationsService;
   let originalTimeout;
+  let actor: Actor;
 
   beforeEach(async(() => {
     mockActivatedRoute = new ActivatedRouteStub();
@@ -117,6 +119,20 @@ describe('ApplicationListComponent', () => {
       ],
     })
     .compileComponents();
+
+    actor = new Actor();
+    actor._id = '5e941acfb83b5a0019ea9c4f';
+    actor.name = 'ext2';
+    actor.surname = 'ext2 sur';
+    actor.email = 'ext2@gmail.com';
+    actor.password = '123456';
+    actor.address = 'ext2 address';
+    actor.phone = '123456789';
+    actor.validated = true;
+    actor.role = ['EXPLORER'];
+
+    localStorage.setItem('currentActor', JSON.stringify({ actor: actor }));
+
   }));
 
   beforeEach(() => {
@@ -130,6 +146,7 @@ describe('ApplicationListComponent', () => {
 
   afterEach(function() {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+    localStorage.removeItem('currentActor');
   });
 
   it('should defined', async (done) => {
@@ -140,38 +157,24 @@ describe('ApplicationListComponent', () => {
   it('should have more than 1 application', async (done) => {
     component.ngOnInit();
     fixture.detectChanges();
+    // TODO necesito simular el login antes para que el siguiente metodo del servicio devuelva algo
     spyOn(applicationService, 'getApplications').and.returnValue(Promise.resolve(true));
     fixture.whenStable().then(() => {
       fixture.detectChanges();
-      // expect(component.data.length).toBeGreaterThan(1);
-      expect(component.data.length).toBeGreaterThanOrEqual(0);
+      expect(component.data.length).toBeGreaterThan(1);
       done();
     });
   });
 
-  /* it('should get no first picture of a application', async (done) => {
+  it('should get status PENDING', async (done) => {
     component.ngOnInit();
     fixture.detectChanges();
-    spyOn(applicationService, 'searchApplications').and.returnValue(Promise.resolve(true));
+    spyOn(applicationService, 'getApplications').and.returnValue(Promise.resolve(true));
     fixture.whenStable().then(() => {
       fixture.detectChanges();
-      const application =  new Application();
-      application.ticker = '200610-ASCD';
-      application.title = 'Lore Ipsum';
-      application.description = 'Deserunt ea id reprehenderit labore elit amet minim esse culpa laboris nisi cupidatat laborum ipsum.';
-      application.price = 1423.50;
-      application.requeriments = [
-        'Irure reprehenderit est proident labore.',
-        'Mollit consequat cillum veniam ea minim quis proident deserunt excepteur consectetur do dolor cupidatat.',
-        'Cillum tempor duis sunt occaecat aliqua culpa.'
-      ];
-      application.startDate = new Date();
-      application.endDate = new Date();
-      application.pictures = [];
-      application.manager = '214125215125dawd21';
-      expect(component.getFirstPicture(application)).toEqual('https://i.ya-webdesign.com/images/image-not-available-png-3.png');
+      expect(component.data[0].status).toEqual('PENDING');
       done();
     });
-  }); */
+  });
 
 });
