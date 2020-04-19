@@ -30,7 +30,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
 
   direction: string;
 
-  constructor(private tripService: TripService, private authService: AuthService,
+  constructor(private tripService: TripService, public authService: AuthService,
     private translateService: TranslateService, private router: Router,
     private route: ActivatedRoute) {
       super(translateService);

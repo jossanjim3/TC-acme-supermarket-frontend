@@ -11,9 +11,9 @@ import { Actor } from 'src/app/models/actor.model';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent extends TranslatableComponent implements OnInit {
-  private currentActor: Actor;
-  private userLoggedIn: boolean;
-  private activeRole = 'anonymous';
+  currentActor: Actor;
+  userLoggedIn: boolean;
+  activeRole = 'anonymous';
 
   name: String;
   search: string;

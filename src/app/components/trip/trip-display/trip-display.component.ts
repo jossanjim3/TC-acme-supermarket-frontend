@@ -25,7 +25,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
   constructor(private _sanitizer: DomSanitizer, private tripService: TripService, private auditService: AuditService,
     private translateService: TranslateService, private router: Router,
-    private route: ActivatedRoute, private authService: AuthService, private messageService: MessageService) {
+    private route: ActivatedRoute, public authService: AuthService, private messageService: MessageService) {
     super(translateService);
   }
 
