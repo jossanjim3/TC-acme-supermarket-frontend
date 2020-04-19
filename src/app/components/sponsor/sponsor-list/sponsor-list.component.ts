@@ -15,7 +15,7 @@ import { Sponsorship } from 'src/app/models/sponsorship.model';
 export class SponsorListComponent extends TranslatableComponent implements OnInit {
   actor: Actor;
   data: Sponsorship[];
-  constructor(private sponsorshipService: SponsorshipService, private authService: AuthService,
+  constructor(private sponsorshipService: SponsorshipService, public authService: AuthService,
     private translateService: TranslateService, private router: Router,
     private route: ActivatedRoute) {
       super(translateService);

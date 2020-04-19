@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./terms-and-conditions.component.css']
 })
 export class TermsAndConditionsComponent implements OnInit {
-  private myTemplate: any = '';
-  private htmlFile = 'assets/terms-and-conditions/terms-and-conditions_' + this.translateService.currentLang + '.html';
+  myTemplate: any = '';
+  htmlFile = 'assets/terms-and-conditions/terms-and-conditions_' + this.translateService.currentLang + '.html';
 
   constructor(private translateService: TranslateService, private http: Http,
     private sanitizer: DomSanitizer, private router: Router) {
