@@ -129,6 +129,7 @@
     },
     "audits": {        
         "audit.audits": "Audits",
+        "audit.no.audits": "There is no audits to show.",
         "audit.description": "Description",
         "audit.title": "Title",
         "audit.atachment": "Atachment",
