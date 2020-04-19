@@ -129,6 +129,7 @@
     },
     "audits": {        
         "audit.audits": "Auditorías",
+        "audit.no.audits": "No hay auditorías para mostrar.",
         "audit.description": "Descripción",
         "audit.title": "Título",
         "audit.atachment": "Otros",
