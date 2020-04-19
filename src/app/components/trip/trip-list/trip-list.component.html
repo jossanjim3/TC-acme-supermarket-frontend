@@ -49,8 +49,8 @@
 </div>
 
 <div *ngIf="data != undefined && data.length > 0" class="card-deck pl-2">
-  <div *ngFor="let trip of data" class="{{(this.authService.checkRole('ADMINISTRATOR') || trip.isPublished)? 'tam' : ''}}">
-    <div *ngIf="this.authService.checkRole('ADMINISTRATOR') || trip.isPublished" class="card mb-3 ml-4 "
+  <div *ngFor="let trip of data" class="{{(this.authService.checkRole('ADMINISTRATOR') || this.displayTrip(trip) )? 'tam' : ''}}">
+    <div *ngIf="this.authService.checkRole('ADMINISTRATOR') || this.displayTrip(trip)" class="card mb-3 ml-4 "
       infiniteScroll [infiniteScrollDistance]="2"
       [infiniteScrollThrottle]="50"
       (scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()">
