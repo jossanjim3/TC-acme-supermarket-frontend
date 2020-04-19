@@ -83,6 +83,9 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
         }
       }
 
+      if ( this.trip !== undefined && this.trip !== null ){
+        this.pictures = this.trip.pictures;
+      }
       /* this.tripService.getTrip(this.id)
       .then((trip) => {
         console.log(trip);
