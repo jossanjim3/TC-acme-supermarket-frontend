@@ -108,7 +108,7 @@
 
         <!-- boton PAGAR PAYPAL -->
         <td *ngIf="this.authService.checkRole('EXPLORER')">
-            <a            
+            <a  *ngIf="item.status === 'DUE'"           
                 [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
                 class="btn btn-primary btn-application">
                 <span class="fa fa-paypal  " aria-hidden="true"></span>
