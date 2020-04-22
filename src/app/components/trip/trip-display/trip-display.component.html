@@ -4,12 +4,25 @@
 <div class="card mb-3">
   
   <div>
-    <h3 class="card-header The-explorer-2-hex">{{'trip.details' | translate}}</h3>
+    <h3 class="card-header The-explorer-2-hex">{{'trip.details' | translate}}</h3>    
+    
+    <!-- boton atras -->
     <button (click)="goBack()" class="btn btn-primary" style="float: right; margin-right: 1em; margin-top: -48px;">
       {{'messages.back' | translate}}
     </button>
   </div>
   
+
+  <!-- boton trips applications -->
+  <div class="card-body" *ngIf="this.authService.checkRole('MANAGER')">
+
+    <a            
+      [routerLink]="['/trips-applies/trip/' + trip._id, {'paramKey': 'manager'}]"
+      class="btn btn-primary btn-application">
+      {{'application.appli.see.trip' | translate}}
+    </a>
+
+  </div>
 
   <div class="card-body">
     <h5 class="card-title The-explorer-4-hex">{{'trip.ticker' | translate}}</h5>

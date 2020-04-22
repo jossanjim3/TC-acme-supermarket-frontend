@@ -29,17 +29,38 @@ export class ApplicationListComponent extends TranslatableComponent implements O
 
     // usamos funciones async porque se llaman unas a otras y asi funciona
 
-    // get all my applications
-    this.data = await this.applicatioService.getApplications();
-    // console.log('data:' + this.data);
-    for (const d of this.data ) {
-      // console.log('d: ' + d._id);
-      // console.log('d trip: ' + d.trip);
-      this.tripAux = await this.tripService.getTripById(d.trip);
-      d.tripObj = this.tripAux;
-      // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+    // Recover id param
+    const tripId = this.route.snapshot.params['id'];
+    console.log('id trip: ' + tripId);
 
+    const param = this.route.snapshot.params['paramKey'];
+    console.log('param: ' + param);
+
+    if (param === 'manager') {
+      // get all trip applications
+      this.data = await this.applicatioService.getTripApplications(tripId);
+      // console.log('data:' + this.data);
+      for (const d of this.data ) {
+        // console.log('d: ' + d._id);
+        // console.log('d trip: ' + d.trip);
+        this.tripAux = await this.tripService.getTripById(d.trip);
+        d.tripObj = this.tripAux;
+        // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+      }
+    } else {
+
+      // get all explorer applications
+      this.data = await this.applicatioService.getExplorerApplications();
+      // console.log('data:' + this.data);
+      for (const d of this.data ) {
+        // console.log('d: ' + d._id);
+        // console.log('d trip: ' + d.trip);
+        this.tripAux = await this.tripService.getTripById(d.trip);
+        d.tripObj = this.tripAux;
+        // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+      }
     }
+
 
     /* this.applicatioService.getApplications()
     .then((applis) => {

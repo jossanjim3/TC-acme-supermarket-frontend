@@ -114,6 +114,7 @@
         "appli.apply": "Apply",
         "appli.success" : "Application trip successfully!",
         "appli.fail" : "Trip cannot be applied!",
+        "appli.see.trip" : "See applications from the trip",
         "dt.status" : "Status",
         "dt.comment" : "Comments",
         "dt.reasonCancel" : "Reason Cancel",

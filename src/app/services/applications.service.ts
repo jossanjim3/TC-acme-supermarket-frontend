@@ -16,7 +16,8 @@ export class ApplicationsService {
   }
 
   // usamos funciones async porque se llaman unas a las otras y asi no da error
-  async getApplications() {
+
+  async getExplorerApplications() {
     let url = '';
     // url = `${environment.backendApiBaseURL}/v1/applications`;
 
@@ -35,6 +36,13 @@ export class ApplicationsService {
 
     return this.http.get<Application[]>(url).toPromise();
   }
+
+  async getTripApplications(tripId: String) {
+    const url = `${environment.backendApiBaseURL}/v1/applications/trips/${tripId}`;
+      // console.log('url: ' + url);
+    return this.http.get<Application[]>(url).toPromise();
+  }
+
 
   /* getApplications() {
     let url = '';
