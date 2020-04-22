@@ -127,8 +127,8 @@
         "dt.price" : "Precio",
         "dt.title" : "Destino",
         "dt.edit" : "editar",
-        "dt.due" : "DUE",
-        "dt.cancel" : "CANCELAR",
+        "dt.due" : "Due",
+        "dt.cancel" : "Cancelar",
         "dt.pay" : "Pagar" 
     },
     "audits": {        

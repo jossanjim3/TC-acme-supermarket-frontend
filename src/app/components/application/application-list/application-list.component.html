@@ -54,17 +54,19 @@
             <mfDefaultSorter by="createdAt">{{'application.dt.createdAt' | translate}}</mfDefaultSorter>
         </th>
 
-        <th *ngIf="this.authService.checkRole('EXPLORER')">
-            <!-- boton explorer PAGAR PAYPAL -->
+        <!-- boton explorer PAGAR PAYPAL -->
+        <th *ngIf="this.authService.checkRole('EXPLORER')">            
             {{'application.dt.pay' | translate}}
         </th>
 
+        <!-- boton manager PENDING to DUE -->
         <th *ngIf="this.authService.checkRole('MANAGER')">
-            <!-- boton manager PENDING to DUE -->
+            {{'application.dt.due' | translate}}
         </th>
 
-        <th *ngIf="this.authService.checkRole('MANAGER')">
-            <!-- boton manager CANCEL -->
+        <!-- boton manager CANCEL -->
+        <th>
+            {{'application.dt.cancel' | translate}}
         </th>    
     </tr>
   </thead>
@@ -85,8 +87,17 @@
             </a>
         </td>  
 
-        <td *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" class="completo" >{{item.tripObj.startDate | date:'dd/MM/yyyy h:mm a' }}</td>  
-        <td *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" class="completo">{{item.tripObj.endDate | date:'dd/MM/yyyy h:mm a' }}</td>  
+        <td title="{{item.tripObj.startDate | date:'dd/MM/yyyy h:mm a' }}" 
+            *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" 
+            class="completo" >
+                {{item.tripObj.startDate | date:'dd/MM/yyyy' }}
+        </td>  
+        <td title="{{item.tripObj.endDate | date:'dd/MM/yyyy h:mm a' }}"
+            *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" 
+            class="completo">
+                {{item.tripObj.endDate | date:'dd/MM/yyyy' }}
+        </td>  
+
         <td *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" >{{item.tripObj.price}}</td>
 
         <td class="completo">{{item.status}}</td>
@@ -104,7 +115,7 @@
             </a>
         </td> -->
 
-        <td class="completo">{{item.createdAt | date:'dd/MM/yyyy h:mm a' }}</td>
+        <td title="{{item.createdAt | date:'dd/MM/yyyy h:mm a' }}" class="completo">{{item.createdAt | date:'dd/MM/yyyy' }}</td>
 
         <!-- boton PAGAR PAYPAL -->
         <td *ngIf="this.authService.checkRole('EXPLORER')">
@@ -118,23 +129,34 @@
 
         <!-- boton PENDING TO DUE -->
         <td *ngIf="this.authService.checkRole('MANAGER')">
-            <a            
+            <a *ngIf="item.status === 'PENDING'"           
                 [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
-                class="btn btn-primary ">
-                <span class="fa fa-edit" aria-hidden="true"></span>
+                class="btn btn-primary btn-application">
+                <!-- <span class="fa fa-edit" aria-hidden="true"></span> -->
                 {{'application.dt.due' | translate}}
             </a>
         </td>
 
-        <!-- boton CANCELAR VIAJE -->
+        <!-- boton CANCELAR VIAJE MANAGER -->
         <td *ngIf="this.authService.checkRole('MANAGER')">
-            <a            
+            <a  *ngIf="item.status === 'PENDING'"       
                 [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
-                class="btn btn-primary ">
-                <span class="fa fa-edit" aria-hidden="true"></span>
+                class="btn btn-primary btn-application">
+                <!-- <span class="fa fa-edit" aria-hidden="true"></span> -->
                 {{'application.dt.cancel' | translate}}
             </a>
-        </td>    
+        </td>  
+        
+        <!-- boton CANCELAR VIAJE EXPLORER -->
+        <td *ngIf="this.authService.checkRole('EXPLORER')">
+            <a  *ngIf="item.status === 'ACCEPTED'"       
+                [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
+                class="btn btn-primary btn-application">
+                <!-- <span class="fa fa-edit" aria-hidden="true"></span> -->
+                {{'application.dt.cancel' | translate}}
+            </a>
+        </td> 
+
     </tr>
 
   </tbody>

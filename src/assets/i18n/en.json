@@ -127,8 +127,8 @@
         "dt.price" : "Price",
         "dt.title" : "Destiny",
         "dt.edit" : "edit",
-        "dt.due" : "DUE",
-        "dt.cancel" : "CANCEL",
+        "dt.due" : "Due",
+        "dt.cancel" : "Cancel",
         "dt.pay" : "Pay"                
     },
     "audits": {        
