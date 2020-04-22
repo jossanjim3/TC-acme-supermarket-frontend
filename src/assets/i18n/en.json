@@ -126,7 +126,10 @@
         "dt.end_date" : "End Trip",
         "dt.price" : "Price",
         "dt.title" : "Destiny",
-        "dt.edit" : "edit"
+        "dt.edit" : "edit",
+        "dt.due" : "DUE",
+        "dt.cancel" : "CANCEL"
+        
     },
     "audits": {        
         "audit.audits": "Audits",

@@ -126,7 +126,9 @@
         "dt.end_date" : "Fin Viaje",
         "dt.price" : "Precio",
         "dt.title" : "Destino",
-        "dt.edit" : "editar"
+        "dt.edit" : "editar",
+        "dt.due" : "DUE",
+        "dt.cancel" : "CANCELAR"
     },
     "audits": {        
         "audit.audits": "Auditorías",
