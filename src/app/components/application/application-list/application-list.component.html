@@ -137,25 +137,16 @@
             </a>
         </td>
 
-        <!-- boton CANCELAR VIAJE MANAGER -->
-        <td *ngIf="this.authService.checkRole('MANAGER')">
-            <a  *ngIf="item.status === 'PENDING'"       
+        <!-- boton CANCELAR VIAJE MANAGER / EXPLORER -->
+        <td>
+            <a  *ngIf="(this.authService.checkRole('MANAGER') && item.status === 'PENDING') ||
+                        (this.authService.checkRole('EXPLORER') && item.status === 'ACCEPTED')"       
                 [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
                 class="btn btn-primary btn-application">
                 <!-- <span class="fa fa-edit" aria-hidden="true"></span> -->
                 {{'application.dt.cancel' | translate}}
             </a>
         </td>  
-        
-        <!-- boton CANCELAR VIAJE EXPLORER -->
-        <td *ngIf="this.authService.checkRole('EXPLORER')">
-            <a  *ngIf="item.status === 'ACCEPTED'"       
-                [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
-                class="btn btn-primary btn-application">
-                <!-- <span class="fa fa-edit" aria-hidden="true"></span> -->
-                {{'application.dt.cancel' | translate}}
-            </a>
-        </td> 
 
     </tr>
 
