@@ -128,7 +128,8 @@
         "dt.title" : "Destino",
         "dt.edit" : "editar",
         "dt.due" : "DUE",
-        "dt.cancel" : "CANCELAR"
+        "dt.cancel" : "CANCELAR",
+        "dt.pay" : "Pagar" 
     },
     "audits": {        
         "audit.audits": "Auditorías",

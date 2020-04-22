@@ -31,10 +31,10 @@ export class ApplicationListComponent extends TranslatableComponent implements O
 
     // Recover id param
     const tripId = this.route.snapshot.params['id'];
-    console.log('id trip: ' + tripId);
+    // console.log('id trip: ' + tripId);
 
     const param = this.route.snapshot.params['paramKey'];
-    console.log('param: ' + param);
+    // console.log('param: ' + param);
 
     if (param === 'manager') {
       // get all trip applications

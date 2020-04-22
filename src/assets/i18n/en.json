@@ -128,8 +128,8 @@
         "dt.title" : "Destiny",
         "dt.edit" : "edit",
         "dt.due" : "DUE",
-        "dt.cancel" : "CANCEL"
-        
+        "dt.cancel" : "CANCEL",
+        "dt.pay" : "Pay"                
     },
     "audits": {        
         "audit.audits": "Audits",
