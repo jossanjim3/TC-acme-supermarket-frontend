@@ -129,7 +129,9 @@
         "dt.edit" : "edit",
         "dt.due" : "Due",
         "dt.cancel" : "Cancel",
-        "dt.pay" : "Pay"                
+        "dt.pay" : "Pay",
+        "update.due.ok": "Application has been updated to status DUE successfully!",
+        "update.due.error": "Application has not been updated to status DUE!"
     },
     "audits": {        
         "audit.audits": "Audits",

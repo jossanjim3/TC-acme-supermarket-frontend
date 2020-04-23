@@ -61,6 +61,63 @@ export class ApplicationListComponent extends TranslatableComponent implements O
       }
     }
 
+    // solo se activa cuando se produce un cambio en el datatable
+    this.applicatioService.appliUpdated.subscribe((isUpdated: boolean) => {
+      if (isUpdated) {
+
+        // si se ha producido un cambio en el datatable
+        // console.log('datatable updateada!');
+
+        // Recover id param
+        // tslint:disable-next-line: no-shadowed-variable
+        const tripId = this.route.snapshot.params['id'];
+        // console.log('id trip: ' + tripId);
+
+        // tslint:disable-next-line: no-shadowed-variable
+        const param = this.route.snapshot.params['paramKey'];
+        // console.log('param: ' + param);
+
+        if (param === 'manager') {
+          // get all trip applications
+          this.applicatioService.getTripApplications(tripId)
+            .then((applis) => {
+              this.data = applis;
+              for (const d of this.data ) {
+                this.tripService.getTripById(d.trip)
+                  .then((trip) => {
+                    d.tripObj = trip;
+                  })
+                  .catch((err) => {
+                    console.error(err.message);
+                  });
+              }
+            })
+            .catch((err) => {
+              console.error(err.message);
+            });
+
+        } else {
+
+          // get all explorer applications
+          this.applicatioService.getExplorerApplications()
+          .then((applis) => {
+            this.data = applis;
+            for (const d of this.data ) {
+              this.tripService.getTripById(d.trip)
+                .then((trip) => {
+                  d.tripObj = trip;
+                })
+                .catch((err) => {
+                  console.error(err.message);
+                });
+            }
+          })
+          .catch((err) => {
+            console.error(err.message);
+          });
+        }
+      }
+    });
 
     /* this.applicatioService.getApplications()
     .then((applis) => {
@@ -81,7 +138,7 @@ export class ApplicationListComponent extends TranslatableComponent implements O
   updateApplyToDue(itemId: String) {
     this.applicatioService.updateApplyToDue(itemId)
       .then(_ => {
-        console.log('actualizado');
+        // console.log('actualizado');
       }).catch(error => {
         console.log(error);
       });

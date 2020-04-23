@@ -5,6 +5,7 @@ import { Application } from '../models/application.model';
 import { AuthService } from './auth.service';
 import { Actor } from '../models/actor.model';
 import { MessageService } from './message.service';
+import { Subject } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,6 +15,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApplicationsService {
+
+  appliUpdated = new Subject();
 
   constructor(
     private http: HttpClient, private authService: AuthService, private messageService: MessageService) {
@@ -58,9 +61,11 @@ export class ApplicationsService {
       this.http.put(url, body, httpOptions).toPromise()
         .then(res => {
           resolve(res);
-          this.messageService.notifyMessage('TODO Actualizado a DUE correctamente', 'alert alert-success');
+          this.messageService.notifyMessage('application.update.due.ok', 'alert alert-success');
+          this.appliUpdated.next(true);
         }, err => {
-          this.messageService.notifyMessage('TODO No se ha podido actualizar', 'alert alert-danger');
+          this.messageService.notifyMessage('application.update.due.error', 'alert alert-danger');
+          this.appliUpdated.next(false);
           reject(err);
         });
     });
