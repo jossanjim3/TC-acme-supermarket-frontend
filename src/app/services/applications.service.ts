@@ -56,7 +56,7 @@ export class ApplicationsService {
       const headers = new HttpHeaders();
       headers.append('Content-Type', 'application/json');
       const url = `${environment.backendApiBaseURL}/v1/applications/${itemId}`;
-      console.log('url: ' + url);
+      // console.log('url: ' + url);
       const body = JSON.stringify({status: 'DUE'});
       this.http.put(url, body, httpOptions).toPromise()
         .then(res => {
@@ -68,6 +68,57 @@ export class ApplicationsService {
           this.appliUpdated.next(false);
           reject(err);
         });
+    });
+
+  }
+
+  getApplicationById(applyId: String) {
+    const url = `${environment.backendApiBaseURL}/v1/applications/${applyId}`;
+    // console.log('url: ' + url);
+    return this.http.get<Application>(url).toPromise();
+  }
+
+  cancelApplication(applyId: String, reasonCancel: String, comment: String) {
+
+    return new Promise<any>((resolve, reject) => {
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
+      const url = `${environment.backendApiBaseURL}/v1/applications/${applyId}/cancel`;
+      // console.log('url: ' + url);
+
+      // si es manager es obligatorio el reason cancel, si es explorer no
+      this.authService.getCurrentActor()
+        .then((actorData: Actor) => {
+          if (actorData !== null) {
+              const actorRole = actorData.role;
+              console.log('role: ' + actorRole);
+
+              let body, mes;
+              if (this.authService.checkRole('MANAGER')) {
+                // tiene rol manager, reasonCancel es obligatorio y pasa a estado REJECTED
+                body = JSON.stringify({status: 'REJECTED', reasonCancel: reasonCancel, comment: comment});
+                mes = 'application.rejected.ok';
+
+              } else if (this.authService.checkRole('EXPLORER')) {
+                // tiene rol explorer, pasa a estado CANCELLED
+                body = JSON.stringify({status: 'CANCELLED', reasonCancel: reasonCancel, comment: comment});
+                mes = 'application.cancel.ok';
+
+              }
+
+              this.http.put(url, body, httpOptions).toPromise()
+                .then(res => {
+                  resolve(res);
+                  this.messageService.notifyMessage(mes, 'alert alert-success');
+                }, err => {
+                  this.messageService.notifyMessage('application.cancel.error', 'alert alert-danger');
+                  reject(err);
+                });
+
+          } else {
+            console.log('error getting current actor: ' + JSON.stringify(actorData));
+          }
+        }).catch(err => console.log(err));
     });
 
   }

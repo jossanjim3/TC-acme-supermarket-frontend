@@ -9,3 +9,121 @@
     
   </div>
 </div>
+
+
+
+
+<form [formGroup]="cancelForm" (ngSubmit)="onSubmit()">
+  <div class="form-group has-danger" >
+    
+    <!-- id -->
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="id">ID: </label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                    <input type="text" name="id" class="form-control" id="id" formControlName="id"
+                          required autofocus readonly>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        <!-- Put e-mail validation error messages here -->
+                    </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- status -->
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="id">Status: </label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                  <input type="text" name="status" class="form-control" id="status" formControlName="status"
+                        required autofocus readonly>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-control-feedback">
+                  <span class="text-danger align-middle">
+                      <!-- Put e-mail validation error messages here -->
+                  </span>
+          </div>
+      </div>
+  </div>
+
+    <!-- comment -->
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="id">Comment: </label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                  <input type="text" name="comment" class="form-control" id="comment" formControlName="comment"
+                        autofocus>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-control-feedback">
+                  <span class="text-danger align-middle">
+                      <!-- Put e-mail validation error messages here -->
+                  </span>
+          </div>
+      </div>
+  </div>
+
+  <!-- Reason Cancel -->
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+        <label for="id">Reason Cancel: </label>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                <input type="text" name="reasonCancel" class="form-control" id="reasonCancel" formControlName="reasonCancel"
+                      autofocus>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-control-feedback">
+                <span class="text-danger align-middle">
+                    <!-- Put e-mail validation error messages here -->
+                </span>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- button cancel/guardar -->
+    <div class="row">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-success">GUARDAR</button>
+        </div>
+
+    </div>
+
+    </div>
+</form>
+
+<div class="col-md-6">
+  <button (click)="goBack()" type="submit" class="btn btn-danger">CANCELAR</button>
+</div>
+
+<div class="text-danger">{{errorMessage}}</div>

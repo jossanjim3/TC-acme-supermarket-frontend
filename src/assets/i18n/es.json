@@ -132,7 +132,10 @@
         "dt.pay" : "Pagar",
         "update.due.ok": "La solicitud ha sido actualizada al estado DUE correctamente!",
         "update.due.error": "La solicitud no ha podido ser actualizada al estado DUE!",
-        "cancel.title" : "Cancelar Solicitud"
+        "cancel.title" : "Cancelar Solicitud",
+        "cancel.ok": "La solicitud ha sido cancelada correctamente!",
+        "cancel.error": "La solicitud no ha sido cancelada!",
+        "rejected.ok": "La solicitud ha sido rechazada correctamente!!"
     },
     "audits": {        
         "audit.audits": "Auditorías",

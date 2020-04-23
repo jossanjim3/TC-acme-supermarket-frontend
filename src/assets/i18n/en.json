@@ -132,7 +132,10 @@
         "dt.pay" : "Pay",
         "update.due.ok": "Application has been updated to status DUE successfully!",
         "update.due.error": "Application has not been updated to status DUE!",
-        "cancel.title" : "Cancel Application"
+        "cancel.title" : "Cancel Application",
+        "cancel.ok": "Application has been cancelled successfully!",
+        "cancel.error": "Application has not been cancelled!",
+        "rejected.ok": "Application has been rejected successfully!"
     },
     "audits": {        
         "audit.audits": "Audits",

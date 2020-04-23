@@ -134,7 +134,7 @@ export class ApplicationListComponent extends TranslatableComponent implements O
     // this.router.navigate(['/']);
     window.history.back();
   }
-  
+
   updateApplyToDue(itemId: String) {
     this.applicatioService.updateApplyToDue(itemId)
       .then(_ => {
