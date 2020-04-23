@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Application } from '../models/application.model';
 import { AuthService } from './auth.service';
 import { Actor } from '../models/actor.model';
 import { MessageService } from './message.service';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +47,24 @@ export class ApplicationsService {
     return this.http.get<Application[]>(url).toPromise();
   }
 
+  updateApplyToDue(itemId: String) {
+
+    return new Promise<any>((resolve, reject) => {
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
+      const url = `${environment.backendApiBaseURL}/v1/applications/${itemId}`;
+      console.log('url: ' + url);
+      const body = JSON.stringify({status: 'DUE'});
+      this.http.put(url, body, httpOptions).toPromise()
+        .then(res => {
+          resolve(res);
+        }, err => {
+          this.messageService.notifyMessage('TODO No se ha podido actualizar', 'alert alert-danger');
+          reject(err);
+        });
+    });
+
+  }
 
   /* getApplications() {
     let url = '';

@@ -73,4 +73,13 @@ export class ApplicationListComponent extends TranslatableComponent implements O
 
   }
 
+  updateApplyToDue(itemId: String) {
+    this.applicatioService.updateApplyToDue(itemId)
+      .then(_ => {
+        console.log('actualizado');
+      }).catch(error => {
+        console.log(error);
+      });
+  }
+
 }

@@ -130,7 +130,7 @@
         <!-- boton PENDING TO DUE -->
         <td *ngIf="this.authService.checkRole('MANAGER')">
             <a *ngIf="item.status === 'PENDING'"           
-                [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
+                (click)="updateApplyToDue(item._id)"
                 class="btn btn-primary btn-application">
                 <!-- <span class="fa fa-edit" aria-hidden="true"></span> -->
                 {{'application.dt.due' | translate}}
