@@ -11,6 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ApplicationDisplayComponent  extends TranslatableComponent implements OnInit {
 
+  applyId: String;
+
   constructor(private translateService: TranslateService, private authService: AuthService,
     private router: Router, private route: ActivatedRoute) {
     super(translateService);
@@ -18,6 +20,20 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
   }
 
   ngOnInit() {
+
+    // Recover id param
+    this.applyId = this.route.snapshot.params['id'];
+    // console.log('id appli: ' + this.applyId);
+
+    const param = this.route.snapshot.params['paramKey'];
+    // console.log('param: ' + param);
+
+
+  }
+
+  goBack(): void {
+    // this.router.navigate(['/']);
+    window.history.back();
   }
 
 }

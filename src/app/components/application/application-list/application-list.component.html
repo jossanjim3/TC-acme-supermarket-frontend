@@ -10,10 +10,6 @@
   </div>
 </div>
 
-<div *ngIf="isUpdated" >
-   <p>holaaaaaaaaaaa</p>
-</div>
-
 <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5" >
   <thead>
     <tr>
@@ -151,7 +147,7 @@
         <td>
             <a  *ngIf="(this.authService.checkRole('MANAGER') && item.status === 'PENDING') ||
                         (this.authService.checkRole('EXPLORER') && item.status === 'ACCEPTED')"       
-                [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
+                [routerLink]="['/trips-applies/display/' + item._id, {'paramKey': 'cancelar'}]"
                 class="btn btn-primary btn-application">
                 <!-- <span class="fa fa-edit" aria-hidden="true"></span> -->
                 {{'application.dt.cancel' | translate}}

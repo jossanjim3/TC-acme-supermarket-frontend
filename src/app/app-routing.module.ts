@@ -36,7 +36,7 @@ const appRoutes: Routes = [
   ]},
 
   {path: 'trips-applies', children: [
-    {path: 'display/:id', component: ApplicationDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
+    {path: 'display/:id', component: ApplicationDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer|manager'}},
     {path: 'trip/:id', component: ApplicationListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
     {path: '', component: ApplicationListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
   ]},
