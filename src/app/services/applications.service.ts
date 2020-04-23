@@ -58,6 +58,7 @@ export class ApplicationsService {
       this.http.put(url, body, httpOptions).toPromise()
         .then(res => {
           resolve(res);
+          this.messageService.notifyMessage('TODO Actualizado a DUE correctamente', 'alert alert-success');
         }, err => {
           this.messageService.notifyMessage('TODO No se ha podido actualizar', 'alert alert-danger');
           reject(err);
