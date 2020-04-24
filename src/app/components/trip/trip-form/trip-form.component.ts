@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { TranslateService } from '@ngx-translate/core';
-import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, FormControl, Validators } from '@angular/forms';
 import { Trip } from 'src/app/models/trip.model';
 import { Picture } from 'src/app/models/picture.model';
 import { TripService } from 'src/app/services/trip.service';
@@ -35,6 +35,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.tripForm.controls['price'].setValue(this.totalprice);
     this.route.url.subscribe(url => {
       console.log(url[0].path);
       if (url[0].path !== 'trips-new') {
@@ -48,6 +49,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
             } else {
               this.tripForm.controls['title'].setValue(this.trip.title);
               this.tripForm.controls['description'].setValue(this.trip.description);
+              this.totalprice = Number(this.trip.price);
               this.tripForm.controls['price'].setValue(this.trip.price);
               this.initRequeriments(this.trip.requeriments);
               this.tripForm.controls['startDate'].setValue(this.formatDate(new Date(this.trip.startDate)));
@@ -78,12 +80,12 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
 
   createForm() {
     this.tripForm = this.fb.group({
-      title: [''],
-      description: [''],
-      price: [''],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      price: ['', Validators.required],
       requeriments: this.fb.array(['']),
-      startDate: [''],
-      endDate: [''],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
       pictures: this.fb.array(['']),
       stages: this.fb.array([this.createStage()]),
       manager: ['']
@@ -113,6 +115,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
 
   removeStage(index: number) {
     this.stages.removeAt(index);
+    this.updatePrice();
   }
 
   addStage() {

@@ -20,6 +20,9 @@
                 <input type="text" name="title" class="form-control" id="title" formControlName="title"
                 placeholder="{{'trip.ph' | translate}} {{'trip.title' | translate}}" required autofocus>
               </div>
+              <div class="text-danger" *ngIf="tripForm.get('title').errors && tripForm.get('title').touched && tripForm.get('title').errors.required">
+                {{'errorMessages.validation.required' | translate}}
+              </div>
             </div>
           </div>
 
@@ -33,6 +36,9 @@
                 <input type="number" name="price" class="form-control" id="price" formControlName="price"
                 placeholder="{{'trip.price' | translate}}" required autofocus readonly>
               </div>
+              <div class="text-danger" *ngIf="tripForm.get('price').errors && tripForm.get('price').touched && tripForm.get('price').errors.required">
+                {{'errorMessages.validation.required' | translate}}
+              </div>
             </div>
           </div>
         </div>
@@ -45,6 +51,9 @@
           <div class="col-md-12">
             <textarea name="description" class="form-control" id="description" formControlName="description"
             placeholder="{{'trip.ph' | translate}} {{'trip.description' | translate}}" required> </textarea>
+          </div>
+          <div class="text-danger" *ngIf="tripForm.get('description').errors && tripForm.get('description').touched && tripForm.get('description').errors.required">
+            {{'errorMessages.validation.required' | translate}}
           </div>
         </div>
 
@@ -60,6 +69,9 @@
                 <input type="date" name="startDate"  class="form-control" id="startDate" formControlName="startDate"
                 placeholder="{{'trip.ph' | translate}} {{'trip.startDate' | translate}}" required>
               </div>
+              <div class="text-danger" *ngIf="tripForm.get('startDate').errors && tripForm.get('startDate').touched && tripForm.get('startDate').errors.required">
+                {{'errorMessages.validation.required' | translate}}
+              </div>
             </div>
           </div>
 
@@ -72,6 +84,9 @@
               <div class="col-md-12">
                 <input type="date" name="endDate" class="form-control" id="endDate" formControlName="endDate"
                 placeholder="{{'trip.endDate' | translate}}" required>
+              </div>
+              <div class="text-danger" *ngIf="tripForm.get('endDate').errors && tripForm.get('endDate').touched && tripForm.get('endDate').errors.required">
+                {{'errorMessages.validation.required' | translate}}
               </div>
             </div>
           </div>

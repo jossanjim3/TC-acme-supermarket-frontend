@@ -137,4 +137,8 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
       .catch((err) => console.error(err.message));
   }
 
+  newTrip() {
+    this.router.navigate(['/trips-new']);
+  }
+
 }
