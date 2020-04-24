@@ -135,7 +135,12 @@
         "cancel.title" : "Cancelar Solicitud",
         "cancel.ok": "La solicitud ha sido cancelada correctamente!",
         "cancel.error": "La solicitud no ha sido cancelada!",
-        "rejected.ok": "La solicitud ha sido rechazada correctamente!!"
+        "rejected.ok": "La solicitud ha sido rechazada correctamente!!",
+        "cancel.c": "CANCELAR",
+        "cancel.save": "GUARDAR",
+        "cancel.status": "Estado",
+        "cancel.comment": "Comentario",
+        "cancel.reasonCancel": "Motivo Cancelación"
     },
     "audits": {        
         "audit.audits": "Auditorías",

@@ -17,6 +17,7 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
 
   cancelForm: FormGroup;
   applyId: String;
+  param: String;
   application: Application;
 
   constructor(private translateService: TranslateService, private authService: AuthService,
@@ -32,7 +33,7 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
     this.applyId = this.route.snapshot.params['id'];
     // console.log('id appli: ' + this.applyId);
 
-    const param = this.route.snapshot.params['paramKey'];
+    this.param = this.route.snapshot.params['paramKey'];
     // console.log('param: ' + param);
 
     this.createForm();
@@ -72,11 +73,13 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
     this.application.status = formModel.status;
     this.application.comment = formModel.comment;
     this.application.reasonCancel = formModel.reasonCancel;
+    // console.log('comment: ' + this.application.comment);
 
     this.applicationService.cancelApplication(this.applyId, this.application.reasonCancel, this.application.comment)
       .then( (appli: Application) => {
           if (appli) {
             this.application = appli;
+            console.log('this.application.comment: ' + this.application.comment);
             this.cancelForm.controls['id'].setValue(this.application.id);
             this.cancelForm.controls['status'].setValue(this.application.status);
             this.cancelForm.controls['comment'].setValue(this.application.comment);

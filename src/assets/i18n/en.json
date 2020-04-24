@@ -135,7 +135,12 @@
         "cancel.title" : "Cancel Application",
         "cancel.ok": "Application has been cancelled successfully!",
         "cancel.error": "Application has not been cancelled!",
-        "rejected.ok": "Application has been rejected successfully!"
+        "rejected.ok": "Application has been rejected successfully!",
+        "cancel.c": "CANCEL",
+        "cancel.save": "SAVE",
+        "cancel.status": "Status",
+        "cancel.comment": "Comment",
+        "cancel.reasonCancel": "Reason Cancel"
     },
     "audits": {        
         "audit.audits": "Audits",

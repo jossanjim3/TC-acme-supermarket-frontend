@@ -85,13 +85,14 @@ export class ApplicationsService {
       headers.append('Content-Type', 'application/json');
       const url = `${environment.backendApiBaseURL}/v1/applications/${applyId}/cancel`;
       // console.log('url: ' + url);
-
+      console.log('comment: ' + comment);
+      
       // si es manager es obligatorio el reason cancel, si es explorer no
       this.authService.getCurrentActor()
         .then((actorData: Actor) => {
           if (actorData !== null) {
               const actorRole = actorData.role;
-              console.log('role: ' + actorRole);
+              // console.log('role: ' + actorRole);
 
               let body, mes;
               if (this.authService.checkRole('MANAGER')) {
@@ -101,6 +102,7 @@ export class ApplicationsService {
 
               } else if (this.authService.checkRole('EXPLORER')) {
                 // tiene rol explorer, pasa a estado CANCELLED
+                console.log('comment: ' + comment);
                 body = JSON.stringify({status: 'CANCELLED', reasonCancel: reasonCancel, comment: comment});
                 mes = 'application.cancel.ok';
 
