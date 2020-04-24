@@ -10,13 +10,15 @@ import { Actor } from 'src/app/models/actor.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { controlNameBinding } from '@angular/forms/src/directives/reactive_directives/form_control_name';
 import swal from 'sweetalert';
+import { CanComponentDeactivate } from 'src/app/guards/can-deactivate.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-trip-form',
   templateUrl: './trip-form.component.html',
   styleUrls: ['./trip-form.component.css']
 })
-export class TripFormComponent extends TranslatableComponent implements OnInit {
+export class TripFormComponent extends TranslatableComponent implements OnInit, CanComponentDeactivate {
   actor: Actor;
   tripForm: FormGroup;
   stages: FormArray;
@@ -27,6 +29,8 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
   totalprice = 0;
   trip_new = true;
 
+  updated: boolean;
+
   constructor(private fb: FormBuilder, private translateService: TranslateService, private tripService: TripService,
     private router: Router,
     private route: ActivatedRoute, private authService: AuthService) {
@@ -34,6 +38,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.updated = false;
     this.createForm();
     this.tripForm.controls['price'].setValue(this.totalprice);
     this.route.url.subscribe(url => {
@@ -218,15 +223,39 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
     console.log(formTrip);
     if (this.trip_new) {
       this.tripService.postTrip(formTrip).then( val => {
+        this.updated = true;
         console.log(val);
         this.router.navigate(['/trips-created']);
         // TODO : poner mensaje creado
       }, err => { console.log(err); });
     } else {
       this.tripService.updateTrip(formTrip, this.trip.ticker).then( val => {
+        this.updated = true;
         console.log(val);
         this.router.navigate(['/trips-created']);
       }, err => { console.log(err); });
+    }
+  }
+
+  goBack() {
+    window.history.back();
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    let result = true;
+    const message = this.translateService.instant('messages.discard.changes');
+    if (!this.updated && this.tripForm.dirty) {
+      return swal({
+        text: this.translateService.instant('messages.discard.changes'),
+        icon: 'info',
+        buttons: [this.translateService.instant('trip.cancel'), this.translateService.instant('trip.discard')],
+      })
+      .then((willCancel) => {
+        result = willCancel;
+        return result;
+      });
+    } else {
+      return result;
     }
   }
 

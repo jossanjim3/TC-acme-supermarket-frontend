@@ -18,7 +18,7 @@
               </div>
               <div class="col-md-12">
                 <input type="text" name="title" class="form-control" id="title" formControlName="title"
-                placeholder="{{'trip.ph' | translate}} {{'trip.title' | translate}}" required autofocus>
+                placeholder="{{'trip.ph' | translate}} {{'trip.title' | translate}}" required>
               </div>
               <div class="text-danger" *ngIf="tripForm.get('title').errors && tripForm.get('title').touched && tripForm.get('title').errors.required">
                 {{'errorMessages.validation.required' | translate}}
@@ -154,7 +154,7 @@
       <hr>
       <div class="mb-2 mt-4">
         <button type="submit" class="mr-4 btn btn-primary">{{'trip.save' | translate}}</button>
-        <button type="button" class="mr-4 btn btn-outline-secondary" (click)="cancelTripForm()">{{'trip.cancel' | translate}}</button>
+        <button type="button" class="mr-4 btn btn-outline-secondary" (click)="goBack()">{{'trip.cancel' | translate}}</button>
         <button type="button" class="float-right btn btn-danger" (click)="deleteTrip()">{{'trip.delete' | translate}}</button>
       </div>
     </form>

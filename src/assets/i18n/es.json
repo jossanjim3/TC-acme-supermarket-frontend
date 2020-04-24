@@ -87,7 +87,8 @@
         "cancel": "Cancelar",
         "delete": "Borrar",
         "delete.tit": "¿Estás seguro?",
-        "delete.msg": "¡Una vez borrado, no podras recuperar este viaje!"
+        "delete.msg": "¡Una vez borrado, no podras recuperar este viaje!",
+        "discard": "Descartar"
     },
     "admin": {
         "admin": "Administrador",
@@ -96,6 +97,7 @@
         "register.manager": "Nuevo manager"
     },
     "messages": {
+        "discard.changes": "¿Quieres descartar los cambios?",
         "auth.registration.correct": "El usuario {{username}} ha sido registrado correctamente",
         "auth.logout": "El usuario se ha desconectado correctamente",
         "auth.login.correct": "El usuario ha entrado correctamente en la aplicación.",

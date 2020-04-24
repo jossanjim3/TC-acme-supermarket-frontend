@@ -87,7 +87,8 @@
         "cancel": "Cancel",
         "delete": "Delete",
         "delete.tit": "Are you sure?",
-        "delete.msg": "Once deleted, you will not be able to recover this trip!"
+        "delete.msg": "Once deleted, you will not be able to recover this trip!",
+        "discard": "Discard"
     },
     "admin": {
         "admin": "Administrator",
@@ -96,6 +97,7 @@
         "register.manager": "New manager"
     },
     "messages": {
+        "discard.changes": "Do you want discard changes?",
         "auth.registration.correct": "The user {{username}} has been correctly registered",
         "auth.logout": "The user has logged out from the app",
         "auth.login.correct": "The user has been correctly logged in",
