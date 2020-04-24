@@ -28,6 +28,8 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   minDate: string;
   maxDate: string;
 
+  showfilter = true;
+
   direction: string;
 
   constructor(private tripService: TripService, public authService: AuthService,
@@ -38,25 +40,39 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams
-      .subscribe(params => {
-        this.keyword = params['keyword'];
-        this.minDate = params['minDate'];
-        this.maxDate = params['maxDate'];
-        this.minPrice = params['minPrice'];
-        this.maxPrice = params['maxPrice'];
-      });
-    this.tripService.searchTrips(0, MAX_ITEMS, this.keyword, this.minPrice, this.maxPrice,
-      this.minDate, this.maxDate)
-      .then((val) => {
-        this.data = val;
-      })
-      .catch((err) => console.error(err.message));
+    this.route.url.subscribe(url => {
+      console.log(url[0].path);
+      if (url[0].path !== 'trips-created') {
+        this.route.queryParams
+          .subscribe(params => {
+            this.keyword = params['keyword'];
+            this.minDate = params['minDate'];
+            this.maxDate = params['maxDate'];
+            this.minPrice = params['minPrice'];
+            this.maxPrice = params['maxPrice'];
+          });
+        this.tripService.searchTrips(0, MAX_ITEMS, this.keyword, this.minPrice, this.maxPrice,
+          this.minDate, this.maxDate)
+          .then((val) => {
+            this.data = val;
+          })
+          .catch((err) => console.error(err.message));
 
-      this.roles = [];
-      this.authService.getCurrentActor().then((actor) => {
-        this.actor = actor;
-      });
+          this.roles = [];
+          this.authService.getCurrentActor().then((actor) => {
+            this.actor = actor;
+          });
+      } else {
+        this.showfilter = false;
+        this.authService.getCurrentActor().then((actor) => {
+          this.actor = actor;
+          this.tripService.getTripsOfManager(this.actor._id).then((val) => {
+            this.data = val;
+          })
+          .catch((err) => console.error(err.message));
+        });
+      }
+    });
   }
 
   getFirstPicture(trip: Trip) {
@@ -87,19 +103,21 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   // Functions to infinite scroll
 
   onScrollDown (ev) {
-    const start = this.numObjects;
-    this.numObjects += MAX_ITEMS;
-    this.appendTrips(start, this.numObjects);
-
-    this.direction = 'down';
+    if (this.showfilter) {
+      const start = this.numObjects;
+      this.numObjects += MAX_ITEMS;
+      this.appendTrips(start, this.numObjects);
+      this.direction = 'down';
+    }
   }
 
   onScrollUp (ev) {
-    const start = this.numObjects;
-    this.numObjects += MAX_ITEMS;
-    this.prependTrips(start, this.numObjects);
-
-    this.direction = 'up';
+    if (this.showfilter) {
+      const start = this.numObjects;
+      this.numObjects += MAX_ITEMS;
+      this.prependTrips(start, this.numObjects);
+      this.direction = 'up';
+    }
   }
 
   appendTrips (startIndex, endIndex) {

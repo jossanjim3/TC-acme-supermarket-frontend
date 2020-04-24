@@ -42,15 +42,19 @@ export class TripFormComponent extends TranslatableComponent implements OnInit {
         this.route.params
           .subscribe(async params => {
             this.trip = await this.tripService.getTrip(params['id']);
-            console.log(this.trip);
-            this.tripForm.controls['title'].setValue(this.trip.title);
-            this.tripForm.controls['description'].setValue(this.trip.description);
-            this.tripForm.controls['price'].setValue(this.trip.price);
-            this.initRequeriments(this.trip.requeriments);
-            this.tripForm.controls['startDate'].setValue(this.formatDate(new Date(this.trip.startDate)));
-            this.tripForm.controls['endDate'].setValue(this.formatDate(new Date(this.trip.endDate)));
-            this.initPictures(this.trip.pictures);
-            this.initStages(this.trip.stages);
+            console.log(this.authService.checkId(this.trip.manager));
+            if (!this.authService.checkId(this.trip.manager)) {
+              this.router.navigate(['/denied-access']);
+            } else {
+              this.tripForm.controls['title'].setValue(this.trip.title);
+              this.tripForm.controls['description'].setValue(this.trip.description);
+              this.tripForm.controls['price'].setValue(this.trip.price);
+              this.initRequeriments(this.trip.requeriments);
+              this.tripForm.controls['startDate'].setValue(this.formatDate(new Date(this.trip.startDate)));
+              this.tripForm.controls['endDate'].setValue(this.formatDate(new Date(this.trip.endDate)));
+              this.initPictures(this.trip.pictures);
+              this.initStages(this.trip.stages);
+            }
           });
       }
     });

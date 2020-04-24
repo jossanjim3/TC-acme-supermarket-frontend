@@ -43,7 +43,7 @@ const appRoutes: Routes = [
   ]},
 
   {path: 'trips-created', component: TripListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
-  {path: 'trips-new', component: TripListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
+  {path: 'trips-new', component: TripFormComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
 
   {path: 'index', component: IndexComponent},
 

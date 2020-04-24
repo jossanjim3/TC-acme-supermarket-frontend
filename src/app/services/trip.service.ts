@@ -64,6 +64,11 @@ export class TripService {
     this.http.delete(url, httpOptions).toPromise();
   }
 
+  getTripsOfManager(id: string) {
+    const url = `${environment.backendApiBaseURL}/v1/trips/manager/${id}`;
+    return this.http.get<Trip[]>(url).toPromise();
+  }
+
   searchTrips(start: number, psize: number, keyword: string, minPrice: string, maxPrice: string, minDate: string, maxDate: string) {
     const url = `${environment.backendApiBaseURL}/v1/trips/search`;
     // const url = `${environment.backendApiBaseURL}/v1/trips/search?keyword=${keyword}&minPrice=${minPrice}&maxPrice=${maxPrice}
