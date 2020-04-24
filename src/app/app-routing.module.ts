@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { NewAuditComponent } from './components/audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 import { AuditorAuditsComponent } from './components/audit/auditor-audits/auditor-audits.component';
+import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
 
 const appRoutes: Routes = [
 
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
     {path: 'search', component: TripListComponent},
     {path: 'display/:id', component: TripDisplayComponent},
     {path: '', component: TripListComponent},
+    {path: ':id', component: TripFormComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}}
   ]},
 
   {path: 'trips-applies', children: [

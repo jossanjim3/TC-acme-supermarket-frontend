@@ -43,7 +43,7 @@ export class EditProfileComponent implements OnInit {
       (actorData: Actor) => {
         if (actorData) {
           this.actor = actorData;
-          this.profileForm.controls['id'].setValue(this.actor.id);
+          this.profileForm.controls['id'].setValue(this.actor._id);
           this.profileForm.controls['name'].setValue(this.actor.name);
           this.profileForm.controls['surname'].setValue(this.actor.surname);
           this.profileForm.controls['email'].setValue(this.actor.email);

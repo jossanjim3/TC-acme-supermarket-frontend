@@ -39,6 +39,7 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { NewAuditComponent } from './components/audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 import { AuditorAuditsComponent } from './components/audit/auditor-audits/auditor-audits.component';
+import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
 
 registerLocaleData(locales, 'es');
 
@@ -82,7 +83,8 @@ export const firebaseConfig = {
     NewAuditComponent,
     DisplayAuditComponent,
     AuditorAuditsComponent,
-    DashboardComponent
+    DashboardComponent,
+    TripFormComponent
   ],
   imports: [
     BrowserModule,

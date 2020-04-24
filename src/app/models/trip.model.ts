@@ -1,8 +1,8 @@
 import { Entity } from './entity.model';
 import { Audit } from './audit.model';
+import { Picture } from './picture.model';
 
 export class Trip extends Entity {
-    _id: string;
     ticker: string;
     title: string;
     description: string;
@@ -11,6 +11,7 @@ export class Trip extends Entity {
     startDate: Date;
     endDate: Date;
     pictures: string[];
+    picturesObject: Picture[];
     manager: string;
     // TODO: add Stages schema
     stages: [{
