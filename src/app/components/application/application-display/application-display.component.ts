@@ -75,22 +75,42 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
     this.application.reasonCancel = formModel.reasonCancel;
     // console.log('comment: ' + this.application.comment);
 
-    this.applicationService.cancelApplication(this.applyId, this.application.reasonCancel, this.application.comment)
-      .then( (appli: Application) => {
-          if (appli) {
-            this.application = appli;
-            console.log('this.application.comment: ' + this.application.comment);
-            this.cancelForm.controls['id'].setValue(this.application.id);
-            this.cancelForm.controls['status'].setValue(this.application.status);
-            this.cancelForm.controls['comment'].setValue(this.application.comment);
-            this.cancelForm.controls['reasonCancel'].setValue(this.application.reasonCancel);
-          } else {
-            console.log('error getting application: ' + JSON.stringify(appli));
-          }
-        })
-      .catch(err => {
-        console.log(err);
-      });
+    if (this.param === 'cancelar') {
+      this.applicationService.cancelApplication(this.applyId, this.application.reasonCancel)
+        .then( (appli: Application) => {
+            if (appli) {
+              this.application = appli;
+              console.log('this.application.comment: ' + this.application.comment);
+              this.cancelForm.controls['id'].setValue(this.application.id);
+              this.cancelForm.controls['status'].setValue(this.application.status);
+              this.cancelForm.controls['comment'].setValue(this.application.comment);
+              this.cancelForm.controls['reasonCancel'].setValue(this.application.reasonCancel);
+            } else {
+              console.log('error getting application: ' + JSON.stringify(appli));
+            }
+          })
+        .catch(err => {
+          console.log(err);
+        });
+
+    } else if (this.param === 'editar') {
+      this.applicationService.editApplication(this.applyId, this.application.comment)
+        .then( (appli: Application) => {
+            if (appli) {
+              this.application = appli;
+              console.log('this.application.comment: ' + this.application.comment);
+              this.cancelForm.controls['id'].setValue(this.application.id);
+              this.cancelForm.controls['status'].setValue(this.application.status);
+              this.cancelForm.controls['comment'].setValue(this.application.comment);
+              this.cancelForm.controls['reasonCancel'].setValue(this.application.reasonCancel);
+            } else {
+              console.log('error getting application: ' + JSON.stringify(appli));
+            }
+          })
+        .catch(err => {
+          console.log(err);
+        });
+    }
 
   }
 

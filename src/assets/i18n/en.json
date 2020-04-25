@@ -140,7 +140,9 @@
         "cancel.save": "SAVE",
         "cancel.status": "Status",
         "cancel.comment": "Comment",
-        "cancel.reasonCancel": "Reason Cancel"
+        "cancel.reasonCancel": "Reason Cancel",
+        "edit.ok": "Application has been updated successfully!",
+        "edit.error": "Application has not been updated!"
     },
     "audits": {        
         "audit.audits": "Audits",

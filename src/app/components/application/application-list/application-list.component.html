@@ -80,7 +80,15 @@
   <tbody>
     <tr *ngFor="let item of mf.data">
 
-        <td title="{{item._id}}">{{ item._id  | slice:-5 }} </td>    
+        <td class="completo">
+            <!-- boton editar -->
+            <a  *ngIf="this.authService.checkRole('MANAGER') || this.authService.checkRole('EXPLORER')"       
+                [routerLink]="['/trips-applies/display/' + item._id, {'paramKey': 'editar'}]"
+                title="{{'application.dt.edit' | translate}} - {{ item._id  | slice:-5 }} ">
+                <span class="fa fa-edit" aria-hidden="true"></span>
+                {{ item._id  | slice:-5 }}            
+            </a>
+        </td>    
 
         <td *ngIf="this.authService.checkRole('MANAGER')" title="{{item.explorer}}">{{item.explorer  | slice:-5 }}</td>
 

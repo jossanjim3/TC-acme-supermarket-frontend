@@ -140,7 +140,9 @@
         "cancel.save": "GUARDAR",
         "cancel.status": "Estado",
         "cancel.comment": "Comentario",
-        "cancel.reasonCancel": "Motivo Cancelación"
+        "cancel.reasonCancel": "Motivo Cancelación",
+        "edit.ok": "La solicitud ha sido actualizada correctamente!",
+        "edit.error": "La solicitud no ha podido ser actualizada !"
     },
     "audits": {        
         "audit.audits": "Auditorías",

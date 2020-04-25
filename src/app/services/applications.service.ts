@@ -78,15 +78,13 @@ export class ApplicationsService {
     return this.http.get<Application>(url).toPromise();
   }
 
-  cancelApplication(applyId: String, reasonCancel: String, comment: String) {
+  cancelApplication(applyId: String, reasonCancel: String) {
 
     return new Promise<any>((resolve, reject) => {
       const headers = new HttpHeaders();
       headers.append('Content-Type', 'application/json');
       const url = `${environment.backendApiBaseURL}/v1/applications/${applyId}/cancel`;
-      // console.log('url: ' + url);
-      console.log('comment: ' + comment);
-      
+
       // si es manager es obligatorio el reason cancel, si es explorer no
       this.authService.getCurrentActor()
         .then((actorData: Actor) => {
@@ -97,13 +95,12 @@ export class ApplicationsService {
               let body, mes;
               if (this.authService.checkRole('MANAGER')) {
                 // tiene rol manager, reasonCancel es obligatorio y pasa a estado REJECTED
-                body = JSON.stringify({status: 'REJECTED', reasonCancel: reasonCancel, comment: comment});
+                body = JSON.stringify({status: 'REJECTED', reasonCancel: reasonCancel});
                 mes = 'application.rejected.ok';
 
               } else if (this.authService.checkRole('EXPLORER')) {
                 // tiene rol explorer, pasa a estado CANCELLED
-                console.log('comment: ' + comment);
-                body = JSON.stringify({status: 'CANCELLED', reasonCancel: reasonCancel, comment: comment});
+                body = JSON.stringify({status: 'CANCELLED', reasonCancel: reasonCancel});
                 mes = 'application.cancel.ok';
 
               }
@@ -125,6 +122,28 @@ export class ApplicationsService {
 
   }
 
+  editApplication(applyId: String, comment: String) {
+
+    return new Promise<any>((resolve, reject) => {
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
+      const url = `${environment.backendApiBaseURL}/v1/applications/${applyId}`;
+      // console.log('url: ' + url);
+      // console.log('comment: ' + comment);
+
+      const body = JSON.stringify({_id: applyId, comment: comment});
+
+      this.http.put(url, body, httpOptions).toPromise()
+        .then(res => {
+          resolve(res);
+          this.messageService.notifyMessage('application.edit.ok', 'alert alert-success');
+        }, err => {
+          this.messageService.notifyMessage('application.edit.error', 'alert alert-danger');
+          reject(err);
+        });
+    });
+
+  }
   /* getApplications() {
     let url = '';
     // url = `${environment.backendApiBaseURL}/v1/applications`;
