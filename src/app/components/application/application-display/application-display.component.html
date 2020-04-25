@@ -73,7 +73,8 @@
     </div>
 
     <!-- Reason Cancel -->
-    <div class="row"  *ngIf="this.authService.checkRole('MANAGER') && this.param === 'cancelar'">
+    <div class="row"  *ngIf="(this.authService.checkRole('MANAGER') && this.param === 'cancelar') || 
+                             (this.authService.checkRole('MANAGER') && this.param === 'editar' && this.cancelForm.value.reasonCancel !== undefined)">
       <div class="col-md-3 field-label-responsive">
           <label for="id">{{'application.cancel.reasonCancel' | translate}}: </label>
       </div>
@@ -94,7 +95,7 @@
           </div>
       </div>
     </div>
-
+    
     <!-- guardar -->
     <div class="row">
       <div class="col-md-3"></div>

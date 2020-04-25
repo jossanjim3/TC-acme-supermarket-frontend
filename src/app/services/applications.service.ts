@@ -122,16 +122,16 @@ export class ApplicationsService {
 
   }
 
-  editApplication(applyId: String, comment: String) {
+  editApplication(applyId: String, comment: String, reasonCancel: String) {
 
     return new Promise<any>((resolve, reject) => {
       const headers = new HttpHeaders();
       headers.append('Content-Type', 'application/json');
-      const url = `${environment.backendApiBaseURL}/v1/applications/${applyId}`;
+      const url = `${environment.backendApiBaseURL}/v3/applications/${applyId}`;
       // console.log('url: ' + url);
       // console.log('comment: ' + comment);
 
-      const body = JSON.stringify({_id: applyId, comment: comment});
+      const body = JSON.stringify({_id: applyId, comment: comment, reasonCancel: reasonCancel});
 
       this.http.put(url, body, httpOptions).toPromise()
         .then(res => {
