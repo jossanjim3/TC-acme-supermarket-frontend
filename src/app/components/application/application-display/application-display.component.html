@@ -27,7 +27,7 @@
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-info"></i></div>
                     <input type="text" name="id" class="form-control color-readonly" id="id" formControlName="id"
-                          required autofocus readonly>
+                          required readonly>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-flag"></i></div>
                   <input type="text" name="status" class="form-control color-readonly" id="status" formControlName="status"
-                        required autofocus readonly>
+                        required readonly>
               </div>
           </div>
       </div>
@@ -58,8 +58,7 @@
           <div class="form-group">
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-comment-o"></i></div>
-                  <input type="text" name="comment" class="form-control" id="comment" formControlName="comment"
-                        autofocus>
+                  <input type="text" name="comment" class="form-control" id="comment" formControlName="comment">
               </div>
           </div>
       </div>
@@ -83,18 +82,22 @@
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-commenting-o"></i></div>
                   <input type="text" name="reasonCancel" class="form-control" id="reasonCancel" formControlName="reasonCancel"
-                        autofocus>
+                      required  autofocus>
               </div>
           </div>
       </div>
-      <div class="col-md-3">
+        <!-- mensaje required -->
+        <div class="col-md-9" *ngIf="cancelForm.get('reasonCancel').errors && cancelForm.get('reasonCancel').touched && cancelForm.get('reasonCancel').errors.required">
           <div class="form-control-feedback">
-                  <span class="text-danger align-middle">
+                  <span class="text-danger align-middle" style="margin-left: 40%;">
                       <!-- Put e-mail validation error messages here -->
+                      {{'application.cancel.required' | translate}}
                   </span>
           </div>
-      </div>
+        </div>
+
     </div>
+    
     
     <!-- guardar -->
     <div class="row">

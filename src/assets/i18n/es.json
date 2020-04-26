@@ -141,6 +141,7 @@
         "cancel.status": "Estado",
         "cancel.comment": "Comentario",
         "cancel.reasonCancel": "Motivo Cancelación",
+        "cancel.required": "El campo motivo de cancelación es obligatorio!",
         "edit.ok": "La solicitud ha sido actualizada correctamente!",
         "edit.error": "La solicitud no ha podido ser actualizada !"
     },

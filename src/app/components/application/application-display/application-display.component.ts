@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ApplicationsService } from 'src/app/services/applications.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Application } from 'src/app/models/application.model';
 import { app } from 'firebase';
 
@@ -46,7 +46,7 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
       id: [''],
       status: [''],
       comment: [''],
-      reasonCancel: [''],
+      reasonCancel: ['', Validators.required],
     });
 
     this.applicationService.getApplicationById(this.applyId)

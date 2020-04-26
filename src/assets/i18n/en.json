@@ -135,6 +135,7 @@
         "cancel.title" : "Cancel Application",
         "cancel.ok": "Application has been cancelled successfully!",
         "cancel.error": "Application has not been cancelled!",
+        "cancel.required": "Application reason cancel is required!",
         "rejected.ok": "Application has been rejected successfully!",
         "cancel.c": "CANCEL",
         "cancel.save": "SAVE",
