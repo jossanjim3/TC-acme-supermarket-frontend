@@ -42,6 +42,7 @@ import { AuditorAuditsComponent } from './components/audit/auditor-audits/audito
 import {TranslateService} from '@ngx-translate/core';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 registerLocaleData(locales, 'es');
 
@@ -108,6 +109,7 @@ export const firebaseConfig = {
     // tslint:disable-next-line: deprecation
     HttpModule,
     DataTableModule,
+    NgxPayPalModule
   ],
   exports: [AppRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

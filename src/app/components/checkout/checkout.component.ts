@@ -11,7 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CheckoutComponent extends TranslatableComponent implements OnInit {
 
-  private payPalConfig: IPayPalConfig;
+  private payPalConfig ?: IPayPalConfig;
+
   constructor(private translateService: TranslateService, private route: ActivatedRoute,
     private router: Router) {
       super(translateService);
@@ -24,6 +25,7 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
   private initConfig(): void {
 
     const total = this.route.snapshot.queryParams['total'];
+    console.log('total: ' + total);
 
     this.payPalConfig = {
     currency: 'EUR',
@@ -36,12 +38,12 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
           amount: {
             currency_code: 'EUR',
             value: total,
-            breakdown: {
+            /* breakdown: {
               item_total: {
                 currency_code: 'EUR',
                 value: total
               }
-            }
+            } */
           },
           /* items: [
             {
@@ -81,6 +83,7 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
 
     onCancel: (data, actions) => {
       console.log('OnCancel', data, actions);
+      this.goBack();
     },
 
     onError: err => {
@@ -94,4 +97,9 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
   };
   }
 
+  goBack(): void {
+    // this.router.navigate(['/']);
+    window.history.back();
+  }
 }
+
