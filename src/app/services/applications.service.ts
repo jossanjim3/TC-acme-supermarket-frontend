@@ -99,12 +99,14 @@ export class ApplicationsService {
               if (this.authService.checkRole('MANAGER')) {
                 // tiene rol manager, reasonCancel es obligatorio y pasa a estado REJECTED
                 body = JSON.stringify({status: 'REJECTED', reasonCancel: reasonCancel});
-                mes = 'application.rejected.ok';
+                const mesAux = this.translate.instant('application.rejected.ok');
+                mes = mesAux + ' [' + applyId + ']';
 
               } else if (this.authService.checkRole('EXPLORER')) {
                 // tiene rol explorer, pasa a estado CANCELLED
                 body = JSON.stringify({status: 'CANCELLED', reasonCancel: reasonCancel});
-                mes = 'application.cancel.ok';
+                const mesAux = this.translate.instant('application.cancel.ok');
+                mes = mesAux + ' [' + applyId + ']';
 
               }
 
@@ -115,7 +117,6 @@ export class ApplicationsService {
                 }, err => {
                   const mesAux = this.translate.instant('application.cancel.error');
                   mes = mesAux + ' - ' + err.status + ': ' + err.error;
-                  // this.messageService.notifyMessage('application.cancel.error', 'alert alert-danger');
                   this.messageService.notifyMessage(mes, 'alert alert-danger');
                   // console.log('err: ' + err.error);
                   reject(err);
@@ -143,9 +144,13 @@ export class ApplicationsService {
       this.http.put(url, body, httpOptions).toPromise()
         .then(res => {
           resolve(res);
-          this.messageService.notifyMessage('application.edit.ok', 'alert alert-success');
+          const mesAux = this.translate.instant('application.edit.ok');
+          const mes = mesAux + ' [' + applyId + ']';
+          this.messageService.notifyMessage(mes, 'alert alert-success');
         }, err => {
-          this.messageService.notifyMessage('application.edit.error', 'alert alert-danger');
+          const mesAux = this.translate.instant('application.edit.error');
+          const  mes = mesAux + ' - ' + err.status + ': ' + err.error;
+          this.messageService.notifyMessage(mes, 'alert alert-danger');
           reject(err);
         });
     });
