@@ -79,12 +79,13 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
       this.applicationService.cancelApplication(this.applyId, this.application.reasonCancel)
         .then( (appli: Application) => {
             if (appli) {
-              this.application = appli;
+              this.goBack();
+              /* this.application = appli;
               // console.log('this.application.comment: ' + this.application.comment);
               this.cancelForm.controls['id'].setValue(this.application._id);
               this.cancelForm.controls['status'].setValue(this.application.status);
               this.cancelForm.controls['comment'].setValue(this.application.comment);
-              this.cancelForm.controls['reasonCancel'].setValue(this.application.reasonCancel);
+              this.cancelForm.controls['reasonCancel'].setValue(this.application.reasonCancel); */
             } else {
               console.log('error getting application: ' + JSON.stringify(appli));
             }
@@ -97,12 +98,13 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
       this.applicationService.editApplication(this.applyId, this.application.comment, this.application.reasonCancel)
         .then( (appli: Application) => {
             if (appli) {
-              this.application = appli;
+              this.goBack();
+              /* this.application = appli;
               // console.log('this.application.comment: ' + this.application.comment);
               this.cancelForm.controls['id'].setValue(this.application._id);
               this.cancelForm.controls['status'].setValue(this.application.status);
               this.cancelForm.controls['comment'].setValue(this.application.comment);
-              this.cancelForm.controls['reasonCancel'].setValue(this.application.reasonCancel);
+              this.cancelForm.controls['reasonCancel'].setValue(this.application.reasonCancel); */
             } else {
               console.log('error getting application: ' + JSON.stringify(appli));
             }
