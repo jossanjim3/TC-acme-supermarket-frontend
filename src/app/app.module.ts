@@ -41,6 +41,7 @@ import { DisplayAuditComponent } from './components/audit/display-audit/display-
 import { AuditorAuditsComponent } from './components/audit/auditor-audits/auditor-audits.component';
 import {TranslateService} from '@ngx-translate/core';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
 
 registerLocaleData(locales, 'es');
 
@@ -85,7 +86,8 @@ export const firebaseConfig = {
     DisplayAuditComponent,
     AuditorAuditsComponent,
     DashboardComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    TripFormComponent
   ],
   imports: [
     BrowserModule,

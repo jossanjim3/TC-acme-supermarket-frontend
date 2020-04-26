@@ -61,6 +61,8 @@
     },
     "trip": {
         "trip": "Viajes",
+        "ph": "Introduce",
+        "trip.form": "Formulario de viaje",
         "trips.list": "Todos los viajes",
         "trips.list.applies": "Viajes solicitados",
         "trips.list.created": "Viajes creados",
@@ -70,13 +72,23 @@
         "new": "Nuevo viaje",
         "ticker": "Identificador",
         "stages": "Etapas",
+        "stages.add": "Añadir etapa",
         "title": "Titulo",
         "description": "Descripción",
         "startDate": "Fecha inicio",
         "endDate": "Fecha fin",
         "filter": "Filtro",
         "price": "Precio",
-        "requeriments": "Requisitos"
+        "requeriments": "Requisitos",
+        "requeriments.add": "Añadir requisito",
+        "pictures": "Imagenes",
+        "pictures.add": "Añadir imagen",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "delete": "Borrar",
+        "delete.tit": "¿Estás seguro?",
+        "delete.msg": "¡Una vez borrado, no podras recuperar este viaje!",
+        "discard": "Descartar"
     },
     "admin": {
         "admin": "Administrador",
@@ -85,6 +97,7 @@
         "register.manager": "Nuevo manager"
     },
     "messages": {
+        "discard.changes": "¿Quieres descartar los cambios?",
         "auth.registration.correct": "El usuario {{username}} ha sido registrado correctamente",
         "auth.logout": "El usuario se ha desconectado correctamente",
         "auth.login.correct": "El usuario ha entrado correctamente en la aplicación.",

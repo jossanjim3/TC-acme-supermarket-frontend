@@ -26,6 +26,49 @@ export class TripService {
     return this.http.get<Trip>(url).toPromise();
   }
 
+  async postTrip(trip: Trip) {
+    const url = `${environment.backendApiBaseURL}/v1/trips`;
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const body = JSON.stringify(trip);
+
+    return new Promise<any>((resolve, reject) => {
+      this.http.post(url, body, httpOptions).toPromise()
+        .then(res => {
+          resolve(res);
+        }, err => {console.error(err); reject(err); });
+    });
+  }
+
+  async updateTrip(trip: Trip, id: string) {
+    const url = `${environment.backendApiBaseURL}/v1/trips/${id}`;
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const body = JSON.stringify(trip);
+    console.log(body);
+    return new Promise<any>((resolve, reject) => {
+      this.http.put(url, body, httpOptions).toPromise()
+        .then(res => {
+          resolve(res);
+        }, err => {console.error(err); reject(err); });
+    });
+  }
+
+  async deleteTrip(id: string) {
+    const url = `${environment.backendApiBaseURL}/v1/trips/${id}`;
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    this.http.delete(url, httpOptions).toPromise();
+  }
+
+  getTripsOfManager(id: string) {
+    const url = `${environment.backendApiBaseURL}/v1/trips/manager/${id}`;
+    return this.http.get<Trip[]>(url).toPromise();
+  }
+
   searchTrips(start: number, psize: number, keyword: string, minPrice: string, maxPrice: string, minDate: string, maxDate: string) {
     const url = `${environment.backendApiBaseURL}/v1/trips/search`;
     // const url = `${environment.backendApiBaseURL}/v1/trips/search?keyword=${keyword}&minPrice=${minPrice}&maxPrice=${maxPrice}

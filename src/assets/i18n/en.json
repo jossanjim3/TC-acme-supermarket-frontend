@@ -61,6 +61,8 @@
     },
     "trip": {
         "trip": "Trips",
+        "ph": "Enter",
+        "trip.form": "Trip Form",
         "trips.list": "All Trips",
         "trips.list.applies": "Trips applied",
         "trips.list.created": "Trips created",
@@ -70,13 +72,23 @@
         "new": "New trip",
         "ticker": "Ticker",
         "stages": "Stages",
+        "stages.add": "Add stage",
         "title": "Title",
         "description": "Description",
         "startDate": "Start Date",
         "endDate": "End Date",
         "filter": "Filter",
         "price": "Price",
-        "requeriments": "Requeriments"
+        "requeriments": "Requeriments",
+        "requeriments.add": "Add requeriment",
+        "pictures": "Pictures",
+        "pictures.add": "Add picture",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "delete.tit": "Are you sure?",
+        "delete.msg": "Once deleted, you will not be able to recover this trip!",
+        "discard": "Discard"
     },
     "admin": {
         "admin": "Administrator",
@@ -85,6 +97,7 @@
         "register.manager": "New manager"
     },
     "messages": {
+        "discard.changes": "Do you want discard changes?",
         "auth.registration.correct": "The user {{username}} has been correctly registered",
         "auth.logout": "The user has logged out from the app",
         "auth.login.correct": "The user has been correctly logged in",
