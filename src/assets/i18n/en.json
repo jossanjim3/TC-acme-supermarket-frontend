@@ -158,6 +158,9 @@
         "edit.ok": "Application has been updated successfully!",
         "edit.error": "Application has not been updated!"
     },
+    "paypal": {
+        "title": "Pay with PayPal"
+    },
     "audits": {        
         "audit.audits": "Audits",
         "audit.no.audits": "There is no audits to show.",

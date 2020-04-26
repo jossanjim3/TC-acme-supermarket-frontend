@@ -170,6 +170,9 @@
         "audit.details": "Viaje Detalles",
         "audit.edit": "Editar"
     },
+    "paypal": {
+        "title": "Pagar con PayPal"
+    },
     "dashboard": {
         "dashboard": "Cuadro de mando",
         "tripspermanager": "Viajes por Manager",

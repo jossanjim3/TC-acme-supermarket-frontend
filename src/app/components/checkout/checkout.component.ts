@@ -78,6 +78,8 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
       console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
       
       alert('comprado');
+
+      this.goBack();
       
     },
 
