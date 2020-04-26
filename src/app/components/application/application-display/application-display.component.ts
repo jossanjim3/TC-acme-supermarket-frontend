@@ -69,7 +69,7 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
   onSubmit() {
     const formModel = this.cancelForm.value;
 
-    this.application.id = formModel.id;
+    this.application._id = formModel.id;
     this.application.status = formModel.status;
     this.application.comment = formModel.comment;
     this.application.reasonCancel = formModel.reasonCancel;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { TranslatableComponent } from '../shared/translatable/translatable.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CheckoutComponent extends TranslatableComponent implements OnInit {
 
-  private payPalConfig: PayPalConfig;
+  private payPalConfig: IPayPalConfig;
   constructor(private translateService: TranslateService, private route: ActivatedRoute,
     private router: Router) {
       super(translateService);
