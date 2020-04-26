@@ -40,6 +40,7 @@ import { NewAuditComponent } from './components/audit/new-audit/new-audit.compon
 import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 import { AuditorAuditsComponent } from './components/audit/auditor-audits/auditor-audits.component';
 import {TranslateService} from '@ngx-translate/core';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 registerLocaleData(locales, 'es');
 
@@ -83,7 +84,8 @@ export const firebaseConfig = {
     NewAuditComponent,
     DisplayAuditComponent,
     AuditorAuditsComponent,
-    DashboardComponent
+    DashboardComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

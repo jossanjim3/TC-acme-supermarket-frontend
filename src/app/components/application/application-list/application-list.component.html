@@ -132,9 +132,9 @@
         <td title="{{item.createdAt | date:'dd/MM/yyyy h:mm a' }}" class="completo">{{item.createdAt | date:'dd/MM/yyyy' }}</td>
 
         <!-- boton PAGAR PAYPAL -->
-        <td *ngIf="this.authService.checkRole('EXPLORER')">
+        <td *ngIf="this.authService.checkRole('EXPLORER') && item.tripObj !== undefined">
             <a  *ngIf="item.status === 'DUE'"           
-                [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
+                [routerLink]="['/checkout', { 'total': item.tripObj.price }]"
                 class="btn btn-primary btn-application">
                 <span class="fa fa-paypal  " aria-hidden="true"></span>
                 <!-- {{'application.dt.pay' | translate}} -->

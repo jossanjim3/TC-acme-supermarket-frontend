@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { NewAuditComponent } from './components/audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 import { AuditorAuditsComponent } from './components/audit/auditor-audits/auditor-audits.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const appRoutes: Routes = [
 
@@ -45,6 +46,8 @@ const appRoutes: Routes = [
   {path: 'trips-new', component: TripListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
 
   {path: 'index', component: IndexComponent},
+
+  {path: 'checkout', component: CheckoutComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
 
   {path: 'datawarehouse', component: DashboardComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'olap-cube', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
