@@ -6,6 +6,8 @@ import { AuthService } from './auth.service';
 import { Actor } from '../models/actor.model';
 import { MessageService } from './message.service';
 import { Subject } from 'rxjs';
+import { InfoMessage } from '../models/info-message.model';
+import { TranslateService } from '@ngx-translate/core';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,7 +21,8 @@ export class ApplicationsService {
   appliUpdated = new Subject();
 
   constructor(
-    private http: HttpClient, private authService: AuthService, private messageService: MessageService) {
+    private http: HttpClient, private authService: AuthService, private messageService: MessageService, 
+    private translate: TranslateService) {
   }
 
   // usamos funciones async porque se llaman unas a las otras y asi no da error
@@ -110,7 +113,11 @@ export class ApplicationsService {
                   resolve(res);
                   this.messageService.notifyMessage(mes, 'alert alert-success');
                 }, err => {
-                  this.messageService.notifyMessage('application.cancel.error', 'alert alert-danger');
+                  const mesAux = this.translate.instant('application.cancel.error');
+                  mes = mesAux + ' - ' + err.status + ': ' + err.error;
+                  // this.messageService.notifyMessage('application.cancel.error', 'alert alert-danger');
+                  this.messageService.notifyMessage(mes, 'alert alert-danger');
+                  // console.log('err: ' + err.error);
                   reject(err);
                 });
 

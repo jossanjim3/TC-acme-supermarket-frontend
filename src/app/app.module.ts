@@ -39,6 +39,7 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { NewAuditComponent } from './components/audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 import { AuditorAuditsComponent } from './components/audit/auditor-audits/auditor-audits.component';
+import {TranslateService} from '@ngx-translate/core';
 
 registerLocaleData(locales, 'es');
 
@@ -102,11 +103,11 @@ export const firebaseConfig = {
     AppRoutingModule,
     // tslint:disable-next-line: deprecation
     HttpModule,
-    DataTableModule
+    DataTableModule,
   ],
   exports: [AppRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AngularFireAuth, ActorService],
+  providers: [AngularFireAuth, ActorService, TranslateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
