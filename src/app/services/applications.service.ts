@@ -21,7 +21,7 @@ export class ApplicationsService {
   appliUpdated = new Subject();
 
   constructor(
-    private http: HttpClient, private authService: AuthService, private messageService: MessageService, 
+    private http: HttpClient, private authService: AuthService, private messageService: MessageService,
     private translate: TranslateService) {
   }
 
@@ -60,7 +60,7 @@ export class ApplicationsService {
       headers.append('Content-Type', 'application/json');
       const url = `${environment.backendApiBaseURL}/v1/applications/${itemId}`;
       // console.log('url: ' + url);
-      const body = JSON.stringify({status: 'DUE'});
+      const body = JSON.stringify({status: 'DUE'}); // no es necesario pasarle el estado, se encarga el backend
       this.http.put(url, body, httpOptions).toPromise()
         .then(res => {
           resolve(res);
@@ -68,6 +68,32 @@ export class ApplicationsService {
           this.appliUpdated.next(true);
         }, err => {
           this.messageService.notifyMessage('application.update.due.error', 'alert alert-danger');
+          this.appliUpdated.next(false);
+          reject(err);
+        });
+    });
+
+  }
+
+  payApplication(itemId: String) {
+
+    return new Promise<any>((resolve, reject) => {
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
+      const url = `${environment.backendApiBaseURL}/v1/applications/${itemId}`;
+      // console.log('url: ' + url);
+      const body = JSON.stringify({status: 'ACCEPTED'}); // no es necesario pasarle el estado, se encarga el backend
+      this.http.put(url, body, httpOptions).toPromise()
+        .then(res => {
+          resolve(res);
+          const mesAux = this.translate.instant('paypal.pay.ok');
+          const mes = mesAux + ' [' + itemId + ']';
+          this.messageService.notifyMessage(mes, 'alert alert-success');
+          this.appliUpdated.next(true);
+        }, err => {
+          const mesAux = this.translate.instant('paypal.pay.error');
+          const mes = mesAux + ' - ' + err.status + ': ' + err.error;
+          this.messageService.notifyMessage(mes, 'alert alert-danger');
           this.appliUpdated.next(false);
           reject(err);
         });
@@ -156,6 +182,7 @@ export class ApplicationsService {
     });
 
   }
+
   /* getApplications() {
     let url = '';
     // url = `${environment.backendApiBaseURL}/v1/applications`;

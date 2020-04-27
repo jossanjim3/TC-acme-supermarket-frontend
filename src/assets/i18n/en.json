@@ -159,7 +159,10 @@
         "edit.error": "Application has not been updated!"
     },
     "paypal": {
-        "title": "Pay with PayPal"
+        "title": "Pay with PayPal",
+        "pay.ok": "Application han been payed!",
+        "pay.error": "Application han not been payed!"
+
     },
     "audits": {        
         "audit.audits": "Audits",

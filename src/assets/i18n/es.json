@@ -171,7 +171,9 @@
         "audit.edit": "Editar"
     },
     "paypal": {
-        "title": "Pagar con PayPal"
+        "title": "Pagar con PayPal",
+        "pay.ok": "La solicitud ha sido pagada correctamente!",
+        "pay.error": "La solicitud no se ha podido pagar!"
     },
     "dashboard": {
         "dashboard": "Cuadro de mando",

@@ -3,6 +3,7 @@ import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { TranslatableComponent } from '../shared/translatable/translatable.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ApplicationsService } from 'src/app/services/applications.service';
 
 @Component({
   selector: 'app-checkout',
@@ -14,7 +15,7 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
   private payPalConfig ?: IPayPalConfig;
 
   constructor(private translateService: TranslateService, private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router, private applicationService: ApplicationsService) {
       super(translateService);
      }
 
@@ -25,7 +26,9 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
   private initConfig(): void {
 
     const total = this.route.snapshot.queryParams['total'];
-    console.log('total: ' + total);
+    // console.log('total: ' + total);
+
+    const applyId = this.route.snapshot.queryParams['id'];
 
     this.payPalConfig = {
     currency: 'EUR',
@@ -76,11 +79,15 @@ export class CheckoutComponent extends TranslatableComponent implements OnInit {
 
     onClientAuthorization: (data) => {
       console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-      
-      alert('comprado');
 
-      this.goBack();
-      
+      // alert('comprado');
+      this.applicationService.payApplication(applyId)
+      .then(_ => {
+        console.log('paypal pagado ok');
+        this.goBack();
+      }).catch(error => {
+        console.log(error);
+      });
     },
 
     onCancel: (data, actions) => {

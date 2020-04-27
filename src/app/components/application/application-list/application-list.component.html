@@ -134,7 +134,7 @@
         <!-- boton PAGAR PAYPAL -->
         <td *ngIf="this.authService.checkRole('EXPLORER') && item.tripObj !== undefined">
             <a  *ngIf="item.status === 'DUE'"           
-                routerLink="/checkout" [queryParams] = "{ 'total': item.tripObj.price }"
+                routerLink="/checkout" [queryParams] = "{ 'total': item.tripObj.price, 'id': item._id }"
                 class="btn btn-primary btn-application">
                 <span class="fa fa-paypal  " aria-hidden="true"></span>
                 <!-- {{'application.dt.pay' | translate}} -->
