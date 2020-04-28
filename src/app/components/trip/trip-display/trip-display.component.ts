@@ -116,17 +116,19 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
   onApply(idTrip: string) {
 
-    console.log('idTrip: ' + idTrip);
+    // console.log('idTrip: ' + idTrip);
 
     this.authService.getCurrentActor().then( currActor => {
       if (currActor !== null) {
-        console.log('currActor: ' + currActor._id);
+        // console.log('currActor: ' + currActor._id);
 
         // creamos la application
         this.tripService.applyTrip(idTrip, currActor._id)
           .then((appli) => {
-            console.log('appli detail: ' + appli);
+            // console.log('appli detail: ' + appli);
             this.messageService.notifyMessage('application.appli.success', 'alert alert-success');
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
           })
           .catch((err) => {
             console.error(err);

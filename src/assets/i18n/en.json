@@ -127,6 +127,7 @@
         "appli.apply": "Apply",
         "appli.success" : "Application trip successfully!",
         "appli.fail" : "Trip cannot be applied!",
+        "appli.see.trip" : "See applications from the trip",
         "dt.status" : "Status",
         "dt.comment" : "Comments",
         "dt.reasonCancel" : "Reason Cancel",
@@ -138,7 +139,30 @@
         "dt.end_date" : "End Trip",
         "dt.price" : "Price",
         "dt.title" : "Destiny",
-        "dt.edit" : "edit"
+        "dt.edit" : "edit",
+        "dt.due" : "Due",
+        "dt.cancel" : "Cancel",
+        "dt.pay" : "Pay",
+        "update.due.ok": "Application has been updated to status DUE successfully!",
+        "update.due.error": "Application has not been updated to status DUE!",
+        "cancel.title" : "Cancel Application",
+        "cancel.ok": "Application has been cancelled successfully!",
+        "cancel.error": "Application has not been cancelled!",
+        "cancel.required": "Application reason cancel is required!",
+        "rejected.ok": "Application has been rejected successfully!",
+        "cancel.c": "CANCEL",
+        "cancel.save": "SAVE",
+        "cancel.status": "Status",
+        "cancel.comment": "Comment",
+        "cancel.reasonCancel": "Reason Cancel",
+        "edit.ok": "Application has been updated successfully!",
+        "edit.error": "Application has not been updated!"
+    },
+    "paypal": {
+        "title": "Pay with PayPal",
+        "pay.ok": "Application han been payed!",
+        "pay.error": "Application han not been payed!"
+
     },
     "audits": {        
         "audit.audits": "Audits",

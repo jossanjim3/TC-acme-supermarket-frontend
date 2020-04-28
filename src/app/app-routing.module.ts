@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { NewAuditComponent } from './components/audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 import { AuditorAuditsComponent } from './components/audit/auditor-audits/auditor-audits.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
 import { CanDeactivateGuard } from './guards/can-deactivate.service';
 
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
   ]},
 
   {path: 'trips-applies', children: [
-    {path: 'display/:id', component: ApplicationDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
+    {path: 'display/:id', component: ApplicationDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer|manager'}},
+    {path: 'trip/:id', component: ApplicationListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
     {path: '', component: ApplicationListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
   ]},
 
@@ -49,6 +51,8 @@ const appRoutes: Routes = [
    canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}},
 
   {path: 'index', component: IndexComponent},
+
+  {path: 'checkout', component: CheckoutComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
 
   {path: 'datawarehouse', component: DashboardComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'olap-cube', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},

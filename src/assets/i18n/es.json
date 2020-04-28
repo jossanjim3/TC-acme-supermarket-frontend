@@ -127,6 +127,7 @@
         "appli.apply": "Solicitar",
         "appli.success" : "Viaje solicitado correctamente!",
         "appli.fail" : "No se ha podido solicitar el viaje!",
+        "appli.see.trip" : "Ver solicitudes del viaje",
         "dt.status" : "Estado",
         "dt.comment" : "Comentarios",
         "dt.reasonCancel" : "Motivo Cancelación",
@@ -138,7 +139,24 @@
         "dt.end_date" : "Fin Viaje",
         "dt.price" : "Precio",
         "dt.title" : "Destino",
-        "dt.edit" : "editar"
+        "dt.edit" : "editar",
+        "dt.due" : "Due",
+        "dt.cancel" : "Cancelar",
+        "dt.pay" : "Pagar",
+        "update.due.ok": "La solicitud ha sido actualizada al estado DUE correctamente!",
+        "update.due.error": "La solicitud no ha podido ser actualizada al estado DUE!",
+        "cancel.title" : "Cancelar Solicitud",
+        "cancel.ok": "La solicitud ha sido cancelada correctamente!",
+        "cancel.error": "La solicitud no ha sido cancelada!",
+        "rejected.ok": "La solicitud ha sido rechazada correctamente!!",
+        "cancel.c": "CANCELAR",
+        "cancel.save": "GUARDAR",
+        "cancel.status": "Estado",
+        "cancel.comment": "Comentario",
+        "cancel.reasonCancel": "Motivo Cancelación",
+        "cancel.required": "El campo motivo de cancelación es obligatorio!",
+        "edit.ok": "La solicitud ha sido actualizada correctamente!",
+        "edit.error": "La solicitud no ha podido ser actualizada !"
     },
     "audits": {        
         "audit.audits": "Auditorías",
@@ -151,6 +169,11 @@
         "audit.mylist": "Mis Auditorías",
         "audit.details": "Viaje Detalles",
         "audit.edit": "Editar"
+    },
+    "paypal": {
+        "title": "Pagar con PayPal",
+        "pay.ok": "La solicitud ha sido pagada correctamente!",
+        "pay.error": "La solicitud no se ha podido pagar!"
     },
     "dashboard": {
         "dashboard": "Cuadro de mando",

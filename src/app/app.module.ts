@@ -39,7 +39,10 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { NewAuditComponent } from './components/audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 import { AuditorAuditsComponent } from './components/audit/auditor-audits/auditor-audits.component';
+import {TranslateService} from '@ngx-translate/core';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 registerLocaleData(locales, 'es');
 
@@ -84,6 +87,7 @@ export const firebaseConfig = {
     DisplayAuditComponent,
     AuditorAuditsComponent,
     DashboardComponent,
+    CheckoutComponent,
     TripFormComponent
   ],
   imports: [
@@ -104,11 +108,12 @@ export const firebaseConfig = {
     AppRoutingModule,
     // tslint:disable-next-line: deprecation
     HttpModule,
-    DataTableModule
+    DataTableModule,
+    NgxPayPalModule
   ],
   exports: [AppRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AngularFireAuth, ActorService],
+  providers: [AngularFireAuth, ActorService, TranslateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
