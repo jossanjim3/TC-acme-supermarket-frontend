@@ -104,6 +104,8 @@
         "auth.login.failed": "The user has not been correctly logged in",
         "already.registered": "Already registered?",
         "trip.deleted": "Trip successfully deleted",
+        "trip.created": "Trip successfully created",
+        "trip.updated": "Trip successfully updated",
         "back": "Back",
         "save": "Save",
         "cancel": "Cancel",
@@ -120,7 +122,10 @@
         "auth.logout.failed": "Logout failed",
         "denied.access.title": "Denied access",
         "denied.access.message": "You don't have permission to access {{resource}} on this server",
-        "no.trips.found": "No trips found" 
+        "no.trips.found": "No trips found",
+        "validation.required": "Required field",
+        "500": "Something go bad in our servers",
+        "422": "There are something wrong in the form"
     },
     "application": {
         "appli.applis": "Applications",

@@ -12,6 +12,7 @@ import { controlNameBinding } from '@angular/forms/src/directives/reactive_direc
 import swal from 'sweetalert';
 import { CanComponentDeactivate } from 'src/app/guards/can-deactivate.service';
 import { Observable } from 'rxjs';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-trip-form',
@@ -33,7 +34,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
 
   constructor(private fb: FormBuilder, private translateService: TranslateService, private tripService: TripService,
     private router: Router,
-    private route: ActivatedRoute, private authService: AuthService) {
+    private route: ActivatedRoute, private authService: AuthService, private messageService: MessageService) {
     super(translateService);
   }
 
@@ -211,6 +212,13 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
         if (willDelete) {
           this.tripService.deleteTrip(this.trip.ticker).then( val => {
             this.router.navigate(['/trips-created']);
+            this.messageService.notifyMessage(this.translateService.instant('messages.trip.deleted'), 'alert alert-success');
+          }, err => {
+            if (err.status === 422) {
+              this.messageService.notifyMessage(this.translateService.instant('errorMessages.422'), 'alert alert-danger');
+            } else {
+              this.messageService.notifyMessage(this.translateService.instant('errorMessages.500'), 'alert alert-danger');
+            }
           });
         }
       });
@@ -226,14 +234,30 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
         this.updated = true;
         console.log(val);
         this.router.navigate(['/trips-created']);
+        this.messageService.notifyMessage(this.translateService.instant('messages.trip.created'), 'alert alert-success');
         // TODO : poner mensaje creado
-      }, err => { console.log(err); });
+      }, err => {
+        console.log(err);
+        if (err.status === 422) {
+          this.messageService.notifyMessage(this.translateService.instant('errorMessages.422'), 'alert alert-danger');
+        } else {
+          this.messageService.notifyMessage(this.translateService.instant('errorMessages.500'), 'alert alert-danger');
+        }
+      });
     } else {
       this.tripService.updateTrip(formTrip, this.trip.ticker).then( val => {
         this.updated = true;
         console.log(val);
         this.router.navigate(['/trips-created']);
-      }, err => { console.log(err); });
+        this.messageService.notifyMessage(this.translateService.instant('messages.trip.updated'), 'alert alert-success');
+      }, err => {
+        console.log(err);
+        if (err.status === 422) {
+          this.messageService.notifyMessage(this.translateService.instant('errorMessages.422'), 'alert alert-danger');
+        } else {
+          this.messageService.notifyMessage(this.translateService.instant('errorMessages.500'), 'alert alert-danger');
+        }
+      });
     }
   }
 
