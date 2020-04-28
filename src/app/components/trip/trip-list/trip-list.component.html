@@ -73,13 +73,13 @@
       <div class="card-footer">
         <a *ngIf="(this.authService.checkRole('MANAGER') && this.authService.checkId(trip.manager))"
           routerLink="/trips/{{trip.ticker}}"
-          class="btn btn-primary pull-left">
+          class="btn btn-primary pull-left mx-1">
           <span class="fa fa-pencil" aria-hidden="true"></span>
           {{'trip.edit' | translate}}
         </a>
-        <a *ngIf="!(this.authService.checkRole('MANAGER') && this.authService.checkId(trip.manager))"
+        <a
           routerLink="/trips/display/{{trip.ticker}}"
-          class="btn btn-primary pull-left">
+          class="btn btn-primary pull-left mx-1">
           <span class="fa fa-search-plus" aria-hidden="true"></span>
           {{'trip.details' | translate}}
         </a>
