@@ -78,7 +78,7 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let item of mf.data" class="back-{{item.status}}">
+    <tr *ngFor="let item of mf.data" [ngStyle]="{'background-color': getColor(item.status, item.tripObj.startDate)}">
         
         <td class="completo">
             <!-- boton editar -->

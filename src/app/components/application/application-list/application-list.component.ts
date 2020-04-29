@@ -152,4 +152,28 @@ export class ApplicationListComponent extends TranslatableComponent implements O
       });
   }
 
+  getColor(status: String, fechaIniTrip: Date): string {
+    // console.log('status: ' + status + ', fechaIniTrip: ' + fechaIniTrip);
+    let color = '';
+    if (status === 'PENDING') {
+      // TODO comprpobar si falta menos de 1 mes para que empeice el viaje, si falta menos se pone color rojo
+      color = '#fff';
+
+    } else if (status === 'DUE') {
+      color = 'rgb(253, 235, 71)';
+
+    } else if (status === 'REJECTED') {
+      color = 'rgb(168, 167, 167)';
+
+    } else if (status === 'CANCELLED') {
+      color = 'rgb(31, 225, 231)';
+
+    } else if (status === 'ACCEPTED') {
+      color = 'rgb(170, 250, 153)';
+
+    }
+
+    return color;
+ }
+
 }
