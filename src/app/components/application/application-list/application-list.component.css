@@ -11,7 +11,8 @@
 }
 
 .back-PENDING {
-    background-color: #fff;
+    background-color: rgb(248, 16, 16);
+    background-color: rgb(248, 105, 105);
 }
 
 .back-DUE {
