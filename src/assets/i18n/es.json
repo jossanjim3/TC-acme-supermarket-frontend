@@ -85,7 +85,12 @@
         "pictures.add": "Añadir imagen",
         "save": "Guardar",
         "cancel": "Cancelar",
+        "cancel.trip": "Cancelar viaje",
+        "cancel.trip.msg": "Escribe una razón para cancelar el viaje",
+        "canceled": "Cancelado",
+        "cancel.reason": "Motivo de la cancelación",
         "delete": "Borrar",
+        "accept": "Aceptar",
         "delete.tit": "¿Estás seguro?",
         "delete.msg": "¡Una vez borrado, no podras recuperar este viaje!",
         "discard": "Descartar"
@@ -106,6 +111,7 @@
         "trip.deleted": "Viaje eliminado correctamente",
         "trip.created": "Viaje creado correctamente",
         "trip.updated": "Viaje modificado correctamente",
+        "trip.canceled": "Viaje cancelado correctamente",
         "back": "Atrás",
         "save": "Guardar",
         "cancel": "Cancelar",
@@ -125,7 +131,8 @@
         "no.trips.found": "No se encontraron viajes",
         "validation.required": "Campo requerido",
         "500": "Algo ha ido mal en nuestros servidores",
-        "422": "Hay un error en su formulario"
+        "422": "Hay un error en su formulario",
+        "trip.cancel.date": "No se puede cancelar un viaje sin una semana de antelación"
     },
     "application": {
         "appli.applis": "Solicitudes",

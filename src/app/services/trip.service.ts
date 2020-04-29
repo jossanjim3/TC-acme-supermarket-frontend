@@ -64,6 +64,21 @@ export class TripService {
     this.http.delete(url, httpOptions).toPromise();
   }
 
+  async cancelTrip(cancelReason: string , id: string) {
+    const url = `${environment.backendApiBaseURL}/v1/trips/${id}/cancel`;
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const body = JSON.stringify({ reasonCancel: cancelReason });
+    console.log(body);
+    return new Promise<any>((resolve, reject) => {
+      this.http.put(url, body, httpOptions).toPromise()
+        .then(res => {
+          resolve(res);
+        }, err => {console.error(err); reject(err); });
+    });
+  }
+
   getTripsOfManager(id: string) {
     const url = `${environment.backendApiBaseURL}/v1/trips/manager/${id}`;
     return this.http.get<Trip[]>(url).toPromise();

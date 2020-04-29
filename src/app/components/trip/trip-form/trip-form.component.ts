@@ -43,7 +43,6 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
     this.createForm();
     this.tripForm.controls['price'].setValue(this.totalprice);
     this.route.url.subscribe(url => {
-      console.log(url[0].path);
       if (url[0].path !== 'trips-new') {
         this.trip_new = false;
         this.route.params
@@ -105,7 +104,6 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
     this.totalprice = 0;
     for (let i = 0; i < stages_price.length; i++) {
       const stage = <HTMLInputElement>stages_price[i];
-      console.log(stage.value);
       this.totalprice += Number(stage.value);
     }
     this.tripForm.controls['price'].setValue(this.totalprice);
@@ -228,16 +226,13 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
 
   onSubmit() {
     const formTrip = this.tripForm.value;
-    console.log(formTrip);
     if (this.trip_new) {
       this.tripService.postTrip(formTrip).then( val => {
         this.updated = true;
-        console.log(val);
         this.router.navigate(['/trips-created']);
         this.messageService.notifyMessage(this.translateService.instant('messages.trip.created'), 'alert alert-success');
         // TODO : poner mensaje creado
       }, err => {
-        console.log(err);
         if (err.status === 422) {
           this.messageService.notifyMessage(this.translateService.instant('errorMessages.422'), 'alert alert-danger');
         } else {
@@ -247,7 +242,6 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
     } else {
       this.tripService.updateTrip(formTrip, this.trip.ticker).then( val => {
         this.updated = true;
-        console.log(val);
         this.router.navigate(['/trips-created']);
         this.messageService.notifyMessage(this.translateService.instant('messages.trip.updated'), 'alert alert-success');
       }, err => {
@@ -259,6 +253,45 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
         }
       });
     }
+  }
+
+  cancelTrip() {
+    if (!this.trip_new ) {
+      const startDate = new Date(this.trip.startDate);
+      startDate.setDate(startDate.getDate() - 7);
+      console.log(new Date().getTime() > startDate.getTime());
+      if (new Date().getTime() > startDate.getTime() ) {
+        return swal({
+          text: this.translateService.instant('errorMessages.trip.cancel.date'),
+          icon: 'warning',
+        });
+      } else {
+        return swal({
+          title: this.translateService.instant('trip.cancel.trip'),
+          text: this.translateService.instant('trip.cancel.trip.msg'),
+          content: {
+            element: "input"
+          },
+          buttons: [this.translateService.instant('trip.cancel'), this.translateService.instant('trip.accept')],
+        }).then((inputValue) => {
+          if (inputValue === false || inputValue == null) {
+            return false;
+          } else if (inputValue === "") {
+            swal(this.translateService.instant('errorMessages.empty.cancel.input'));
+            return false;
+          } else {
+            console.log(inputValue);
+            this.tripService.cancelTrip(inputValue,this.trip.ticker).then((val) => {
+              this.router.navigate(['/trips-created']);
+              swal(this.translateService.instant('messages.trip.canceled'));
+            }, err => {
+              swal(this.translateService.instant('errorMessages.500'));
+            })
+          }
+        });
+      }
+    }
+
   }
 
   goBack() {

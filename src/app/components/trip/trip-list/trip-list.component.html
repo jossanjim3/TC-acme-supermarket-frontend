@@ -77,12 +77,18 @@
           <span class="fa fa-pencil" aria-hidden="true"></span>
           {{'trip.edit' | translate}}
         </a>
-        <a
+        <a *ngIf="!trip.reasonCancel"
           routerLink="/trips/display/{{trip.ticker}}"
           class="btn btn-primary pull-left mx-1">
           <span class="fa fa-search-plus" aria-hidden="true"></span>
           {{'trip.details' | translate}}
         </a>
+        <button *ngIf="trip.reasonCancel"
+        class="btn btn-warning pull-left"
+        type="button"
+        (click)="showReasonCancel(trip)"
+        ><span class="fa fa-search-plus" aria-hidden="true"></span>
+        {{'trip.canceled' | translate}}</button>
       </div>
     </div>
   </div>

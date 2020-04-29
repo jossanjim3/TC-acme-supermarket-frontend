@@ -85,7 +85,12 @@
         "pictures.add": "Add picture",
         "save": "Save",
         "cancel": "Cancel",
+        "cancel.trip": "Cancel Trip",
+        "cancel.trip.msg": "Write a reason to cancel the trip",
+        "canceled": "Canceled",
+        "cancel.reason": "Cancel reason",
         "delete": "Delete",
+        "accept": "Accept",
         "delete.tit": "Are you sure?",
         "delete.msg": "Once deleted, you will not be able to recover this trip!",
         "discard": "Discard"
@@ -106,6 +111,7 @@
         "trip.deleted": "Trip successfully deleted",
         "trip.created": "Trip successfully created",
         "trip.updated": "Trip successfully updated",
+        "trip.canceled": "Trip successfully canceled",
         "back": "Back",
         "save": "Save",
         "cancel": "Cancel",
@@ -125,7 +131,9 @@
         "no.trips.found": "No trips found",
         "validation.required": "Required field",
         "500": "Something go bad in our servers",
-        "422": "There are something wrong in the form"
+        "422": "There are something wrong in the form",
+        "trip.cancel.date": "You can't cancel a trip without a week's notice",
+        "empty.cancel.input": "You need to write something!"
     },
     "application": {
         "appli.applis": "Applications",

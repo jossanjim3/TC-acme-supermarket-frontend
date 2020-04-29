@@ -155,7 +155,8 @@
       <div class="mb-2 mt-4">
         <button type="submit" class="mr-4 btn btn-primary">{{'trip.save' | translate}}</button>
         <button type="button" class="mr-4 btn btn-outline-secondary" (click)="goBack()">{{'trip.cancel' | translate}}</button>
-        <button type="button" class="float-right btn btn-danger" (click)="deleteTrip()">{{'trip.delete' | translate}}</button>
+        <button type="button" class="float-right btn btn-danger mx-1" (click)="deleteTrip()">{{'trip.delete' | translate}}</button>
+        <button type="button" class="float-right btn btn-danger mx-1" (click)="cancelTrip()">{{'trip.cancel.trip' | translate}}</button>
       </div>
     </form>
   </div>

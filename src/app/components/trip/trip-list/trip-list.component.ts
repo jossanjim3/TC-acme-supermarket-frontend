@@ -6,6 +6,7 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 import { Actor } from 'src/app/models/actor.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { Trip } from 'src/app/models/trip.model';
+import swal from 'sweetalert';
 
 const MAX_ITEMS = 10;
 
@@ -135,6 +136,14 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
         this.data = this.data.concat(val);
       })
       .catch((err) => console.error(err.message));
+  }
+
+  showReasonCancel(trip: Trip) {
+    swal({
+      title: this.translateService.instant('trip.cancel.reason'),
+      text: trip.reasonCancel,
+      icon: 'info'
+    });
   }
 
   newTrip() {
