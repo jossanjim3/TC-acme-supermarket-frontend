@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Actor } from '../../../models/actor.model';
 import { ActorService } from '../../../services/actor.service';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
+import { MessageService } from 'src/app/services/message.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-profile',
@@ -16,7 +19,10 @@ export class EditProfileComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private authService: AuthService,
-    private actorService: ActorService) { }
+    private actorService: ActorService,
+    private router: Router,
+    private messageService: MessageService,
+    private translate: TranslateService) { }
 
   ngOnInit() {
     this.createForm();
@@ -59,6 +65,8 @@ export class EditProfileComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('boton guardar editar');
+
     const formModel = this.profileForm.value;
 
     this.actor.name = formModel.name;
@@ -69,13 +77,35 @@ export class EditProfileComponent implements OnInit {
     this.actor.language = formModel.language;
     this.actor.phone = formModel.phone;
 
-    this.authService.getCurrentActor().then(actor => {
-      this.actorService.updateProfile(this.actor).then((val) => {
-        this.errorMessage = 'Profile successfully updated for actor with email: ' + this.actor.email;
-      }).catch((err) => { this.errorMessage = err.statusText; console.error(err); });
+    this.authService.getCurrentActor()
+      .then(actor => {
+        this.actorService.updateProfile(this.actor)
+          .then((val) => {
+            console.log(val);
+            this.authService.setCurrentActor(val);
+            const mesAux = this.translate.instant('actor.edit.success');
+            const mes = mesAux + this.actor.email;
+            // this.errorMessage = mes;
+            this.errorMessage = '';
+            this.messageService.notifyMessage(mes, 'alert alert-success');
+            // this.router.navigate(['/index']);
+          })
+          .catch((err) => {
+            this.errorMessage = err.statusText;
+            console.error(err);
+          });
+    })
+    .catch((err) => {
+      this.errorMessage = err.statusText;
+      console.error(err);
     });
 
   }
 
+  goBack(): void {
+    // this.router.navigate(['/']);
+    window.history.back();
+  }
 
 }
+

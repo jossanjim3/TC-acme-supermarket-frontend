@@ -1,16 +1,19 @@
-
+<div class="card my-4">
+    <div class="card-header">
+      <h3 class="card-title">{{'actor.edit.title' | translate}}</h3>
+  
+      <!-- boton atras -->
+      <button (click)="goBack()" class="btn btn-primary" style="float: right; margin-right: 1em; margin-top: -40px;">
+          {{'messages.back' | translate}}
+      </button>
+      
+    </div>
+  </div>
 
 
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   <div class="form-group has-danger" >
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <h2>{{'actor.edit.title' | translate}}</h2>
-            <hr>
-        </div>
-    </div>
-
+    
     <!-- email -->
     <div class="row">
         <div class="col-md-3 field-label-responsive">
@@ -21,7 +24,7 @@
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
                     <input type="text" name="email" class="form-control" id="email" formControlName="email"
-                          placeholder="you@example.com" required autofocus>
+                          placeholder="you@example.com" required autofocus readonly>
                 </div>
             </div>
         </div>
@@ -35,7 +38,7 @@
     </div>
 
     <!-- password -->
-    <div class="row">
+    <div class="row" style="display: none;">
         <div class="col-md-3 field-label-responsive">
             <label for="password">{{'actor.password' | translate}}</label>
         </div>
@@ -157,10 +160,6 @@
             <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> {{'actor.save' | translate}}</button>
         </div>
     </div>
-
-    
-
-
 
     </div>
 </form>
