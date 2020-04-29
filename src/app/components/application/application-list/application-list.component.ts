@@ -44,8 +44,12 @@ export class ApplicationListComponent extends TranslatableComponent implements O
         // console.log('d: ' + d._id);
         // console.log('d trip: ' + d.trip);
         this.tripAux = await this.tripService.getTripById(d.trip);
-        d.tripObj = this.tripAux;
-        // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+        if (this.tripAux !== null && this.tripAux !== undefined) {
+          d.tripObj = this.tripAux;
+          // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+        } else {
+          d.tripObj = undefined;
+        }
       }
     } else {
 
@@ -56,8 +60,12 @@ export class ApplicationListComponent extends TranslatableComponent implements O
         // console.log('d: ' + d._id);
         // console.log('d trip: ' + d.trip);
         this.tripAux = await this.tripService.getTripById(d.trip);
-        d.tripObj = this.tripAux;
-        // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+        if (this.tripAux !== null && this.tripAux !== undefined) {
+          d.tripObj = this.tripAux;
+          // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+        } else {
+          d.tripObj = undefined;
+        }
       }
     }
 

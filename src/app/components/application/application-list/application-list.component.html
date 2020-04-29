@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5" >
+<table class="table" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5" >
   <thead>
     <tr>
         <th>
@@ -78,8 +78,8 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let item of mf.data">
-
+    <tr *ngFor="let item of mf.data" class="back-{{item.status}}">
+        
         <td class="completo">
             <!-- boton editar -->
             <a  *ngIf="this.authService.checkRole('MANAGER') || this.authService.checkRole('EXPLORER')"       
