@@ -194,4 +194,17 @@ export class AuthService implements OnInit {
     }
 
   }
+
+  checkIsCurrentUser(idIdentifier: string) {
+    if ( this.currentActor !== undefined && this.currentActor != null) {
+      if (this.currentActor._id === idIdentifier) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+
+  }
 }
