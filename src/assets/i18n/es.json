@@ -17,7 +17,8 @@
         "update": "Actualizar",
         "register.title": "Registro de actor",
         "edit.title": "Editar perfil",
-        "save": "Guardar"
+        "save": "Guardar",
+        "edit.success": "Perfil correctamente actualizado para el usuario con email: "
     },
     "security": {
         "login": "Entrar",
