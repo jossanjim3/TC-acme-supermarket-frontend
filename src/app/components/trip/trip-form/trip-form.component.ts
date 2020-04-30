@@ -13,6 +13,7 @@ import swal from 'sweetalert';
 import { CanComponentDeactivate } from 'src/app/guards/can-deactivate.service';
 import { Observable } from 'rxjs';
 import { MessageService } from 'src/app/services/message.service';
+import { ApplicationsService } from 'src/app/services/applications.service';
 
 @Component({
   selector: 'app-trip-form',
@@ -34,7 +35,8 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
 
   constructor(private fb: FormBuilder, private translateService: TranslateService, private tripService: TripService,
     private router: Router,
-    private route: ActivatedRoute, private authService: AuthService, private messageService: MessageService) {
+    private route: ActivatedRoute, private authService: AuthService, private messageService: MessageService,
+    private applicationsService: ApplicationsService) {
     super(translateService);
   }
 
@@ -199,23 +201,29 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
 
   deleteTrip() {
     if (!this.trip_new) {
-      swal({
-        title: this.translateService.instant('trip.delete.tit'),
-        text: this.translateService.instant('trip.delete.msg'),
-        icon: 'warning',
-        buttons: [this.translateService.instant('trip.cancel'), this.translateService.instant('trip.delete')],
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          this.tripService.deleteTrip(this.trip.ticker).then( val => {
-            this.router.navigate(['/trips-created']);
-            this.messageService.notifyMessage(this.translateService.instant('messages.trip.deleted'), 'alert alert-success');
-          }, err => {
-            if (err.status === 422) {
-              this.messageService.notifyMessage(this.translateService.instant('errorMessages.422'), 'alert alert-danger');
-            } else {
-              this.messageService.notifyMessage(this.translateService.instant('errorMessages.500'), 'alert alert-danger');
+      this.applicationsService.getTripApplications(this.trip._id).then((val) => {
+        if (val.length > 0) {
+          swal(this.translateService.instant('errorMessages.trip.have.applications'));
+        } else {
+          swal({
+            title: this.translateService.instant('trip.delete.tit'),
+            text: this.translateService.instant('trip.delete.msg'),
+            icon: 'warning',
+            buttons: [this.translateService.instant('trip.cancel'), this.translateService.instant('trip.delete')],
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              this.tripService.deleteTrip(this.trip.ticker).then( val => {
+                this.router.navigate(['/trips-created']);
+                this.messageService.notifyMessage(this.translateService.instant('messages.trip.deleted'), 'alert alert-success');
+              }, err => {
+                if (err.status === 422) {
+                  this.messageService.notifyMessage(this.translateService.instant('errorMessages.422'), 'alert alert-danger');
+                } else {
+                  this.messageService.notifyMessage(this.translateService.instant('errorMessages.500'), 'alert alert-danger');
+                }
+              });
             }
           });
         }
