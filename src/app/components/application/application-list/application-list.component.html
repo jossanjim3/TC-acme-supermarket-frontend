@@ -22,23 +22,23 @@
         </th>
             
         <th *ngIf="this.authService.checkRole('EXPLORER')" >
-            <mfDefaultSorter by="_id">{{'application.dt.title' | translate}}</mfDefaultSorter>
+            <mfDefaultSorter by="tripObj.title">{{'application.dt.title' | translate}}</mfDefaultSorter>
         </th>
 
         <th>
-            <mfDefaultSorter by="_id">{{'application.dt.ticker' | translate}}</mfDefaultSorter>
+            <mfDefaultSorter by="tripObj.ticker">{{'application.dt.ticker' | translate}}</mfDefaultSorter>
         </th>
 
         <th *ngIf="this.authService.checkRole('EXPLORER')" >
-            <mfDefaultSorter by="_id">{{'application.dt.start_date' | translate}}</mfDefaultSorter>
+            <mfDefaultSorter by="tripObj.startDate">{{'application.dt.start_date' | translate}}</mfDefaultSorter>
         </th>
 
         <th *ngIf="this.authService.checkRole('EXPLORER')" >
-            <mfDefaultSorter by="_id">{{'application.dt.end_date' | translate}}</mfDefaultSorter>
+            <mfDefaultSorter by="tripObj.endDate">{{'application.dt.end_date' | translate}}</mfDefaultSorter>
         </th>
 
         <th *ngIf="this.authService.checkRole('EXPLORER')" >
-            <mfDefaultSorter by="_id">{{'application.dt.price' | translate}}</mfDefaultSorter>
+            <mfDefaultSorter by="tripObj.price">{{'application.dt.price' | translate}}</mfDefaultSorter>
         </th>
         
         <th>
@@ -62,17 +62,17 @@
 
         <!-- boton explorer PAGAR PAYPAL -->
         <th *ngIf="this.authService.checkRole('EXPLORER')">            
-            {{'application.dt.pay' | translate}}
+            <mfDefaultSorter by="status">{{'application.dt.pay' | translate}}</mfDefaultSorter>
         </th>
 
         <!-- boton manager PENDING to DUE -->
         <th *ngIf="this.authService.checkRole('MANAGER')">
-            {{'application.dt.due' | translate}}
+            <mfDefaultSorter by="status">{{'application.dt.due' | translate}}</mfDefaultSorter>
         </th>
 
         <!-- boton manager CANCEL -->
         <th>
-            {{'application.dt.cancel' | translate}}
+            <mfDefaultSorter by="status">{{'application.dt.cancel' | translate}}</mfDefaultSorter>
         </th>    
     </tr>
   </thead>
