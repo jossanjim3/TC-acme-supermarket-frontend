@@ -36,6 +36,8 @@ const appRoutes: Routes = [
     {path: 'search', component: TripListComponent},
     {path: 'display/:id', component: TripDisplayComponent},
     {path: '', component: TripListComponent},
+    {path: 'finder', component: TripListComponent,
+     canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
     {path: ':id', component: TripFormComponent, canDeactivate: [CanDeactivateGuard],
      canActivate: [ActorRoleGuard], data: {expectedRole: 'manager'}}
   ]},

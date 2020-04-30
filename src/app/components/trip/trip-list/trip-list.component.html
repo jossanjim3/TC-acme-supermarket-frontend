@@ -19,6 +19,11 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
+              <h4 class="">{{'trip.filter' | translate}}: {{this.keyword}}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
               <span class="">Rango de precios</span>
             </div>
             <div class="col-md-6">
@@ -41,7 +46,8 @@
             </div>
           </div>
 
-          <button class="btn btn-primary mt-4 mb-2" type="submit" (click)="searchFilter()">{{'trip.filter' | translate}}</button>
+          <button class="btn btn-primary mt-4 mb-2 mx-2" type="submit" (click)="searchFilter()">{{'trip.filter' | translate}}</button>
+          <button *ngIf="this.authService.checkRole('EXPLORER')" class="btn btn-primary mt-4 mb-2 mx-2" type="submit" (click)="saveFinder()">{{'trip.finder.save' | translate}}</button>
         </div>
       </div>
     </div>

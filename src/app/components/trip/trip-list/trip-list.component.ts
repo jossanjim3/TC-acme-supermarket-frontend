@@ -7,6 +7,8 @@ import { Actor } from 'src/app/models/actor.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { Trip } from 'src/app/models/trip.model';
 import swal from 'sweetalert';
+import { FinderService } from 'src/app/services/finder.service';
+import { MessageService } from 'src/app/services/message.service';
 
 const MAX_ITEMS = 10;
 
@@ -35,45 +37,57 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
 
   constructor(private tripService: TripService, public authService: AuthService,
     private translateService: TranslateService, private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute, private finderService: FinderService, private messageService: MessageService) {
       super(translateService);
       route.queryParams.subscribe(val => this.ngOnInit());
   }
 
   ngOnInit() {
-    this.route.url.subscribe(url => {
-      console.log(url[0].path);
-      if (url[0].path !== 'trips-created') {
-        this.route.queryParams
-          .subscribe(params => {
-            this.keyword = params['keyword'];
-            this.minDate = params['minDate'];
-            this.maxDate = params['maxDate'];
-            this.minPrice = params['minPrice'];
-            this.maxPrice = params['maxPrice'];
-          });
-        this.tripService.searchTrips(0, MAX_ITEMS, this.keyword, this.minPrice, this.maxPrice,
-          this.minDate, this.maxDate)
-          .then((val) => {
-            this.data = val;
-          })
-          .catch((err) => console.error(err.message));
-
-          this.roles = [];
-          this.authService.getCurrentActor().then((actor) => {
-            this.actor = actor;
-          });
-      } else {
-        this.showfilter = false;
-        this.authService.getCurrentActor().then((actor) => {
+    this.authService.getCurrentActor().then((actor) => {
+      this.actor = actor;
+      this.route.url.subscribe(url => {
+        if (url[0].path !== 'trips-created') {
+          if (url[0].path !== 'finder') {
+            this.route.queryParams
+            .subscribe(params => {
+              this.keyword = params['keyword'];
+              this.minDate = params['minDate'];
+              this.maxDate = params['maxDate'];
+              this.minPrice = params['minPrice'];
+              this.maxPrice = params['maxPrice'];
+              this.searchTrips();
+            });
+          } else {
+            this.finderService.getFinderUser(this.actor._id).then(params => {
+              this.keyword = params['keyword'];
+              this.minDate = params['minDate'];
+              this.maxDate = params['maxDate'];
+              this.minPrice = params['minPrice'];
+              this.maxPrice = params['maxPrice'];
+              this.searchTrips();
+            });
+          }
+            this.roles = [];
+        } else {
+          this.showfilter = false;
           this.actor = actor;
           this.tripService.getTripsOfManager(this.actor._id).then((val) => {
             this.data = val;
-          })
-          .catch((err) => console.error(err.message));
-        });
-      }
+          });
+        }
+      });
     });
+
+  }
+
+  searchTrips() {
+    this.tripService.searchTrips(0, MAX_ITEMS, this.keyword, this.minPrice, this.maxPrice,
+      this.minDate, this.maxDate)
+      .then((val) => {
+        this.data = val;
+      })
+      .catch((err) => console.error(err.message));
+
   }
 
   getFirstPicture(trip: Trip) {
@@ -97,6 +111,21 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
       'minDate': this.minDate,
       'maxDate': this.maxDate
     }});
+  }
+
+  saveFinder() {
+    this.finderService.updateFinderUser({
+      'keyword': this.keyword,
+      'minPrice': this.minPrice,
+      'maxPrice': this.maxPrice,
+      'minDate': this.minDate,
+      'maxDate': this.maxDate
+    }, this.actor._id)
+      .then((val) => {
+        this.messageService.notifyMessage(this.translateService.instant('messages.finder.saved'), 'alert alert-success');
+      }, err => {
+        this.messageService.notifyMessage(this.translateService.instant('errorMessages.500'), 'alert alert-danger');
+      });
   }
 
   displayTrip(trip: Trip) {
