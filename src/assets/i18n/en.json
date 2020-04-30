@@ -51,6 +51,7 @@
     },
     "sponsor": {
         "sponsor": "Sponsor",
+        "sponsors": "Sponsors",
         "list": "Sponsorships list",
         "display": "Sponsorship display",
         "details": "Sponsorship details",

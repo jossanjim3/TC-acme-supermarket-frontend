@@ -10,6 +10,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MessageService } from 'src/app/services/message.service';
 import { AuditService } from 'src/app/services/audit.service';
 import { Audit } from 'src/app/models/audit.model';
+import { SponsorshipService } from 'src/app/services/sponsorship.service';
+import { Sponsorship } from 'src/app/models/sponsorship.model';
 
 @Component({
   selector: 'app-trip-display',
@@ -22,10 +24,12 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   id: string;
   pictures: string[] = [];
   auditAux: Audit[] = [];
+  sponsorships: Sponsorship[] = [];
 
   constructor(private _sanitizer: DomSanitizer, private tripService: TripService, private auditService: AuditService,
     private translateService: TranslateService, private router: Router,
-    private route: ActivatedRoute, public authService: AuthService, private messageService: MessageService) {
+    private route: ActivatedRoute, public authService: AuthService, private messageService: MessageService,
+    private sponsorshipService: SponsorshipService) {
     super(translateService);
   }
 
@@ -83,8 +87,11 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
         }
       }
 
-      if ( this.trip !== undefined && this.trip !== null ){
+      if ( this.trip !== undefined && this.trip !== null ) {
         this.pictures = this.trip.pictures;
+        this.sponsorshipService.getSponsorshipsTrips(this.trip.ticker).then(val => {
+          this.sponsorships = val;
+        });
       }
       /* this.tripService.getTrip(this.id)
       .then((trip) => {

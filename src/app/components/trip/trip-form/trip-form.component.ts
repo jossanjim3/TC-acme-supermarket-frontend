@@ -214,7 +214,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
           })
           .then((willDelete) => {
             if (willDelete) {
-              this.tripService.deleteTrip(this.trip.ticker).then( val => {
+              this.tripService.deleteTrip(this.trip.ticker).then( (val) => {
                 this.router.navigate(['/trips-created']);
                 this.messageService.notifyMessage(this.translateService.instant('messages.trip.deleted'), 'alert alert-success');
               }, err => {
@@ -284,12 +284,12 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
         }).then((inputValue) => {
           if (inputValue === false || inputValue == null) {
             return false;
-          } else if (inputValue === "") {
+          } else if (inputValue === '') {
             swal(this.translateService.instant('errorMessages.empty.cancel.input'));
             return false;
           } else {
             console.log(inputValue);
-            this.tripService.cancelTrip(inputValue,this.trip.ticker).then((val) => {
+            this.tripService.cancelTrip(inputValue, this.trip.ticker).then((val) => {
               this.router.navigate(['/trips-created']);
               swal(this.translateService.instant('messages.trip.canceled'));
             }, err => {
