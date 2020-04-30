@@ -278,7 +278,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
           title: this.translateService.instant('trip.cancel.trip'),
           text: this.translateService.instant('trip.cancel.trip.msg'),
           content: {
-            element: "input"
+            element: 'input'
           },
           buttons: [this.translateService.instant('trip.cancel'), this.translateService.instant('trip.accept')],
         }).then((inputValue) => {
@@ -294,7 +294,7 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
               swal(this.translateService.instant('messages.trip.canceled'));
             }, err => {
               swal(this.translateService.instant('errorMessages.500'));
-            })
+            });
           }
         });
       }

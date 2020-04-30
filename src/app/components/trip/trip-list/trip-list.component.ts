@@ -78,7 +78,11 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
 
   getFirstPicture(trip: Trip) {
     if ( trip.pictures.length > 0) {
-      return trip.pictures[0];
+      if (trip.pictures[0] === ''){
+        return 'https://i.ya-webdesign.com/images/image-not-available-png-3.png';
+      } else {
+        return trip.pictures[0];
+      }
     } else {
       return 'https://i.ya-webdesign.com/images/image-not-available-png-3.png';
     }

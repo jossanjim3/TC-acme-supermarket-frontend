@@ -103,7 +103,11 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
   getPicture(id: number) {
     if ( this.trip.pictures.length > 0) {
-      return this.trip.pictures[id];
+      if (this.trip.pictures[id] === '') {
+        return 'https://i.ya-webdesign.com/images/image-not-available-png-3.png';
+      } else {
+        return this.trip.pictures[id];
+      }
     } else {
       return 'https://i.ya-webdesign.com/images/image-not-available-png-3.png';
     }
