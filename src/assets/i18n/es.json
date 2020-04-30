@@ -18,6 +18,8 @@
         "register.title": "Registro de actor",
         "edit.title": "Editar perfil",
         "save": "Guardar",
+        "validated" : "Habilitado",
+        "language" : "Idioma",
         "edit.success": "Perfil correctamente actualizado para el usuario con email: ",
         "list.title": "Lista de Actores",
         "banned.ok": "El actor ha sido deshabilitado correctamente!",

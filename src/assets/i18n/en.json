@@ -18,6 +18,8 @@
         "register.title": "Register new actor",
         "edit.title": "Edit Profile",
         "save": "Save",
+        "validated" : "Validated",
+        "language" : "Language",
         "edit.success": "Profile successfully updated for actor with email: ",
         "list.title": "List of Actors",
         "banned.ok": "This actor has been banned!",

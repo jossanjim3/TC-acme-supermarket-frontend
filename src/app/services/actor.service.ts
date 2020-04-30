@@ -49,12 +49,12 @@ export class ActorService {
             let mes;
             if (validated) {
                 // validated = true => usuario activo
-                const mesAux = this.translate.instant('actor.banned.ok');
+                const mesAux = this.translate.instant('actor.unbanned.ok');
                 mes = mesAux + ' [' + idActor + ']';
 
             } else {
                 // validated = false => usuario inactivo
-                const mesAux = this.translate.instant('actor.unbanned.ok');
+                const mesAux = this.translate.instant('actor.banned.ok');
                 mes = mesAux + ' [' + idActor + ']';
 
             }

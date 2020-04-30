@@ -45,12 +45,12 @@
 
       <!-- boton ban -->
       <th>
-        <mfDefaultSorter by="_id">{{'actor.button.ban' | translate}}</mfDefaultSorter>
+        <mfDefaultSorter by="_id"><!-- {{'actor.button.ban' | translate}} --></mfDefaultSorter>
       </th>
 
       <!-- boton unban -->
       <th>
-        <mfDefaultSorter by="_id">{{'actor.button.unban' | translate}}</mfDefaultSorter>
+        <mfDefaultSorter by="_id"><!-- {{{'actor.button.unban' | translate}} --></mfDefaultSorter>
       </th>
 
     </tr>
@@ -68,8 +68,8 @@
           <td>{{item.address}}</td>  
           <td>{{item.phone}}</td>  
           <td>{{item.validated}}</td>  
-          <td>{{item.language}}</td>  
           <td>{{item.role}}</td>  
+          <td>{{item.language}}</td>            
 
           <td>
               <!-- boton ban -->
