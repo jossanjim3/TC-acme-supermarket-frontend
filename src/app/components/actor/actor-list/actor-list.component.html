@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+<table class="table" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
   <thead>
     <tr>
       <th>
@@ -60,7 +60,7 @@
 
     <ng-container *ngFor="let item of mf.data">
 
-      <tr *ngIf="item.role.includes('EXPLORER') || item.role.includes('MANAGER')">
+      <tr *ngIf="item.role.includes('EXPLORER') || item.role.includes('MANAGER')" class="back-{{item.validated}}">
           <td title="{{item._id}}">{{ item._id  | slice:-5 }} </td>    
           <td>{{item.name}}</td> 
           <td>{{item.surname}}</td>  
@@ -74,7 +74,7 @@
           <td>
               <!-- boton ban -->
             <a *ngIf="item.validated"            
-                class="btn btn-primary btn-application completo"
+                class="btn btn-primary btn-application"
                 (click)="validatedActor(item._id, false)">
                 {{'actor.button.ban' | translate}}
             </a>
@@ -83,7 +83,7 @@
           <td>
             <!-- boton unban -->
             <a *ngIf="!item.validated"            
-            class="btn btn-primary btn-application completo"
+            class="btn btn-primary btn-application"
             (click)="validatedActor(item._id, true)">
             {{'actor.button.unban' | translate}}
         </a>
