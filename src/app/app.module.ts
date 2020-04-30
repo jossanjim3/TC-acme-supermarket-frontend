@@ -43,6 +43,7 @@ import {TranslateService} from '@ngx-translate/core';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { ActorListComponent } from './components/actor/actor-list/actor-list.component';
 
 registerLocaleData(locales, 'es');
 
@@ -88,7 +89,8 @@ export const firebaseConfig = {
     AuditorAuditsComponent,
     DashboardComponent,
     CheckoutComponent,
-    TripFormComponent
+    TripFormComponent,
+    ActorListComponent
   ],
   imports: [
     BrowserModule,

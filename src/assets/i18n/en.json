@@ -18,7 +18,13 @@
         "register.title": "Register new actor",
         "edit.title": "Edit Profile",
         "save": "Save",
-        "edit.success": "Profile successfully updated for actor with email: "
+        "edit.success": "Profile successfully updated for actor with email: ",
+        "list.title": "List of Actors",
+        "banned.ok": "This actor has been banned!",
+        "unbanned.ok": "This actor has been unbanned!",
+        "banned.error": "Sorry, the actor cannot be updated!",
+        "button.ban": "Ban",
+        "button.unban": "Unban"
     },
     "security": {
         "login": "Login",

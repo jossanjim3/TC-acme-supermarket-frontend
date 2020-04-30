@@ -22,6 +22,7 @@ import { AuditorAuditsComponent } from './components/audit/auditor-audits/audito
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
 import { CanDeactivateGuard } from './guards/can-deactivate.service';
+import { ActorListComponent } from './components/actor/actor-list/actor-list.component';
 
 const appRoutes: Routes = [
 
@@ -56,6 +57,7 @@ const appRoutes: Routes = [
 
   {path: 'datawarehouse', component: DashboardComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'olap-cube', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
+  {path: 'actors', component: ActorListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'new-manager', component: RegisterComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
 
   {path: 'sponsor', children: [
