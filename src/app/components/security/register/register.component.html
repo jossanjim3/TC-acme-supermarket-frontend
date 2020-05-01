@@ -135,9 +135,19 @@
           <div class="form-group">
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-address-book-o"></i></div>
-                  <input type="text" name="address" class="form-control" id="address" formControlName="address"
+                  <input type="text" name="address" class="form-control" id="address" #address formControlName="address"
                          placeholder="{{'actor.addressPh' | translate}}" required autofocus>
               </div>
+              <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" 
+              [disableDefaultUI]="false" [zoomControl]="false"
+              (mapClick)="mapClicked($event)">
+                <agm-marker *ngFor="let m of markers; let i = index"
+                    [latitude]="m.lat" [longitude]="m.lng"
+                    [label]="m.label" [markerDraggable]="m.draggable">
+
+                </agm-marker>
+            
+            </agm-map>
           </div>
       </div>
       <div class="col-md-3">

@@ -43,6 +43,7 @@ import {TranslateService} from '@ngx-translate/core';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { AgmCoreModule } from '@agm/core';
 
 registerLocaleData(locales, 'es');
 
@@ -108,6 +109,10 @@ export const firebaseConfig = {
     AppRoutingModule,
     // tslint:disable-next-line: deprecation
     HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+      libraries: ['places']
+    }),
     DataTableModule,
     NgxPayPalModule
   ],

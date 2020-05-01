@@ -4,3 +4,7 @@
       text-align: right;
     }
   }
+
+agm-map {
+  height: 300px;
+}
