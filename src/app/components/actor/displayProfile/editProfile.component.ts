@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Actor } from '../../../models/actor.model';
 import { ActorService } from '../../../services/actor.service';
@@ -6,6 +6,10 @@ import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { MessageService } from 'src/app/services/message.service';
 import { TranslateService } from '@ngx-translate/core';
+import { MapsAPILoader, MouseEvent } from '@agm/core';
+import { TranslatableComponent } from '../../shared/translatable/translatable.component';
+
+declare var google: any;
 
 @Component({
   selector: 'app-edit-profile',
@@ -17,15 +21,58 @@ export class EditProfileComponent implements OnInit {
   actor: Actor;
   errorMessage: string;
 
+    // google zoom lvl
+    zoom = 10;
+    // initial center position for the map
+    lat = 36.510810;
+    lng = -6.278451;
+    markers = [];
+    autocomplete: any;
+
+  @ViewChild('address')
+  public searchElementRef: ElementRef;
+
   constructor(private fb: FormBuilder,
     private authService: AuthService,
     private actorService: ActorService,
     private router: Router,
     private messageService: MessageService,
-    private translate: TranslateService) { }
+    private translate: TranslateService,
+    private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
+    }
 
   ngOnInit() {
     this.createForm();
+    this.mapsAPILoader.load().then(() => {
+      this.autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ['address']
+      });
+      this.autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          // get the place result
+          const place = this.autocomplete.getPlace();
+
+          this.profileForm.value.address = place.formatted_address;
+
+          // verify result
+          if (place.geometry === undefined ||  place.geometry === null) {
+            return;
+          }
+
+          // set latitude, longitude and zoom
+          this.lat = place.geometry.location.lat();
+          this.lng = place.geometry.location.lng();
+          this.zoom = 16;
+
+          this.markers = [];
+          this.markers.push({
+            lat: this.lat,
+            lng: this.lng,
+            draggable: true
+          });
+        });
+      });
+    });
   }
 
   createForm() {
@@ -58,10 +105,48 @@ export class EditProfileComponent implements OnInit {
           this.profileForm.controls['language'].setValue(this.actor.language);
           this.profileForm.controls['phone'].setValue(this.actor.phone);
 
+          if (this.actor.address == null) {
+            this.setCurrentPosition();
+          } else {
+            const coords = this.actor.address.split(';');
+            console.log('Split: ' + coords);
+            console.log(coords != null && coords.length === 2);
+            if (coords != null && coords.length === 2) {
+              this.markers.push({
+                lat: coords[0],
+                lng: coords[1],
+                draggable: true
+              });
+            }
+          }
+
         } else {
           console.log('error getting current actor: ' + JSON.stringify(actorData));
         }
       }).catch(err => console.log(err));
+  }
+
+  mapClicked($event: MouseEvent) {
+    this.markers = [];
+    this.markers.push({
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+      draggable: true
+    });
+
+    this.profileForm.value.address = $event.coords.lat + ';' + $event.coords.lng;
+    this.profileForm.controls['address'].setValue(this.profileForm.value.address);
+  }
+
+  private setCurrentPosition() {
+    if ('geolocation' in navigator) {
+      console.log('Geolocating');
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+        this.zoom = 12;
+      });
+    }
   }
 
   onSubmit() {
