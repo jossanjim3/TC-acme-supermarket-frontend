@@ -143,6 +143,7 @@
         "denied.access.message": "You don't have permission to access {{resource}} on this server",
         "no.trips.found": "No trips found",
         "validation.required": "Required field",
+        "validation.maxlength": "Too much length field",
         "500": "Something go bad in our servers",
         "422": "There are something wrong in the form",
         "trip.have.applications": "Can't delete this trip. This trip have applications",

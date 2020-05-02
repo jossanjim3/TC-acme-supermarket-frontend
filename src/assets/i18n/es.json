@@ -143,6 +143,7 @@
         "denied.access.message": "No tiene permiso para acceder a {{resource}} en este servidor",
         "no.trips.found": "No se encontraron viajes",
         "validation.required": "Campo requerido",
+        "validation.maxlength": "Campo muy extenso",
         "500": "Algo ha ido mal en nuestros servidores",
         "422": "Hay un error en su formulario",
         "trip.have.applications": "No se puede borrar este viaje. Este viaje tiene solicitudes",

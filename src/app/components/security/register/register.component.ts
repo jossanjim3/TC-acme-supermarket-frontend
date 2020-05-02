@@ -2,7 +2,7 @@
 
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
@@ -41,13 +41,13 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
 
    createForm() {
     this.registrationForm = this.fb.group({
-      name: [''],
-      surname: [''],
-      email: [''],
-      password: [''],
-      address: [''],
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')],
+      password: ['', Validators.required],
+      address: ['', Validators.maxLength(50)],
       phone: [''],
-      role: [''],
+      role: ['', Validators.required],
       validated: ['true'] // explorer is validated by default
     });
   }

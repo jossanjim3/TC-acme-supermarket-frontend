@@ -27,9 +27,9 @@
 
           <div class="col-md-3">
               <div class="form-control-feedback">
-                      <span class="text-danger align-middle">
-                          <!-- Put name validation error messages here -->
-                      </span>
+                    <div class="text-danger align-middle" *ngIf="registrationForm.get('role').errors && registrationForm.get('role').touched && registrationForm.get('role').errors.required">
+                        {{'errorMessages.validation.required' | translate}}
+                    </div>
               </div>
           </div>
       </div>
@@ -50,9 +50,9 @@
           </div>
           <div class="col-md-3">
               <div class="form-control-feedback">
-                      <span class="text-danger align-middle">
-                          <!-- Put e-mail validation error messages here -->
-                      </span>
+                <div class="text-danger align-middle" *ngIf="registrationForm.get('email').errors && registrationForm.get('email').touched && registrationForm.get('email').errors.pattern">
+                    {{'errorMessages.auth.invalid.email' | translate}}
+                </div>
               </div>
           </div>
       </div>
@@ -73,9 +73,9 @@
           </div>
           <div class="col-md-3">
               <div class="form-control-feedback">
-                      <span class="text-danger align-middle">
-                          <!-- <i class="fa fa-close"> Example Error Message</i> -->
-                      </span>
+                <div class="text-danger align-middle" *ngIf="registrationForm.get('password').errors && registrationForm.get('password').touched && registrationForm.get('password').errors.required">
+                    {{'errorMessages.validation.required' | translate}}
+                </div>
               </div>
           </div>
       </div>
@@ -96,9 +96,9 @@
         </div>
         <div class="col-md-3">
             <div class="form-control-feedback">
-                    <span class="text-danger align-middle">
-                        <!-- Put e-mail validation error messages here -->
-                    </span>
+                <div class="text-danger align-middle" *ngIf="registrationForm.get('name').errors && registrationForm.get('name').touched && registrationForm.get('name').errors.required">
+                    {{'errorMessages.validation.required' | translate}}
+                </div>
             </div>
         </div>
     </div>
@@ -119,9 +119,9 @@
       </div>
       <div class="col-md-3">
           <div class="form-control-feedback">
-                  <span class="text-danger align-middle">
-                      <!-- Put e-mail validation error messages here -->
-                  </span>
+                <div class="text-danger align-middle" *ngIf="registrationForm.get('surname').errors && registrationForm.get('surname').touched && registrationForm.get('surname').errors.required">
+                    {{'errorMessages.validation.required' | translate}}
+                </div>
           </div>
       </div>
     </div>
@@ -155,9 +155,9 @@
       </div>
       <div class="col-md-3">
           <div class="form-control-feedback">
-                  <span class="text-danger align-middle">
-                      <!-- Put e-mail validation error messages here -->
-                  </span>
+                <div class="text-danger align-middle" *ngIf="registrationForm.get('address').errors && registrationForm.get('address').touched && registrationForm.get('address').errors.maxlength">
+                    {{'errorMessages.validation.maxlength' | translate}}
+                </div>
           </div>
       </div>
     </div>
