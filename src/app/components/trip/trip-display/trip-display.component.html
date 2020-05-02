@@ -14,7 +14,7 @@
   
 
   <!-- boton trips applications -->
-  <div class="card-body" *ngIf="this.authService.checkRole('MANAGER')">
+  <div class="card-body" *ngIf="this.authService.checkRole('MANAGER') && this.authService.checkIsCurrentUser(trip.manager)">
 
     <a            
       [routerLink]="['/trips-applies/trip/' + trip._id, {'paramKey': 'manager'}]"

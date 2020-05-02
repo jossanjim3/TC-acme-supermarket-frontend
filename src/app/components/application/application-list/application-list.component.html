@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5" >
+<table class="table" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5" >
   <thead>
     <tr>
         <th>
@@ -22,23 +22,23 @@
         </th>
             
         <th *ngIf="this.authService.checkRole('EXPLORER')" >
-            <mfDefaultSorter by="_id">{{'application.dt.title' | translate}}</mfDefaultSorter>
+            <mfDefaultSorter by="tripObj.title">{{'application.dt.title' | translate}}</mfDefaultSorter>
         </th>
 
         <th>
-            <mfDefaultSorter by="_id">{{'application.dt.ticker' | translate}}</mfDefaultSorter>
+            <mfDefaultSorter by="tripObj.ticker">{{'application.dt.ticker' | translate}}</mfDefaultSorter>
         </th>
 
         <th *ngIf="this.authService.checkRole('EXPLORER')" >
-            <mfDefaultSorter by="_id">{{'application.dt.start_date' | translate}}</mfDefaultSorter>
+            <mfDefaultSorter by="tripObj.startDate">{{'application.dt.start_date' | translate}}</mfDefaultSorter>
         </th>
 
         <th *ngIf="this.authService.checkRole('EXPLORER')" >
-            <mfDefaultSorter by="_id">{{'application.dt.end_date' | translate}}</mfDefaultSorter>
+            <mfDefaultSorter by="tripObj.endDate">{{'application.dt.end_date' | translate}}</mfDefaultSorter>
         </th>
 
         <th *ngIf="this.authService.checkRole('EXPLORER')" >
-            <mfDefaultSorter by="_id">{{'application.dt.price' | translate}}</mfDefaultSorter>
+            <mfDefaultSorter by="tripObj.price">{{'application.dt.price' | translate}}</mfDefaultSorter>
         </th>
         
         <th>
@@ -62,108 +62,111 @@
 
         <!-- boton explorer PAGAR PAYPAL -->
         <th *ngIf="this.authService.checkRole('EXPLORER')">            
-            {{'application.dt.pay' | translate}}
+            <mfDefaultSorter by="status">{{'application.dt.pay' | translate}}</mfDefaultSorter>
         </th>
 
         <!-- boton manager PENDING to DUE -->
         <th *ngIf="this.authService.checkRole('MANAGER')">
-            {{'application.dt.due' | translate}}
+            <mfDefaultSorter by="status">{{'application.dt.due' | translate}}</mfDefaultSorter>
         </th>
 
         <!-- boton manager CANCEL -->
         <th>
-            {{'application.dt.cancel' | translate}}
+            <mfDefaultSorter by="status">{{'application.dt.cancel' | translate}}</mfDefaultSorter>
         </th>    
     </tr>
   </thead>
 
   <tbody>
-    <tr *ngFor="let item of mf.data">
-
-        <td class="completo">
-            <!-- boton editar -->
-            <a  *ngIf="this.authService.checkRole('MANAGER') || this.authService.checkRole('EXPLORER')"       
-                [routerLink]="['/trips-applies/display/' + item._id, {'paramKey': 'editar'}]"
-                title="{{'application.dt.edit' | translate}} - {{ item._id  | slice:-5 }} ">
-                <span class="fa fa-edit" aria-hidden="true"></span>
-                {{ item._id  | slice:-5 }}            
-            </a>
-        </td>    
-
-        <td *ngIf="this.authService.checkRole('MANAGER')" title="{{item.explorer}}">{{item.explorer  | slice:-5 }}</td>
-
-        <td *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" class="completo" >{{item.tripObj.title}}</td> 
+    <ng-container *ngFor="let item of mf.data">
+    
         
-        
-        <td *ngIf="item.tripObj !== undefined" class="completo" >
-            <a  [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]">
-                {{item.tripObj.ticker}}
-            </a>
-        </td>  
+        <tr  *ngIf="item.tripObj !== undefined" [ngStyle]="{'background-color': getColor(item.status, item.tripObj.startDate)}">
+            
+            <td class="completo">
+                <!-- boton editar -->
+                <a  *ngIf="this.authService.checkRole('MANAGER') || this.authService.checkRole('EXPLORER')"       
+                    [routerLink]="['/trips-applies/display/' + item._id, {'paramKey': 'editar'}]"
+                    title="{{'application.dt.edit' | translate}} - {{ item._id  | slice:-5 }} ">
+                    <span class="fa fa-edit" aria-hidden="true"></span>
+                    {{ item._id  | slice:-5 }}            
+                </a>
+            </td>    
 
-        <td title="{{item.tripObj.startDate | date:'dd/MM/yyyy h:mm a' }}" 
-            *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" 
-            class="completo" >
-                {{item.tripObj.startDate | date:'dd/MM/yyyy' }}
-        </td>  
-        <td title="{{item.tripObj.endDate | date:'dd/MM/yyyy h:mm a' }}"
-            *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" 
-            class="completo">
-                {{item.tripObj.endDate | date:'dd/MM/yyyy' }}
-        </td>  
+            <td *ngIf="this.authService.checkRole('MANAGER')" title="{{item.explorer}}">{{item.explorer  | slice:-5 }}</td>
 
-        <td *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" >{{item.tripObj.price}}</td>
+            <td *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" class="completo" >{{item.tripObj.title}}</td> 
+            
+            
+            <td *ngIf="item.tripObj !== undefined" class="completo" >
+                <a  [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]">
+                    {{item.tripObj.ticker}}
+                </a>
+            </td>  
 
-        <td class="completo">{{item.status}}</td>
+            <td title="{{item.tripObj.startDate | date:'dd/MM/yyyy h:mm a' }}" 
+                *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" 
+                class="completo" >
+                    {{item.tripObj.startDate | date:'dd/MM/yyyy' }}
+            </td>  
+            <td title="{{item.tripObj.endDate | date:'dd/MM/yyyy h:mm a' }}"
+                *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" 
+                class="completo">
+                    {{item.tripObj.endDate | date:'dd/MM/yyyy' }}
+            </td>  
 
-        <td>{{item.comment}}</td>
-        <td>{{item.reasonCancel}}</td>
-        
-        <!-- boton DETALLE de viaje -->
-        <!-- <td *ngIf="!this.authService.checkRole('ADMINISTRATOR')">            
-            <a             
-                [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
-                class="btn btn-primary">
-                <span class="fa fa-search-plus" aria-hidden="true"></span>
-                {{'application.dt.details' | translate}}
-            </a>
-        </td> -->
+            <td *ngIf="item.tripObj !== undefined && this.authService.checkRole('EXPLORER')" >{{item.tripObj.price}}</td>
 
-        <td title="{{item.createdAt | date:'dd/MM/yyyy h:mm a' }}" class="completo">{{item.createdAt | date:'dd/MM/yyyy' }}</td>
+            <td class="completo">{{item.status}}</td>
 
-        <!-- boton PAGAR PAYPAL -->
-        <td *ngIf="this.authService.checkRole('EXPLORER') && item.tripObj !== undefined">
-            <a  *ngIf="item.status === 'DUE'"           
-                routerLink="/checkout" [queryParams] = "{ 'total': item.tripObj.price, 'id': item._id }"
-                class="btn btn-primary btn-application">
-                <span class="fa fa-paypal  " aria-hidden="true"></span>
-                <!-- {{'application.dt.pay' | translate}} -->
-            </a>
-        </td>
+            <td>{{item.comment}}</td>
+            <td>{{item.reasonCancel}}</td>
+            
+            <!-- boton DETALLE de viaje -->
+            <!-- <td *ngIf="!this.authService.checkRole('ADMINISTRATOR')">            
+                <a             
+                    [routerLink]="['/trips/display/' + item.trip, {'paramKey': 'application'}]"
+                    class="btn btn-primary">
+                    <span class="fa fa-search-plus" aria-hidden="true"></span>
+                    {{'application.dt.details' | translate}}
+                </a>
+            </td> -->
 
-        <!-- boton PENDING TO DUE -->
-        <td *ngIf="this.authService.checkRole('MANAGER')">
-            <a *ngIf="item.status === 'PENDING'"           
-                (click)="updateApplyToDue(item._id)"
-                class="btn btn-primary btn-application">
-                <!-- <span class="fa fa-edit" aria-hidden="true"></span> -->
-                {{'application.dt.due' | translate}}
-            </a>
-        </td>
+            <td title="{{item.createdAt | date:'dd/MM/yyyy h:mm a' }}" class="completo">{{item.createdAt | date:'dd/MM/yyyy' }}</td>
 
-        <!-- boton CANCELAR VIAJE MANAGER / EXPLORER -->
-        <td>
-            <a  *ngIf="(this.authService.checkRole('MANAGER') && item.status === 'PENDING') ||
-                        (this.authService.checkRole('EXPLORER') && item.status === 'ACCEPTED')"       
-                [routerLink]="['/trips-applies/display/' + item._id, {'paramKey': 'cancelar'}]"
-                class="btn btn-primary btn-application">
-                <!-- <span class="fa fa-edit" aria-hidden="true"></span> -->
-                {{'application.dt.cancel' | translate}}
-            </a>
-        </td>  
+            <!-- boton PAGAR PAYPAL -->
+            <td *ngIf="this.authService.checkRole('EXPLORER') && item.tripObj !== undefined">
+                <a  *ngIf="item.status === 'DUE'"           
+                    routerLink="/checkout" [queryParams] = "{ 'total': item.tripObj.price, 'id': item._id }"
+                    class="btn btn-primary btn-application">
+                    <span class="fa fa-paypal  " aria-hidden="true"></span>
+                    <!-- {{'application.dt.pay' | translate}} -->
+                </a>
+            </td>
 
-    </tr>
+            <!-- boton PENDING TO DUE -->
+            <td *ngIf="this.authService.checkRole('MANAGER')">
+                <a *ngIf="item.status === 'PENDING'"           
+                    (click)="updateApplyToDue(item._id)"
+                    class="btn btn-primary btn-application">
+                    <!-- <span class="fa fa-edit" aria-hidden="true"></span> -->
+                    {{'application.dt.due' | translate}}
+                </a>
+            </td>
 
+            <!-- boton CANCELAR VIAJE MANAGER / EXPLORER -->
+            <td>
+                <a  *ngIf="(this.authService.checkRole('MANAGER') && item.status === 'PENDING') ||
+                            (this.authService.checkRole('EXPLORER') && item.status === 'ACCEPTED')"       
+                    [routerLink]="['/trips-applies/display/' + item._id, {'paramKey': 'cancelar'}]"
+                    class="btn btn-primary btn-application">
+                    <!-- <span class="fa fa-edit" aria-hidden="true"></span> -->
+                    {{'application.dt.cancel' | translate}}
+                </a>
+            </td>  
+
+        </tr>
+    </ng-container> 
   </tbody>
 
   <tfoot>

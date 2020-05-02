@@ -8,6 +8,7 @@ import { Application } from 'src/app/models/application.model';
 import { forEach } from '@angular/router/src/utils/collection';
 import { TripService } from 'src/app/services/trip.service';
 import { Trip } from 'src/app/models/trip.model';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-application-list',
@@ -44,8 +45,12 @@ export class ApplicationListComponent extends TranslatableComponent implements O
         // console.log('d: ' + d._id);
         // console.log('d trip: ' + d.trip);
         this.tripAux = await this.tripService.getTripById(d.trip);
-        d.tripObj = this.tripAux;
-        // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+        if (this.tripAux !== null && this.tripAux !== undefined) {
+          d.tripObj = this.tripAux;
+          // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+        } else {
+          d.tripObj = undefined;
+        }
       }
     } else {
 
@@ -56,8 +61,12 @@ export class ApplicationListComponent extends TranslatableComponent implements O
         // console.log('d: ' + d._id);
         // console.log('d trip: ' + d.trip);
         this.tripAux = await this.tripService.getTripById(d.trip);
-        d.tripObj = this.tripAux;
-        // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+        if (this.tripAux !== null && this.tripAux !== undefined) {
+          d.tripObj = this.tripAux;
+          // console.log('d.tripObj ticker: ' + d.tripObj.ticker);
+        } else {
+          d.tripObj = undefined;
+        }
       }
     }
 
@@ -143,5 +152,44 @@ export class ApplicationListComponent extends TranslatableComponent implements O
         console.log(error);
       });
   }
+
+  getColor(status: String, fechaIniTrip: Date): string {
+    // console.log('status: ' + status + ', fechaIniTrip: ' + fechaIniTrip);
+    let color = '';
+    if (status === 'PENDING') {
+      // TODO comprpobar si falta menos de 1 mes para que empeice el viaje, si falta menos se pone color rojo
+      color = '#fff';
+      const today = new Date(formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss', 'es_ES'));
+      const todayNumber = today.getTime();
+      const dateTrip = new Date(fechaIniTrip).getTime();
+
+      // console.log(todayNumber);
+      // console.log(dateTrip);
+
+      const diff = dateTrip - todayNumber;
+      const diffMonth = diff / (1000 * 60 * 60 * 24 * 30);
+      // console.log(diff/(1000*60*60*24*30) );
+      // (1000*60*60*24) --> milisegundos -> segundos -> minutos -> horas -> días
+
+      if (diffMonth < 1) {
+        color = 'rgb(248, 105, 105)'; // red
+      }
+
+    } else if (status === 'DUE') {
+      color = 'rgb(253, 235, 71)';
+
+    } else if (status === 'REJECTED') {
+      color = 'rgb(168, 167, 167)';
+
+    } else if (status === 'CANCELLED') {
+      color = 'rgb(31, 225, 231)';
+
+    } else if (status === 'ACCEPTED') {
+      color = 'rgb(170, 250, 153)';
+
+    }
+
+    return color;
+ }
 
 }

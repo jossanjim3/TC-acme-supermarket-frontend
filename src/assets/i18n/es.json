@@ -18,7 +18,15 @@
         "register.title": "Registro de actor",
         "edit.title": "Editar perfil",
         "save": "Guardar",
-        "edit.success": "Perfil correctamente actualizado para el usuario con email: "
+        "validated" : "Habilitado",
+        "language" : "Idioma",
+        "edit.success": "Perfil correctamente actualizado para el usuario con email: ",
+        "list.title": "Lista de Actores",
+        "banned.ok": "El actor ha sido deshabilitado correctamente!",
+        "unbanned.ok": "El actor ha sido habilitado correctamente!",
+        "banned.error": "Lo sentimos, el actor no ha podido ser actualizado!",
+        "button.ban": "Inhabilitar",
+        "button.unban": "Habilitar"
     },
     "security": {
         "login": "Entrar",
