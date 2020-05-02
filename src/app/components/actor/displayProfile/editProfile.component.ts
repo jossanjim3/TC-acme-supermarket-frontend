@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Actor } from '../../../models/actor.model';
 import { ActorService } from '../../../services/actor.service';
 import { AuthService } from '../../../services/auth.service';
@@ -79,13 +79,13 @@ export class EditProfileComponent implements OnInit {
     this.actor = new Actor();
 
     this.profileForm = this.fb.group({
-      id: [''],
-      name: [''],
-      surname: [''],
-      email: [''],
-      password:[''],
-      address:[''],
-      language:[''],
+      //id: [''],
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')],
+      //password: [''],
+      address: ['', Validators.maxLength(50)],
+      //language:[''],
       phone:['']
 
     });
@@ -96,13 +96,13 @@ export class EditProfileComponent implements OnInit {
       (actorData: Actor) => {
         if (actorData) {
           this.actor = actorData;
-          this.profileForm.controls['id'].setValue(this.actor._id);
+          //this.profileForm.controls['id'].setValue(this.actor._id);
           this.profileForm.controls['name'].setValue(this.actor.name);
           this.profileForm.controls['surname'].setValue(this.actor.surname);
           this.profileForm.controls['email'].setValue(this.actor.email);
           // this.profileForm.controls['password'].setValue(this.actor.password);
           this.profileForm.controls['address'].setValue(this.actor.address);
-          this.profileForm.controls['language'].setValue(this.actor.language);
+          //this.profileForm.controls['language'].setValue(this.actor.language);
           this.profileForm.controls['phone'].setValue(this.actor.phone);
 
           if (this.actor.address == null) {
@@ -151,39 +151,44 @@ export class EditProfileComponent implements OnInit {
 
   onSubmit() {
     console.log('boton guardar editar');
+    console.log(this.profileForm);
+    if (this.profileForm.valid) {
+      console.log("valido");
+      const formModel = this.profileForm.value;
+      this.actor.name = formModel.name;
+      this.actor.surname = formModel.surname;
+      //this.actor.password = formModel.password;
+      this.actor.email = formModel.email;
+      this.actor.address = formModel.address;
+      //this.actor.language = formModel.language;
+      this.actor.phone = formModel.phone;
 
-    const formModel = this.profileForm.value;
-
-    this.actor.name = formModel.name;
-    this.actor.surname = formModel.surname;
-    this.actor.password = formModel.password;
-    this.actor.email = formModel.email;
-    this.actor.address = formModel.address;
-    this.actor.language = formModel.language;
-    this.actor.phone = formModel.phone;
-
-    this.authService.getCurrentActor()
-      .then(actor => {
-        this.actorService.updateProfile(this.actor)
-          .then((val) => {
-            console.log(val);
-            this.authService.setCurrentActor(val);
-            const mesAux = this.translate.instant('actor.edit.success');
-            const mes = mesAux + this.actor.email;
-            // this.errorMessage = mes;
-            this.errorMessage = '';
-            this.messageService.notifyMessage(mes, 'alert alert-success');
-            // this.router.navigate(['/index']);
-          })
-          .catch((err) => {
-            this.errorMessage = err.statusText;
-            console.error(err);
-          });
-    })
-    .catch((err) => {
-      this.errorMessage = err.statusText;
-      console.error(err);
-    });
+      this.authService.getCurrentActor()
+        .then(actor => {
+          this.actorService.updateProfile(this.actor)
+            .then((val) => {
+              console.log(val);
+              this.authService.setCurrentActor(val);
+              const mesAux = this.translate.instant('actor.edit.success');
+              const mes = mesAux + this.actor.email;
+              // this.errorMessage = mes;
+              this.errorMessage = '';
+              this.messageService.notifyMessage(mes, 'alert alert-success');
+              // this.router.navigate(['/index']);
+            })
+            .catch((err) => {
+              this.errorMessage = err.statusText;
+              console.error(err);
+            });
+      })
+      .catch((err) => {
+        this.errorMessage = err.statusText;
+        console.error(err);
+      });
+    } else {
+      console.log('error');
+      this.messageService.notifyMessage(this.translate.instant('errorMessages.422'), 'alert alert-danger');
+    }
 
   }
 
