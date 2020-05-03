@@ -148,7 +148,7 @@ describe('ApplicationListComponent', () => {
 
   beforeEach(() => {
     originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000;
     fixture = TestBed.createComponent(ApplicationListComponent);
     component = fixture.componentInstance;
     mockActivatedRoute.testParams = { id: '' };
@@ -178,13 +178,13 @@ describe('ApplicationListComponent', () => {
     });
   });
 
-  it('should get status PENDING', async (done) => {
+  it('should get status DUE', async (done) => {
     component.ngOnInit();
     fixture.detectChanges();
     spyOn(applicationService, 'getExplorerApplications').and.returnValue(Promise.resolve(true));
     fixture.whenStable().then(() => {
       fixture.detectChanges();
-      expect(component.data[0].status).toEqual('PENDING');
+      expect(component.data[0].status).toEqual('DUE');
       done();
     });
   });
