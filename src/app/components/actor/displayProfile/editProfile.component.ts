@@ -87,9 +87,9 @@ export class EditProfileComponent implements OnInit {
       address: ['', Validators.maxLength(50)],
       //language:[''],
       phone:['']
-
     });
 
+    //this.profileForm.controls['password'].setValue('');
     this.actor = new Actor();
 
     this.authService.getCurrentActor().then(
@@ -153,7 +153,6 @@ export class EditProfileComponent implements OnInit {
     console.log('boton guardar editar');
     console.log(this.profileForm.errors);
     if (this.profileForm.valid) {
-      console.log("valido");
       const formModel = this.profileForm.value;
       this.actor.name = formModel.name;
       this.actor.surname = formModel.surname;
@@ -165,7 +164,7 @@ export class EditProfileComponent implements OnInit {
 
       this.authService.getCurrentActor()
         .then(actor => {
-          this.actorService.updateProfile(this.actor)
+          this.actorService.updateProfile(formModel, this.actor._id)
             .then((val) => {
               console.log(val);
               this.authService.setCurrentActor(val);

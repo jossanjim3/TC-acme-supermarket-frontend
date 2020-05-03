@@ -71,21 +71,17 @@ export class ActorService {
           });
     }
 
-    updateProfile(actor: Actor) {
-        const url = `${environment.backendApiBaseURL}/v2/actors/${actor._id}`;
-
-        const putActor = JSON.parse(JSON.stringify(actor));
-        delete putActor.idToken;
-        delete putActor.customToken;
+    updateProfile(actor: Actor, id: string) {
+        const url = `${environment.backendApiBaseURL}/v1/actors/${id}`;
+        //const putActor = JSON.parse(JSON.stringify(actor));
+        const headers = new HttpHeaders();
+        headers.append('Content-Type', 'application/json');
+        headers.append('idtoken', actor.idToken);
 
         const body = JSON.stringify(actor);
 
         return new Promise<any>((resolve, reject) => {
-            this.http.put(url, body,   {
-                headers: new HttpHeaders({
-                  'Content-Type': 'application/json',
-                  'idtoken': actor.idToken
-                })}).toPromise()
+            this.http.put(url, body, httpOptions).toPromise()
                 .then(res => {
                     resolve(res);
                 }, err => { console.log(err); reject(err); });
