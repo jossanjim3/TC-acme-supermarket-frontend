@@ -38,6 +38,11 @@ import { APP_BASE_HREF } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { from } from 'rxjs';
 import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
+import { TripFormComponent } from '../../trip/trip-form/trip-form.component';
+import { CheckoutComponent } from '../../checkout/checkout.component';
+import { ActorListComponent } from '../../actor/actor-list/actor-list.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { AgmCoreModule } from '@agm/core';
 
 describe('AuditorAuditsComponent', () => {
   let component: AuditorAuditsComponent;
@@ -47,6 +52,9 @@ describe('AuditorAuditsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        TripFormComponent,
+        CheckoutComponent,
+        ActorListComponent,
         ApplicationListComponent,
         HeaderComponent,
         TranslatableComponent,
@@ -84,6 +92,11 @@ describe('AuditorAuditsComponent', () => {
             useFactory: HttpLoaderFactory,
             deps: [HttpClient]
           }
+        }),
+        NgxPayPalModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+          libraries: ['places']
         }),
         AngularFireModule.initializeApp({
           apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',

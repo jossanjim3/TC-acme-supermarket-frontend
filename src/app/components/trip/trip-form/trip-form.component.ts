@@ -44,29 +44,30 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
     this.updated = false;
     this.createForm();
     this.tripForm.controls['price'].setValue(this.totalprice);
-    this.route.url.subscribe(url => {
-      if (url[0].path !== 'trips-new') {
-        this.trip_new = false;
-        this.route.params
-          .subscribe(async params => {
-            this.trip = await this.tripService.getTrip(params['id']);
-            console.log(this.authService.checkId(this.trip.manager));
-            if (!this.authService.checkId(this.trip.manager)) {
-              this.router.navigate(['/denied-access']);
-            } else {
-              this.tripForm.controls['title'].setValue(this.trip.title);
-              this.tripForm.controls['description'].setValue(this.trip.description);
-              this.totalprice = Number(this.trip.price);
-              this.tripForm.controls['price'].setValue(this.trip.price);
-              this.initRequeriments(this.trip.requeriments);
-              this.tripForm.controls['startDate'].setValue(this.formatDate(new Date(this.trip.startDate)));
-              this.tripForm.controls['endDate'].setValue(this.formatDate(new Date(this.trip.endDate)));
-              this.initPictures(this.trip.pictures);
-              this.initStages(this.trip.stages);
-            }
-          });
-      }
-    });
+    if (this.route.url !== undefined) {
+      this.route.url.subscribe(url => {
+        if (url[0].path !== 'trips-new') {
+          this.trip_new = false;
+          this.route.params
+            .subscribe(async params => {
+              this.trip = await this.tripService.getTrip(params['id']);
+              if (!this.authService.checkId(this.trip.manager)) {
+                this.router.navigate(['/denied-access']);
+              } else {
+                this.tripForm.controls['title'].setValue(this.trip.title);
+                this.tripForm.controls['description'].setValue(this.trip.description);
+                this.totalprice = Number(this.trip.price);
+                this.tripForm.controls['price'].setValue(this.trip.price);
+                this.initRequeriments(this.trip.requeriments);
+                this.tripForm.controls['startDate'].setValue(this.formatDate(new Date(this.trip.startDate)));
+                this.tripForm.controls['endDate'].setValue(this.formatDate(new Date(this.trip.endDate)));
+                this.initPictures(this.trip.pictures);
+                this.initStages(this.trip.stages);
+              }
+            });
+        }
+      });
+    }
     this.authService.getCurrentActor().then((actor) => {
       this.actor = actor;
     this.tripForm.controls['manager'].setValue(this.actor._id);

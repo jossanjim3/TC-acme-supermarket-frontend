@@ -11,6 +11,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ActorService } from 'src/app/services/actor.service';
+import { AgmCoreModule } from '@agm/core';
 
 describe('ProfileComponent', () => {
   let component: EditProfileComponent;
@@ -37,6 +38,10 @@ describe('ProfileComponent', () => {
           messagingSenderId: '785752393006',
           appId: '1:785752393006:web:b3ba408388312107d6e6bf',
           measurementId: 'G-ZKX46KJLB8'
+        }),
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+          libraries: ['places']
         }),
         TranslateModule.forRoot({
           loader: {

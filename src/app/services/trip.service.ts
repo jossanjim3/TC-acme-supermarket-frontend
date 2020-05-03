@@ -84,7 +84,7 @@ export class TripService {
     return this.http.get<Trip[]>(url).toPromise();
   }
 
-  searchTrips(start: number, psize: number, keyword: string, minPrice: string, maxPrice: string, minDate: string, maxDate: string) {
+  async searchTrips(start: number, psize: number, keyword: string, minPrice: string, maxPrice: string, minDate: string, maxDate: string) {
     const url = `${environment.backendApiBaseURL}/v1/trips/search`;
     // const url = `${environment.backendApiBaseURL}/v1/trips/search?keyword=${keyword}&minPrice=${minPrice}&maxPrice=${maxPrice}
     // &minDate=${minDate}&maxDate=${maxDate}`;

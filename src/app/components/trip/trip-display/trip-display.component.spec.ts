@@ -40,6 +40,11 @@ import { DataTableModule } from 'angular-6-datatable';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ActorService } from 'src/app/services/actor.service';
+import { TripFormComponent } from '../trip-form/trip-form.component';
+import { CheckoutComponent } from '../../checkout/checkout.component';
+import { ActorListComponent } from '../../actor/actor-list/actor-list.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { AgmCoreModule } from '@agm/core';
 
 registerLocaleData(locales, 'es');
 
@@ -75,6 +80,9 @@ describe('TripDisplayComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        TripFormComponent,
+        CheckoutComponent,
+        ActorListComponent,
         TripDisplayComponent,
         HeaderComponent,
         TranslatableComponent,
@@ -105,6 +113,11 @@ describe('TripDisplayComponent', () => {
         ReactiveFormsModule,
         HttpClientModule,
         DataTableModule,
+        NgxPayPalModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+          libraries: ['places']
+        }),
         AngularFireModule.initializeApp({
           apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
           authDomain: 'acme-viaje-el-corte-andaluh.firebaseapp.com',

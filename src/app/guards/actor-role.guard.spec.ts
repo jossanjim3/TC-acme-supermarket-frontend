@@ -39,6 +39,11 @@ import { DataTableModule } from 'angular-6-datatable';
 import { ActivatedRoute } from '@angular/router';
 import { from } from 'rxjs';
 import { DashboardComponent } from '../components/admin/dashboard/dashboard.component';
+import { TripFormComponent } from '../components/trip/trip-form/trip-form.component';
+import { CheckoutComponent } from '../components/checkout/checkout.component';
+import { ActorListComponent } from '../components/actor/actor-list/actor-list.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { AgmCoreModule } from '@agm/core';
 
 describe('ActorRoleGuard', () => {
   beforeEach(() => {
@@ -48,6 +53,9 @@ describe('ActorRoleGuard', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        TripFormComponent,
+        CheckoutComponent,
+        ActorListComponent,
         ApplicationListComponent,
         HeaderComponent,
         TranslatableComponent,
@@ -85,6 +93,11 @@ describe('ActorRoleGuard', () => {
             useFactory: HttpLoaderFactory,
             deps: [HttpClient]
           }
+        }),
+        NgxPayPalModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+          libraries: ['places']
         }),
         AngularFireModule.initializeApp({
           apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',

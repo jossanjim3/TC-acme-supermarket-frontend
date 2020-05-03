@@ -31,7 +31,6 @@ export class SponsorDisplayComponent extends TranslatableComponent implements On
       .then((val) => {
         this.sponsorship = val;
         this.tripSponsorship = val.tripSponsorships;
-        console.log(this.sponsorship);
       });
   }
 

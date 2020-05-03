@@ -151,7 +151,7 @@ export class EditProfileComponent implements OnInit {
 
   onSubmit() {
     console.log('boton guardar editar');
-    console.log(this.profileForm);
+    console.log(this.profileForm.errors);
     if (this.profileForm.valid) {
       console.log("valido");
       const formModel = this.profileForm.value;

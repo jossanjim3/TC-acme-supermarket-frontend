@@ -39,6 +39,11 @@ import { from } from 'rxjs';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SponsorListComponent } from './sponsor-list.component';
 import { SponsorDisplayComponent } from '../sponsor-display/sponsor-display.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { AgmCoreModule } from '@agm/core';
+import { TripFormComponent } from '../../trip/trip-form/trip-form.component';
+import { CheckoutComponent } from '../../checkout/checkout.component';
+import { ActorListComponent } from '../../actor/actor-list/actor-list.component';
 
 describe('SponsorListComponent', () => {
   let component: SponsorListComponent;
@@ -51,6 +56,9 @@ describe('SponsorListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        TripFormComponent,
+        CheckoutComponent,
+        ActorListComponent,
         ApplicationListComponent,
         HeaderComponent,
         TranslatableComponent,
@@ -88,6 +96,11 @@ describe('SponsorListComponent', () => {
             useFactory: HttpLoaderFactory,
             deps: [HttpClient]
           }
+        }),
+        NgxPayPalModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+          libraries: ['places']
         }),
         AngularFireModule.initializeApp({
           apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',

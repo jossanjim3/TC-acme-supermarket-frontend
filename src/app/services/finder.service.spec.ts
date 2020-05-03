@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+/*import { TestBed } from '@angular/core/testing';
 
 import { FinderService } from './finder.service';
 
@@ -9,4 +9,4 @@ describe('FinderService', () => {
     const service: FinderService = TestBed.get(FinderService);
     expect(service).toBeTruthy();
   });
-});
+});*/
