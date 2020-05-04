@@ -10,6 +10,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MessageService } from 'src/app/services/message.service';
 import { AuditService } from 'src/app/services/audit.service';
 import { Audit } from 'src/app/models/audit.model';
+import { SponsorshipService } from 'src/app/services/sponsorship.service';
+import { Sponsorship } from 'src/app/models/sponsorship.model';
 
 @Component({
   selector: 'app-trip-display',
@@ -22,10 +24,12 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   id: string;
   pictures: string[] = [];
   auditAux: Audit[] = [];
+  sponsorships: Sponsorship[] = [];
 
   constructor(private _sanitizer: DomSanitizer, private tripService: TripService, private auditService: AuditService,
     private translateService: TranslateService, private router: Router,
-    private route: ActivatedRoute, public authService: AuthService, private messageService: MessageService) {
+    private route: ActivatedRoute, public authService: AuthService, private messageService: MessageService,
+    private sponsorshipService: SponsorshipService) {
     super(translateService);
   }
 
@@ -83,8 +87,11 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
         }
       }
 
-      if ( this.trip !== undefined && this.trip !== null ){
+      if ( this.trip !== undefined && this.trip !== null ) {
         this.pictures = this.trip.pictures;
+        this.sponsorshipService.getSponsorshipsTrips(this.trip.ticker).then(val => {
+          this.sponsorships = val;
+        });
       }
       /* this.tripService.getTrip(this.id)
       .then((trip) => {
@@ -103,7 +110,11 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
   getPicture(id: number) {
     if ( this.trip.pictures.length > 0) {
-      return this.trip.pictures[id];
+      if (this.trip.pictures[id] === '') {
+        return 'https://i.ya-webdesign.com/images/image-not-available-png-3.png';
+      } else {
+        return this.trip.pictures[id];
+      }
     } else {
       return 'https://i.ya-webdesign.com/images/image-not-available-png-3.png';
     }
@@ -116,17 +127,19 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
   onApply(idTrip: string) {
 
-    console.log('idTrip: ' + idTrip);
+    // console.log('idTrip: ' + idTrip);
 
     this.authService.getCurrentActor().then( currActor => {
       if (currActor !== null) {
-        console.log('currActor: ' + currActor._id);
+        // console.log('currActor: ' + currActor._id);
 
         // creamos la application
         this.tripService.applyTrip(idTrip, currActor._id)
           .then((appli) => {
-            console.log('appli detail: ' + appli);
+            // console.log('appli detail: ' + appli);
             this.messageService.notifyMessage('application.appli.success', 'alert alert-success');
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
           })
           .catch((err) => {
             console.error(err);

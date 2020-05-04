@@ -42,6 +42,11 @@ import { NewAuditComponent } from '../../audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from '../../audit/display-audit/display-audit.component';
 import { DashboardComponent } from '../../admin/dashboard/dashboard.component';
 import { Actor } from 'src/app/models/actor.model';
+import { TripFormComponent } from '../../trip/trip-form/trip-form.component';
+import { CheckoutComponent } from '../../checkout/checkout.component';
+import { ActorListComponent } from '../../actor/actor-list/actor-list.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { AgmCoreModule } from '@agm/core';
 
 describe('ApplicationListComponent', () => {
   let component: ApplicationListComponent;
@@ -63,6 +68,9 @@ describe('ApplicationListComponent', () => {
         HeaderComponent,
         TranslatableComponent,
         RegisterComponent,
+        TripFormComponent,
+        CheckoutComponent,
+        ActorListComponent,
         LoginComponent,
         EditProfileComponent,
         FooterComponent,
@@ -97,6 +105,11 @@ describe('ApplicationListComponent', () => {
             deps: [HttpClient]
           }
         }),
+        NgxPayPalModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+          libraries: ['places']
+        }),
         AngularFireModule.initializeApp({
           apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
           authDomain: 'acme-viaje-el-corte-andaluh.firebaseapp.com',
@@ -113,9 +126,7 @@ describe('ApplicationListComponent', () => {
         AngularFireAuth,
         ActorService,
         {provide: APP_BASE_HREF, useValue: '/'},
-        {provide: ActivatedRoute, useValue: {
-          queryParams: from([{keyword: ''}]),
-        }},
+        {provide: ActivatedRoute, useValue: mockActivatedRoute},
       ],
     })
     .compileComponents();
@@ -137,9 +148,10 @@ describe('ApplicationListComponent', () => {
 
   beforeEach(() => {
     originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000;
     fixture = TestBed.createComponent(ApplicationListComponent);
     component = fixture.componentInstance;
+    mockActivatedRoute.testParams = { id: '' };
     applicationService = TestBed.get(ApplicationsService);
     fixture.detectChanges();
   });
@@ -158,7 +170,7 @@ describe('ApplicationListComponent', () => {
     component.ngOnInit();
     fixture.detectChanges();
     // TODO necesito simular el login antes para que el siguiente metodo del servicio devuelva algo
-    spyOn(applicationService, 'getApplications').and.returnValue(Promise.resolve(true));
+    spyOn(applicationService, 'getExplorerApplications').and.returnValue(Promise.resolve(true));
     fixture.whenStable().then(() => {
       fixture.detectChanges();
       expect(component.data.length).toBeGreaterThan(1);
@@ -166,13 +178,13 @@ describe('ApplicationListComponent', () => {
     });
   });
 
-  it('should get status PENDING', async (done) => {
+  it('should get status DUE', async (done) => {
     component.ngOnInit();
     fixture.detectChanges();
-    spyOn(applicationService, 'getApplications').and.returnValue(Promise.resolve(true));
+    spyOn(applicationService, 'getExplorerApplications').and.returnValue(Promise.resolve(true));
     fixture.whenStable().then(() => {
       fixture.detectChanges();
-      expect(component.data[0].status).toEqual('PENDING');
+      expect(component.data[0].status).toEqual('DUE');
       done();
     });
   });

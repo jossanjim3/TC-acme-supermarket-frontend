@@ -1,0 +1,163 @@
+
+<div class="card my-4">
+  <div class="card-header">
+    <h4 class="The-explorer-2-hex">{{'trip.trip.form' | translate}}</h4>
+  </div>
+  
+  <div class="card-body">
+    <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+      <div class="form-group p-4">
+
+        
+        <div class="row my-2">
+          <!-- Title -->
+          <div class="col-md-6 field-label-responsive">
+            <div class="row">
+              <div class="col-md-12 field-label-responsive">
+                <label for="title">{{'trip.title' | translate}}</label>
+              </div>
+              <div class="col-md-12">
+                <input type="text" name="title" class="form-control" id="title" formControlName="title"
+                placeholder="{{'trip.ph' | translate}} {{'trip.title' | translate}}" required>
+              </div>
+              <div class="text-danger" *ngIf="tripForm.get('title').errors && tripForm.get('title').touched && tripForm.get('title').errors.required">
+                {{'errorMessages.validation.required' | translate}}
+              </div>
+            </div>
+          </div>
+
+          <!-- Price -->
+          <div class="col-md-6 field-label-responsive">
+            <div class="row">
+              <div class="col-md-12 field-label-responsive">
+                <label for="price">{{'trip.price' | translate}}</label>
+              </div>
+              <div class="col-md-12">
+                <input type="number" name="price" class="form-control" id="price" formControlName="price"
+                placeholder="{{'trip.price' | translate}}" required autofocus readonly>
+              </div>
+              <div class="text-danger" *ngIf="tripForm.get('price').errors && tripForm.get('price').touched && tripForm.get('price').errors.required">
+                {{'errorMessages.validation.required' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="row my-2">
+          <div class="col-md-12 field-label-responsive">
+            <label for="description">{{'trip.description' | translate}}</label>
+          </div>
+          <div class="col-md-12">
+            <textarea name="description" class="form-control" id="description" formControlName="description"
+            placeholder="{{'trip.ph' | translate}} {{'trip.description' | translate}}" required> </textarea>
+          </div>
+          <div class="text-danger" *ngIf="tripForm.get('description').errors && tripForm.get('description').touched && tripForm.get('description').errors.required">
+            {{'errorMessages.validation.required' | translate}}
+          </div>
+        </div>
+
+        <!-- Dates-->
+        <div class="row my-2">
+          <!-- StartDate -->
+          <div class="col-md-6 field-label-responsive">
+            <div class="row">
+              <div class="col-md-12 field-label-responsive">
+                <label for="startDate">{{'trip.startDate' | translate}}</label>
+              </div>
+              <div class="col-md-12">
+                <input type="date" name="startDate"  class="form-control" id="startDate" formControlName="startDate"
+                placeholder="{{'trip.ph' | translate}} {{'trip.startDate' | translate}}" required>
+              </div>
+              <div class="text-danger" *ngIf="tripForm.get('startDate').errors && tripForm.get('startDate').touched && tripForm.get('startDate').errors.required">
+                {{'errorMessages.validation.required' | translate}}
+              </div>
+            </div>
+          </div>
+
+          <!-- EndDate -->
+          <div class="col-md-6 field-label-responsive">
+            <div class="row">
+              <div class="col-md-12 field-label-responsive">
+                <label for="endDate">{{'trip.endDate' | translate}}</label>
+              </div>
+              <div class="col-md-12">
+                <input type="date" name="endDate" class="form-control" id="endDate" formControlName="endDate"
+                placeholder="{{'trip.endDate' | translate}}" required>
+              </div>
+              <div class="text-danger" *ngIf="tripForm.get('endDate').errors && tripForm.get('endDate').touched && tripForm.get('endDate').errors.required">
+                {{'errorMessages.validation.required' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stages -->
+        <div class="row my-3">
+          <div class="col-md-12 field-label-responsive">
+            <label for="description">{{'trip.stages' | translate}}</label>
+          </div>
+          <div formArrayName="stages" class="col-md-12"
+            *ngFor="let stage of tripForm.get('stages').controls; let i = index;">
+            <div [formGroupName]="i">
+              <div class="row">
+                <input type="text" class="col-md-3  form-control mx-auto" formControlName="title" placeholder="{{'trip.title' | translate}}">
+                <textarea class="col-md-5 form-control mx-auto" formControlName="description" placeholder="{{'trip.description' | translate}}" rows="1"></textarea>
+                <input type="number" class="col-md-2 form-control mx-auto price-stage" formControlName="price" (change)="updatePrice()" placeholder="{{'trip.price' | translate}}">  
+                <button type="button" class="btn btn-danger btn-lg my-auto" (click)="removeStage(i)">X</button>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="ml-auto mr-4 mb-2 mt-4 btn btn-primary" (click)="addStage()">{{'trip.stages.add' | translate}}</button>
+        </div>
+
+
+        <!-- requeriments -->
+        <div class="row my-4">
+          <div class="col-md-12 field-label-responsive">
+            <label for="requeriments">{{'trip.requeriments' | translate}}</label>
+          </div>
+          <div formArrayName="requeriments" class="col-md-12"
+            *ngFor="let requeriment of tripForm.get('requeriments').controls; let i = index;">
+            <div [formGroupName]="i">
+              <div class="row">
+                <input name="requeriments" type="text" class="ml-4 col-md-10 form-control" [formControl]="requeriment"
+                  placeholder="{{'trip.ph' | translate}} {{'trip.requeriments' | translate}}">
+                <button type="button" class="btn btn-danger btn-lg ml-4 my-auto" (click)="removeReq(i)">X</button>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="ml-4 mr-auto mb-2 mt-4 btn btn-primary" (click)="addRequeriments()">{{'trip.requeriments.add' | translate}}</button>
+        </div>
+
+        <!-- Pictures -->
+        <div class="row my-4">
+          <div class="col-md-12 field-label-responsive">
+            <label for="pictures">{{'trip.pictures' | translate}}</label>
+          </div>
+          <div formArrayName="pictures" class="col-md-12 my-1"
+            *ngFor="let picture of tripForm.get('pictures').controls; let i = index;">
+            <div [formGroupName]="i">
+              <div class="row">
+                <img *ngIf="picture != null" class="img-fluid col-md-3" id="showpic{{i}}" style="display:block; object-fit:contain;"  src="{{picture.value}}">
+                <button type="button" class="btn btn-danger btn-lg ml-4 mr-4 my-auto" (click)="removePic(i)">X</button>
+                <textarea id="showpicresult{{i}}" [formControl]="picture" hidden="true"></textarea>
+                <input class="form-control col-md-5 my-auto" type="file" (change)="onFileChange($event, i, picture)">
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" class="ml-4 mr-auto mb-2 mt-4 btn btn-primary" (click)="addPicture()">{{'trip.pictures.add' | translate}}</button>
+        </div>
+      </div>
+      <input type="text" hidden="true" formControlName="manager">  
+      <hr>
+      <div class="mb-2 mt-4">
+        <button type="submit" class="mr-4 btn btn-primary">{{'trip.save' | translate}}</button>
+        <button type="button" class="mr-4 btn btn-outline-secondary" (click)="goBack()">{{'trip.cancel' | translate}}</button>
+        <button *ngIf="!this.trip_new" type="button" class="float-right btn btn-danger mx-1" (click)="deleteTrip()">{{'trip.delete' | translate}}</button>
+        <button *ngIf="!this.trip_new" type="button" class="float-right btn btn-danger mx-1" (click)="cancelTrip()">{{'trip.cancel.trip' | translate}}</button>
+      </div>
+    </form>
+  </div>
+</div>

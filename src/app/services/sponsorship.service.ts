@@ -19,4 +19,9 @@ export class SponsorshipService {
     const url = `${environment.backendApiBaseURL}/v1/sponsorships/${id}`;
     return this.http.get<Sponsorship>(url).toPromise();
   }
+
+  getSponsorshipsTrips(id: string) {
+    const url = `${environment.backendApiBaseURL}/v1/sponsorships/trips/${id}`;
+    return this.http.get<Sponsorship[]>(url).toPromise();
+  }
 }

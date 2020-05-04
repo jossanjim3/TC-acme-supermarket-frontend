@@ -31,7 +31,6 @@ export class SponsorListComponent extends TranslatableComponent implements OnIni
           this.actor = actorData;
           this.sponsorshipService.getListSponsorshipsOfSponsor(this.actor._id)
             .then((val) => {
-              console.log(val);
               this.data = val;
             })
             .catch((err) => console.error(err.message));

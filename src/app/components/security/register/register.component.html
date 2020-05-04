@@ -27,9 +27,9 @@
 
           <div class="col-md-3">
               <div class="form-control-feedback">
-                      <span class="text-danger align-middle">
-                          <!-- Put name validation error messages here -->
-                      </span>
+                    <div class="text-danger align-middle" *ngIf="registrationForm.get('role').errors && registrationForm.get('role').touched && registrationForm.get('role').errors.required">
+                        {{'errorMessages.validation.required' | translate}}
+                    </div>
               </div>
           </div>
       </div>
@@ -50,9 +50,9 @@
           </div>
           <div class="col-md-3">
               <div class="form-control-feedback">
-                      <span class="text-danger align-middle">
-                          <!-- Put e-mail validation error messages here -->
-                      </span>
+                <div class="text-danger align-middle" *ngIf="registrationForm.get('email').errors && registrationForm.get('email').touched && registrationForm.get('email').errors.pattern">
+                    {{'errorMessages.auth.invalid.email' | translate}}
+                </div>
               </div>
           </div>
       </div>
@@ -73,9 +73,9 @@
           </div>
           <div class="col-md-3">
               <div class="form-control-feedback">
-                      <span class="text-danger align-middle">
-                          <!-- <i class="fa fa-close"> Example Error Message</i> -->
-                      </span>
+                <div class="text-danger align-middle" *ngIf="registrationForm.get('password').errors && registrationForm.get('password').touched && registrationForm.get('password').errors.required">
+                    {{'errorMessages.validation.required' | translate}}
+                </div>
               </div>
           </div>
       </div>
@@ -96,9 +96,9 @@
         </div>
         <div class="col-md-3">
             <div class="form-control-feedback">
-                    <span class="text-danger align-middle">
-                        <!-- Put e-mail validation error messages here -->
-                    </span>
+                <div class="text-danger align-middle" *ngIf="registrationForm.get('name').errors && registrationForm.get('name').touched && registrationForm.get('name').errors.required">
+                    {{'errorMessages.validation.required' | translate}}
+                </div>
             </div>
         </div>
     </div>
@@ -119,9 +119,9 @@
       </div>
       <div class="col-md-3">
           <div class="form-control-feedback">
-                  <span class="text-danger align-middle">
-                      <!-- Put e-mail validation error messages here -->
-                  </span>
+                <div class="text-danger align-middle" *ngIf="registrationForm.get('surname').errors && registrationForm.get('surname').touched && registrationForm.get('surname').errors.required">
+                    {{'errorMessages.validation.required' | translate}}
+                </div>
           </div>
       </div>
     </div>
@@ -135,16 +135,29 @@
           <div class="form-group">
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                   <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-address-book-o"></i></div>
-                  <input type="text" name="address" class="form-control" id="address" formControlName="address"
+                  <input type="text" name="address" class="form-control" id="address" #address formControlName="address"
                          placeholder="{{'actor.addressPh' | translate}}" required autofocus>
               </div>
+              <div class="my-2">
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" 
+              [disableDefaultUI]="false" [zoomControl]="false"
+              (mapClick)="mapClicked($event)">
+                <agm-marker *ngFor="let m of markers; let i = index"
+                    [latitude]="m.lat" [longitude]="m.lng"
+                    [label]="m.label" [markerDraggable]="m.draggable">
+
+                </agm-marker>
+            
+                </agm-map>
+              </div>
+              
           </div>
       </div>
       <div class="col-md-3">
           <div class="form-control-feedback">
-                  <span class="text-danger align-middle">
-                      <!-- Put e-mail validation error messages here -->
-                  </span>
+                <div class="text-danger align-middle" *ngIf="registrationForm.get('address').errors && registrationForm.get('address').touched && registrationForm.get('address').errors.maxlength">
+                    {{'errorMessages.validation.maxlength' | translate}}
+                </div>
           </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TripDisplayComponent } from './trip-display.component';
+import { TripDisplayComponent } from '../trip-display/trip-display.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
@@ -65,9 +65,9 @@ export class ActivatedRouteStub {
   }
 }
 
-describe('TripDisplayComponent', () => {
-  let component: TripDisplayComponent;
-  let fixture: ComponentFixture<TripDisplayComponent>;
+describe('TripFormComponent', () => {
+  let component: TripFormComponent;
+  let fixture: ComponentFixture<TripFormComponent>;
   let mockActivatedRoute;
   let tripService: TripService;
   let originalTimeout;
@@ -147,48 +147,12 @@ describe('TripDisplayComponent', () => {
   }));
 
   beforeEach(() => {
-    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
-    fixture = TestBed.createComponent(TripDisplayComponent);
+    fixture = TestBed.createComponent(TripFormComponent);
     component = fixture.componentInstance;
-    mockActivatedRoute.testParams = { id: '200409-LEEM' };
-    tripService = TestBed.get(TripService);
     fixture.detectChanges();
   });
-
-  afterEach(function() {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
-  });
-
-  it('should defined', async (done) => {
+  /*
+  it('should create', () => {
     expect(component).toBeTruthy();
-    done();
-  });
-
-  it('should defined trip not null', async (done) => {
-    component.ngOnInit();
-    fixture.detectChanges();
-    spyOn(tripService, 'getTrip').and.returnValue(Promise.resolve(true));
-
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-      expect(component.trip).not.toBeNull();
-      done();
-    });
-  });
-
-  it('should have same trip attributes', async (done) => {
-    component.ngOnInit();
-    fixture.detectChanges();
-    spyOn(tripService, 'getTrip').and.returnValue(Promise.resolve(true));
-
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-      expect(component.trip.ticker).toEqual('200409-LEEM');
-      expect(component.trip.title).toEqual('Trip1');
-      expect(component.trip._id).toEqual('5e8ef80ab5741600198f760c');
-      expect(component.trip.price).toEqual(537);
-      done();
-    });
-  });
+  });*/
 });

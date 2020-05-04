@@ -11,6 +11,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ActorService } from 'src/app/services/actor.service';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { AgmCoreModule } from '@agm/core';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -28,6 +30,11 @@ describe('RegisterComponent', () => {
         ReactiveFormsModule,
         HttpClientModule,
         RouterTestingModule,
+        NgxPayPalModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+          libraries: ['places']
+        }),
         AngularFireModule.initializeApp({
           apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
           authDomain: 'acme-viaje-el-corte-andaluh.firebaseapp.com',

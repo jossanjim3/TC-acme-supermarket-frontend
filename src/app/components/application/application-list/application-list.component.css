@@ -3,5 +3,30 @@
 }
 
 .btn-application {
-    padding: 0.2rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    color: #fff !important;
+}
+
+.back-PENDING {
+    background-color: rgb(248, 16, 16);
+    background-color: rgb(248, 105, 105);
+}
+
+.back-DUE {
+    background-color: rgb(253, 235, 71);
+}
+
+.back-REJECTED {
+    background-color: rgb(168, 167, 167);
+}
+
+.back-CANCELLED {
+    background-color: rgb(31, 225, 231);
+}
+
+.back-ACCEPTED {
+    background-color: rgb(170, 250, 153);
 }

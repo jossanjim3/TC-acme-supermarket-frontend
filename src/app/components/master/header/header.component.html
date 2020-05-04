@@ -14,8 +14,9 @@
           <i class="fa fa-plane"></i> {{'trip.trip' | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/trips"><i class="fa fa-list"></i> {{'trip.trips.list' | translate}}</a>
+          <a class="dropdown-item" routerLink="/trips/search"><i class="fa fa-list"></i> {{'trip.trips.list' | translate}}</a>
           <a class="dropdown-item" routerLink="/trips-applies"  *ngIf="activeRole === 'EXPLORER'"><i class="fa fa-indent"></i> {{'trip.trips.list.applies' | translate}}</a>
+          <a class="dropdown-item" routerLink="/trips/finder"  *ngIf="activeRole === 'EXPLORER'"><i class="fa fa-search"></i> {{'trip.trips.list.finder' | translate}}</a>
           <a class="dropdown-item" routerLink="/trips-created"  *ngIf="activeRole === 'MANAGER'"><i class="fa fa-list-alt"></i> {{'trip.trips.list.created' | translate}}</a>
           <div class="dropdown-divider" *ngIf="currentActor && activeRole === 'MANAGER'"></div>
           <a class="dropdown-item" routerLink="/trips-new"  *ngIf="activeRole === 'MANAGER'"> <i class="fa fa-plus-square"></i> {{'trip.create.title' | translate}}</a>
@@ -30,6 +31,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="/datawarehouse"><i class="fa fa-database"></i> {{'admin.datawarehouse' | translate}}</a>
           <a class="dropdown-item" routerLink="/olap-cube"><i class="fa fa-cube"></i> {{'admin.olapcube' | translate}}</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="/actors"><i class="fa fa-indent"></i> {{'actor.list.title' | translate}}</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="/new-manager"><i class="fa fa-user-plus"></i> {{'admin.register.manager' | translate}}</a>
         </div>

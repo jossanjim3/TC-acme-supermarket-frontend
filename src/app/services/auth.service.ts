@@ -170,9 +170,34 @@ export class AuthService implements OnInit {
     return ['EXPLORER', 'MANAGER', 'ADMINISTRATOR', 'SPONSOR'];
   }
 
+  checkId(id: string) {
+    if ( this.currentActor !== undefined && this.currentActor != null) {
+      if (this.currentActor._id === id) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
   checkRole(role: string) {
     if ( this.currentActor !== undefined && this.currentActor != null) {
       if (this.currentActor.role.includes(role)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+
+  }
+
+  checkIsCurrentUser(idIdentifier: string) {
+    if ( this.currentActor !== undefined && this.currentActor != null) {
+      if (this.currentActor._id === idIdentifier) {
         return true;
       } else {
         return false;

@@ -15,7 +15,7 @@
 
   <tbody>
     <tr *ngFor="let row of mf.data">
-      <td>{{row.banner}}</td>
+      <td><img src="{{row.banner}}" height="100rem"></td>
       <td>{{row.link}}</td>
       <td><span [innerHTML]="isFullPaid(row)"></span></td>
       <td>

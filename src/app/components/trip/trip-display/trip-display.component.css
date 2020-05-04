@@ -2,6 +2,17 @@
     height: 40rem;
 }
 
+#carouselExampleControls2 {
+    height: 10rem;
+}
+
+#carouselExampleControls2 > .carousel-inner > .carousel-item > img {
+    height: 10rem !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 .first-column-audit {
     width: 10%;
     font-weight: bold;

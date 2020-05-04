@@ -1,0 +1,105 @@
+<div class="card my-4">
+  <div class="card-header">
+    <h3 class="card-title">{{'actor.list.title' | translate}}</h3>
+  </div>
+</div>
+
+<table class="table" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+  <thead>
+    <tr>
+      <th>
+          <mfDefaultSorter by="_id">ID</mfDefaultSorter>
+      </th>
+
+      <th>
+          <mfDefaultSorter by="name">{{'actor.name' | translate}}</mfDefaultSorter>
+      </th>
+
+      <th>
+          <mfDefaultSorter by="surname">{{'actor.surname' | translate}}</mfDefaultSorter>
+      </th>
+
+      <th>
+          <mfDefaultSorter by="email">{{'actor.email' | translate}}</mfDefaultSorter>
+      </th>
+
+      <th>
+          <mfDefaultSorter by="address">{{'actor.address' | translate}}</mfDefaultSorter>
+      </th>
+
+      <th>
+        <mfDefaultSorter by="phone">{{'actor.phone' | translate}}</mfDefaultSorter>
+      </th>
+
+      <th>
+        <mfDefaultSorter by="validated">{{'actor.validated' | translate}}</mfDefaultSorter>
+      </th>
+
+      <th>
+        <mfDefaultSorter by="role">{{'actor.role' | translate}}</mfDefaultSorter>
+      </th>
+
+      <th>
+        <mfDefaultSorter by="language">{{'actor.language' | translate}}</mfDefaultSorter>
+      </th>
+
+      <!-- boton ban -->
+      <th>
+        <mfDefaultSorter by="validated"><!-- {{'actor.button.ban' | translate}} --></mfDefaultSorter>
+      </th>
+
+      <!-- boton unban -->
+      <th>
+        <mfDefaultSorter by="validated"><!-- {{{'actor.button.unban' | translate}} --></mfDefaultSorter>
+      </th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <ng-container *ngFor="let item of mf.data">
+
+      <tr *ngIf="item.role.includes('EXPLORER') || item.role.includes('MANAGER')" class="back-{{item.validated}}">
+          <td title="{{item._id}}">{{ item._id  | slice:-5 }} </td>    
+          <td>{{item.name}}</td> 
+          <td>{{item.surname}}</td>  
+          <td>{{item.email}}</td>  
+          <td>{{item.address}}</td>  
+          <td>{{item.phone}}</td>  
+          <td>{{item.validated}}</td>  
+          <td>{{item.role}}</td>  
+          <td>{{item.language}}</td>            
+
+          <td>
+              <!-- boton ban -->
+            <a *ngIf="item.validated"            
+                class="btn btn-primary btn-application"
+                (click)="validatedActor(item._id, false)">
+                {{'actor.button.ban' | translate}}
+            </a>
+          </td>
+
+          <td>
+            <!-- boton unban -->
+            <a *ngIf="!item.validated"            
+            class="btn btn-primary btn-application"
+            (click)="validatedActor(item._id, true)">
+            {{'actor.button.unban' | translate}}
+        </a>
+        </td>
+
+      </tr>
+    </ng-container>
+
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td colspan="4">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+      </td>
+    </tr>
+  </tfoot>
+
+</table>

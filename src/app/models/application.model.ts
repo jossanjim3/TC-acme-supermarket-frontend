@@ -4,26 +4,14 @@ import { Trip } from './trip.model';
 
 export class Application extends Entity {
     _id: string;
-    status:  {
-        type: String,
-    };
-    comment:  {
-        type: String,
-    };
-    reasonCancel: {
-        type: String,
-    };
-    explorer: {
-        type: String,
-    };
-    trip: {
-        type: String,
-    };
+    status: String;
+    comment: String;
+    reasonCancel: String;
+    explorer: String;
+    trip: String;
 
     // solo usado en el cliente
-    tripObj: {
-        type: Trip,
-    }
+    tripObj: Trip;
 
     constructor() {
         super();

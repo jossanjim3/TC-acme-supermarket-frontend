@@ -40,6 +40,12 @@ import { NewAuditComponent } from '../../audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from '../../audit/display-audit/display-audit.component';
 import { AuditorAuditsComponent } from '../../audit/auditor-audits/auditor-audits.component';
 import { DataTableModule } from 'angular-6-datatable';
+import { TripFormComponent } from '../trip-form/trip-form.component';
+import { CheckoutComponent } from '../../checkout/checkout.component';
+import { ActorListComponent } from '../../actor/actor-list/actor-list.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { AgmCoreModule } from '@agm/core';
+import { Actor } from 'src/app/models/actor.model';
 
 describe('TripListComponent', () => {
   let component: TripListComponent;
@@ -47,6 +53,7 @@ describe('TripListComponent', () => {
   let mockActivatedRoute;
   let tripService: TripService;
   let originalTimeout;
+  let actor: Actor;
 
   beforeEach(async(() => {
     mockActivatedRoute = new ActivatedRouteStub();
@@ -56,6 +63,9 @@ describe('TripListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        TripFormComponent,
+        CheckoutComponent,
+        ActorListComponent,
         TripDisplayComponent,
         HeaderComponent,
         TranslatableComponent,
@@ -93,6 +103,11 @@ describe('TripListComponent', () => {
             deps: [HttpClient]
           }
         }),
+        NgxPayPalModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+          libraries: ['places']
+        }),
         AngularFireModule.initializeApp({
           apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
           authDomain: 'acme-viaje-el-corte-andaluh.firebaseapp.com',
@@ -108,18 +123,29 @@ describe('TripListComponent', () => {
       providers: [
         AngularFireAuth,
         ActorService,
-        {provide: APP_BASE_HREF, useValue: '/'},
-        {provide: ActivatedRoute, useValue: {
-          queryParams: from([{keyword: ''}]),
-        }},
+        TripService,
+        {provide: APP_BASE_HREF, useValue: '/'}
       ],
     })
     .compileComponents();
+
+    actor = new Actor();
+    actor._id = '5e997a79a5158000194eeb08';
+    actor.name = 'Explorer';
+    actor.surname = 'ext2 sur';
+    actor.email = 'explorerMail@mailexplorer.com';
+    actor.password = '12345678';
+    actor.address = 'ext2 address';
+    actor.phone = '123456789';
+    actor.validated = true;
+    actor.role = ['EXPLORER'];
+
+    localStorage.setItem('currentActor', JSON.stringify({ actor: actor }));
   }));
 
   beforeEach(() => {
     originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
     fixture = TestBed.createComponent(TripListComponent);
     component = fixture.componentInstance;
     tripService = TestBed.get(TripService);
@@ -128,6 +154,7 @@ describe('TripListComponent', () => {
 
   afterEach(function() {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+    localStorage.removeItem('currentActor');
   });
 
   it('should defined', async (done) => {
@@ -135,13 +162,14 @@ describe('TripListComponent', () => {
     done();
   });
 
-  it('should have more than 1 trip', async (done) => {
+  it('should have more than 0 trip', async (done) => {
     component.ngOnInit();
     fixture.detectChanges();
-    spyOn(tripService, 'searchTrips').and.returnValue(Promise.resolve(true));
+    // spyOn(tripService, 'searchTrips').and.returnValue(Promise.resolve(true));
+
     fixture.whenStable().then(() => {
       fixture.detectChanges();
-      expect(component.data.length).toBeGreaterThan(1);
+      expect(component.data.length).toBeGreaterThan(0);
       done();
     });
   });

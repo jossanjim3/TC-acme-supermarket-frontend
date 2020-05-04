@@ -40,6 +40,11 @@ import { from, BehaviorSubject } from 'rxjs';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Injectable } from '@angular/core';
 import { SponsorshipService } from 'src/app/services/sponsorship.service';
+import { TripFormComponent } from '../../trip/trip-form/trip-form.component';
+import { CheckoutComponent } from '../../checkout/checkout.component';
+import { ActorListComponent } from '../../actor/actor-list/actor-list.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { AgmCoreModule } from '@agm/core';
 
 
 @Injectable()
@@ -74,6 +79,9 @@ describe('SponsorDisplayComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        TripFormComponent,
+        CheckoutComponent,
+        ActorListComponent,
         ApplicationListComponent,
         HeaderComponent,
         TranslatableComponent,
@@ -111,6 +119,11 @@ describe('SponsorDisplayComponent', () => {
             useFactory: HttpLoaderFactory,
             deps: [HttpClient]
           }
+        }),
+        NgxPayPalModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+          libraries: ['places']
         }),
         AngularFireModule.initializeApp({
           apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',

@@ -1,3 +1,114 @@
-<p>
-  application-display works!
-</p>
+<div class="card my-4">
+  <div class="card-header">
+    <h3 class="card-title">{{'application.cancel.title' | translate}}: [{{this.applyId}}]</h3>
+
+    <!-- boton atras -->
+    <button (click)="goBack()" class="btn btn-danger" style="float: right; margin-right: 1em; margin-top: -40px;">
+        {{'messages.back' | translate}}
+    </button>
+    
+  </div>
+</div>
+
+
+
+
+<form [formGroup]="cancelForm" (ngSubmit)="onSubmit()">
+  
+  <div class="form-group" >
+    
+    <!-- id -->
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="id">ID: </label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-info"></i></div>
+                    <input type="text" name="id" class="form-control color-readonly" id="id" formControlName="id"
+                          required readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- status -->
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="id">{{'application.cancel.status' | translate}}:</label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-flag"></i></div>
+                  <input type="text" name="status" class="form-control color-readonly" id="status" formControlName="status"
+                        required readonly>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- comment -->
+    <div class="row" *ngIf="this.param === 'editar'">
+      <div class="col-md-3 field-label-responsive">
+          <label for="id">{{'application.cancel.comment' | translate}}: </label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-comment-o"></i></div>
+                  <input type="text" name="comment" class="form-control" id="comment" formControlName="comment">
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-control-feedback">
+                  <span class="text-danger align-middle">
+                      <!-- Put e-mail validation error messages here -->
+                  </span>
+          </div>
+      </div>
+    </div>
+
+    <!-- Reason Cancel -->
+    <div class="row"  *ngIf="(this.authService.checkRole('MANAGER') && this.param === 'cancelar') || 
+                             (this.authService.checkRole('MANAGER') && this.param === 'editar' && this.cancelForm.value.reasonCancel !== undefined)">
+      <div class="col-md-3 field-label-responsive">
+          <label for="id">{{'application.cancel.reasonCancel' | translate}}: </label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-commenting-o"></i></div>
+                  <input type="text" name="reasonCancel" class="form-control" id="reasonCancel" formControlName="reasonCancel"
+                      required  autofocus>
+              </div>
+          </div>
+      </div>
+        <!-- mensaje required -->
+        <div class="col-md-9" *ngIf="cancelForm.get('reasonCancel').errors && cancelForm.get('reasonCancel').touched && cancelForm.get('reasonCancel').errors.required">
+          <div class="form-control-feedback">
+                  <span class="text-danger align-middle" style="margin-left: 40%;">
+                      <!-- Put e-mail validation error messages here -->
+                      {{'application.cancel.required' | translate}}
+                  </span>
+          </div>
+        </div>
+
+    </div>
+    
+    
+    <!-- guardar -->
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+          <button type="submit" class="btn btn-success">{{'application.cancel.save' | translate}}</button>
+      </div>
+    </div>
+    
+  </div>
+
+</form>
+
+<div class="text-danger">{{errorMessage}}</div>

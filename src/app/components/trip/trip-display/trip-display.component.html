@@ -4,12 +4,25 @@
 <div class="card mb-3">
   
   <div>
-    <h3 class="card-header The-explorer-2-hex">{{'trip.details' | translate}}</h3>
+    <h3 class="card-header The-explorer-2-hex">{{'trip.details' | translate}}</h3>    
+    
+    <!-- boton atras -->
     <button (click)="goBack()" class="btn btn-primary" style="float: right; margin-right: 1em; margin-top: -48px;">
       {{'messages.back' | translate}}
     </button>
   </div>
   
+
+  <!-- boton trips applications -->
+  <div class="card-body" *ngIf="this.authService.checkRole('MANAGER') && this.authService.checkIsCurrentUser(trip.manager)">
+
+    <a            
+      [routerLink]="['/trips-applies/trip/' + trip._id, {'paramKey': 'manager'}]"
+      class="btn btn-primary btn-application">
+      {{'application.appli.see.trip' | translate}}
+    </a>
+
+  </div>
 
   <div class="card-body">
     <h5 class="card-title The-explorer-4-hex">{{'trip.ticker' | translate}}</h5>
@@ -200,6 +213,26 @@
     </div>
   </div>
 
+
+  <!-- Sponsor -->
+  <div class="card-body">
+    <h5 class="card-title The-explorer-4-hex">{{'sponsor.sponsors' | translate}}</h5>
+    <div id="carouselExampleControls2" *ngIf="this.sponsorships.length > 0" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let sponsor of this.sponsorships; let i = index" class="carousel-item {{(i==0)? 'active':''}}">
+          <img class="d-block " src="{{sponsor.banner}}" alt="First slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls2" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
 </div>
 <br/>
 

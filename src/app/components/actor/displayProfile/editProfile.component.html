@@ -1,16 +1,19 @@
-
+<div class="card my-4">
+    <div class="card-header">
+      <h3 class="card-title">{{'actor.edit.title' | translate}}</h3>
+  
+      <!-- boton atras -->
+      <button (click)="goBack()" class="btn btn-primary" style="float: right; margin-right: 1em; margin-top: -40px;">
+          {{'messages.back' | translate}}
+      </button>
+      
+    </div>
+  </div>
 
 
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   <div class="form-group has-danger" >
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <h2>{{'actor.edit.title' | translate}}</h2>
-            <hr>
-        </div>
-    </div>
-
+    
     <!-- email -->
     <div class="row">
         <div class="col-md-3 field-label-responsive">
@@ -21,21 +24,21 @@
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
                     <input type="text" name="email" class="form-control" id="email" formControlName="email"
-                          placeholder="you@example.com" required autofocus>
+                          placeholder="you@example.com" required autofocus readonly>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-control-feedback">
-                    <span class="text-danger align-middle">
-                        <!-- Put e-mail validation error messages here -->
-                    </span>
+                <div class="text-danger align-middle" *ngIf="profileForm.get('email').errors && profileForm.get('email').touched && profileForm.get('email').errors.pattern">
+                    {{'errorMessages.auth.invalid.email' | translate}}
+                </div>
             </div>
         </div>
     </div>
 
     <!-- password -->
-    <div class="row">
+    <div class="row" style="display: none;">
         <div class="col-md-3 field-label-responsive">
             <label for="password">{{'actor.password' | translate}}</label>
         </div>
@@ -43,8 +46,8 @@
             <div class="form-group has-danger">
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                    <input type="password" name="password" class="form-control" id="password" formControlName="password"
-                          placeholder="{{'actor.password' | translate}}" required>
+                    <input type="password" name="password" class="form-control" id="password"
+                          placeholder="{{'actor.password' | translate}}">
                 </div>
             </div>
         </div>
@@ -73,9 +76,9 @@
       </div>
       <div class="col-md-3">
           <div class="form-control-feedback">
-                  <span class="text-danger align-middle">
-                      <!-- Put e-mail validation error messages here -->
-                  </span>
+                <div class="text-danger align-middle" *ngIf="profileForm.get('name').errors && profileForm.get('name').touched && profileForm.get('name').errors.required">
+                    {{'errorMessages.validation.required' | translate}}
+                </div>
           </div>
       </div>
   </div>
@@ -96,9 +99,9 @@
     </div>
     <div class="col-md-3">
         <div class="form-control-feedback">
-                <span class="text-danger align-middle">
-                    <!-- Put e-mail validation error messages here -->
-                </span>
+                <div class="text-danger align-middle" *ngIf="profileForm.get('surname').errors && profileForm.get('surname').touched && profileForm.get('surname').errors.required">
+                    {{'errorMessages.validation.required' | translate}}
+                </div>
         </div>
     </div>
   </div>
@@ -112,16 +115,28 @@
         <div class="form-group">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                 <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-address-book-o"></i></div>
-                <input type="text" name="address" class="form-control" id="address" formControlName="address"
+                <input type="text" name="address" class="form-control" id="address" #address formControlName="address"
                       placeholder="{{'actor.addressPh' | translate}}" required autofocus>
             </div>
+            <div class="my-2">
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" 
+              [disableDefaultUI]="false" [zoomControl]="false"
+              (mapClick)="mapClicked($event)">
+                <agm-marker *ngFor="let m of markers; let i = index"
+                    [latitude]="m.lat" [longitude]="m.lng"
+                    [label]="m.label" [markerDraggable]="m.draggable">
+
+                </agm-marker>
+            
+                </agm-map>
+              </div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="form-control-feedback">
-                <span class="text-danger align-middle">
-                    <!-- Put e-mail validation error messages here -->
-                </span>
+            <div class="text-danger align-middle" *ngIf="profileForm.get('address').errors && profileForm.get('address').touched && profileForm.get('address').errors.maxlength">
+                {{'errorMessages.validation.maxlength' | translate}}
+            </div>
         </div>
     </div>
   </div>
@@ -157,10 +172,6 @@
             <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> {{'actor.save' | translate}}</button>
         </div>
     </div>
-
-    
-
-
 
     </div>
 </form>

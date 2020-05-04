@@ -39,6 +39,12 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { NewAuditComponent } from './components/audit/new-audit/new-audit.component';
 import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 import { AuditorAuditsComponent } from './components/audit/auditor-audits/auditor-audits.component';
+import {TranslateService} from '@ngx-translate/core';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { TripFormComponent } from './components/trip/trip-form/trip-form.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { ActorListComponent } from './components/actor/actor-list/actor-list.component';
+import { AgmCoreModule } from '@agm/core';
 
 registerLocaleData(locales, 'es');
 
@@ -82,7 +88,10 @@ export const firebaseConfig = {
     NewAuditComponent,
     DisplayAuditComponent,
     AuditorAuditsComponent,
-    DashboardComponent
+    DashboardComponent,
+    CheckoutComponent,
+    TripFormComponent,
+    ActorListComponent
   ],
   imports: [
     BrowserModule,
@@ -102,11 +111,16 @@ export const firebaseConfig = {
     AppRoutingModule,
     // tslint:disable-next-line: deprecation
     HttpModule,
-    DataTableModule
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBLQG_gHOvvts7C3g_bpuV91TU-GYZHKLA',
+      libraries: ['places']
+    }),
+    DataTableModule,
+    NgxPayPalModule
   ],
   exports: [AppRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AngularFireAuth, ActorService],
+  providers: [AngularFireAuth, ActorService, TranslateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
