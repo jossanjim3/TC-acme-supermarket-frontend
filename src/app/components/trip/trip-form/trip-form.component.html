@@ -98,7 +98,7 @@
             <label for="description">{{'trip.stages' | translate}}</label>
           </div>
           <div formArrayName="stages" class="col-md-12"
-            *ngFor="let stage of tripForm.get('stages').controls; let i = index;">
+            *ngFor="let stage of getControls(tripForm, 'stages'); let i = index;">
             <div [formGroupName]="i">
               <div class="row">
                 <input type="text" class="col-md-3  form-control mx-auto" formControlName="title" placeholder="{{'trip.title' | translate}}">
@@ -118,7 +118,7 @@
             <label for="requeriments">{{'trip.requeriments' | translate}}</label>
           </div>
           <div formArrayName="requeriments" class="col-md-12"
-            *ngFor="let requeriment of tripForm.get('requeriments').controls; let i = index;">
+            *ngFor="let requeriment of getControls(tripForm, 'requeriments'); let i = index;">
             <div [formGroupName]="i">
               <div class="row">
                 <input name="requeriments" type="text" class="ml-4 col-md-10 form-control" [formControl]="requeriment"
@@ -136,7 +136,7 @@
             <label for="pictures">{{'trip.pictures' | translate}}</label>
           </div>
           <div formArrayName="pictures" class="col-md-12 my-1"
-            *ngFor="let picture of tripForm.get('pictures').controls; let i = index;">
+            *ngFor="let picture of getControls(tripForm, 'pictures'); let i = index;">
             <div [formGroupName]="i">
               <div class="row">
                 <img *ngIf="picture != null" class="img-fluid col-md-3" id="showpic{{i}}" style="display:block; object-fit:contain;"  src="{{picture.value}}">
