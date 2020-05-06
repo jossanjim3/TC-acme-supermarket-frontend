@@ -202,7 +202,10 @@
         "audit.new": "Create",
         "audit.mylist": "My Audits",
         "audit.details": "Trip Details",
-        "audit.edit": "Edit"
+        "audit.edit": "Edit",
+        "audit.edit.ok": "Audit has been updated successfully!",
+        "audit.edit.error": "Audit has not been updated!",
+        "audit.save": "Save"
     },
     "dashboard": {
         "dashboard": "Dashboard",

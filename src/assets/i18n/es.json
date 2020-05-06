@@ -195,7 +195,10 @@
         "audit.new": "Crear",
         "audit.mylist": "Mis Auditorías",
         "audit.details": "Viaje Detalles",
-        "audit.edit": "Editar"
+        "audit.edit": "Editar",
+        "audit.edit.ok": "La auditoría ha sido actualizada correctamente!",
+        "audit.edit.error": "La auditoría no ha podido ser actualizada!",
+        "audit.save": "Guardar"
     },
     "paypal": {
         "title": "Pagar con PayPal",
