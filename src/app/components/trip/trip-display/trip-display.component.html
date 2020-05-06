@@ -206,6 +206,16 @@
               <span class="fa fa-plus-square-o" aria-hidden="true"></span>
               {{'audits.audit.new' | translate}}
             </a>
+
+            <!-- boton editar audit -->
+            <ng-container *ngIf="this.authService.checkRole('AUDITOR') && trip.auditObj !== undefined">
+              <a *ngIf="this.authService.checkIsCurrentUser(trip.auditObj.auditor)"            
+                  [routerLink]="['/audit/display/' + trip.auditObj._id]"
+                  class="btn btn-primary btn-application completo">
+                  <span class="fa fa-edit" aria-hidden="true"></span>    
+                  {{'audits.audit.edit' | translate}}        
+              </a>
+          </ng-container>
             
           </div>
         </div>
