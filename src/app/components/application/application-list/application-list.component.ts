@@ -130,7 +130,7 @@ export class ApplicationListComponent extends TranslatableComponent implements O
 
     /* this.applicatioService.getApplications()
     .then((applis) => {
-      console.log('applis: ' + applis);
+      // console.log('applis: ' + applis);
       this.data = applis;
     })
     .catch((err) => {

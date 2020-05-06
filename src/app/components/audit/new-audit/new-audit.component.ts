@@ -29,14 +29,14 @@ export class NewAuditComponent implements OnInit {
 
   ngOnInit() {
     this.tripId = this.route.snapshot.params['tripId'];
-    console.log('tripId: ' + this.tripId);
+    // console.log('tripId: ' + this.tripId);
 
     this.createForm();
 
     this.authService.getCurrentActor()
       .then( currActor => {
         if (currActor !== null) {
-          console.log('this.auditor: ' + currActor._id);
+          // console.log('this.auditor: ' + currActor._id);
           this.auditor = currActor;
         } else {
           console.log('Error recuperar actor logado!');

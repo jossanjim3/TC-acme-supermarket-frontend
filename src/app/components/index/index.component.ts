@@ -26,6 +26,14 @@ export class IndexComponent  extends TranslatableComponent implements OnInit {
 
   ngOnInit() {
     this.name = this.route.snapshot.paramMap.get('name');
+
+    if (this.authService.checkRole('EXPLORER')) {
+      // console.log('soy explorer');
+      this.router.navigate(['/trips/search'], { 'queryParams': { 'keyword': '' }});
+    } else {
+      // console.log('no soy explorer');
+    }
+
   }
 
 }
