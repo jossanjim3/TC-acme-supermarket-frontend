@@ -44,6 +44,15 @@
               </div>
           </div>
       </div>
+
+      <div class="col-md-3">
+        <div class="form-control-feedback">
+              <div class="text-danger align-middle" *ngIf="auditForm.get('title').errors && auditForm.get('title').touched && auditForm.get('title').errors.required">
+                  {{'errorMessages.validation.required' | translate}}
+              </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- description -->
@@ -59,13 +68,15 @@
               </div>
           </div>
       </div>
+      
       <div class="col-md-3">
-          <div class="form-control-feedback">
-                  <span class="text-danger align-middle">
-                      <!-- Put e-mail validation error messages here -->
-                  </span>
-          </div>
+        <div class="form-control-feedback">
+              <div class="text-danger align-middle" *ngIf="auditForm.get('description').errors && auditForm.get('description').touched && auditForm.get('description').errors.required">
+                  {{'errorMessages.validation.required' | translate}}
+              </div>
+        </div>
       </div>
+
     </div>
 
     <!-- atachment -->
@@ -88,7 +99,7 @@
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-          <button type="submit" class="btn btn-success">{{'audits.audit.save' | translate}}</button>
+          <button type="submit" class="btn btn-success" [disabled]="auditForm.invalid">{{'audits.audit.save' | translate}}</button>
       </div>
     </div>
     
