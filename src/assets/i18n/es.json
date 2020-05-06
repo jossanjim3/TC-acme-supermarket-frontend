@@ -198,6 +198,8 @@
         "audit.edit": "Editar",
         "audit.edit.ok": "La auditoría ha sido actualizada correctamente!",
         "audit.edit.error": "La auditoría no ha podido ser actualizada!",
+        "audit.new.ok": "La auditoría ha sido creada correctamente!",
+        "audit.new.error": "La auditoría no ha podido ser creada!",
         "audit.save": "Guardar"
     },
     "paypal": {

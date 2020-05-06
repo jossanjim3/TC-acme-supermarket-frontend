@@ -205,6 +205,8 @@
         "audit.edit": "Edit",
         "audit.edit.ok": "Audit has been updated successfully!",
         "audit.edit.error": "Audit has not been updated!",
+        "audit.new.ok": "Audit has been created successfully!",
+        "audit.new.error": "Audit has not been created!",
         "audit.save": "Save"
     },
     "dashboard": {

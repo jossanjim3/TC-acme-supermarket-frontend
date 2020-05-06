@@ -201,7 +201,7 @@
 
             <!-- boton nuevo audit -->
             <a *ngIf="this.authService.checkRole('AUDITOR') && trip.auditObj === undefined"           
-              [routerLink]="['/audit/new/']"
+              [routerLink]="['/audit/new/', {tripId: trip._id}]"
               class="btn btn-primary btn-application">
               <span class="fa fa-plus-square-o" aria-hidden="true"></span>
               {{'audits.audit.new' | translate}}

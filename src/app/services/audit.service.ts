@@ -55,6 +55,32 @@ export class AuditService {
 
   }
 
+  newAudit(title: String, description: String, atachment: String, tripId: String, auditorId: String) {
+
+    return new Promise<any>((resolve, reject) => {
+      const headers = new HttpHeaders();
+      headers.append('Content-Type', 'audit/json');
+      const url = `${environment.backendApiBaseURL}/v1/audits/`;
+      // console.log('url: ' + url);
+
+      const body = JSON.stringify({title: title, description: description, atachment: atachment, trip: tripId, auditor: auditorId});
+
+      this.http.post(url, body, httpOptions).toPromise()
+        .then(res => {
+          resolve(res);
+          const mesAux = this.translate.instant('audits.audit.new.ok');
+          const mes = mesAux + ' [' + title + ']';
+          this.messageService.notifyMessage(mes, 'alert alert-success');
+        }, err => {
+          const mesAux = this.translate.instant('audits.audit.new.error');
+          const  mes = mesAux + ' - ' + err.status + ': ' + err.error;
+          this.messageService.notifyMessage(mes, 'alert alert-danger');
+          reject(err);
+        });
+    });
+
+  }
+
   // usamos funciones async porque se llaman unas a las otras y asi no da error
   async getTripAudits(tripId: String) {
 
