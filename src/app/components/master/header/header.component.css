@@ -7,3 +7,8 @@
 .pointer {
     cursor: pointer;
 }
+
+.logo-header {
+    width: 63px;
+    height: 100%;
+}
