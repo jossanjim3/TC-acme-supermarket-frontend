@@ -24,6 +24,8 @@
       </li>
 
       <!-- Administrator Dropdown-->
+      <li class="divisor-vertical" *ngIf="activeRole === 'ADMINISTRATOR'"></li>
+
       <li class="nav-item dropdown" *ngIf="activeRole === 'ADMINISTRATOR'">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-wrench"></i> {{'admin.admin' | translate}}
@@ -39,6 +41,8 @@
       </li>
 
       <!-- Sponsor Dropdown-->
+      <li class="divisor-vertical" *ngIf="activeRole === 'SPONSOR'"></li>
+
       <li class="nav-item dropdown" *ngIf="activeRole === 'SPONSOR'">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-usd"></i> {{'sponsor.sponsor' | translate}}
@@ -51,6 +55,8 @@
       </li>
 
       <!-- Audits Dropdown-->
+      <li class="divisor-vertical" *ngIf="activeRole === 'AUDITOR'"></li>
+
       <li class="nav-item dropdown" *ngIf="activeRole === 'AUDITOR'">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-flag"></i> {{'audits.audit.audits' | translate}}
@@ -72,15 +78,24 @@
     <ul class="navbar-nav my-2 ml-2">
 
       <!-- internalizacion -->
-      <li class="nav-item active">
-        <button (click)="changeLanguage('en')" class="btn btn-primary mr-1">EN</button>
-        <button (click)="changeLanguage('es')" class="btn btn-primary mr-1">SP</button>
+      <li class="nav-item first">
+        <a (click)="changeLanguage('en')" class="nav-link pointer">EN</a>        
       </li>
+
+      <li class="divisor-vertical"></li>
+
+      <li class="nav-item last">
+        <a (click)="changeLanguage('es')" class="nav-link pointer">SP</a>
+      </li>
+
+      <li class="divisor-vertical" *ngIf="!currentActor"></li>
 
       <!-- registro -->
       <li class="nav-item" *ngIf="!currentActor">
-        <a class="nav-link" routerLink="/register"><i class="fa fa-user-plus"></i> {{'actor.register' | translate}}</a>
+        <a class="nav-link" routerLink="/register" ><i class="fa fa-user-plus"></i> {{'actor.register' | translate}}</a>
       </li>
+
+      <li class="divisor-vertical"></li>
 
       <!-- login -->
       <li class="nav-item" *ngIf="!currentActor">
