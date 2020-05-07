@@ -167,7 +167,7 @@ export class AuthService implements OnInit {
   }
 
   getRoles(): string[] {
-    return ['EXPLORER', 'MANAGER', 'ADMINISTRATOR', 'SPONSOR'];
+    return ['EXPLORER', 'MANAGER', 'SPONSOR', 'AUDITOR'];
   }
 
   checkId(id: string) {

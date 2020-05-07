@@ -60,7 +60,7 @@ const appRoutes: Routes = [
   {path: 'datawarehouse', component: DashboardComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'olap-cube', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'actors', component: ActorListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
-  {path: 'new-manager', component: RegisterComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
+  {path: 'new-user', component: RegisterComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
 
   {path: 'sponsor', children: [
     {path: 'list', component: SponsorListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'sponsor'}},

@@ -111,11 +111,12 @@
         "admin": "Administrator",
         "datawarehouse": "Datawarehouse",
         "olapcube": "OLAP Cube",
-        "register.manager": "New manager"
+        "register.manager": "New manager",
+        "register.user": "New user"
     },
     "messages": {
         "discard.changes": "Do you want discard changes?",
-        "auth.registration.correct": "The user {{username}} has been correctly registered",
+        "auth.registration.correct": "The user has been correctly registered",
         "auth.logout": "The user has logged out from the app",
         "auth.login.correct": "The user has been correctly logged in",
         "auth.login.failed": "The user has not been correctly logged in",
