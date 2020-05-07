@@ -3,6 +3,7 @@ import { TranslatableComponent } from '../shared/translatable/translatable.compo
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { Actor } from 'src/app/models/actor.model';
 
 @Component({
   selector: 'app-index',
@@ -11,6 +12,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class IndexComponent  extends TranslatableComponent implements OnInit {
   name: String;
+  currentActor: Actor;
+  activeRole: String;
 
   constructor(private translateService: TranslateService, private authService: AuthService,
     private router: Router, private route: ActivatedRoute) {
@@ -32,6 +35,25 @@ export class IndexComponent  extends TranslatableComponent implements OnInit {
       this.router.navigate(['/trips/search'], { 'queryParams': { 'keyword': '' }});
     } else {
       // console.log('no soy explorer');
+      this.authService.getCurrentActor()
+          .then( (actorData: Actor) => {
+            // console.log('actorData subscribe ngOnInit: ' + actorData);
+
+            if (actorData !== null) {
+              // console.log('actorData ngOnInit: ' + actorData);
+              this.currentActor = actorData;
+              this.activeRole = actorData.role.toString();
+            } else {
+              this.activeRole = 'anonymous';
+              this.currentActor = null;
+            }
+
+          })
+        .catch( (err) => {
+          console.log(err);
+          this.activeRole = 'anonymous';
+          this.currentActor = null;
+        });
     }
 
   }
