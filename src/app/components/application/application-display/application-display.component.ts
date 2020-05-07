@@ -20,7 +20,9 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
   param: String;
   application: Application;
 
-  constructor(private translateService: TranslateService, private authService: AuthService,
+  errorMessage = '';
+
+  constructor(private translateService: TranslateService, public authService: AuthService,
     private router: Router, private route: ActivatedRoute, private fb: FormBuilder,
     private applicationService: ApplicationsService) {
     super(translateService);

@@ -74,6 +74,10 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
     });
   }
 
+  getControls(frmGrp: FormGroup, key: string) {
+    return (<FormArray>frmGrp.controls[key]).controls;
+  }
+
   formatDate(d: Date) {
     let month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),

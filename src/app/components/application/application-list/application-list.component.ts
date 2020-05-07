@@ -20,7 +20,7 @@ export class ApplicationListComponent extends TranslatableComponent implements O
   data: any[] = [];
   tripAux: Trip = null;
 
-  constructor(private applicatioService: ApplicationsService, private translateService: TranslateService, private authService: AuthService,
+  constructor(private applicatioService: ApplicationsService, private translateService: TranslateService, public authService: AuthService,
     private router: Router, private route: ActivatedRoute, private tripService: TripService) {
     super(translateService);
 

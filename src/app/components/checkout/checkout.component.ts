@@ -12,7 +12,7 @@ import { ApplicationsService } from 'src/app/services/applications.service';
 })
 export class CheckoutComponent extends TranslatableComponent implements OnInit {
 
-  private payPalConfig ?: IPayPalConfig;
+  payPalConfig ?: IPayPalConfig;
 
   constructor(private translateService: TranslateService, private route: ActivatedRoute,
     private router: Router, private applicationService: ApplicationsService) {
