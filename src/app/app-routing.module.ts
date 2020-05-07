@@ -31,7 +31,8 @@ const appRoutes: Routes = [
 
   // {path: 'register', component: RegisterComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'anonymous'}},
   {path: 'register', component: RegisterComponent},
-  {path: 'profile/edit', component: EditProfileComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
+  {path: 'profile/edit', component: EditProfileComponent, canActivate: [ActorRoleGuard],
+    canDeactivate: [CanDeactivateGuard], data: {expectedRole: 'explorer'}},
 
   {path: 'trips', children: [
     {path: 'search', component: TripListComponent},
