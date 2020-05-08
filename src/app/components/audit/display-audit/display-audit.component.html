@@ -1,3 +1,110 @@
-<h1>
-  display-audit works!
-</h1>
+<div class="card my-4">
+  <div class="card-header">
+    <h3 class="card-title">{{'audits.audit.edit' | translate}}: [{{this.auditId}}]</h3>
+
+    <!-- boton atras -->
+    <button (click)="goBack()" class="btn btn-danger" style="float: right; margin-right: 1em; margin-top: -40px;">
+        {{'messages.back' | translate}}
+    </button>
+    
+  </div>
+</div>
+
+<form [formGroup]="auditForm" (ngSubmit)="onSubmit()">
+  
+  <div class="form-group" >
+    
+    <!-- id -->
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="id">ID: </label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"></div>
+                    <input type="text" name="id" class="form-control color-readonly" id="id" formControlName="id"
+                          required readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- title -->
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="id">{{'audits.audit.title' | translate}}:</label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"></div>
+                  <input type="text" name="title" class="form-control color-readonly" id="title" formControlName="title"
+                        required autofocus>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-control-feedback">
+              <div class="text-danger align-middle" *ngIf="auditForm.get('title').errors && auditForm.get('title').touched && auditForm.get('title').errors.required">
+                  {{'errorMessages.validation.required' | translate}}
+              </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- description -->
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="id">{{'audits.audit.description' | translate}}: </label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"></div>
+                  <input type="text" name="description" class="form-control" id="description" formControlName="description" required>
+              </div>
+          </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="form-control-feedback">
+              <div class="text-danger align-middle" *ngIf="auditForm.get('description').errors && auditForm.get('description').touched && auditForm.get('description').errors.required">
+                  {{'errorMessages.validation.required' | translate}}
+              </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- atachment -->
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+          <label for="id">{{'audits.audit.atachment' | translate}}: </label>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <div class="input-group-addon" style="width: 2.6rem"></div>
+                  <input type="text" name="atachment" class="form-control" id="atachment" formControlName="atachment">
+              </div>
+          </div>
+      </div>
+    </div>
+    
+    
+    <!-- guardar -->
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+          <button type="submit" class="btn btn-success" [disabled]="auditForm.invalid">{{'audits.audit.save' | translate}}</button>
+      </div>
+    </div>
+    
+  </div>
+
+</form>
+
+<div class="text-danger">{{errorMessage}}</div>
