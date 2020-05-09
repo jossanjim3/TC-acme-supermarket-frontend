@@ -248,7 +248,7 @@
 
 <!-- boton solicitar -->
 <div class="btn-apply" *ngIf="this.authService.checkRole('EXPLORER')">
-  <button (click)="onApply(trip._id)" class="btn btn-primary">
+  <button (click)="onApply(trip._id)" id="applybutton" class="btn btn-primary">
     {{'application.appli.apply' | translate}}
   </button>
 </div>
