@@ -9,7 +9,7 @@ import { LocalizedDataPipe } from '../../shared/localized-data.pipe';
 import { registerLocaleData, APP_BASE_HREF } from '@angular/common';
 import locales from '@angular/common/locales/es';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, ActivatedRoute, Params } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { HeaderComponent } from '../../master/header/header.component';
 import { RegisterComponent } from '../../security/register/register.component';
@@ -24,7 +24,7 @@ import { MessageComponent } from '../../master/message/message.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, from } from 'rxjs';
 import { TripService } from 'src/app/services/trip.service';
 import { TripListComponent } from '../trip-list/trip-list.component';
 import { DeniedAccessPageComponent } from '../../shared/denied-access-page/denied-access-page.component';
@@ -45,6 +45,7 @@ import { CheckoutComponent } from '../../checkout/checkout.component';
 import { ActorListComponent } from '../../actor/actor-list/actor-list.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { AgmCoreModule } from '@agm/core';
+import { Actor } from 'src/app/models/actor.model';
 
 registerLocaleData(locales, 'es');
 
@@ -71,6 +72,7 @@ describe('TripFormComponent', () => {
   let mockActivatedRoute;
   let tripService: TripService;
   let originalTimeout;
+  let actor: Actor;
 
   beforeEach(async(() => {
     mockActivatedRoute = new ActivatedRouteStub();
@@ -139,20 +141,80 @@ describe('TripFormComponent', () => {
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue: '/'},
-        {provide: ActivatedRoute, useValue: mockActivatedRoute},
+        {
+          provide: ActivatedRoute,
+          useValue: {
+              params: {
+                  subscribe: (fn: (value: Params) => void) => fn({
+                      id: '200409-LEEM',
+                  }),
+              },
+
+              url: from([
+                  [{
+                      path: 'trips',
+                  }]
+              ]),
+          },
+      },
         AngularFireAuth, ActorService,
       ],
     })
     .compileComponents();
+
+    actor = new Actor();
+    actor._id = '5e941acfb83b5a0019ea9c4f';
+    actor.name = 'ext2';
+    actor.surname = 'ext2 sur';
+    actor.email = 'ext2@gmail.com';
+    actor.password = '123456';
+    actor.address = 'ext2 address';
+    actor.phone = '123456789';
+    actor.validated = true;
+    actor.role = ['MANAGER'];
+
+    localStorage.setItem('currentActor', JSON.stringify({ actor: actor }));
   }));
 
   beforeEach(() => {
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
     fixture = TestBed.createComponent(TripFormComponent);
     component = fixture.componentInstance;
+    mockActivatedRoute.testUrl = [{ path: 'trips'}];
+    mockActivatedRoute.testParams = { id: '200409-LEEM' };
+    console.log(mockActivatedRoute);
+    tripService = TestBed.get(TripService);
     fixture.detectChanges();
   });
-  /*
-  it('should create', () => {
+
+  afterEach(function() {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+    localStorage.removeItem('currentActor');
+  });
+
+  it('should create', async (done) => {
     expect(component).toBeTruthy();
-  });*/
+    done();
+  });
+
+  it('should have can deactivate', async (done) => {
+    expect(component.canDeactivate).toBeDefined();
+    done();
+  });
+
+  it('should have same trip attributes', async (done) => {
+    component.ngOnInit();
+    spyOn(tripService, 'getTrip').and.returnValue(Promise.resolve(true));
+
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      expect(component.trip_new).toEqual(false);
+      expect(component.trip.ticker).toEqual('200409-LEEM');
+      expect(component.trip.title).toEqual('Trip1');
+      expect(component.trip._id).toEqual('5e8ef80ab5741600198f760c');
+      expect(component.trip.price).toEqual(537);
+      done();
+    });
+  });
 });

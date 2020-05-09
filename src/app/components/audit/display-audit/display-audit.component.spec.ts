@@ -43,12 +43,19 @@ import { CheckoutComponent } from '../../checkout/checkout.component';
 import { ActorListComponent } from '../../actor/actor-list/actor-list.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { AgmCoreModule } from '@agm/core';
+import { AuditService } from 'src/app/services/audit.service';
+import { ActivatedRouteStub } from '../../trip/trip-display/trip-display.component.spec';
 
 describe('DisplayAuditsComponent', () => {
   let component: DisplayAuditComponent;
   let fixture: ComponentFixture<DisplayAuditComponent>;
+  let mockActivatedRoute;
+  let auditService: AuditService;
+  let originalTimeout;
+
 
   beforeEach(async(() => {
+    mockActivatedRoute = new ActivatedRouteStub();
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -114,6 +121,7 @@ describe('DisplayAuditsComponent', () => {
         AngularFireAuth,
         ActorService,
         {provide: APP_BASE_HREF, useValue: '/'},
+        {provide: ActivatedRoute, useValue: mockActivatedRoute},
         {provide: ActivatedRoute, useValue: {
           queryParams: from([{keyword: ''}]),
         }},
@@ -123,12 +131,22 @@ describe('DisplayAuditsComponent', () => {
   }));
 
   beforeEach(() => {
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
     fixture = TestBed.createComponent(DisplayAuditComponent);
     component = fixture.componentInstance;
+    mockActivatedRoute.testParams = { id: '5e997768a5158000194eeb07' };
+    auditService = TestBed.get(AuditService);
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  afterEach(function() {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
   });
+  /*
+  it('should create', async (done) => {
+    expect(component).toBeTruthy();
+    done();
+  });
+  */
 });
