@@ -16,6 +16,7 @@ export class DisplayAuditComponent implements OnInit {
   auditForm: FormGroup;
   audit: Audit;
   auditId: String;
+  errorMessage: String;
 
   constructor(private fb: FormBuilder,
     private authService: AuthService,

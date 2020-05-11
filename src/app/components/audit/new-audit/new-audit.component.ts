@@ -18,6 +18,7 @@ export class NewAuditComponent implements OnInit {
   audit: Audit;
   tripId: String;
   auditor: any;
+  errorMessage: string;
 
   constructor(private fb: FormBuilder,
     private authService: AuthService,

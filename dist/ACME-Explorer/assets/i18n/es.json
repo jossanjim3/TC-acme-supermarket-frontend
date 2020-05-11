@@ -111,11 +111,13 @@
         "admin": "Administrador",
         "datawarehouse": "Datawarehouse",
         "olapcube": "OLAP Cube",
-        "register.manager": "Nuevo manager"
+        "register.manager": "Nuevo manager",
+        "register.user": "Nuevo usuario"
+
     },
     "messages": {
         "discard.changes": "¿Quieres descartar los cambios?",
-        "auth.registration.correct": "El usuario {{username}} ha sido registrado correctamente",
+        "auth.registration.correct": "El usuario ha sido registrado correctamente",
         "auth.logout": "El usuario se ha desconectado correctamente",
         "auth.login.correct": "El usuario ha entrado correctamente en la aplicación.",
         "auth.login.failed": "El usuario no ha podido entrar en la aplicacioó.n",
@@ -195,7 +197,12 @@
         "audit.new": "Crear",
         "audit.mylist": "Mis Auditorías",
         "audit.details": "Viaje Detalles",
-        "audit.edit": "Editar"
+        "audit.edit": "Editar",
+        "audit.edit.ok": "La auditoría ha sido actualizada correctamente!",
+        "audit.edit.error": "La auditoría no ha podido ser actualizada!",
+        "audit.new.ok": "La auditoría ha sido creada correctamente!",
+        "audit.new.error": "La auditoría no ha podido ser creada!",
+        "audit.save": "Guardar"
     },
     "paypal": {
         "title": "Pagar con PayPal",
