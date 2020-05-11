@@ -8,6 +8,9 @@ import { MessageService } from 'src/app/services/message.service';
 import { TranslateService } from '@ngx-translate/core';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
+import { Observable } from 'rxjs';
+import swal from 'sweetalert';
+import { CanComponentDeactivate } from 'src/app/guards/can-deactivate.service';
 
 declare var google: any;
 
@@ -16,10 +19,12 @@ declare var google: any;
   templateUrl: './editProfile.component.html',
   styleUrls: ['./editProfile.component.css']
 })
-export class EditProfileComponent implements OnInit {
+export class EditProfileComponent implements OnInit, CanComponentDeactivate {
   profileForm: FormGroup;
   actor: Actor;
   errorMessage: string;
+
+  updated: boolean;
 
     // google zoom lvl
     zoom = 10;
@@ -42,6 +47,7 @@ export class EditProfileComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.updated = false;
     this.createForm();
     this.mapsAPILoader.load().then(() => {
       this.autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
@@ -166,6 +172,7 @@ export class EditProfileComponent implements OnInit {
         .then(actor => {
           this.actorService.updateProfile(formModel, this.actor._id)
             .then((val) => {
+              this.updated = true;
               console.log(val);
               this.authService.setCurrentActor(val);
               const mesAux = this.translate.instant('actor.edit.success');
@@ -194,6 +201,24 @@ export class EditProfileComponent implements OnInit {
   goBack(): void {
     // this.router.navigate(['/']);
     window.history.back();
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    let result = true;
+    const message = this.translate.instant('messages.discard.changes');
+    if (!this.updated && this.profileForm.dirty) {
+      return swal({
+        text: this.translate.instant('messages.discard.changes'),
+        icon: 'info',
+        buttons: [this.translate.instant('trip.cancel'), this.translate.instant('trip.discard')],
+      })
+      .then((willCancel) => {
+        result = willCancel;
+        return result;
+      });
+    } else {
+      return result;
+    }
   }
 
 }

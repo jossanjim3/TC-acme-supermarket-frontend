@@ -16,7 +16,9 @@
               <div class="form-group">
                   <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                       <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                      <select id="role" class="form-control" formControlName="role">
+                      <input *ngIf="!admin" type="text" name="role" class="form-control" id="role" formControlName="role"
+                      value="EXPLORER" required readonly>
+                      <select *ngIf="admin" id="role" class="form-control" formControlName="role" readonly>
                         <option *ngFor="let role of roleList" [value]="role">
                           {{ role }}
                         </option>
@@ -190,7 +192,7 @@
       <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-6">
-              <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> {{'actor.register' | translate}}</button>
+              <button type="submit" class="btn btn-success" id="buttonregister" [disabled]="registrationForm.invalid"><i class="fa fa-user-plus"></i> {{'actor.register' | translate}}</button>
           </div>
       </div>
 

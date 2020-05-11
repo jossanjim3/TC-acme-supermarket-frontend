@@ -31,7 +31,8 @@ const appRoutes: Routes = [
 
   // {path: 'register', component: RegisterComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'anonymous'}},
   {path: 'register', component: RegisterComponent},
-  {path: 'profile/edit', component: EditProfileComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'explorer'}},
+  {path: 'profile/edit', component: EditProfileComponent, canActivate: [ActorRoleGuard],
+    canDeactivate: [CanDeactivateGuard], data: {expectedRole: 'explorer'}},
 
   {path: 'trips', children: [
     {path: 'search', component: TripListComponent},
@@ -60,7 +61,7 @@ const appRoutes: Routes = [
   {path: 'datawarehouse', component: DashboardComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'olap-cube', component: TermsAndConditionsComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
   {path: 'actors', component: ActorListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
-  {path: 'new-manager', component: RegisterComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
+  {path: 'new-user', component: RegisterComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'administrator'}},
 
   {path: 'sponsor', children: [
     {path: 'list', component: SponsorListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'sponsor'}},

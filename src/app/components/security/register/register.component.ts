@@ -1,13 +1,14 @@
 ///  <reference path='../../../../../node_modules/@types/googlemaps/index.d.ts'/>
 
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
+import { MessageService } from 'src/app/services/message.service';
 
 declare var google: any;
 
@@ -19,6 +20,7 @@ declare var google: any;
 export class RegisterComponent extends TranslatableComponent implements OnInit {
   registrationForm: FormGroup;
   roleList: string[];
+  admin = false;
 
   // google zoom lvl
   zoom = 10;
@@ -33,6 +35,7 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
 
   constructor(private translateService: TranslateService, private authService: AuthService,
     private fb: FormBuilder, private router: Router,
+    private route: ActivatedRoute, private messageService: MessageService,
     private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
     super(translateService);
     this.roleList = this.authService.getRoles();
@@ -50,9 +53,17 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
       role: ['', Validators.required],
       validated: ['true'] // explorer is validated by default
     });
+    this.registrationForm.controls['role'].setValue('EXPLORER');
   }
 
   ngOnInit() {
+    this.route.url.subscribe(url => {
+      if (url[0].path === 'new-user') {
+        this.admin = true;
+        console.log(this.admin);
+      }
+    });
+
     this.mapsAPILoader.load().then(() => {
       this.autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ['address']
@@ -112,7 +123,12 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
     this.authService.registerUser(this.registrationForm.value)
       .then(res => {
         console.log('Registration success: ' + res);
-        this.router.navigate(['/login', { registerSuccess: true }]);
+        this.messageService.notifyMessage(this.translateService.instant('messages.auth.registration.correct'), 'alert alert-success');
+        if (this.admin) {
+          this.router.navigate(['/actors']);
+        } else {
+          this.router.navigate(['/login']);
+        }
       }, err => {
         console.log(err);
       });
