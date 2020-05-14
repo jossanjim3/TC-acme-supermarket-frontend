@@ -1,27 +1,17 @@
 # ACMEExplorer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
+Test de la entrega D3 realizados en base al documento subido en enseñanza virtual.
+Test unitarios: Trips Edition, Profile Edition
+Test e2e: Register to the system as an explorer, and Apply for a trip that has been published and is not started or cancelled
 
-## Development server
+## Run test 
+Para ver el funcionamiento de los test es necesario añadir al fichero etc/host de su maquina la siguiente linea:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+54.234.164.248  development.ec2-54-234-164-248.compute-1.amazonaws.com
 
-## Code scaffolding
+Para poder identificar mediante el nombre de dominio el servidor de desarrollo del backend. Y de esta manera evitar saturar el servidor de produccion con datos innecesarios. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Trabajo añadido (A+) 
+Uso de librería SweetAlert, para uso de alerts mas atractivos visualmente.
+Uso de la libreria angular-6-datatable, para los datatables.
+Desarrollo de los componentes de lista de sponsorships, ademas de mostrar un sponsorship y su imagen en los detalles del viaje si esta pagado. 

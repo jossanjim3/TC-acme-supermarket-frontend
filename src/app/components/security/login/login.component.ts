@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { Actor } from 'src/app/models/actor.model';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   returnUrl: string;
 
   constructor(private translateService: TranslateService, private authService: AuthService,
-    private router: Router, private route: ActivatedRoute) {
+    private router: Router, private route: ActivatedRoute, private messageService: MessageService) {
     super(translateService);
     this.registerSuccess = 'false';
   }
@@ -45,16 +46,29 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   onLogin(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.login(email, password).then(_ => {
-      form.reset();
-      this.email = email;
-       this.router.navigate(['/index', {name: this.email}]);
-      // this.router.navigateByUrl(this.returnUrl);
-      // console.log('data: ' + data); // devuelve el token
-    }).catch((error) => {
-      console.log(error);
-      this.errorMessage = 'Error Login: ' + error;
-    });
+    if (email === '' || password === '') {
+      this.messageService.notifyMessage(this.translateService.instant('errorMessages.auth.login.empty.fields'), 'alert alert-danger');
+    } else {
+      this.authService.login(email, password).then(_ => {
+        form.reset();
+        this.email = email;
+         this.router.navigate(['/index', {name: this.email}]);
+        // this.router.navigateByUrl(this.returnUrl);
+        // console.log('data: ' + data); // devuelve el token
+      }).catch((error) => {
+        // console.log(error);
+        if (error.code === 'auth/argument-error') {
+          this.messageService.notifyMessage(this.translateService.instant('errorMessages.auth.argument.error'), 'alert alert-danger');
+        } else {
+          if (error.status === 401) {
+            this.messageService.notifyMessage(this.translateService.instant('errorMessages.auth.wrong.login'), 'alert alert-danger');
+          } else {
+            this.messageService.notifyMessage(this.translateService.instant('errorMessages.auth.login.not.login'), 'alert alert-danger');
+          }
+        }
+        // this.errorMessage = 'Error Login: ' + error;
+      });
+    }
   }
 
   onclickEditProfile() {

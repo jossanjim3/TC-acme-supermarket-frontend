@@ -258,7 +258,6 @@ export class TripFormComponent extends TranslatableComponent implements OnInit, 
         this.router.navigate(['/trips-created']);
         this.messageService.notifyMessage(this.translateService.instant('messages.trip.updated'), 'alert alert-success');
       }, err => {
-        console.log(err);
         if (err.status === 422) {
           this.messageService.notifyMessage(this.translateService.instant('errorMessages.422'), 'alert alert-danger');
         } else {

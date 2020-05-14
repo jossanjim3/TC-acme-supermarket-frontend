@@ -130,7 +130,13 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
           this.router.navigate(['/login']);
         }
       }, err => {
-        console.log(err);
+        // console.log(err);
+        if (err.code === 'auth/email-already-in-use') {
+          this.messageService.notifyMessage(
+            this.translateService.instant('errorMessages.auth.registration.email.used'), 'alert alert-danger');
+        } else {
+          this.messageService.notifyMessage(this.translateService.instant('errorMessages.500'), 'alert alert-danger');
+        }
       });
   }
 
