@@ -7,6 +7,7 @@ import { ApplicationsService } from 'src/app/services/applications.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Application } from 'src/app/models/application.model';
 import { app } from 'firebase';
+import { Actor } from 'src/app/models/actor.model';
 
 @Component({
   selector: 'app-application-display',
@@ -19,6 +20,7 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
   applyId: String;
   param: String;
   application: Application;
+  actor: Actor;
 
   errorMessage = '';
 
@@ -30,7 +32,6 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
   }
 
   ngOnInit() {
-
     // Recover id param
     this.applyId = this.route.snapshot.params['id'];
     // console.log('id appli: ' + this.applyId);
@@ -116,6 +117,14 @@ export class ApplicationDisplayComponent  extends TranslatableComponent implemen
         });
     }
 
+  }
+
+  checkCancelButton() {
+    if (this.authService.checkRole('MANAGER')) {
+      return this.cancelForm.invalid;
+    } else {
+      return false;
+    }
   }
 
   goBack(): void {
