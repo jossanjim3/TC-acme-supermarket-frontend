@@ -55,7 +55,9 @@
     },
     "index": {
         "welcome": "Welcome",
-        "acme": "to Acme Explorer!!"
+        "acme": "to Acme Explorer!!",
+        "user.registered": "You are logged in like"
+
     },
     "sponsor": {
         "sponsor": "Sponsor",
