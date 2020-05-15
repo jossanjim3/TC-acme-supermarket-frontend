@@ -55,7 +55,8 @@
     },
     "index": {
         "welcome": "Bienvenido",
-        "acme": "a Acme Explorer!!"
+        "acme": "a Acme Explorer!!",
+        "user.registered": "Esta usted registrado como rol"
     },
     "sponsor": {
         "sponsor": "Patrocinador",
