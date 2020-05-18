@@ -15,3 +15,7 @@ Para poder identificar mediante el nombre de dominio el servidor de desarrollo d
 Uso de librería SweetAlert, para uso de alerts mas atractivos visualmente.
 Uso de la libreria angular-6-datatable, para los datatables.
 Desarrollo de los componentes de lista de sponsorships, ademas de mostrar un sponsorship y su imagen en los detalles del viaje si esta pagado. 
+
+## Usuario Administrador
+usuario: mailPrueba@mailprueba.com
+pass: 12345678
